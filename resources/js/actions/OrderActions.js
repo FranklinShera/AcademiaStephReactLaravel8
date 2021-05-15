@@ -18,21 +18,21 @@ export const fetchAcademicLevels = () => async (dispatch) => {
 
 
         dispatch({ type: REQUEST_ACADEMIC_LEVELS })
-        
-        const { data } = await axios.get('http://localhost:5000/auth/academic-levels')
-        
-        
+
+        const { data } = await axios.get('/auth/academic-levels')
+
+
 
         dispatch({
             type: REQUEST_ACADEMIC_LEVELS_SUCCESS,
             payload: data
-        })  
-        
+        })
+
 
     } catch (error) {
           dispatch({
             type: REQUEST_ACADEMIC_LEVELS_FAIL,
-            error: error 
+            error: error
         })
 
     }
@@ -45,21 +45,21 @@ export const adminFetchAcademicLevels = () => async (dispatch) => {
 
 
         dispatch({ type: REQUEST_ACADEMIC_LEVELS })
-        
-        const { data } = await axios.get('http://localhost:5000/auth/admin/academic-levels')
-        
-        
+
+        const { data } = await axios.get('/auth/admin/academic-levels')
+
+
 
         dispatch({
             type: REQUEST_ACADEMIC_LEVELS_SUCCESS,
             payload: data
-        })  
-        
+        })
+
 
     } catch (error) {
           dispatch({
             type: REQUEST_ACADEMIC_LEVELS_FAIL,
-            error: error 
+            error: error
         })
 
     }

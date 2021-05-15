@@ -1,7 +1,7 @@
 import {
     REVIEWS_LIST_REQUEST ,
     REVIEWS_LIST_SUCCESS ,
-    REVIEWS_LIST_FAIL 
+    REVIEWS_LIST_FAIL
 } from '../constants/reviewsConstants'
 
 import axios from 'axios'
@@ -12,8 +12,8 @@ export const listReviews = () => async (dispatch) => {
 
         dispatch({ type: REVIEWS_LIST_REQUEST })
 
-       const { data } = await axios.get('http://localhost:5000/reviews')
-        
+       const { data } = await axios.get('/reviews')
+
 
         dispatch({
             type: REVIEWS_LIST_SUCCESS,

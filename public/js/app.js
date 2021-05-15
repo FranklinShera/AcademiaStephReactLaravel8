@@ -2243,7 +2243,7 @@ var loginUser = function loginUser(user) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_REQUEST
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('http://localhost:5000/auth/login', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/login', user);
 
             case 4:
               _yield$axios$post = _context.sent;
@@ -2290,7 +2290,7 @@ var registerUser = function registerUser(user) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_REQUEST
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('http://localhost:5000/auth/register', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/register', user);
 
             case 4:
               data = _context2.sent;
@@ -2338,7 +2338,7 @@ var refreshUser = function refreshUser() {
               }
 
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('http://localhost:5000/auth/refresh-token');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/refresh-token');
 
             case 3:
               _yield$axios$post2 = _context3.sent;
@@ -2382,7 +2382,7 @@ var logoutUser = function logoutUser() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().delete('http://localhost:5000/auth/logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/auth/logout');
 
             case 2:
               _yield$axios$delete = _context4.sent;
@@ -2528,7 +2528,7 @@ var fetchAcademicLevels = function fetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('http://localhost:5000/auth/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/auth/academic-levels');
 
             case 4:
               _yield$axios$get = _context.sent;
@@ -2575,7 +2575,7 @@ var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('http://localhost:5000/auth/admin/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/auth/admin/academic-levels');
 
             case 4:
               _yield$axios$get2 = _context2.sent;
@@ -2649,7 +2649,7 @@ var listReviews = function listReviews() {
                 type: _constants_reviewsConstants__WEBPACK_IMPORTED_MODULE_1__.REVIEWS_LIST_REQUEST
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('http://localhost:5000/reviews');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/reviews');
 
             case 4:
               _yield$axios$get = _context.sent;

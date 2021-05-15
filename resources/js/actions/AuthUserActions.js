@@ -37,20 +37,20 @@ export const loginUser = (user) => async (dispatch) => {
 
         dispatch({ type: USER_LOGIN_REQUEST })
 
-       const { data } = await axios.post('http://localhost:5000/auth/login', user)
-        
+       const { data } = await axios.post('/auth/login', user)
+
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
-        })  
-        
+        })
+
         setHeader(data.access_token)
 
     } catch (error) {
           dispatch({
             type: USER_LOGIN_FAIL,
-            error: error 
+            error: error
         })
 
     }
@@ -64,28 +64,28 @@ export const registerUser = (user) => async (dispatch) => {
 
         dispatch({ type: USER_REGISTER_REQUEST })
 
-       const data  = await axios.post('http://localhost:5000/auth/register', user)
+       const data  = await axios.post('/auth/register', user)
 
         dispatch({type: USER_REGISTER_SUCCESS})
-        
-        
+
+
 
     } catch (error) {
           dispatch({
             type: USER_REGISTER_FAIL,
-            payload: error 
+            payload: error
         })
 
     }
 }
 
 export const refreshUser = (refreshType = 0) => async (dispatch) => {
-  
+
         if(refreshType !== 1) {
           dispatch({ type: USER_LOGIN_REQUEST })
-        } 
+        }
 
-        const { data } = await axios.post('http://localhost:5000/auth/refresh-token')
+        const { data } = await axios.post('/auth/refresh-token')
 
          if(data.access_token) {
             setHeader(data.access_token)
@@ -94,47 +94,47 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
          }else{
             dispatch({
                 type: USER_LOGIN_FAIL,
-                error: { message: "Unauthenticated!"} 
+                error: { message: "Unauthenticated!"}
             })
          }
 
-       
+
 }
 
 export const logoutUser = () => async (dispatch) => {
 
-       const { status } = await axios.delete('http://localhost:5000/auth/logout')
+       const { status } = await axios.delete('/auth/logout')
 
        if(status == 200)
         {
             dispatch({ type: USER_LOGOUT })
         }
 
-       
+
 }
 
 export const authUserIn = () => async (dispatch) => {
 
-       
+
             dispatch({ type: USER_IN_ADMIN_PANEL ,  payload:  true })
-        
-       
+
+
 }
 
 
 
 export const authUserOut = () => async (dispatch) => {
 
-       
+
             dispatch({ type: USER_OUT_ADMIN_PANEL , payload: false })
-        
-       
+
+
 }
 
 export const sidebarPos = (pos) => async (dispatch) => {
 
-       
+
             dispatch({ type: ADMIN_SIDEBAR_POSITION ,  payload: { admin:true , pos: pos } })
-        
-       
+
+
 }
