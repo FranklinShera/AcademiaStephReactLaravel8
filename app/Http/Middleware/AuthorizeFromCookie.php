@@ -14,6 +14,8 @@ class AuthorizeFromCookie
             $token = $request->cookie("access_token");
 
            $request->headers->set('Authorization', 'Bearer '.$token);
+
+           dd($request->headers->all());
         }
         return $next($request);
     }

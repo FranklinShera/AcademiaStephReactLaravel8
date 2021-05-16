@@ -111,7 +111,7 @@ class AuthController extends Controller
                             false,
                             null);
 
-       return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
+       return response()->json(['message' => "Success!", 'token' => $token ])->withCookie($tokenCookie);
 
 
     }

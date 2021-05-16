@@ -2348,26 +2348,27 @@ var refreshUser = function refreshUser() {
             case 3:
               _yield$axios$post2 = _context3.sent;
               data = _yield$axios$post2.data;
+              console.log(data);
 
               if (!data.token) {
-                _context3.next = 13;
+                _context3.next = 14;
                 break;
               }
 
               setHeader(data.token);
-              _context3.next = 9;
+              _context3.next = 10;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
 
-            case 9:
+            case 10:
               refUser = _context3.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
                 payload: refUser.data
               });
-              _context3.next = 14;
+              _context3.next = 15;
               break;
 
-            case 13:
+            case 14:
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
                 error: {
@@ -2375,7 +2376,7 @@ var refreshUser = function refreshUser() {
                 }
               });
 
-            case 14:
+            case 15:
             case "end":
               return _context3.stop();
           }

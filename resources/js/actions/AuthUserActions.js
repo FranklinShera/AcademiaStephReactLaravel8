@@ -90,6 +90,8 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
 
         const { data } = await axios.post('/api/auth/refresh-token')
 
+         console.log(data)
+
          if(data.token) {
 
             setHeader(data.token)
