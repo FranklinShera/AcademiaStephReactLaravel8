@@ -50,9 +50,9 @@ const Home = () => {
     const reviewList = useSelector( state => state.reviewList)
     const {reviews} = reviewList;
 
-    // useEffect(() => {
-    //     dispatch(listReviews())
-    // },[dispatch])
+    useEffect(() => {
+        dispatch(listReviews())
+    },[dispatch])
 
 
             const[paperAction,setPaperAction] = useState(0)
@@ -468,9 +468,9 @@ const Home = () => {
                 <div className="cards-list">
 
 
-                    {/*{ reviews.map( (rate,index) => (*/}
-                    {/*    <RatingCard cardData={rate} key={index} />*/}
-                    {/*) ) }*/}
+                    { reviews.map( (rate,index) => (
+                        <RatingCard cardData={rate} key={index} />
+                    ) ) }
 
 
                 </div>

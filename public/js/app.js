@@ -2232,7 +2232,7 @@ var setHeader = function setHeader(token) {
 var loginUser = function loginUser(user) {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
-      var _yield$axios$post, data;
+      var _yield$axios$post, data, loggedUser;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -2243,33 +2243,38 @@ var loginUser = function loginUser(user) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_REQUEST
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/login', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/login', user);
 
             case 4:
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
+              setHeader(data.token);
+              _context.next = 9;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
+
+            case 9:
+              loggedUser = _context.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_SUCCESS,
-                payload: data
+                payload: loggedUser.data
               });
-              setHeader(data.access_token);
-              _context.next = 13;
+              _context.next = 16;
               break;
 
-            case 10:
-              _context.prev = 10;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
                 error: _context.t0
               });
 
-            case 13:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 10]]);
+      }, _callee, null, [[0, 13]]);
     }));
 
     return function (_x) {
@@ -2290,7 +2295,7 @@ var registerUser = function registerUser(user) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_REQUEST
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/register', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/register', user);
 
             case 4:
               data = _context2.sent;
@@ -2325,7 +2330,7 @@ var refreshUser = function refreshUser() {
   var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
-      var _yield$axios$post2, data;
+      var _yield$axios$post2, data, refUser;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
@@ -2338,28 +2343,39 @@ var refreshUser = function refreshUser() {
               }
 
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/refresh-token');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/refresh-token');
 
             case 3:
               _yield$axios$post2 = _context3.sent;
               data = _yield$axios$post2.data;
 
-              if (data.access_token) {
-                setHeader(data.access_token);
-                dispatch({
-                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
-                  payload: data
-                });
-              } else {
-                dispatch({
-                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
-                  error: {
-                    message: "Unauthenticated!"
-                  }
-                });
+              if (!data.token) {
+                _context3.next = 13;
+                break;
               }
 
-            case 6:
+              setHeader(data.token);
+              _context3.next = 9;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
+
+            case 9:
+              refUser = _context3.sent;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
+                payload: refUser.data
+              });
+              _context3.next = 14;
+              break;
+
+            case 13:
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
+                error: {
+                  message: "Unauthenticated!"
+                }
+              });
+
+            case 14:
             case "end":
               return _context3.stop();
           }
@@ -2382,7 +2398,7 @@ var logoutUser = function logoutUser() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/auth/logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/api/auth/logout');
 
             case 2:
               _yield$axios$delete = _context4.sent;
@@ -2528,7 +2544,7 @@ var fetchAcademicLevels = function fetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/auth/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/academic-levels');
 
             case 4:
               _yield$axios$get = _context.sent;
@@ -2575,7 +2591,7 @@ var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/auth/admin/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/admin/academic-levels');
 
             case 4:
               _yield$axios$get2 = _context2.sent;
@@ -2649,7 +2665,7 @@ var listReviews = function listReviews() {
                 type: _constants_reviewsConstants__WEBPACK_IMPORTED_MODULE_1__.REVIEWS_LIST_REQUEST
               });
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/reviews');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/reviews');
 
             case 4:
               _yield$axios$get = _context.sent;
@@ -3247,7 +3263,7 @@ var RatingCard = function RatingCard(_ref) {
     className: "say-card",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "name",
-      children: cardData.customerName
+      children: cardData.customer_name
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: " rate-date",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -4390,9 +4406,10 @@ var Home = function Home() {
   var reviewList = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.reviewList;
   });
-  var reviews = reviewList.reviews; // useEffect(() => {
-  //     dispatch(listReviews())
-  // },[dispatch])
+  var reviews = reviewList.reviews;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_actions_reviewActions__WEBPACK_IMPORTED_MODULE_14__.listReviews)());
+  }, [dispatch]);
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -4908,7 +4925,12 @@ var Home = function Home() {
           className: "px-5 mt-14 lg:mt-28 header-text",
           children: "WHAT OUR CUSTOMERS SAY"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-          className: "cards-list"
+          className: "cards-list",
+          children: reviews.map(function (rate, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_RatingCard__WEBPACK_IMPORTED_MODULE_10__.default, {
+              cardData: rate
+            }, index);
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
         id: "contact",
@@ -5175,7 +5197,7 @@ var PlaceOrder = function PlaceOrder() {
   //     {
   //         name : "High School",
   //         value: "High School"
-  //     }, 
+  //     },
   //     {
   //         name : "Undergraduate",
   //         value: "Undergraduate"
@@ -5183,7 +5205,7 @@ var PlaceOrder = function PlaceOrder() {
   //     {
   //         name : "Master",
   //         value: "Master"
-  //     }, 
+  //     },
   //     {
   //         name : "Doctoral",
   //         value: "Doctoral"
@@ -5375,8 +5397,8 @@ var PlaceOrder = function PlaceOrder() {
             children: "Choose Academic Level"
           }), allAcademicLevels.map(function (opt) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-              value: opt.level,
-              children: opt.level
+              value: opt.level_name,
+              children: opt.level_name
             });
           })]
         })]
@@ -5559,7 +5581,7 @@ var Login = function Login(_ref) {
   }, [auth]);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    username: '',
+    email: '',
     password: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5597,7 +5619,7 @@ var Login = function Login(_ref) {
         placeholder: "Enter Email",
         onChange: function onChange(e) {
           return setUser(_objectSpread(_objectSpread({}, user), {}, {
-            username: e.target.value
+            email: e.target.value
           }));
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -6194,7 +6216,7 @@ var AuthUserReducer = function AuthUserReducer() {
     case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.USER_REFRESH:
       return {
         loading: false,
-        loggedInUser: action.payload.user,
+        loggedInUser: action.payload,
         auth: true
       };
 
@@ -6210,7 +6232,7 @@ var AuthUserReducer = function AuthUserReducer() {
       localStorage.setItem("authUser", JSON.stringify(action.payload.user));
       return {
         loading: false,
-        loggedInUser: action.payload.user,
+        loggedInUser: action.payload,
         auth: true
       };
 

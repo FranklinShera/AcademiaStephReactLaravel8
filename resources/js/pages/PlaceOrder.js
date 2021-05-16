@@ -20,63 +20,63 @@ import { fetchAcademicLevels } from '../actions/OrderActions'
 const PlaceOrder = () => {
 
     const dispatch =  useDispatch();
-    
+
     const AcademicLevels = useSelector( state => state.academicLevels)
 
 
     const { allAcademicLevels , loading } = AcademicLevels;
-  
+
     const paperTypes = [
         {
             name : "Annotated Bibliography",
             value: "Annotated Bibliography"
-        }, 
+        },
          {
             name : "Admission essay",
             value: "Admission essay"
         }
-        , 
+        ,
          {
             name : "Book Review/Report",
             value: "Book Review/Report"
         }
-        , 
+        ,
          {
             name : "Creative Writing",
             value: "Creative Writing"
         }
-        , 
+        ,
          {
             name : "Scholarship Essay",
             value: "Scholarship Essay"
         }
-        , 
+        ,
          {
             name : "Summary",
             value: "Summary"
         }
-        , 
+        ,
          {
             name : "Discussion Board Forums",
             value: "Discussion Board Forums"
         }
-        , 
+        ,
          {
             name : "Capstone Project",
             value: "Capstone Project"
         }
-        , 
+        ,
          {
             name : "Argumentative Essay",
             value: "Argumentative Essay"
         }
     ]
-  
+
     const subjectAreas = [
         {
             name : "Accounting",
             value: "Accounting"
-        }, 
+        },
          {
             name : "Agriculture",
             value: "Agriculture"
@@ -122,12 +122,12 @@ const PlaceOrder = () => {
             value: "Tourism"
         }
     ]
-    
+
     const paperFormats = [
         {
             name : "AMA",
             value: "AMA"
-        }, 
+        },
         {
             name : "APA",
             value: "APA"
@@ -135,7 +135,7 @@ const PlaceOrder = () => {
         {
             name : "Chicago/Turabian",
             value: "Chicago/Turabian"
-        }, 
+        },
         {
             name : "Harvard",
             value: "Harvard"
@@ -143,7 +143,7 @@ const PlaceOrder = () => {
         {
             name : "IEEE",
             value: "IEEE"
-        }, 
+        },
         {
             name : "MHRA",
             value: "MHRA"
@@ -151,7 +151,7 @@ const PlaceOrder = () => {
         {
             name : "MLA",
             value: "MLA"
-        }, 
+        },
         {
             name : "Oscola",
             value: "Oscola"
@@ -163,7 +163,7 @@ const PlaceOrder = () => {
         {
             name : "Others",
             value: "Others"
-        }, 
+        },
         {
             name : "Not Applicable",
             value: "Not Applicable"
@@ -174,7 +174,7 @@ const PlaceOrder = () => {
         {
             name : "UK-ESL",
             value: "UK-ESL"
-        }, 
+        },
         {
             name : "UK",
             value: "UK"
@@ -182,7 +182,7 @@ const PlaceOrder = () => {
         {
             name : "US-ESL",
             value: "US-ESL"
-        }, 
+        },
         {
             name : "US",
             value: "US"
@@ -193,7 +193,7 @@ const PlaceOrder = () => {
         {
             name : "Double Spacing",
             value: "double"
-        }, 
+        },
         {
             name : "Single Spacing",
             value: "single"
@@ -201,12 +201,12 @@ const PlaceOrder = () => {
     ]
 
     let numberOfPages = []
-    
+
     // const academicLevels = [
     //     {
     //         name : "High School",
     //         value: "High School"
-    //     }, 
+    //     },
     //     {
     //         name : "Undergraduate",
     //         value: "Undergraduate"
@@ -214,7 +214,7 @@ const PlaceOrder = () => {
     //     {
     //         name : "Master",
     //         value: "Master"
-    //     }, 
+    //     },
     //     {
     //         name : "Doctoral",
     //         value: "Doctoral"
@@ -291,7 +291,7 @@ const PlaceOrder = () => {
        const calcPages = (num) =>{
 
             while(pages < num){
-                
+
 
                 numberOfPages.push({ pages ,  wordsPerPage: wordsPerPage * pages})
 
@@ -299,7 +299,7 @@ const PlaceOrder = () => {
             }
 
             // console.log(numberOfPages);
-        
+
         }
 
 
@@ -318,14 +318,14 @@ const PlaceOrder = () => {
             numberOfPages: '',
             urgency: ''
         }
- 
+
 
        const submitPlaceOrderForm = (e) =>{
             e.preventDefault();
             console.log(orderForm);
-       } 
+       }
 
-      
+
 
 
 
@@ -333,7 +333,7 @@ const PlaceOrder = () => {
 
         dispatch(fetchAcademicLevels())
 
-        
+
         calcPages(120)
 
         window.scrollTo(0,0)
@@ -346,34 +346,34 @@ const PlaceOrder = () => {
         <div className=" place-order-page">
             <h1 className="text-4xl">Order Paper</h1>
             <h1 className="mt-6 text-lg text-primary-4">Paper Details</h1>
-            <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2">                    
+            <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2">
                     <InputField labelText='Topic' name="topic" type='text' placeholder="Paper Topic" onChange={(e) => orderForm.topic = e.target.value}/>
-                    <SelectInputField labelText="Type of Paper" selectName="paper-type" selectID="paper-type" selectOptions={paperTypes} onChange={(e) => orderForm.typeOfPaper = e.target.value}/>               
-                    <SelectInputField labelText="Subject Area" selectName="subject-area" selectID="subject-area" selectOptions={subjectAreas} onChange={(e) => orderForm.subjectArea = e.target.value}/>               
+                    <SelectInputField labelText="Type of Paper" selectName="paper-type" selectID="paper-type" selectOptions={paperTypes} onChange={(e) => orderForm.typeOfPaper = e.target.value}/>
+                    <SelectInputField labelText="Subject Area" selectName="subject-area" selectID="subject-area" selectOptions={subjectAreas} onChange={(e) => orderForm.subjectArea = e.target.value}/>
                     <TextAreaInputField labelText='Paper Details' textareaName='message' id='message' rows='5' placeholder='Provide detailed additional information about your assignment' onChange={(e) => orderForm.paperDetails = e.target.value}/>
-                   
+
                     <FileInputField labelText="Additional Materials" onChange={(e) => orderForm.additionalMaterials = e.target.files[0]}/>
 
                     <div className="flex flex-col justify-between sm:flex-row">
-                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Paper Format" selectName="paper-format" selectID="paper-format" selectOptions={paperFormats} onChange={(e) => orderForm.paperFormat = e.target.value}/>               
-                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Preferred English" selectName="preferred-english" selectID="preferred-english" selectOptions={prefEnglish} onChange={(e) => orderForm.prefEnglish = e.target.value}/>  
+                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Paper Format" selectName="paper-format" selectID="paper-format" selectOptions={paperFormats} onChange={(e) => orderForm.paperFormat = e.target.value}/>
+                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Preferred English" selectName="preferred-english" selectID="preferred-english" selectOptions={prefEnglish} onChange={(e) => orderForm.prefEnglish = e.target.value}/>
                     </div>
 
                     <div className="flex flex-col justify-between sm:flex-row ">
-                        <InputField type="number" parentClasses="w-full sm:w-2/5" labelText="Number of sources"  name="number-of-sources" id="number-of-sources"onChange={(e) => orderForm.numOfSources = e.target.value}/>               
-                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Spacing" selectName="spacing" selectID="spacing" selectOptions={spacingTypes} onChange={(e) => orderForm.spacing = e.target.value}/>  
+                        <InputField type="number" parentClasses="w-full sm:w-2/5" labelText="Number of sources"  name="number-of-sources" id="number-of-sources"onChange={(e) => orderForm.numOfSources = e.target.value}/>
+                        <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Spacing" selectName="spacing" selectID="spacing" selectOptions={spacingTypes} onChange={(e) => orderForm.spacing = e.target.value}/>
                     </div>
 
-             
+
                     <div className='input-group'>
                         <label >Academic Level</label>
                         <select name="academic-level" id="academic-level" onChange={(e) => orderForm.academicLevel = e.target.value}>
                             <option value='' selected disabled>Choose Academic Level</option>
-                            
+
                             {allAcademicLevels.map((opt) => (
-                                <option value={opt.level} >{opt.level}</option>
+                                <option value={opt.level_name} >{opt.level_name}</option>
                             ))}
-                        
+
                         </select>
                     </div>
 
@@ -381,26 +381,26 @@ const PlaceOrder = () => {
                     <div className='input-group'>
                         <label >Number Of Pages</label>
                         <select name='number-of-pages' id='number-of-pages' onChange={(e) => orderForm.numberOfPages = e.target.value}>
-                            
+
                             <option value='' selected disabled>Choose Number Of Pages</option>
 
                             {numberOfPages.map(opt => (
-                                <option value={opt.pages} key={opt.pages}>{opt.pages} Pages / {opt.wordsPerPage} Words</option>                                
+                                <option value={opt.pages} key={opt.pages}>{opt.pages} Pages / {opt.wordsPerPage} Words</option>
                             ))}
-                        
+
                         </select>
                     </div>
-                    
-                    <SelectInputField labelText="Urgency" selectName="urgency" selectID="urgency" selectOptions={urgency} onChange={(e) => orderForm.urgency = e.target.value}/> 
-            
+
+                    <SelectInputField labelText="Urgency" selectName="urgency" selectID="urgency" selectOptions={urgency} onChange={(e) => orderForm.urgency = e.target.value}/>
+
 
                     <div className="mb-3 price-estimate">
                         <label className="mr-3">Total</label>
-                       <span className="text-lg font-bold">$28.60</span> 
+                       <span className="text-lg font-bold">$28.60</span>
                     </div>
 
                     <button type="submit" className="w-full mt-6 sm:w-1/2 lg:w-1/3 btn-pri" onClick={submitPlaceOrderForm}>Continue</button>
-                    
+
             </form>
         </div>
     )

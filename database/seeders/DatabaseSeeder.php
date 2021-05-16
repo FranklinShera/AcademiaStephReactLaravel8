@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CustomerReview;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +17,8 @@ class DatabaseSeeder extends Seeder
                 AcademicLevelSeeder::class,
                 PaperTypeSeeder::class,
                 CustomerReviewSeeder::class,
-                SubjectAreaSeeder::class
+                SubjectAreaSeeder::class,
+                OrderSeeder::class
             ]);
     }
 }

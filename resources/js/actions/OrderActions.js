@@ -19,7 +19,7 @@ export const fetchAcademicLevels = () => async (dispatch) => {
 
         dispatch({ type: REQUEST_ACADEMIC_LEVELS })
 
-        const { data } = await axios.get('/auth/academic-levels')
+        const { data } = await axios.get('/api/academic-levels')
 
 
 
@@ -46,7 +46,7 @@ export const adminFetchAcademicLevels = () => async (dispatch) => {
 
         dispatch({ type: REQUEST_ACADEMIC_LEVELS })
 
-        const { data } = await axios.get('/auth/admin/academic-levels')
+        const { data } = await axios.get('/admin/academic-levels')
 
 
 

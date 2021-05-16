@@ -37,15 +37,18 @@ export const loginUser = (user) => async (dispatch) => {
 
         dispatch({ type: USER_LOGIN_REQUEST })
 
-       const { data } = await axios.post('/auth/login', user)
+        const { data } = await axios.post('/api/login', user)
+
+        setHeader(data.token)
+
+        const loggedUser = await axios.post('/api/auth/user')
 
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
-            payload: data
+            payload: loggedUser.data
         })
 
-        setHeader(data.access_token)
 
     } catch (error) {
           dispatch({
@@ -64,7 +67,7 @@ export const registerUser = (user) => async (dispatch) => {
 
         dispatch({ type: USER_REGISTER_REQUEST })
 
-       const data  = await axios.post('/auth/register', user)
+       const data  = await axios.post('/api/register', user)
 
         dispatch({type: USER_REGISTER_SUCCESS})
 
@@ -85,12 +88,16 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
           dispatch({ type: USER_LOGIN_REQUEST })
         }
 
-        const { data } = await axios.post('/auth/refresh-token')
+        const { data } = await axios.post('/api/auth/refresh-token')
 
-         if(data.access_token) {
-            setHeader(data.access_token)
+         if(data.token) {
 
-            dispatch({ type: USER_REFRESH , payload : data})
+            setHeader(data.token)
+
+           const refUser =  await axios.post('/api/auth/user')
+
+            dispatch({ type: USER_REFRESH , payload : refUser.data})
+
          }else{
             dispatch({
                 type: USER_LOGIN_FAIL,
@@ -103,7 +110,7 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
 
-       const { status } = await axios.delete('/auth/logout')
+       const { status } = await axios.delete('/api/auth/logout')
 
        if(status == 200)
         {

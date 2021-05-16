@@ -15,6 +15,19 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
+            $table->longText("title");
+            $table->string("type_of_paper");
+            $table->string("subject_area");
+            $table->longText("paper_details");
+            $table->string("addition_materials");
+            $table->string("paper_format");
+            $table->string("prefered_english");
+            $table->string("number_of_sources");
+            $table->string("spacing");
+            $table->string("academic_level");
+            $table->string("urgency");
+
             $table->timestamps();
         });
     }
