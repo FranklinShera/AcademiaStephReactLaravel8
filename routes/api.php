@@ -29,7 +29,7 @@ Route::post('/register', [AuthController::class , 'register']);
 
 
 
-Route::middleware('auth:api')->prefix('/auth')->group(function(){
+Route::middleware(['tokencookie'])->prefix('/auth')->group(function(){
 
     Route::post('/user', [AuthController::class , 'profile']);
     Route::post('/refresh-token', [AuthController::class , 'refresh']);

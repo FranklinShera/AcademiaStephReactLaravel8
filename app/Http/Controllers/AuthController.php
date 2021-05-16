@@ -101,12 +101,17 @@ class AuthController extends Controller
 
 
     protected function respondWithToken($token){
+            $tokenCookie = cookie('access_token',
+                            $token ,
+                            env('JWT_TTL'),
+                            null,
+                            null,
+                            true,
+                            true,
+                            false,
+                            null);
 
-
-       return response()->json([
-                   'token' => $token,
-                   'token_validity' => Auth::factory()->getTTL() * 60
-               ]);
+       return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
 
 
     }
