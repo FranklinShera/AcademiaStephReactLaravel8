@@ -2592,7 +2592,7 @@ var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/admin/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/academic-levels');
 
             case 4:
               _yield$axios$get2 = _context2.sent;
@@ -5601,7 +5601,7 @@ var Login = function Login(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     window.scrollTo(0, 0);
-    document.querySelector('title').text = 'AcademiaSteph21 | Login';
+    document.querySelector('title').text = 'AcademiaSteph21 | Admin Login';
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "login-screen",
@@ -5610,7 +5610,7 @@ var Login = function Login(_ref) {
       onSubmit: handleLogin,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
         className: "w-full mb-5 text-5xl text-center",
-        children: "Login"
+        children: "Admin Login"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
         labelText: "Username",
         parentClasses: "w-full",

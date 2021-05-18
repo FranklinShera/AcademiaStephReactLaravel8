@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AcademicLevel extends Model
 {
     use HasFactory;
+
+
+
+    public function scopeActive(){
+        return $this->where('active' , true);
+    }
+
+
+
 }

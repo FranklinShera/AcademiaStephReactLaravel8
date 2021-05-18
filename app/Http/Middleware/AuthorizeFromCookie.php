@@ -10,13 +10,16 @@ class AuthorizeFromCookie
 
     public function handle(Request $request, Closure $next)
     {
+
         if($request->hasCookie("access_token")){
+
             $token = $request->cookie("access_token");
 
-           $request->headers->set('Authorization', 'Bearer '.$token);
+            $request->headers->set('Authorization', 'Bearer '.$token);
 
-           dd($request->headers->all());
         }
+
         return $next($request);
+
     }
 }
