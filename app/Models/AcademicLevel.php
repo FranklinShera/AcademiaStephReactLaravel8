@@ -11,8 +11,8 @@ class AcademicLevel extends Model
 
 
 
-    public function scopeActive(){
-        return $this->where('active' , true);
+    public function scopeActive($query){
+        return $query->where('active' , 1);
     }
 
 

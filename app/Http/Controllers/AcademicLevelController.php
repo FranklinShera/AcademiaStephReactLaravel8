@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Resources\AcademicLevelResource;
 use App\Models\AcademicLevel;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AcademicLevelController extends Controller
 {
 
     public function index()
     {
-        $academicLevels = AcademicLevel::orderBy('created_at', 'DESC')->get();
+        $academicLevels = AcademicLevel::active()->orderBy('created_at', 'DESC')->get();
 
-        return response(AcademicLevelResource::collection($academicLevels),200);
+        return AcademicLevelResource::collection($academicLevels)->response()->setStatusCode(Response::HTTP_OK);
+    }
+
+    public function adminIndex()
+    {
+        $adminAcademicLevels = AcademicLevel::orderBy('created_at', 'DESC')->paginate(10);
+
+        return AcademicLevelResource::collection($adminAcademicLevels)->response()->setStatusCode(Response::HTTP_OK);
     }
 
 

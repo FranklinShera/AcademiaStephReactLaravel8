@@ -8,15 +8,15 @@ import {
 
 
 
-export const OrderAcademicLevelsReducer = (state = { allAcademicLevels: []} , action) => {
+export const OrderAcademicLevelsReducer = (state = { allAcademicLevels: [], links:{} , meta:{}} , action) => {
     switch(action.type){
         case REQUEST_ACADEMIC_LEVELS:
-            return { loading: true , allAcademicLevels: [] }
+            return { loading: true , allAcademicLevels: [] , links:{} , meta:{} }
 
     
         case REQUEST_ACADEMIC_LEVELS_SUCCESS:
-                        
-            return { loading: false ,  allAcademicLevels: action.payload  }
+
+            return { loading: false ,  allAcademicLevels: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
 
         case REQUEST_ACADEMIC_LEVELS_FAIL:
             return { loading: false , error: action.payload }

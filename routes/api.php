@@ -40,7 +40,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function(){
 
 Route::middleware(['tokencookie'])->prefix('/auth/admin')->group(function(){
 
-    Route::get('/academic-levels' , [AcademicLevelController::class , 'index']);
+    Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
 
 
 });

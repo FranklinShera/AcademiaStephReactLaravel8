@@ -3674,7 +3674,9 @@ var AcademicLevel = function AcademicLevel() {
     return state.academicLevels;
   });
   var allAcademicLevels = AcademicLevels.allAcademicLevels,
-      loading = AcademicLevels.loading;
+      loading = AcademicLevels.loading,
+      meta = AcademicLevels.meta,
+      links = AcademicLevels.links;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3766,7 +3768,7 @@ var AcademicLevel = function AcademicLevel() {
           switch (_context2.prev = _context2.next) {
             case 0:
               setLocalLoad(true);
-              axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://localhost:5000/auth/academic-level', levelForm).then(function (res) {
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post('api/auth/academic-level', levelForm).then(function (res) {
                 if (res.status == 201) {
                   window.Toast.fire({
                     icon: 'success',
@@ -3887,9 +3889,9 @@ var AcademicLevel = function AcademicLevel() {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
       className: "new--academic--level",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         action: "",
         onSubmit: formik.handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.InputField, {
@@ -3915,7 +3917,24 @@ var AcademicLevel = function AcademicLevel() {
           className: "w-full mt-6 btn-blue",
           children: [" ", localLoad ? 'Adding' : 'Add Level']
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "levels--links--meta",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+            className: "meta--info--value",
+            children: [meta.current_page, "  OF ", meta.last_page]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Total Items", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "meta--info--value",
+            children: meta.total
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          className: "links--fetch"
+        })]
+      })]
     })]
   });
 };
@@ -6324,7 +6343,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var OrderAcademicLevelsReducer = function OrderAcademicLevelsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    allAcademicLevels: []
+    allAcademicLevels: [],
+    links: {},
+    meta: {}
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -6332,13 +6353,17 @@ var OrderAcademicLevelsReducer = function OrderAcademicLevelsReducer() {
     case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_ACADEMIC_LEVELS:
       return {
         loading: true,
-        allAcademicLevels: []
+        allAcademicLevels: [],
+        links: {},
+        meta: {}
       };
 
     case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_ACADEMIC_LEVELS_SUCCESS:
       return {
         loading: false,
-        allAcademicLevels: action.payload
+        allAcademicLevels: action.payload.data,
+        links: action.payload.links,
+        meta: action.payload.meta
       };
 
     case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_ACADEMIC_LEVELS_FAIL:

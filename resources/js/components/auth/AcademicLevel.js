@@ -20,18 +20,18 @@ const AcademicLevel = () => {
 
 
     const dispatch =  useDispatch();
-    
+
     const AcademicLevels = useSelector( state => state.academicLevels)
 
 
-    const { allAcademicLevels , loading } = AcademicLevels;
+    const { allAcademicLevels , loading , meta , links} = AcademicLevels;
 
-    
+
     let[levelChange, setLevelChange] = useState(0)
 
     const[localLoad,setLocalLoad] = useState(false)
-   
-   
+
+
 
 
 
@@ -47,11 +47,11 @@ const AcademicLevel = () => {
                         .required('Level is Required!')
             }),
             onSubmit: (values, { setSubmitting , resetForm }) =>{
-                
+
                 addLevel(values)
                 resetForm()
                 setSubmitting(false)
-                
+
             }
         })
 
@@ -63,7 +63,7 @@ const AcademicLevel = () => {
         {
             name : "Active",
             value: true
-        }, 
+        },
         {
             name : "Inactive",
             value: false
@@ -86,7 +86,7 @@ const AcademicLevel = () => {
 
         const res = await axios.delete('/auth/academic-level/'+ id )
 
-        
+
 
         if(res.status == 200){
 
@@ -108,20 +108,20 @@ const AcademicLevel = () => {
     }
 
 
-    
+
     const addLevel = async (levelForm) =>{
-        
+
         setLocalLoad(true)
-        
-        
-          axios.post('http://localhost:5000/auth/academic-level' , levelForm).then(res =>{
+
+
+          axios.post('api/auth/academic-level' , levelForm).then(res =>{
                 if(res.status == 201){
-                    
+
                     window.Toast.fire({
                         icon: 'success',
                         title: res.data.message
                     })
-        
+
                 } else{
                     window.Swal.fire({
                         icon: 'error',
@@ -135,7 +135,7 @@ const AcademicLevel = () => {
             })
           })
 
-    
+
 
         setLocalLoad(false)
         setLevelChange(Date.now())
@@ -145,20 +145,20 @@ const AcademicLevel = () => {
 
 
 useEffect(() => {
-    
+
     dispatch(adminFetchAcademicLevels())
 
 }, [levelChange])
 
     return (
-      
+
        <div className="academic--level--group">
            <div className="academic--levels">
                 <div className="levels--table">
 
                     <div className="level--table--header">
-                        
-                        
+
+
                         <div className="level">
                             LEVEL
                         </div>
@@ -170,8 +170,8 @@ useEffect(() => {
                     </div>
 
                     <div className="levels--table--body">
-                        
-                        
+
+
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allAcademicLevels.map((academicLevel,index) => (
@@ -193,7 +193,7 @@ useEffect(() => {
                                         </span>
 
                                         <span className="academic--level--actions">
-                                            
+
 
                                             <svg onClick={(e) => {
                                                     e.preventDefault()
@@ -213,13 +213,13 @@ useEffect(() => {
 
                                         </span>
                                     </div>
-                                
+
                                 </div>
                                )
                             )
                         }
 
-                        
+
                        {(allAcademicLevels.length == 0) && (
                            <div className="no--levels">
                                <h1>We Could'nt Find Any Levels!</h1>
@@ -228,22 +228,46 @@ useEffect(() => {
                        ) }
                     </div>
 
+
+
                 </div>
            </div>
 
            <div className="new--academic--level">
                <form action="" onSubmit={formik.handleSubmit}>
-                   
+
                 <InputField labelText='Level' name="level" type='text' onBlur={formik.handleBlur} value={formik.values.level} placeholder="Academic Level" onChange={formik.handleChange}/>
                 {(formik.errors.level && formik.touched.level) && <div className="text-xs text-red-600">{formik.errors.level}</div>}
-               
-                <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>               
+
+                <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>
                 <button type="submit" className="w-full mt-6 btn-blue" > { localLoad ? 'Adding' : 'Add Level'}</button>
 
                </form>
+               <div className="levels--links--meta">
+
+
+                   <div className="meta--info">
+                       Page
+                       <span className="meta--info--value">
+                           {meta.current_page}  OF {meta.last_page}
+                       </span>
+                   </div>
+
+                   <div className="meta--info">
+                       Total Items
+                       <span className="meta--info--value">
+                           {meta.total}
+                       </span>
+                   </div>
+
+                   <div className="links--fetch">
+
+                   </div>
+
+               </div>
            </div>
         </div>
-      
+
     )
 }
 

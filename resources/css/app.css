@@ -1020,6 +1020,21 @@ footer{
 }
 
 
+.levels--links--meta{
+    @apply mt-20;
+}
+
+
+.levels--links--meta .meta--info{
+    @apply flex justify-between my-2;
+}
+
+.levels--links--meta .meta--info .meta--info--value{
+    @apply font-bold;
+}
+
+
+
 /* academiclevel end */
 
 
