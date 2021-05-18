@@ -261,7 +261,10 @@ useEffect(() => {
                    </div>
 
                    <div className="links--fetch">
-
+                        <button className="bg-blue-400">PREV</button>
+                        <button className="bg-gray-200">FIRST</button>
+                        <button className="bg-gray-200">LAST</button>
+                        <button className="bg-blue-400">NEXT</button>
                    </div>
 
                </div>
