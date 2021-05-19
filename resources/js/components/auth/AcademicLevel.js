@@ -181,7 +181,7 @@ useEffect(() => {
                                     e.preventDefault()
                                     showModal(academicLevel)
                                 }}>
-                                      {index + 1 +"."}  {academicLevel.level}
+                                      {index + 1 +"."}  {academicLevel.level_name}
                                     </div>
 
                                     <div className="status">
@@ -240,7 +240,7 @@ useEffect(() => {
                 {(formik.errors.level && formik.touched.level) && <div className="text-xs text-red-600">{formik.errors.level}</div>}
 
                 <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>
-                <button type="submit" className="w-full mt-6 btn-blue" > { localLoad ? 'Adding' : 'Add Level'}</button>
+                <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
 
                </form>
                <div className="levels--links--meta">
@@ -249,7 +249,7 @@ useEffect(() => {
                    <div className="meta--info">
                        Page
                        <span className="meta--info--value">
-                           {meta.current_page}  OF {meta.last_page}
+                           {meta.current_page}  Of {meta.last_page}
                        </span>
                    </div>
 
@@ -261,10 +261,27 @@ useEffect(() => {
                    </div>
 
                    <div className="links--fetch">
-                        <button className="bg-blue-400">PREV</button>
-                        <button className="bg-gray-200">FIRST</button>
-                        <button className="bg-gray-200">LAST</button>
-                        <button className="bg-blue-400">NEXT</button>
+
+                        <button  className={links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 "} onClick={(e) =>{
+                            e.preventDefault();
+                            links.prev && dispatch(adminFetchAcademicLevels(links.prev))
+                        }}>PREV</button>
+
+                        <button className={ links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 "} onClick={(e) =>{
+                            e.preventDefault();
+                            links.prev && dispatch(adminFetchAcademicLevels(links.first))
+                        }}>FIRST</button>
+
+                        <button className={links.next ? " bg-primary-3 text-white " :" bg-gray-100 text-gray-400 "} onClick={(e) =>{
+                            e.preventDefault();
+                            links.next && dispatch(adminFetchAcademicLevels(links.last))
+                        }}>LAST</button>
+
+                        <button className={links.next ? " bg-primary-3 text-white " :" bg-gray-100 text-gray-400 "} onClick={(e) =>{
+                            e.preventDefault();
+                            links.next && dispatch(adminFetchAcademicLevels(links.next))
+                        }}>NEXT</button>
+
                    </div>
 
                </div>

@@ -2579,6 +2579,7 @@ var fetchAcademicLevels = function fetchAcademicLevels() {
   }();
 };
 var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
+  var levelUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/academic-levels';
   return /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
       var _yield$axios$get2, data;
@@ -2592,7 +2593,7 @@ var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
                 type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ACADEMIC_LEVELS
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/academic-levels');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(levelUrl);
 
             case 4:
               _yield$axios$get2 = _context2.sent;
@@ -3831,7 +3832,7 @@ var AcademicLevel = function AcademicLevel() {
                   e.preventDefault();
                   showModal(academicLevel);
                 },
-                children: [index + 1 + ".", "  ", academicLevel.level]
+                children: [index + 1 + ".", "  ", academicLevel.level_name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -3914,7 +3915,7 @@ var AcademicLevel = function AcademicLevel() {
           onChange: formik.handleChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue",
+          className: "w-full mt-6 btn-blue font-bold",
           children: [" ", localLoad ? 'Adding' : 'Add Level']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -3923,7 +3924,7 @@ var AcademicLevel = function AcademicLevel() {
           className: "meta--info",
           children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
             className: "meta--info--value",
-            children: [meta.current_page, "  OF ", meta.last_page]
+            children: [meta.current_page, "  Of ", meta.last_page]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "meta--info",
@@ -3934,16 +3935,32 @@ var AcademicLevel = function AcademicLevel() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "links--fetch",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-            className: "bg-blue-400",
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchAcademicLevels)(links.prev));
+            },
             children: "PREV"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-            className: "bg-gray-200",
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchAcademicLevels)(links.first));
+            },
             children: "FIRST"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-            className: "bg-gray-200",
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchAcademicLevels)(links.last));
+            },
             children: "LAST"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-            className: "bg-blue-400",
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchAcademicLevels)(links.next));
+            },
             children: "NEXT"
           })]
         })]

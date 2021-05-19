@@ -38,7 +38,7 @@ export const fetchAcademicLevels = () => async (dispatch) => {
     }
 }
 
-export const adminFetchAcademicLevels = () => async (dispatch) => {
+export const adminFetchAcademicLevels = (levelUrl = '/api/auth/admin/academic-levels') => async (dispatch) => {
 
 
     try {
@@ -46,9 +46,9 @@ export const adminFetchAcademicLevels = () => async (dispatch) => {
 
         dispatch({ type: REQUEST_ACADEMIC_LEVELS })
 
-        const { data } = await axios.get('/api/auth/admin/academic-levels')
+        const { data } = await axios.get(levelUrl)
 
-        
+
         dispatch({
             type: REQUEST_ACADEMIC_LEVELS_SUCCESS,
             payload: data
