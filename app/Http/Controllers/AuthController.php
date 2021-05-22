@@ -58,7 +58,7 @@ class AuthController extends Controller
             )
         );
 
-        return response()->json(['message' => "User Created!", 'user' => $user] , 201);
+        return response()->json(['message' => "User Created!"] , 201);
 
 
     }
@@ -111,7 +111,7 @@ class AuthController extends Controller
                             false,
                             null);
 
-       return response()->json(['message' => "Success!", 'token' => $token ])->withCookie($tokenCookie);
+       return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
 
 
     }

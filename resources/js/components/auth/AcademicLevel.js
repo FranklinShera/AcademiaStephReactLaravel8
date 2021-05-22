@@ -37,11 +37,11 @@ const AcademicLevel = () => {
 
     const formik = useFormik({
             initialValues:{
-                level: '',
+                level_name: '',
                 active: false
             },
             validationSchema:Yup.object({
-                level: Yup.string()
+                level_name: Yup.string()
                         .min(3 , 'Level Cannot Be Less Than 3 Characters')
                         .max(32, 'Level Cannot be More than 32 Characters')
                         .required('Level is Required!')
@@ -84,7 +84,7 @@ const AcademicLevel = () => {
 
         setLocalLoad(true)
 
-        const res = await axios.delete('/auth/academic-level/'+ id )
+        const res = await axios.delete('/api/auth/admin/academic-level/'+ id )
 
 
 
@@ -114,7 +114,7 @@ const AcademicLevel = () => {
         setLocalLoad(true)
 
 
-          axios.post('api/auth/academic-level' , levelForm).then(res =>{
+          axios.post('/api/auth/admin/academic-level' , levelForm).then(res =>{
                 if(res.status == 201){
 
                     window.Toast.fire({
@@ -236,8 +236,8 @@ useEffect(() => {
            <div className="new--academic--level">
                <form action="" onSubmit={formik.handleSubmit}>
 
-                <InputField labelText='Level' name="level" type='text' onBlur={formik.handleBlur} value={formik.values.level} placeholder="Academic Level" onChange={formik.handleChange}/>
-                {(formik.errors.level && formik.touched.level) && <div className="text-xs text-red-600">{formik.errors.level}</div>}
+                <InputField labelText='Level' name="level_name" type='text' onBlur={formik.handleBlur} value={formik.values.level_name} placeholder="Academic Level" onChange={formik.handleChange}/>
+                {(formik.errors.level_name && formik.touched.level_name) && <div className="text-xs text-red-600">{formik.errors.level_name}</div>}
 
                 <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>
                 <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>

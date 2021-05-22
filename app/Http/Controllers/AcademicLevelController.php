@@ -26,9 +26,16 @@ class AcademicLevelController extends Controller
 
 
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        //
+        $data = $request->validate([
+                     'level_name' => 'required|string|min:5',
+                     'active' => 'required'
+                    ]);
+
+        $alevel = AcademicLevel::create($data);
+
+        return new AcademicLevelResource($alevel);
     }
 
 
@@ -46,6 +53,10 @@ class AcademicLevelController extends Controller
 
     public function destroy(AcademicLevel $academicLevel)
     {
-        //
+        if($academicLevel->delete()){
+            return response("Deleted!")->setStatusCode(Response::HTTP_OK);
+        }
+
+        return response("Unable To Delete!")->setStatusCode(Response::HTTP_BAD_REQUEST);
     }
 }

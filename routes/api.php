@@ -29,20 +29,30 @@ Route::post('/register', [AuthController::class , 'register']);
 
 
 
-Route::middleware(['tokencookie'])->prefix('/auth')->group(function(){
+Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
-    Route::post('/user' , [AuthController::class , 'profile']);
-    Route::post('/refresh-token' , [AuthController::class , 'refresh']);
+
+        Route::post('/user' , [AuthController::class , 'profile']);
+        Route::post('/refresh-token' , [AuthController::class , 'refresh']);
+        Route::post('/logout' , [AuthController::class , 'logout']);
+
+
+
+        Route::prefix('/admin')->group(function(){
+
+            Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
+            Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
+            Route::delete('/academic-level/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
+
+        });
 
 
 });
 
 
-Route::middleware(['tokencookie'])->prefix('/auth/admin')->group(function(){
-
-    Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
 
 
-});
+
+
 
 

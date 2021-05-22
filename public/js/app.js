@@ -2248,33 +2248,32 @@ var loginUser = function loginUser(user) {
             case 4:
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
-              setHeader(data.token);
-              _context.next = 9;
+              _context.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
 
-            case 9:
+            case 8:
               loggedUser = _context.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_SUCCESS,
                 payload: loggedUser.data
               });
-              _context.next = 16;
+              _context.next = 15;
               break;
 
-            case 13:
-              _context.prev = 13;
+            case 12:
+              _context.prev = 12;
               _context.t0 = _context["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
                 error: _context.t0
               });
 
-            case 16:
+            case 15:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 13]]);
+      }, _callee, null, [[0, 12]]);
     }));
 
     return function (_x) {
@@ -2330,8 +2329,7 @@ var refreshUser = function refreshUser() {
   var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
-      var _yield$axios$post2, data, refUser;
-
+      var res, refUser;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -2346,29 +2344,26 @@ var refreshUser = function refreshUser() {
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/refresh-token');
 
             case 3:
-              _yield$axios$post2 = _context3.sent;
-              data = _yield$axios$post2.data;
-              console.log(data);
+              res = _context3.sent;
 
-              if (!data.token) {
-                _context3.next = 14;
+              if (!(res.status == 200)) {
+                _context3.next = 11;
                 break;
               }
 
-              setHeader(data.token);
-              _context3.next = 10;
+              _context3.next = 7;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
 
-            case 10:
+            case 7:
               refUser = _context3.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
                 payload: refUser.data
               });
-              _context3.next = 15;
+              _context3.next = 12;
               break;
 
-            case 14:
+            case 11:
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
                 error: {
@@ -2376,7 +2371,7 @@ var refreshUser = function refreshUser() {
                 }
               });
 
-            case 15:
+            case 12:
             case "end":
               return _context3.stop();
           }
@@ -2392,18 +2387,18 @@ var refreshUser = function refreshUser() {
 var logoutUser = function logoutUser() {
   return /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
-      var _yield$axios$delete, status;
+      var _yield$axios$post2, status;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/api/auth/logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/logout');
 
             case 2:
-              _yield$axios$delete = _context4.sent;
-              status = _yield$axios$delete.status;
+              _yield$axios$post2 = _context4.sent;
+              status = _yield$axios$post2.status;
 
               if (status == 200) {
                 dispatch({
@@ -2823,6 +2818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _images_as21ig_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././images/as21ig.svg */ "./resources/js/images/as21ig.svg");
 /* harmony import */ var _images_as21mail_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/as21mail.svg */ "./resources/js/images/as21mail.svg");
 /* harmony import */ var _images_as21logo_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! .././images/as21logo.png */ "./resources/js/images/as21logo.png");
@@ -2834,9 +2830,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Footer = function Footer() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("footer", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "py-2 text-white",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        to: "/in",
+        children: "Admin Login"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "details",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "logo",
@@ -3691,11 +3694,11 @@ var AcademicLevel = function AcademicLevel() {
 
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
     initialValues: {
-      level: '',
+      level_name: '',
       active: false
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
-      level: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Level Cannot Be Less Than 3 Characters').max(32, 'Level Cannot be More than 32 Characters').required('Level is Required!')
+      level_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Level Cannot Be Less Than 3 Characters').max(32, 'Level Cannot be More than 32 Characters').required('Level is Required!')
     }),
     onSubmit: function onSubmit(values, _ref) {
       var setSubmitting = _ref.setSubmitting,
@@ -3729,7 +3732,7 @@ var AcademicLevel = function AcademicLevel() {
             case 0:
               setLocalLoad(true);
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/auth/academic-level/' + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/academic-level/' + id);
 
             case 3:
               res = _context.sent;
@@ -3769,7 +3772,7 @@ var AcademicLevel = function AcademicLevel() {
           switch (_context2.prev = _context2.next) {
             case 0:
               setLocalLoad(true);
-              axios__WEBPACK_IMPORTED_MODULE_1___default().post('api/auth/academic-level', levelForm).then(function (res) {
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-level', levelForm).then(function (res) {
                 if (res.status == 201) {
                   window.Toast.fire({
                     icon: 'success',
@@ -3897,15 +3900,15 @@ var AcademicLevel = function AcademicLevel() {
         onSubmit: formik.handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.InputField, {
           labelText: "Level",
-          name: "level",
+          name: "level_name",
           type: "text",
           onBlur: formik.handleBlur,
-          value: formik.values.level,
+          value: formik.values.level_name,
           placeholder: "Academic Level",
           onChange: formik.handleChange
-        }), formik.errors.level && formik.touched.level && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        }), formik.errors.level_name && formik.touched.level_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
           className: "text-xs text-red-600",
-          children: formik.errors.level
+          children: formik.errors.level_name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.SelectInputField, {
           labelText: "Status",
           selectName: "active",

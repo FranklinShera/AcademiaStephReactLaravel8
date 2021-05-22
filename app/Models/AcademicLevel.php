@@ -9,6 +9,8 @@ class AcademicLevel extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['level_name','active'];
+
 
 
     public function scopeActive($query){

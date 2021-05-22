@@ -24,19 +24,19 @@ const Header = ({ inAdminPanel }) => {
         console.log("navigateTo() "+linkto);
         setdropNav(!dropNav)
         window.location.hash = linkto;
-        
+
     }
 
-    
+
     const logout = (e) =>{
         e.preventDefault();
-       
+
         dispatch(logoutUser())
     }
 
-    
+
     useEffect(() => {
-        
+
     },[])
 
     return (
@@ -52,17 +52,17 @@ const Header = ({ inAdminPanel }) => {
                 </div>
 
                 <div className={(dropNav) ? 'toggler justify-center' : 'toggler justify-between'} onClick={(e) => setdropNav(!dropNav)}>
-                                
+
                     <span className={(dropNav) ? 'menu-line frwdslash' : 'menu-line'}></span>
                     <span className={(dropNav) ? 'menu-line backslash' : 'menu-line'}></span>
                     {(!dropNav) && <span className="menu-line"></span>}
 
-                    
+
                 </div>
 
                 <div className=" nav-right">
                 {!auth ?
-                  < >
+                  <>
                     <li className=" navlink hover:border-b-2" >
                         <a href="/#hero">Home</a>
                     </li>
@@ -70,7 +70,7 @@ const Header = ({ inAdminPanel }) => {
                     <li className="navlink hover:border-b-2" >
                         <a href="/#services">Services</a>
                     </li>
-                    
+
                     <li className="navlink hover:border-b-2" >
                         <a href="/#contact">Contact</a>
                     </li>
@@ -86,7 +86,7 @@ const Header = ({ inAdminPanel }) => {
                      </Link>
                   </>
                  }
-                    
+
                 </div>
             </nav>
 
@@ -111,8 +111,8 @@ const Header = ({ inAdminPanel }) => {
                         }}>
                             <a href="/#contact">Contact</a>
                         </li>
-                        
-                        
+
+
                     </div>
                 </div>
             )}
