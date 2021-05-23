@@ -6,11 +6,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
+
 
 class AuthController extends Controller
 {
    public function __construct(){
+
        $this->middleware('tokencookie' , ['except' => ['login','register'] ]);
+
    }
 
 
@@ -25,12 +30,12 @@ class AuthController extends Controller
        ]);
 
        if($userValidation->fails()){
-           return response()->json($userValidation->errors() , 400);
+           return response()->json($userValidation->errors() , Response::HTTP_BAD_REQUEST);
        }
 
 
         if(!$token = Auth::attempt($userValidation->validated())){
-            return  response()->json(['error' => 'Unauthorised!'], 400);
+            return  response()->json(['error' => 'Unauthorised!'], Response::HTTP_BAD_REQUEST);
         }
 
         return $this->respondWithToken($token);
@@ -48,7 +53,7 @@ class AuthController extends Controller
 
 
         if($userValidation->fails()){
-            return response()->json($userValidation->errors() , 422);
+            return response()->json($userValidation->errors() , Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $user = User::create(
@@ -58,7 +63,7 @@ class AuthController extends Controller
             )
         );
 
-        return response()->json(['message' => "User Created!"] , 201);
+        return response()->json(['message' => "User Created!"] , Response::HTTP_CREATED);
 
 
     }
@@ -77,7 +82,7 @@ class AuthController extends Controller
 
         Auth::logout();
 
-       return response()->json(['message' => "Logged Out!"] , 200);
+       return response()->json(['message' => "Logged Out!"] , Response::HTTP_OK);
 
     }
 
@@ -93,7 +98,7 @@ class AuthController extends Controller
 
        }catch(\Exception $e){
 
-          return  response()->json(['error' => $e->getMessage()] , 401);
+          return  response()->json(['error' => $e->getMessage()] , Response::HTTP_UNAUTHORIZED);
 
        }
 

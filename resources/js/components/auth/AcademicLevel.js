@@ -46,10 +46,15 @@ const AcademicLevel = () => {
                         .max(32, 'Level Cannot be More than 32 Characters')
                         .required('Level is Required!')
             }),
-            onSubmit: (values, { setSubmitting , resetForm }) =>{
+            onSubmit: (values, { setSubmitting , resetForm }) => {
 
                 addLevel(values)
-                resetForm()
+
+                resetForm({ values:{
+                        level_name: '',
+                        active: false
+                    }})
+
                 setSubmitting(false)
 
             }

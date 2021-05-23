@@ -81,10 +81,9 @@ function App() {
 
         }
 
-      setInterval(() => {
-        dispatch(refreshUser(1))
-      }, 570000);
-
+          setInterval(() => {
+            dispatch(refreshUser(1))
+          }, 840000);
 
 
     },[])

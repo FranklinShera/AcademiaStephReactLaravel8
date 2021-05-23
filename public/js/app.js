@@ -2125,7 +2125,7 @@ function App() {
 
     setInterval(function () {
       dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_17__.refreshUser)(1));
-    }, 570000);
+    }, 840000);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.BrowserRouter, {
@@ -3704,7 +3704,12 @@ var AcademicLevel = function AcademicLevel() {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
       addLevel(values);
-      resetForm();
+      resetForm({
+        values: {
+          level_name: '',
+          active: false
+        }
+      });
       setSubmitting(false);
     }
   });
@@ -5620,6 +5625,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Login = function Login(_ref) {
   var location = _ref.location;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isLoggin = _useState2[0],
+      setIsLogging = _useState2[1];
+
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
@@ -5633,17 +5644,19 @@ var Login = function Login(_ref) {
     }
   }, [auth]);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     email: '',
     password: ''
   }),
-      _useState2 = _slicedToArray(_useState, 2),
-      user = _useState2[0],
-      setUser = _useState2[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      user = _useState4[0],
+      setUser = _useState4[1];
 
   var handleLogin = function handleLogin(e) {
     e.preventDefault();
+    setIsLogging(true);
     dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.loginUser)(user));
+    setIsLogging(false);
   };
 
   var noAccount = function noAccount(e) {
@@ -5697,7 +5710,7 @@ var Login = function Login(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         type: "submit",
         className: "w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri",
-        children: "Login"
+        children: isLoggin ? "Logging In" : "Login"
       })]
     })
   });

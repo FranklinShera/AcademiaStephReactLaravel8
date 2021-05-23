@@ -10,6 +10,8 @@ import { loginUser , refreshUser } from '../../actions/AuthUserActions'
 
 const Login = ({ location }) => {
 
+    const[isLoggin,setIsLogging] = useState(false)
+
     const dispatch =  useDispatch();
     const hist = useHistory();
 
@@ -39,9 +41,14 @@ const Login = ({ location }) => {
 
 
     const handleLogin =  (e) => {
+
         e.preventDefault();
 
+        setIsLogging(true)
+
         dispatch(loginUser(user))
+
+        setIsLogging(false)
 
     }
 
@@ -66,7 +73,7 @@ const Login = ({ location }) => {
                  <InputField labelText='Username' parentClasses="w-full" name="username" id="username" type='text' placeholder="Enter Email" onChange={(e) =>  setUser({...user, email: e.target.value})}/>
                  <InputField labelText='Password' parentClasses="w-full" name="password" id="password" type='password' placeholder="Enter  Password" onChange={(e) =>  setUser({...user,password: e.target.value})}/>
                  <label className="block">Don't Have An Account? <span className="ml-2 font-bold cursor-pointer text-primary-3" onClick={noAccount}>Register Here</span></label>
-                 <button type="submit" className="w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri" >Login</button>
+                 <button type="submit" className="w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri" >{(isLoggin) ? "Logging In" : "Login"}</button>
             </form>
         </div>
     )
