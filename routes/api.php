@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicLevelController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,11 @@ Route::get('/reviews', [CustomerReviewController::class , 'index']);
 Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
 
 
+//CLIENT
+Route::post('/client-login', [ClientAuthController::class , 'login']);
+Route::post('/client-register', [ClientAuthController::class , 'register']);
+
+
 
 Route::post('/login', [AuthController::class , 'login']);
 Route::post('/register', [AuthController::class , 'register']);
@@ -31,6 +37,8 @@ Route::post('/register', [AuthController::class , 'register']);
 
 Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
+
+        Route::post('/client' , [ClientAuthController::class , 'profile']);
 
         Route::post('/user' , [AuthController::class , 'profile']);
         Route::post('/refresh-token' , [AuthController::class , 'refresh']);

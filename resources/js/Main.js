@@ -13,6 +13,7 @@ import PlaceOrder from './pages/PlaceOrder';
 import FindWriter from './pages/FindWriter';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
+import ClientLogin from './pages/auth/ClientLogin';
 import Dashboard from './pages/auth/Dashboard';
 import Payment from './pages/auth/Payment';
 import Orders from './pages/auth/Orders';
@@ -108,6 +109,7 @@ function App() {
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
             <Route path="/in" exact component={Login}/>
+            <Route path="/client" exact component={ClientLogin}/>
             <Route path="/" exact component={Home}/>
             <Route component={NotFound}/>
           </Switch>

@@ -59,6 +59,35 @@ export const loginUser = (user) => async (dispatch) => {
     }
 }
 
+export const loginClient = (client) => async (dispatch) => {
+
+
+    try {
+
+        dispatch({ type: USER_LOGIN_REQUEST })
+
+        const { data } = await axios.post('/api/client-login', client)
+
+        // setHeader(data.token)
+
+        const loggedUser = await axios.post('/api/auth/client')
+
+
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload: loggedUser.data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: USER_LOGIN_FAIL,
+            error: error
+        })
+
+    }
+}
+
 
 export const registerUser = (user) => async (dispatch) => {
 
