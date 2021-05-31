@@ -3,13 +3,19 @@ import {
     USER_LOGIN_SUCCESS ,
     USER_LOGIN_FAIL,
     USER_REGISTER_REQUEST ,
+    CLIENT_LOGIN_REQUEST ,
+    CLIENT_LOGIN_SUCCESS ,
+    CLIENT_LOGIN_FAIL,
+    CLIENT_REGISTER_REQUEST,
     USER_IN_ADMIN_PANEL ,
     USER_OUT_ADMIN_PANEL,
     ADMIN_SIDEBAR_POSITION,
     USER_REGISTER_SUCCESS ,
     USER_REGISTER_FAIL,
     USER_REFRESH,
-    USER_LOGOUT
+    CLIENT_REFRESH,
+    USER_LOGOUT,
+    CLIENT_LOGOUT
 } from '../constants/AuthUserConstants'
 
 
@@ -36,6 +42,38 @@ export const AuthUserReducer = (state = {loggedInUser: {} , auth: false} , actio
 
         case USER_LOGIN_FAIL:
             return { loading: false , error: action.payload }
+        default:
+            return state
+    }
+}
+
+
+
+
+export const AuthClientReducer = (state = { loggedInClient: {} , clientAuth: false } , action) => {
+    switch(action.type){
+        case CLIENT_LOGIN_REQUEST:
+            return { loading: true , loggedInClient: {} , clientAuth: false }
+
+        case CLIENT_REFRESH:
+
+            return { loading: false , loggedInClient: action.payload , clientAuth: true }
+
+        case CLIENT_LOGOUT:
+            localStorage.removeItem("clientAuth")
+
+            return { loading: false , loggedInClient: {} , clientAuth: false }
+
+
+        case CLIENT_LOGIN_SUCCESS:
+
+            localStorage.setItem("clientAuth", JSON.stringify(action.payload.user))
+
+            return { loading: false , loggedInClient: action.payload , clientAuth: true }
+
+        case CLIENT_LOGIN_FAIL:
+            return { loading: false , error: action.payload }
+
         default:
             return state
     }

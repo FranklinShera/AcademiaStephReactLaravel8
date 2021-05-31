@@ -1,8 +1,9 @@
 import React , { useState , useEffect } from 'react'
-// import './App.css';
 
-import {BrowserRouter as Router , Route, Switch , useRouteMatch } from 'react-router-dom'
+
+import { BrowserRouter as Router , Route, Switch } from 'react-router-dom'
 import ProtectedRoute from './components/auth/ProtectedRoute'
+import ClientProtectedRoute from './components/auth/ClientProtectedRoute'
 
 
 import Footer from './components/Footer';
@@ -15,6 +16,7 @@ import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
 import ClientLogin from './pages/auth/ClientLogin';
 import Dashboard from './pages/auth/Dashboard';
+import ClientDashboard from './pages/auth/ClientDashboard';
 import Payment from './pages/auth/Payment';
 import Orders from './pages/auth/Orders';
 import OrderControl from './pages/auth/OrderControl';
@@ -26,18 +28,13 @@ import { useDispatch , useSelector} from 'react-redux'
 
 
 //actions
-import {  refreshUser } from './actions/AuthUserActions'
+import {  refreshUser , refreshClient } from './actions/AuthUserActions'
 import Register from './pages/auth/Register';
 
 
 
 import Swal2 from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
-
-
-
-
 
 
 
@@ -62,19 +59,26 @@ window.Swal = Swal;
 
 function App() {
 
-  const dispatch =  useDispatch();
+    const dispatch =  useDispatch();
 
     const authUser = useSelector( state => state.authUser)
+
+    const authClient = useSelector( state => state.authClient)
+
     const userInAdmin = useSelector( state => state.adminPanel)
 
     const { inAdminPanel } = userInAdmin;
 
     const { auth } = authUser;
 
+    const { clientAuth } = authClient;
+
+
 
 
 
     useEffect(() => {
+
 
         if(!auth ){
 
@@ -82,8 +86,16 @@ function App() {
 
         }
 
+        if(!clientAuth ){
+
+                dispatch(refreshClient())
+
+        }
+
           setInterval(() => {
-            dispatch(refreshUser(1))
+
+              (auth) ?  dispatch(refreshUser(1)) : (clientAuth) && dispatch(refreshClient(1))
+
           }, 840000);
 
 
@@ -108,6 +120,7 @@ function App() {
             <ProtectedRoute path={`/in/dashboard/payments`}  exact component={Payment}/>
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
+            <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <Route path="/in" exact component={Login}/>
             <Route path="/client" exact component={ClientLogin}/>
             <Route path="/" exact component={Home}/>

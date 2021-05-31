@@ -37,12 +37,17 @@ Route::post('/register', [AuthController::class , 'register']);
 
 Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
-
+        //CLIENT
         Route::post('/client' , [ClientAuthController::class , 'profile']);
+        Route::post('/refresh-client-token' , [ClientAuthController::class , 'refresh']);
+        Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+
+
 
         Route::post('/user' , [AuthController::class , 'profile']);
         Route::post('/refresh-token' , [AuthController::class , 'refresh']);
         Route::post('/logout' , [AuthController::class , 'logout']);
+
 
 
 

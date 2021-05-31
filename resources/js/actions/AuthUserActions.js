@@ -3,13 +3,19 @@ import {
     USER_LOGIN_SUCCESS ,
     USER_LOGIN_FAIL,
     USER_REGISTER_REQUEST ,
+    CLIENT_LOGIN_REQUEST ,
+    CLIENT_LOGIN_SUCCESS ,
+    CLIENT_LOGIN_FAIL,
+    CLIENT_REGISTER_REQUEST,
     USER_IN_ADMIN_PANEL,
     USER_OUT_ADMIN_PANEL,
     ADMIN_SIDEBAR_POSITION,
     USER_REGISTER_SUCCESS ,
     USER_REGISTER_FAIL,
     USER_REFRESH,
-    USER_LOGOUT
+    CLIENT_REFRESH,
+    USER_LOGOUT,
+    CLIENT_LOGOUT
 } from '../constants/AuthUserConstants'
 
 import axios from 'axios'
@@ -64,24 +70,24 @@ export const loginClient = (client) => async (dispatch) => {
 
     try {
 
-        dispatch({ type: USER_LOGIN_REQUEST })
+        dispatch({ type: CLIENT_LOGIN_REQUEST })
 
         const { data } = await axios.post('/api/client-login', client)
 
-        // setHeader(data.token)
 
-        const loggedUser = await axios.post('/api/auth/client')
+
+        const loggedClient = await axios.post('/api/auth/client')
 
 
         dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: loggedUser.data
+            type: CLIENT_LOGIN_SUCCESS,
+            payload: loggedClient.data
         })
 
 
     } catch (error) {
           dispatch({
-            type: USER_LOGIN_FAIL,
+            type: CLIENT_LOGIN_FAIL,
             error: error
         })
 
@@ -139,6 +145,36 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
 
 
 }
+export const refreshClient = (refreshType = 0) => async (dispatch) => {
+
+        if(refreshType !== 1) {
+
+          dispatch({ type: CLIENT_LOGIN_REQUEST })
+
+        }
+
+        const res = await axios.post('/api/auth/refresh-client-token')
+
+
+         if(res.status == 200) {
+
+            const refClient =  await axios.post('/api/auth/client')
+
+            dispatch({ type: USER_REFRESH , payload : refClient.data})
+
+         }else{
+
+            dispatch({
+                type: CLIENT_LOGIN_FAIL,
+                error: { message: "Unauthenticated!"}
+            })
+
+         }
+
+
+}
+
+
 
 export const logoutUser = () => async (dispatch) => {
 
@@ -151,6 +187,22 @@ export const logoutUser = () => async (dispatch) => {
 
 
 }
+
+
+export const logoutClient = () => async (dispatch) => {
+
+       const { status } = await axios.post('/api/auth/client-logout')
+
+       if(status == 200)
+        {
+            dispatch({ type: CLIENT_LOGOUT })
+        }
+
+
+}
+
+
+
 
 export const authUserIn = () => async (dispatch) => {
 

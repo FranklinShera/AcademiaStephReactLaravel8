@@ -602,6 +602,22 @@ footer{
 }
 
 
+.login-links{
+    @apply text-sm;
+}
+
+.login-links a{
+    @apply px-3  py-1 rounded-sm  text-white;
+}
+
+.login-links a:first-child{
+    @apply bg-primary-1 mr-3;
+}
+
+
+.login-links a:last-child{
+    @apply bg-primary-4;
+}
 
 
 .toggler{
@@ -1116,5 +1132,19 @@ footer{
 /* ORDER CONTROL END */
 
 
+
+
+
+
+/*CLIENT STYLES*/
+
+
+.client-dashboard{
+    @apply flex flex-col items-center justify-center;
+    min-height: 100vh;
+}
+
+
+/*CLIENT STYLES END*/
 
 /* END AUTH STYLES */

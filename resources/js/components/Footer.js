@@ -8,10 +8,7 @@ import  Logo from '.././images/as21logo.png';
 const Footer = () => {
     return (
         <footer>
-            <div className="pt-6 text-white">
-                <Link to="/in">Admin Login</Link> |
-                <Link to="/client">Client Login</Link>
-            </div>
+
             <div className="details">
 
                     <div className="logo">

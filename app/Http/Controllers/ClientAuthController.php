@@ -70,8 +70,7 @@ class ClientAuthController extends Controller
 
     public function profile(){
 
-        return response()->json(auth('client')->user());
-//        return response()->json(currentClient());
+        return response()->json(currentClient());
 
     }
 
@@ -79,7 +78,7 @@ class ClientAuthController extends Controller
 
     public function logout(){
 
-        Auth::logout();
+        Auth::guard('client')->logout();
 
         return response()->json(['message' => "Logged Out!"] , Response::HTTP_OK);
 
@@ -90,7 +89,7 @@ class ClientAuthController extends Controller
 
         try{
 
-            $newToken = Auth::refresh();
+            $newToken = Auth::guard('client')->refresh();
 
             return $this->respondWithToken($newToken);
 

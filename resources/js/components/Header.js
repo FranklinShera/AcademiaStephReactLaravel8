@@ -8,13 +8,19 @@ import  Logo from '.././images/as21logo.png';
 
 
 //actions
-import {  logoutUser } from '../actions/AuthUserActions'
+import {  logoutUser , logoutClient } from '../actions/AuthUserActions'
 
 const Header = ({ inAdminPanel }) => {
 
     const dispatch = useDispatch()
     const authUser = useSelector( state => state.authUser)
     const { loggedInUser, auth } = authUser;
+
+
+    const authClient = useSelector( state => state.authClient)
+    const { loggedInClient, clientAuth } = authClient;
+
+
 
     const [dropNav, setdropNav] = useState(false)
 
@@ -31,7 +37,9 @@ const Header = ({ inAdminPanel }) => {
     const logout = (e) =>{
         e.preventDefault();
 
-        dispatch(logoutUser())
+        auth && dispatch(logoutUser())
+
+        clientAuth && dispatch(logoutClient())
     }
 
 
@@ -61,7 +69,7 @@ const Header = ({ inAdminPanel }) => {
                 </div>
 
                 <div className=" nav-right">
-                {!auth ?
+                {(!auth && !clientAuth) ?
                   <>
                     <li className=" navlink hover:border-b-2" >
                         <a href="/#hero">Home</a>
@@ -74,16 +82,25 @@ const Header = ({ inAdminPanel }) => {
                     <li className="navlink hover:border-b-2" >
                         <a href="/#contact">Contact</a>
                     </li>
+
+                     <div className="login-links">
+                         <Link to="/in">Admin</Link>
+
+                         <Link to="/client">Client</Link>
+                     </div>
+
                   </>
 
                   : <>
-                      <Link to="/in/dashboard" className="flex" >
-                            {loggedInUser.name}
+                      <div  className="flex" >
+                            { auth && loggedInUser.name}
+                            { clientAuth && loggedInClient.name}
 
                         <div className="admin-logout" onClick={logout}>
                          <svg className="w-6 h-6" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                         </div>
-                     </Link>
+
+                     </div>
                   </>
                  }
 
