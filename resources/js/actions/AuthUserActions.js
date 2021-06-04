@@ -125,12 +125,12 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
 
         }
 
-        const res = await axios.post('/api/auth/refresh-token')
+        const res = await axios.post('/api/auth/admin/refresh-token')
 
 
          if(res.status == 200) {
 
-            const refUser =  await axios.post('/api/auth/user')
+            const refUser =  await axios.post('/api/auth/admin/user')
 
             dispatch({ type: USER_REFRESH , payload : refUser.data})
 
@@ -153,7 +153,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
         }
 
-        const res = await axios.post('/api/auth/refresh-client-token')
+        const res = await axios.post('/api/auth/client/refresh-token')
 
 
          if(res.status == 200) {

@@ -66,6 +66,7 @@ const ClientLogin = ({ location }) => {
         document.querySelector('title').text = 'AcademiaSteph21 | Client Login'
 
     }, [])
+
     return (
         <div className="login-screen">
             <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={handleLogin}>

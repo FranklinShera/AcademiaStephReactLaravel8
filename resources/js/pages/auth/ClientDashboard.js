@@ -4,7 +4,7 @@ import {useHistory , useRouteMatch} from 'react-router'
 
 import axios from 'axios'
 
-import AdminLayout from '../../components/auth/AdminLayout'
+import ClientLayout from '../../components/auth/ClientLayout'
 
 
 //actions
@@ -42,13 +42,12 @@ const ClientDashboard = () => {
 
     return (
         <div className="client-dashboard">
-            <h1>CLIENT DASHBOARD</h1>
-            <h1>{ loggedInClient.name }</h1>
-            {/*<AdminLayout>*/}
-            {/* <div className="dash_overview">*/}
-            {/*    <h1 className="text-xl">DASHBOARD .JS</h1>*/}
-            {/* </div>*/}
-            {/*</AdminLayout>*/}
+
+            <ClientLayout>
+             <div className="dash_overview">
+                <h1 className="text-xl">DASHBOARD .JS</h1>
+             </div>
+            </ClientLayout>
         </div>
     )
 }

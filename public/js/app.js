@@ -2419,7 +2419,7 @@ var refreshUser = function refreshUser() {
               }
 
               _context4.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/refresh-token');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/refresh-token');
 
             case 3:
               res = _context4.sent;
@@ -2430,7 +2430,7 @@ var refreshUser = function refreshUser() {
               }
 
               _context4.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/user');
 
             case 7:
               refUser = _context4.sent;
@@ -2478,7 +2478,7 @@ var refreshClient = function refreshClient() {
               }
 
               _context5.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/refresh-client-token');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/refresh-token');
 
             case 3:
               res = _context5.sent;
@@ -3107,7 +3107,6 @@ var Header = function Header(_ref) {
       setdropNav = _useState2[1];
 
   function navigateTo(linkto) {
-    console.log("navigateTo() " + linkto);
     setdropNav(!dropNav);
     window.location.hash = linkto;
   }
@@ -3184,7 +3183,7 @@ var Header = function Header(_ref) {
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "flex",
+            className: "flex cursor-pointer",
             children: [auth && loggedInUser.name, clientAuth && loggedInClient.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "admin-logout",
               onClick: logout,
@@ -4233,6 +4232,99 @@ var AdminLayout = function AdminLayout(props) {
     links: [{
       name: "Order Input",
       url: "/in/dashboard/control/order-input"
+    }]
+  }];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // if(!inAdminPanel){
+    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.authUserIn)()); // }
+
+    return function () {
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.authUserOut)());
+    };
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "admin-layout",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SideBar__WEBPACK_IMPORTED_MODULE_2__.default, {
+      className: "sidebar_component",
+      links: linkForSidebar
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "dash_items_component",
+      children: props.children
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminLayout);
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/ClientLayout.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/auth/ClientLayout.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SideBar */ "./resources/js/components/auth/SideBar.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+ //actions
+
+
+
+
+
+var AdminLayout = function AdminLayout(props) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var authUserInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.adminPanel;
+  });
+  var inAdminPanel = authUserInAdmin.inAdminPanel,
+      sidebarPosition = authUserInAdmin.sidebarPosition;
+  var linkForSidebar = [{
+    name: "Orders",
+    links: [{
+      name: "New Order",
+      url: "/in/dashboard/orders"
+    }, {
+      name: "Sent Orders",
+      url: "/in/dashboard/orders"
+    }, {
+      name: "Pending Orders",
+      url: "/in/dashboard/orders"
+    }, {
+      name: "Completed Orders",
+      url: "/in/dashboard/orders"
+    }]
+  }, {
+    name: "Messages",
+    links: [{
+      name: "New Messages",
+      url: "/in/dashboard/messages"
+    }]
+  }, {
+    name: "Payment",
+    links: [{
+      name: "Received",
+      url: "/in/dashboard/payments"
+    }]
+  }, {
+    name: "My Profile",
+    links: [{
+      name: "Personal Information",
+      url: "/in/dashboard/profile"
+    }, {
+      name: "Account Information",
+      url: "/in/dashboard/profile"
     }]
   }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -5784,7 +5876,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/AdminLayout */ "./resources/js/components/auth/AdminLayout.js");
+/* harmony import */ var _components_auth_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/ClientLayout */ "./resources/js/components/auth/ClientLayout.js");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -5792,7 +5884,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
  //actions
-
 
 
 
@@ -5814,13 +5905,17 @@ var ClientDashboard = function ClientDashboard() {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Client Dashboard';
   }, [clientAuth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "client-dashboard",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-      children: "CLIENT DASHBOARD"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-      children: loggedInClient.name
-    })]
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_auth_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "dash_overview",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+          className: "text-xl",
+          children: "DASHBOARD .JS"
+        })
+      })
+    })
   });
 };
 

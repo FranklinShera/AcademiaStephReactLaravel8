@@ -17,21 +17,21 @@ const AdminLayout = (props) => {
     const authUserInAdmin = useSelector((state) => (state.adminPanel))
 
     const { inAdminPanel , sidebarPosition } = authUserInAdmin
-    
+
     const linkForSidebar = [
         {
             name : "Orders",
             links: [
                 {
-                    name:"New Orders",
+                    name:"New Order",
                     url: `/in/dashboard/orders`
                 },
                 {
-                    name:"Assigned Orders",
+                    name:"Sent Orders",
                     url: `/in/dashboard/orders`
                 },
                 {
-                    name:"Rejected Orders",
+                    name:"Pending Orders",
                     url: `/in/dashboard/orders`
                 },
                 {
@@ -71,25 +71,16 @@ const AdminLayout = (props) => {
                 }
             ]
         },
-        {
-            name : "Control",
-            links: [
-               {
-                name: "Order Input",
-                url: "/in/dashboard/control/order-input"
-               }
-            ],
-            
-        }
+
     ]
 
-   
+
     useEffect(() => {
-        
+
         // if(!inAdminPanel){
           dispatch(authUserIn())
         // }
-        
+
 
         return () => {
             dispatch(authUserOut())
@@ -97,7 +88,7 @@ const AdminLayout = (props) => {
 
     }, [])
 
-    
+
 
     return (
         <div className="admin-layout">

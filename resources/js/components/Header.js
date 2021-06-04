@@ -27,7 +27,6 @@ const Header = ({ inAdminPanel }) => {
 
     function navigateTo(linkto){
 
-        console.log("navigateTo() "+linkto);
         setdropNav(!dropNav)
         window.location.hash = linkto;
 
@@ -92,7 +91,7 @@ const Header = ({ inAdminPanel }) => {
                   </>
 
                   : <>
-                      <div  className="flex" >
+                      <div  className="flex cursor-pointer" >
                             { auth && loggedInUser.name}
                             { clientAuth && loggedInClient.name}
 

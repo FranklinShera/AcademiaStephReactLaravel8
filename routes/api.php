@@ -38,20 +38,23 @@ Route::post('/register', [AuthController::class , 'register']);
 Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
         //CLIENT
-        Route::post('/client' , [ClientAuthController::class , 'profile']);
-        Route::post('/refresh-client-token' , [ClientAuthController::class , 'refresh']);
-        Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+        Route::middleware(['isClient'])->prefix('/client')->group(function(){
 
 
-
-        Route::post('/user' , [AuthController::class , 'profile']);
-        Route::post('/refresh-token' , [AuthController::class , 'refresh']);
-        Route::post('/logout' , [AuthController::class , 'logout']);
-
+            Route::post('/' , [ClientAuthController::class , 'profile']);
+            Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
+            Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
 
 
+        });
 
-        Route::prefix('/admin')->group(function(){
+
+        //ADMIN
+        Route::middleware(['isAdmin'])->prefix('/admin')->group(function(){
+
+            Route::post('/user' , [AuthController::class , 'profile']);
+            Route::post('/refresh-token' , [AuthController::class , 'refresh']);
+            Route::post('/logout' , [AuthController::class , 'logout']);
 
             Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
             Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
