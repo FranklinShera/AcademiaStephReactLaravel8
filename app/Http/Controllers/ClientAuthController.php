@@ -61,8 +61,8 @@ class ClientAuthController extends Controller
             )
         );
 
-        return response()->json(['message' => "Client Created!"] , Response::HTTP_CREATED);
 
+        return response()->json(['message' => "Client Created!"] , Response::HTTP_CREATED);
 
     }
 

@@ -2128,18 +2128,20 @@ function App() {
   var auth = authUser.auth;
   var clientAuth = authClient.clientAuth;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!auth) {
+    // check if location is not /client
+    if (!auth && location.pathname === "/in") {
       dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshUser)());
-    }
+    } // check if location is /client
 
-    if (!clientAuth) {
+
+    if (!clientAuth && location.pathname === "/client") {
       dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshClient)());
     }
 
     setInterval(function () {
-      auth ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshUser)(1)) : clientAuth && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshClient)(1));
+      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_20__.refreshClient)(1));
     }, 840000);
-  }, []);
+  }, [location.pathname]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.BrowserRouter, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
@@ -2492,7 +2494,7 @@ var refreshClient = function refreshClient() {
             case 7:
               refClient = _context5.sent;
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
                 payload: refClient.data
               });
               _context5.next = 12;

@@ -160,7 +160,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
             const refClient =  await axios.post('/api/auth/client')
 
-            dispatch({ type: USER_REFRESH , payload : refClient.data})
+            dispatch({ type: CLIENT_REFRESH , payload : refClient.data})
 
          }else{
 

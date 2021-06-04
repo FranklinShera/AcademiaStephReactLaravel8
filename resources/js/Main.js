@@ -1,7 +1,7 @@
 import React , { useState , useEffect } from 'react'
 
 
-import { BrowserRouter as Router , Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router , Route, Switch  } from 'react-router-dom'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import ClientProtectedRoute from './components/auth/ClientProtectedRoute'
 
@@ -75,31 +75,32 @@ function App() {
 
 
 
-
-
     useEffect(() => {
 
 
-        if(!auth ){
+
+        // check if location is not /client
+        if(!auth && location.pathname === "/in"){
 
                 dispatch(refreshUser())
 
         }
 
-        if(!clientAuth ){
+        // check if location is /client
+        if(!clientAuth && location.pathname === "/client"){
 
                 dispatch(refreshClient())
-
         }
+
 
           setInterval(() => {
 
-              (auth) ?  dispatch(refreshUser(1)) : (clientAuth) && dispatch(refreshClient(1))
+              (auth && location.pathname === "/in") ?  dispatch(refreshUser(1)) : (clientAuth && location.pathname === "/client") && dispatch(refreshClient(1))
 
           }, 840000);
 
 
-    },[])
+    },[location.pathname])
 
 
 
