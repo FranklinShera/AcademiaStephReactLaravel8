@@ -45,7 +45,6 @@ export const loginUser = (user) => async (dispatch) => {
 
         const { data } = await axios.post('/api/login', user)
 
-        // setHeader(data.token)
 
         const loggedUser = await axios.post('/api/auth/user')
 
@@ -153,24 +152,29 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
         }
 
-        const res = await axios.post('/api/auth/client/refresh-token')
+        axios.post('/api/auth/client/refresh-token')
+            .then(response =>{
+                if(response.status == 200) {
 
+                    axios.post('/api/auth/client')
+                        .then(res => {
+                            dispatch({ type: CLIENT_REFRESH , payload : res.data})
+                        })
+                        .catch(err =>{
+                            dispatch({
+                                type: CLIENT_LOGIN_FAIL,
+                                error: { message: "Unauthenticated!"}
+                            })
 
-         if(res.status == 200) {
-
-            const refClient =  await axios.post('/api/auth/client')
-
-            dispatch({ type: CLIENT_REFRESH , payload : refClient.data})
-
-         }else{
-
-            dispatch({
-                type: CLIENT_LOGIN_FAIL,
-                error: { message: "Unauthenticated!"}
+                    })
+                }
             })
-
-         }
-
+            .catch((error) =>{
+                dispatch({
+                    type: CLIENT_LOGIN_FAIL,
+                    error: { message: "Unauthenticated!"}
+                })
+            })
 
 }
 
@@ -191,7 +195,7 @@ export const logoutUser = () => async (dispatch) => {
 
 export const logoutClient = () => async (dispatch) => {
 
-       const { status } = await axios.post('/api/auth/client-logout')
+       const { status } = await axios.post('/api/auth/client/client-logout')
 
        if(status == 200)
         {

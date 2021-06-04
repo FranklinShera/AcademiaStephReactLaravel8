@@ -24,19 +24,19 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"New Order",
-                    url: `/in/dashboard/orders`
+                    url: `/client/dashboard/orders`
                 },
                 {
                     name:"Sent Orders",
-                    url: `/in/dashboard/orders`
+                    url: `/client/dashboard/orders`
                 },
                 {
                     name:"Pending Orders",
-                    url: `/in/dashboard/orders`
+                    url: `/client/dashboard/orders`
                 },
                 {
                     name:"Completed Orders",
-                    url: `/in/dashboard/orders`
+                    url: `/client/dashboard/orders`
                 },
             ]
         },
@@ -45,7 +45,7 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"New Messages",
-                    url: `/in/dashboard/messages`
+                    url: `/client/dashboard/messages`
                 }
             ]
         },
@@ -54,7 +54,7 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Received",
-                    url: `/in/dashboard/payments`
+                    url: `/client/dashboard/payments`
                 }
             ]
         },
@@ -63,11 +63,11 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Personal Information",
-                    url: `/in/dashboard/profile`
+                    url: `/client/dashboard/profile`
                 },
                 {
                     name:"Account Information",
-                    url: `/in/dashboard/profile`
+                    url: `/client/dashboard/profile`
                 }
             ]
         },

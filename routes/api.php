@@ -40,11 +40,9 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
         //CLIENT
         Route::middleware(['isClient'])->prefix('/client')->group(function(){
 
-
             Route::post('/' , [ClientAuthController::class , 'profile']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
-
 
         });
 

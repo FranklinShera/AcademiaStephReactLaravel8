@@ -1,6 +1,6 @@
 import React,{useState , useEffect} from 'react'
 
-import { Link , BrowserRouter} from 'react-router-dom'
+import { Link , BrowserRouter , useHistory} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 
 
@@ -13,6 +13,7 @@ import {  logoutUser , logoutClient } from '../actions/AuthUserActions'
 const Header = ({ inAdminPanel }) => {
 
     const dispatch = useDispatch()
+    const hist = useHistory();
     const authUser = useSelector( state => state.authUser)
     const { loggedInUser, auth } = authUser;
 
@@ -39,6 +40,16 @@ const Header = ({ inAdminPanel }) => {
         auth && dispatch(logoutUser())
 
         clientAuth && dispatch(logoutClient())
+    }
+
+    const getDashboard = (e) =>{
+
+        e.preventDefault();
+
+        auth && hist.push("/in/dashboard")
+
+        clientAuth && hist.push("/client/dashboard")
+
     }
 
 
@@ -91,9 +102,11 @@ const Header = ({ inAdminPanel }) => {
                   </>
 
                   : <>
-                      <div  className="flex cursor-pointer" >
-                            { auth && loggedInUser.name}
-                            { clientAuth && loggedInClient.name}
+                      <div  className="flex cursor-pointer" onClick={getDashboard} >
+                          <div>
+                              { auth && loggedInUser.name}
+                              { clientAuth && loggedInClient.name}
+                          </div>
 
                         <div className="admin-logout" onClick={logout}>
                          <svg className="w-6 h-6" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>

@@ -2466,7 +2466,6 @@ var refreshClient = function refreshClient() {
   var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   return /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
-      var res, refClient;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
@@ -2477,38 +2476,32 @@ var refreshClient = function refreshClient() {
                 });
               }
 
-              _context5.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/refresh-token');
-
-            case 3:
-              res = _context5.sent;
-
-              if (!(res.status == 200)) {
-                _context5.next = 11;
-                break;
-              }
-
-              _context5.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client');
-
-            case 7:
-              refClient = _context5.sent;
-              dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
-                payload: refClient.data
-              });
-              _context5.next = 12;
-              break;
-
-            case 11:
-              dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
-                error: {
-                  message: "Unauthenticated!"
+              axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/refresh-token').then(function (response) {
+                if (response.status == 200) {
+                  axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client').then(function (res) {
+                    dispatch({
+                      type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
+                      payload: res.data
+                    });
+                  })["catch"](function (err) {
+                    dispatch({
+                      type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
+                      error: {
+                        message: "Unauthenticated!"
+                      }
+                    });
+                  });
                 }
+              })["catch"](function (error) {
+                dispatch({
+                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
+                  error: {
+                    message: "Unauthenticated!"
+                  }
+                });
               });
 
-            case 12:
+            case 2:
             case "end":
               return _context5.stop();
           }
@@ -2566,7 +2559,7 @@ var logoutClient = function logoutClient() {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client-logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/client-logout');
 
             case 2:
               _yield$axios$post4 = _context7.sent;
@@ -3060,7 +3053,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _images_as21logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/as21logo.png */ "./resources/js/images/as21logo.png");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
@@ -3090,6 +3084,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Header = function Header(_ref) {
   var inAdminPanel = _ref.inAdminPanel;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var hist = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
   });
@@ -3117,6 +3112,12 @@ var Header = function Header(_ref) {
     clientAuth && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.logoutClient)());
   };
 
+  var getDashboard = function getDashboard(e) {
+    e.preventDefault();
+    auth && hist.push("/in/dashboard");
+    clientAuth && hist.push("/client/dashboard");
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
@@ -3126,7 +3127,7 @@ var Header = function Header(_ref) {
         className: "nav-left",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "logo",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
               src: _images_as21logo_png__WEBPACK_IMPORTED_MODULE_2__.default,
@@ -3173,10 +3174,10 @@ var Header = function Header(_ref) {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "login-links",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
               to: "/in",
               children: "Admin"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
               to: "/client",
               children: "Client"
             })]
@@ -3184,7 +3185,10 @@ var Header = function Header(_ref) {
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "flex cursor-pointer",
-            children: [auth && loggedInUser.name, clientAuth && loggedInClient.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            onClick: getDashboard,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [auth && loggedInUser.name, clientAuth && loggedInClient.name]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "admin-logout",
               onClick: logout,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
@@ -4294,37 +4298,37 @@ var AdminLayout = function AdminLayout(props) {
     name: "Orders",
     links: [{
       name: "New Order",
-      url: "/in/dashboard/orders"
+      url: "/client/dashboard/orders"
     }, {
       name: "Sent Orders",
-      url: "/in/dashboard/orders"
+      url: "/client/dashboard/orders"
     }, {
       name: "Pending Orders",
-      url: "/in/dashboard/orders"
+      url: "/client/dashboard/orders"
     }, {
       name: "Completed Orders",
-      url: "/in/dashboard/orders"
+      url: "/client/dashboard/orders"
     }]
   }, {
     name: "Messages",
     links: [{
       name: "New Messages",
-      url: "/in/dashboard/messages"
+      url: "/client/dashboard/messages"
     }]
   }, {
     name: "Payment",
     links: [{
       name: "Received",
-      url: "/in/dashboard/payments"
+      url: "/client/dashboard/payments"
     }]
   }, {
     name: "My Profile",
     links: [{
       name: "Personal Information",
-      url: "/in/dashboard/profile"
+      url: "/client/dashboard/profile"
     }, {
       name: "Account Information",
-      url: "/in/dashboard/profile"
+      url: "/client/dashboard/profile"
     }]
   }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
