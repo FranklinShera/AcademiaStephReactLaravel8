@@ -3,7 +3,7 @@ import React , { useState , useEffect } from 'react'
 
 import { BrowserRouter as Router , Route, Switch  } from 'react-router-dom'
 import ProtectedRoute from './components/auth/ProtectedRoute'
-import ClientProtectedRoute from './components/auth/ClientProtectedRoute'
+import ClientProtectedRoute from './components/client/ClientProtectedRoute'
 
 
 import Footer from './components/Footer';
@@ -14,14 +14,18 @@ import PlaceOrder from './pages/PlaceOrder';
 import FindWriter from './pages/FindWriter';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
-import ClientLogin from './pages/auth/ClientLogin';
+import ClientLogin from './pages/client/ClientLogin';
 import Dashboard from './pages/auth/Dashboard';
-import ClientDashboard from './pages/auth/ClientDashboard';
+import ClientDashboard from './pages/client/ClientDashboard';
 import Payment from './pages/auth/Payment';
 import Orders from './pages/auth/Orders';
 import OrderControl from './pages/auth/OrderControl';
 import Messages from './pages/auth/Messages';
 import Profile from './pages/auth/Profile';
+import ClientPayment from './pages/client/Payment';
+import ClientOrders from './pages/client/Orders';
+import ClientMessages from './pages/client/Messages';
+import ClientProfile from './pages/client/Profile';
 
 
 import { useDispatch , useSelector} from 'react-redux'
@@ -122,6 +126,10 @@ function App() {
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
+           <ClientProtectedRoute path={ `/client/dashboard/orders` } exact component={ClientOrders}/>
+           <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
+           <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
+           <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
             <Route path="/in" exact component={Login}/>
             <Route path="/client" exact component={ClientLogin}/>
             <Route path="/" exact component={Home}/>

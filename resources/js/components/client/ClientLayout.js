@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import {useRouteMatch} from 'react-router-dom'
 
-import SideBar from './SideBar'
+import SideBar from '../auth/SideBar'
 
 
 
