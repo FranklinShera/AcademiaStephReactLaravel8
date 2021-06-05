@@ -28,6 +28,13 @@ class Client extends Authenticatable implements JWTSubject
     protected $casts = [
     ];
 
+
+
+    public function socialAccounts(){
+        return $this->hasMany(SocialAccount::class);
+    }
+
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

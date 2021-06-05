@@ -39,7 +39,6 @@ const ClientLogin = ({ location }) => {
 
 
 
-
     const handleLogin =  (e) => {
 
         e.preventDefault();
@@ -52,10 +51,18 @@ const ClientLogin = ({ location }) => {
 
     }
 
-    const noAccount =  (e) => {
+    const socialLogin =  (e) => {
+
         e.preventDefault();
 
-        hist.push("/in/register")
+        axios.get('/api/soc/authorize/github/redirect')
+            .then(res => {
+                if(res.data.url){
+                    window.location.href = res.data.url
+                }
+
+            })
+            .catch(err => console.log(err))
 
     }
 
@@ -67,14 +74,17 @@ const ClientLogin = ({ location }) => {
 
     }, [])
 
+
     return (
         <div className="login-screen">
             <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={handleLogin}>
                  <label className="w-full mb-5 text-5xl text-center">Client Login</label>
-                 <InputField labelText='Username' parentClasses="w-full" name="clientname" id="clientname" type='text' placeholder="Enter Email" onChange={(e) =>  setClient({...client, email: e.target.value})}/>
-                 <InputField labelText='Password' parentClasses="w-full" name="password" id="password" type='password' placeholder="Enter  Password" onChange={(e) =>  setClient({...client,password: e.target.value})}/>
-                 <label className="block">Don't Have An Account? <span className="ml-2 font-bold cursor-pointer text-primary-3" onClick={noAccount}>Register Here</span></label>
-                 <button type="submit" className="w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri" >{(isLoggin) ? "Logging In" : "Login"}</button>
+                 {/*<InputField labelText='Username' parentClasses="w-full" name="clientname" id="clientname" type='text' placeholder="Enter Email" onChange={(e) =>  setClient({...client, email: e.target.value})}/>*/}
+                 {/*<InputField labelText='Password' parentClasses="w-full" name="password" id="password" type='password' placeholder="Enter  Password" onChange={(e) =>  setClient({...client,password: e.target.value})}/>*/}
+                 {/* <button type="submit" className="w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri" >{(isLoggin) ? "Logging In" : "Login"}</button>*/}
+                  <div className="mt-10 flex">
+                      <span className="px-10 py-4 rounded bg-gray-600 text-white font-bold text-xl cursor-pointer" onClick={socialLogin}>Login With Github</span>
+                  </div>
             </form>
         </div>
     )

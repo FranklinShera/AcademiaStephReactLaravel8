@@ -39,6 +39,7 @@ import Register from './pages/auth/Register';
 
 import Swal2 from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import Loader from "./components/Loader";
 
 
 
@@ -110,8 +111,8 @@ function App() {
 
   return (
   <>
-    <Overlay/>
-
+    {/*<Overlay/>*/}
+      <Loader/>
         <Router>
 
          <Header inAdminPanel={inAdminPanel}/>

@@ -35,6 +35,20 @@ Route::post('/register', [AuthController::class , 'register']);
 
 
 
+
+
+Route::prefix('/soc')->group(function (){
+    //LARAVEL SOCIALITE
+
+    Route::get('/authorize/{provider}/gitcallback' , [ClientAuthController::class , 'handleProvider']);
+    Route::get('/authorize/{provider}/redirect' , [ClientAuthController::class , 'redirectToProvider']);
+
+});
+
+
+
+
+
 Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
         //CLIENT

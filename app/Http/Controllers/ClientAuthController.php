@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\SocialAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\Response;
 
 class ClientAuthController extends Controller
@@ -15,6 +18,76 @@ class ClientAuthController extends Controller
         $this->middleware('tokencookie' , ['except' => ['login','register'] ]);
 
     }
+
+
+
+
+    public function redirectToProvider($provider){
+
+        $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
+
+        return response()->json(["url" => $url]);
+
+    }
+
+
+
+    public function handleProvider($provider){
+
+            $user = Socialite::driver($provider)->stateless()->user();
+
+            if(!$user->token){
+                return response()->json([ "message" => "User Not Found!"]);
+            }
+
+
+            $existingClient = Client::whereEmail($user->email)->first();
+
+
+            if(!$existingClient){
+
+               // create client and add provider
+
+                $newClient = Client::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'password' => Str::random(16),
+
+                ]);
+
+                $newProvider = SocialAccount::create([
+                    'provider' => $provider,
+                    'provider_user_id' => $user->id,
+                    'user_id' => $newClient->id
+                ]);
+
+                //LOGIN OUR CLIENT AND SEND TOKEN
+
+            }else{
+
+                //  we have a client if this runs
+
+                $existingProvider = SocialAccount::where('provider' , $provider)->first();
+
+
+                if(!$existingProvider){
+
+                    $newProvider = SocialAccount::create([
+                        'provider' => $provider,
+                        'provider_user_id' => $user->id,
+                        'user_id' => $existingClient->id
+                    ]);
+                }
+
+
+                //LOGIN OUR CLIENT AND SEND TOKEN
+            }
+
+    }
+
+
+
+
 
 
 
