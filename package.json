@@ -36,5 +36,8 @@
         "sweetalert2-react-content": "^3.3.2",
         "tailwindcss": "^2.1.2",
         "yup": "^0.32.9"
+    },
+    "dependencies": {
+        "query-string": "^4.3.4"
     }
 }

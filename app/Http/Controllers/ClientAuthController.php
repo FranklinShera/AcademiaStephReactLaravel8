@@ -34,6 +34,7 @@ class ClientAuthController extends Controller
 
     public function handleProvider($provider){
 
+
             $user = Socialite::driver($provider)->stateless()->user();
 
             if(!$user->token){
@@ -44,6 +45,8 @@ class ClientAuthController extends Controller
             $existingClient = Client::whereEmail($user->email)->first();
 
 
+
+
             if(!$existingClient){
 
                // create client and add provider
@@ -51,17 +54,20 @@ class ClientAuthController extends Controller
                 $newClient = Client::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'password' => Str::random(16),
+                    'password' => bcrypt(Str::random(16)),
 
                 ]);
 
-                $newProvider = SocialAccount::create([
+                SocialAccount::create([
                     'provider' => $provider,
-                    'provider_user_id' => $user->id,
-                    'user_id' => $newClient->id
+                    'provider_client_id' => $user->id,
+                    'client_id' => $newClient->id
                 ]);
+
 
                 //LOGIN OUR CLIENT AND SEND TOKEN
+                $this->socialLogin($newClient);
+
 
             }else{
 
@@ -72,15 +78,17 @@ class ClientAuthController extends Controller
 
                 if(!$existingProvider){
 
-                    $newProvider = SocialAccount::create([
+                    SocialAccount::create([
                         'provider' => $provider,
-                        'provider_user_id' => $user->id,
-                        'user_id' => $existingClient->id
+                        'provider_client_id' => $user->id,
+                        'client_id' => $existingClient->id
                     ]);
+
                 }
 
 
-                //LOGIN OUR CLIENT AND SEND TOKEN
+                $this->socialLogin($existingClient);
+
             }
 
     }
@@ -88,8 +96,17 @@ class ClientAuthController extends Controller
 
 
 
+    public function socialLogin(Client $client){
 
 
+        if(!$token = Auth::guard('client')->login($client , $remember = true)){
+
+            return  response()->json(['error' => 'Social Login Failed!'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->respondWithToken($token);
+
+    }
 
 
 

@@ -40,6 +40,7 @@ import Register from './pages/auth/Register';
 import Swal2 from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Loader from "./components/Loader";
+import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
 
 
 
@@ -133,6 +134,7 @@ function App() {
            <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
             <Route path="/in" exact component={Login}/>
             <Route path="/client" exact component={ClientLogin}/>
+            <Route path="/social/authorize/:provider" exact component={ProviderLoginResolve}/>
             <Route path="/" exact component={Home}/>
             <Route component={NotFound}/>
           </Switch>

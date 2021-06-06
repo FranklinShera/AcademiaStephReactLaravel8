@@ -15,12 +15,12 @@ class CreateSocialAccountsTable extends Migration
     {
         Schema::create('social_accounts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('provider_user_id');
+            $table->bigInteger('client_id')->unsigned();
+            $table->string('provider_client_id');
             $table->string('provider');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('clients')->OnDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->OnDelete('cascade');
 
         });
     }

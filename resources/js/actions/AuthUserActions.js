@@ -64,14 +64,18 @@ export const loginUser = (user) => async (dispatch) => {
     }
 }
 
-export const loginClient = (client) => async (dispatch) => {
+export const loginClient = (code) => async (dispatch) => {
 
 
     try {
 
         dispatch({ type: CLIENT_LOGIN_REQUEST })
 
-        const { data } = await axios.post('/api/client-login', client)
+        // const { data } = await axios.post('/api/client-login', client)
+
+        const res = await axios.get('/api/soc/authorize/github/callback', { params: code });
+
+        // const { data } = await axios.post('/api/client-login', client)
 
 
 
