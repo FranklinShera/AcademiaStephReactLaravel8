@@ -1,12 +1,9 @@
 import axios from 'axios'
 import React, {useEffect,useState} from 'react'
-import InputField from '../../components/InputField'
 import {useHistory} from 'react-router'
 import { useDispatch , useSelector } from 'react-redux'
 
 
-//actions
-import { loginClient , refreshClient } from '../../actions/AuthUserActions'
 
 const ClientLogin = ({ location }) => {
 
@@ -32,24 +29,7 @@ const ClientLogin = ({ location }) => {
 
 
 
-    const[client,setClient] = useState({
-        email: '',
-        password: '',
-    })
 
-
-
-    const handleLogin =  (e) => {
-
-        e.preventDefault();
-
-        setIsLogging(true)
-
-        dispatch(loginClient(client))
-
-        setIsLogging(false)
-
-    }
 
     const socialLogin =  (e) => {
 
@@ -77,7 +57,7 @@ const ClientLogin = ({ location }) => {
 
     return (
         <div className="login-screen">
-            <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={handleLogin}>
+            <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={(e => e.preventDefault())}>
                  <label className="w-full mb-5 text-3xl text-center">Client Login</label>
                 <div className="mt-10 flex">
                       <span className="px-10 py-4 rounded bg-gray-600 text-white font-bold text-xl cursor-pointer" onClick={socialLogin}>Login With Github</span>

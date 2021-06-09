@@ -4,13 +4,20 @@ import Logo from "../../images/as21logo.png";
 
 
 import {loginClient} from "../../actions/AuthUserActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router";
 
 
 const ProviderLoginResolve = ({location}) => {
 
 
     const dispatch =  useDispatch();
+    const hist = useHistory();
+
+
+    const authClient = useSelector( state => state.authClient)
+    const {  clientAuth } = authClient;
+
 
      const loginCallback = () =>{
          const searchParams =  new URLSearchParams(location.search);
@@ -19,6 +26,19 @@ const ProviderLoginResolve = ({location}) => {
 
 
      }
+
+
+
+     useEffect(() =>{
+
+         if(clientAuth){
+
+             (location.state && location.state.next) ?   hist.push(location.state.next) : hist.push("/client/dashboard")
+         }
+
+     },[clientAuth])
+
+
 
     useEffect(() => {
         window.scrollTo(0,0)

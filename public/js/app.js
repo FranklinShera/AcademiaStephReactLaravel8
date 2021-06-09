@@ -6802,11 +6802,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _components_InputField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/InputField */ "./resources/js/components/InputField.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6823,9 +6821,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //actions
-
-
 
 
 
@@ -6837,9 +6832,9 @@ var ClientLogin = function ClientLogin(_ref) {
       isLoggin = _useState2[0],
       setIsLogging = _useState2[1];
 
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
-  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.authClient;
   });
   var loggedInClient = authClient.loggedInClient,
@@ -6849,21 +6844,6 @@ var ClientLogin = function ClientLogin(_ref) {
       location.state && location.state.next ? hist.push(location.state.next) : hist.push("/client/dashboard");
     }
   }, [clientAuth]);
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    email: '',
-    password: ''
-  }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      client = _useState4[0],
-      setClient = _useState4[1];
-
-  var handleLogin = function handleLogin(e) {
-    e.preventDefault();
-    setIsLogging(true);
-    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.loginClient)(client));
-    setIsLogging(false);
-  };
 
   var socialLogin = function socialLogin(e) {
     e.preventDefault();
@@ -6880,17 +6860,19 @@ var ClientLogin = function ClientLogin(_ref) {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Client Login';
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "login-screen",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
       className: "w-4/5 md:w-4/5 lg:w-1/2",
-      onSubmit: handleLogin,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+      onSubmit: function onSubmit(e) {
+        return e.preventDefault();
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
         className: "w-full mb-5 text-3xl text-center",
         children: "Client Login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mt-10 flex",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: "px-10 py-4 rounded bg-gray-600 text-white font-bold text-xl cursor-pointer",
           onClick: socialLogin,
           children: "Login With Github"
@@ -7166,7 +7148,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_as21logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/as21logo.png */ "./resources/js/images/as21logo.png");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7178,6 +7162,11 @@ __webpack_require__.r(__webpack_exports__);
 var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
   var location = _ref.location;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
+    return state.authClient;
+  });
+  var clientAuth = authClient.clientAuth;
 
   var loginCallback = function loginCallback() {
     var searchParams = new URLSearchParams(location.search);
@@ -7186,6 +7175,11 @@ var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
     }));
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (clientAuth) {
+      location.state && location.state.next ? hist.push(location.state.next) : hist.push("/client/dashboard");
+    }
+  }, [clientAuth]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | OAUTH Login';
