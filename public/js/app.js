@@ -2307,7 +2307,7 @@ var loginUser = function loginUser(user) {
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
               _context.next = 8;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/user');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/user');
 
             case 8:
               loggedUser = _context.sent;
@@ -2350,8 +2350,7 @@ var loginClient = function loginClient(code) {
               _context2.prev = 0;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_REQUEST
-              }); // const { data } = await axios.post('/api/client-login', client)
-
+              });
               _context2.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/soc/authorize/github/callback', {
                 params: code
@@ -2557,7 +2556,7 @@ var logoutUser = function logoutUser() {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/logout');
 
             case 2:
               _yield$axios$post2 = _context6.sent;
@@ -6887,7 +6886,7 @@ var ClientLogin = function ClientLogin(_ref) {
       className: "w-4/5 md:w-4/5 lg:w-1/2",
       onSubmit: handleLogin,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        className: "w-full mb-5 text-5xl text-center",
+        className: "w-full mb-5 text-3xl text-center",
         children: "Client Login"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "mt-10 flex",

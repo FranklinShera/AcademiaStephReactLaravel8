@@ -66,7 +66,7 @@ class ClientAuthController extends Controller
 
 
                 //LOGIN OUR CLIENT AND SEND TOKEN
-                $this->socialLogin($newClient);
+               return $this->socialLogin($newClient);
 
 
             }else{
@@ -87,7 +87,7 @@ class ClientAuthController extends Controller
                 }
 
 
-                $this->socialLogin($existingClient);
+               return $this->socialLogin($existingClient);
 
             }
 
@@ -99,12 +99,17 @@ class ClientAuthController extends Controller
     public function socialLogin(Client $client){
 
 
-        if(!$token = Auth::guard('client')->login($client , $remember = true)){
+        $token = auth('client')->login($client , $remember = true);
+
+
+
+        if(!$token){
 
             return  response()->json(['error' => 'Social Login Failed!'], Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->respondWithToken($token);
+
+        return respondWithToken($token);
 
     }
 
@@ -126,7 +131,7 @@ class ClientAuthController extends Controller
             return  response()->json(['error' => 'Invalid Credentials!'], Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->respondWithToken($token);
+        return respondWithToken($token);
     }
 
 
@@ -175,13 +180,15 @@ class ClientAuthController extends Controller
     }
 
 
+
     public function refresh(Request $request){
 
         try{
 
             $newToken = Auth::guard('client')->refresh();
 
-            return $this->respondWithToken($newToken);
+            return respondWithToken($newToken);
+
 
 
         }catch(\Exception $e){
@@ -193,20 +200,5 @@ class ClientAuthController extends Controller
     }
 
 
-    protected function respondWithToken($token){
-
-        $tokenCookie = cookie('access_token',
-            $token ,
-            env('JWT_TTL'),
-            null,
-            null,
-            true,
-            true,
-            false,
-            null);
-
-        return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
-
-    }
 
 }

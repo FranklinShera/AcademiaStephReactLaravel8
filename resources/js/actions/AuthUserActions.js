@@ -46,7 +46,7 @@ export const loginUser = (user) => async (dispatch) => {
         const { data } = await axios.post('/api/login', user)
 
 
-        const loggedUser = await axios.post('/api/auth/user')
+        const loggedUser = await axios.post('/api/auth/admin/user')
 
 
         dispatch({
@@ -71,11 +71,8 @@ export const loginClient = (code) => async (dispatch) => {
 
         dispatch({ type: CLIENT_LOGIN_REQUEST })
 
-        // const { data } = await axios.post('/api/client-login', client)
 
         const res = await axios.get('/api/soc/authorize/github/callback', { params: code });
-
-        // const { data } = await axios.post('/api/client-login', client)
 
 
 
@@ -186,7 +183,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
 
-       const { status } = await axios.post('/api/auth/logout')
+       const { status } = await axios.post('/api/auth/admin/logout')
 
        if(status == 200)
         {

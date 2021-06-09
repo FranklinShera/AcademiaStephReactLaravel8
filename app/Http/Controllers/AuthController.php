@@ -38,7 +38,8 @@ class AuthController extends Controller
             return  response()->json(['error' => 'Unauthorised!'], Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->respondWithToken($token);
+        return respondWithToken($token);
+
     }
 
 
@@ -56,7 +57,7 @@ class AuthController extends Controller
             return response()->json($userValidation->errors() , Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $user = User::create(
+        User::create(
             array_merge(
                 $userValidation->validated(),
                 ['password' => bcrypt($request->password)]
@@ -93,7 +94,7 @@ class AuthController extends Controller
 
            $newToken = Auth::refresh();
 
-           return $this->respondWithToken($newToken);
+           return respondWithToken($newToken);
 
 
        }catch(\Exception $e){
@@ -105,20 +106,6 @@ class AuthController extends Controller
     }
 
 
-    protected function respondWithToken($token){
-            $tokenCookie = cookie('access_token',
-                            $token ,
-                            env('JWT_TTL'),
-                            null,
-                            null,
-                            true,
-                            true,
-                            false,
-                            null);
 
-       return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
-
-
-    }
 
 }

@@ -30,7 +30,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "Misc\\Helpers\\CustomGuardHelper.php"
+            "Misc\\Helpers\\CustomGuardHelper.php",
+            "Misc\\Helpers\\HelperFunctions.php"
         ]
     },
     "autoload-dev": {
