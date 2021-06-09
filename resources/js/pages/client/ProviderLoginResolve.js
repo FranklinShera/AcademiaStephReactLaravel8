@@ -5,7 +5,7 @@ import Logo from "../../images/as21logo.png";
 
 import {loginClient} from "../../actions/AuthUserActions";
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router";
+import {useHistory, useParams} from "react-router";
 
 
 const ProviderLoginResolve = ({location}) => {
@@ -14,15 +14,18 @@ const ProviderLoginResolve = ({location}) => {
     const dispatch =  useDispatch();
     const hist = useHistory();
 
+    const { provider } = useParams()
+
 
     const authClient = useSelector( state => state.authClient)
     const {  clientAuth } = authClient;
 
 
      const loginCallback = () =>{
+
          const searchParams =  new URLSearchParams(location.search);
 
-         dispatch(loginClient({ code : searchParams.get('code') }))
+         dispatch(loginClient({ code : searchParams.get('code') } , provider))
 
 
      }
@@ -43,7 +46,7 @@ const ProviderLoginResolve = ({location}) => {
     useEffect(() => {
         window.scrollTo(0,0)
 
-        document.querySelector('title').text = 'AcademiaSteph21 | OAUTH Login'
+        document.querySelector('title').text = 'AcademiaSteph21 | Login Redirect...'
 
         loginCallback();
 

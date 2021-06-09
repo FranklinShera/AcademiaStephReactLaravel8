@@ -64,7 +64,7 @@ export const loginUser = (user) => async (dispatch) => {
     }
 }
 
-export const loginClient = (code) => async (dispatch) => {
+export const loginClient = (code , provider) => async (dispatch) => {
 
 
     try {
@@ -72,7 +72,7 @@ export const loginClient = (code) => async (dispatch) => {
         dispatch({ type: CLIENT_LOGIN_REQUEST })
 
 
-        const res = await axios.get('/api/soc/authorize/github/callback', { params: code });
+        const res = await axios.get(`/api/soc/authorize/${provider}/callback`, { params: code });
 
 
 

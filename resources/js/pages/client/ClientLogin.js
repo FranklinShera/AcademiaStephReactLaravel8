@@ -29,13 +29,16 @@ const ClientLogin = ({ location }) => {
 
 
 
+    const GITHUB_PROVIDER = 'github';
+    const GOOGLE_PROVIDER = 'google';
+    const FACEBOOK_PROVIDER = 'facebook';
 
 
-    const socialLogin =  (e) => {
 
-        e.preventDefault();
+    const socialLogin =  (provider) => {
 
-        axios.get('/api/soc/authorize/github/redirect')
+
+        axios.get(`/api/soc/authorize/${provider}/redirect`)
             .then(res => {
                 if(res.data.url){
                     window.location.href = res.data.url
@@ -57,10 +60,22 @@ const ClientLogin = ({ location }) => {
 
     return (
         <div className="login-screen">
-            <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={(e => e.preventDefault())}>
+            <form className="w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center" onSubmit={(e => e.preventDefault())}>
                  <label className="w-full mb-5 text-3xl text-center">Client Login</label>
                 <div className="mt-10 flex">
-                      <span className="px-10 py-4 rounded bg-gray-600 text-white font-bold text-xl cursor-pointer" onClick={socialLogin}>Login With Github</span>
+
+                      <span className="px-8 py-4 rounded bg-gray-600 text-white font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(GITHUB_PROVIDER)}>Login With Github
+                      </span>
+
+                      <span className="px-8 py-4 ml-4 rounded bg-red-600 text-white font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(GOOGLE_PROVIDER)}>Login With Google
+                      </span>
+
+                      <span className="px-8 py-4 ml-4 rounded bg-blue-600 text-white font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(FACEBOOK_PROVIDER)}>Login With Facebook
+                      </span>
+
                   </div>
             </form>
         </div>

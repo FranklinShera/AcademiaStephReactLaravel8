@@ -2339,7 +2339,7 @@ var loginUser = function loginUser(user) {
     };
   }();
 };
-var loginClient = function loginClient(code) {
+var loginClient = function loginClient(code, provider) {
   return /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
       var res, loggedClient;
@@ -2352,7 +2352,7 @@ var loginClient = function loginClient(code) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_REQUEST
               });
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/soc/authorize/github/callback', {
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/soc/authorize/".concat(provider, "/callback"), {
                 params: code
               });
 
@@ -6844,10 +6844,12 @@ var ClientLogin = function ClientLogin(_ref) {
       location.state && location.state.next ? hist.push(location.state.next) : hist.push("/client/dashboard");
     }
   }, [clientAuth]);
+  var GITHUB_PROVIDER = 'github';
+  var GOOGLE_PROVIDER = 'google';
+  var FACEBOOK_PROVIDER = 'facebook';
 
-  var socialLogin = function socialLogin(e) {
-    e.preventDefault();
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/soc/authorize/github/redirect').then(function (res) {
+  var socialLogin = function socialLogin(provider) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/soc/authorize/".concat(provider, "/redirect")).then(function (res) {
       if (res.data.url) {
         window.location.href = res.data.url;
       }
@@ -6863,20 +6865,34 @@ var ClientLogin = function ClientLogin(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "login-screen",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-      className: "w-4/5 md:w-4/5 lg:w-1/2",
+      className: "w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center",
       onSubmit: function onSubmit(e) {
         return e.preventDefault();
       },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
         className: "w-full mb-5 text-3xl text-center",
         children: "Client Login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "mt-10 flex",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "px-10 py-4 rounded bg-gray-600 text-white font-bold text-xl cursor-pointer",
-          onClick: socialLogin,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "px-8 py-4 rounded bg-gray-600 text-white font-bold text-lg cursor-pointer",
+          onClick: function onClick(e) {
+            return socialLogin(GITHUB_PROVIDER);
+          },
           children: "Login With Github"
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "px-8 py-4 ml-4 rounded bg-red-600 text-white font-bold text-lg cursor-pointer",
+          onClick: function onClick(e) {
+            return socialLogin(GOOGLE_PROVIDER);
+          },
+          children: "Login With Google"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "px-8 py-4 ml-4 rounded bg-blue-600 text-white font-bold text-lg cursor-pointer",
+          onClick: function onClick(e) {
+            return socialLogin(FACEBOOK_PROVIDER);
+          },
+          children: "Login With Facebook"
+        })]
       })]
     })
   });
@@ -7163,6 +7179,10 @@ var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
   var location = _ref.location;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+
+  var _useParams = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useParams)(),
+      provider = _useParams.provider;
+
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
     return state.authClient;
   });
@@ -7172,7 +7192,7 @@ var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
     var searchParams = new URLSearchParams(location.search);
     dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.loginClient)({
       code: searchParams.get('code')
-    }));
+    }, provider));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -7182,7 +7202,7 @@ var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
   }, [clientAuth]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     window.scrollTo(0, 0);
-    document.querySelector('title').text = 'AcademiaSteph21 | OAUTH Login';
+    document.querySelector('title').text = 'AcademiaSteph21 | Login Redirect...';
     loginCallback();
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
