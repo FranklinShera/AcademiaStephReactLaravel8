@@ -95,6 +95,38 @@ export const loginClient = (code , provider) => async (dispatch) => {
 }
 
 
+export const autoLoginClient = () => async (dispatch) => {
+
+
+
+    try {
+
+        dispatch({ type: CLIENT_LOGIN_REQUEST })
+
+
+       const res = await axios.post(`/api/autoclient`);
+
+
+        const loggedClient = await axios.post('/api/auth/client')
+
+
+        dispatch({
+            type: CLIENT_LOGIN_SUCCESS,
+            payload: loggedClient.data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: CLIENT_LOGIN_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
 export const registerUser = (user) => async (dispatch) => {
 
 

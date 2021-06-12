@@ -2041,8 +2041,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth/ProtectedRoute */ "./resources/js/components/auth/ProtectedRoute.js");
 /* harmony import */ var _components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/client/ClientProtectedRoute */ "./resources/js/components/client/ClientProtectedRoute.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer.js");
@@ -2065,16 +2065,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_client_Orders__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/client/Orders */ "./resources/js/pages/client/Orders.js");
 /* harmony import */ var _pages_client_Messages__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/client/Messages */ "./resources/js/pages/client/Messages.js");
 /* harmony import */ var _pages_client_Profile__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/client/Profile */ "./resources/js/pages/client/Profile.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
-/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/client/PlaceNewOrder */ "./resources/js/pages/client/PlaceNewOrder.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
+/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -2110,7 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_27___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_26___default()));
+var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_28___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_27___default()));
 var Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -2126,14 +2128,14 @@ window.Toast = Toast;
 window.Swal = Swal;
 
 function App() {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_23__.useDispatch)();
-  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_23__.useSelector)(function (state) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_24__.useDispatch)();
+  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_24__.useSelector)(function (state) {
     return state.authUser;
   });
-  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_23__.useSelector)(function (state) {
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_24__.useSelector)(function (state) {
     return state.authClient;
   });
-  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_23__.useSelector)(function (state) {
+  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_24__.useSelector)(function (state) {
     return state.adminPanel;
   });
   var inAdminPanel = userInAdmin.inAdminPanel;
@@ -2142,99 +2144,99 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // check if location is not /client
     if (!auth && location.pathname === "/in") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshUser)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_25__.refreshUser)());
     } // check if location is /client
 
 
     if (!clientAuth && location.pathname === "/client") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshClient)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_25__.refreshClient)());
     }
 
     setInterval(function () {
-      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshClient)(1));
+      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_25__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_25__.refreshClient)(1));
     }, 840000);
   }, [location.pathname]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_28__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_31__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_29__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
         inAdminPanel: inAdminPanel
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
-          path: "/place-your-order",
-          exact: true,
-          component: _pages_PlaceOrder__WEBPACK_IMPORTED_MODULE_7__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/find-writer",
           exact: true,
           component: _pages_FindWriter__WEBPACK_IMPORTED_MODULE_8__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/in/register",
           exact: true,
-          component: _pages_auth_Register__WEBPACK_IMPORTED_MODULE_25__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Register__WEBPACK_IMPORTED_MODULE_26__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/orders",
           exact: true,
           component: _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_15__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/control/order-input",
           exact: true,
           component: _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_16__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/messages",
           exact: true,
           component: _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_17__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/payments",
           exact: true,
           component: _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_14__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/profile",
           exact: true,
           component: _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_18__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard",
           exact: true,
           component: _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_12__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard",
           exact: true,
           component: _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_13__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          path: "/client/dashboard/place-order",
+          exact: true,
+          component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_23__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/orders",
           exact: true,
           component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_20__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/messages",
           exact: true,
           component: _pages_client_Messages__WEBPACK_IMPORTED_MODULE_21__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/payments",
           exact: true,
           component: _pages_client_Payment__WEBPACK_IMPORTED_MODULE_19__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/profile",
           exact: true,
           component: _pages_client_Profile__WEBPACK_IMPORTED_MODULE_22__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/in",
           exact: true,
           component: _pages_auth_Login__WEBPACK_IMPORTED_MODULE_10__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/client",
           exact: true,
           component: _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_11__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/social/authorize/:provider",
           exact: true,
-          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_29__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_30__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           path: "/",
           exact: true,
           component: _pages_Home__WEBPACK_IMPORTED_MODULE_6__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_32__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.Route, {
           component: _pages_NotFound__WEBPACK_IMPORTED_MODULE_9__.default
         })]
-      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_30__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -2254,6 +2256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "loginUser": () => (/* binding */ loginUser),
 /* harmony export */   "loginClient": () => (/* binding */ loginClient),
+/* harmony export */   "autoLoginClient": () => (/* binding */ autoLoginClient),
 /* harmony export */   "registerUser": () => (/* binding */ registerUser),
 /* harmony export */   "refreshUser": () => (/* binding */ refreshUser),
 /* harmony export */   "refreshClient": () => (/* binding */ refreshClient),
@@ -2391,43 +2394,49 @@ var loginClient = function loginClient(code, provider) {
     };
   }();
 };
-var registerUser = function registerUser(user) {
+var autoLoginClient = function autoLoginClient() {
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
-      var data;
+      var res, loggedClient;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.prev = 0;
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_REQUEST
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_REQUEST
               });
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/register', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/autoclient");
 
             case 4:
-              data = _context3.sent;
+              res = _context3.sent;
+              _context3.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client');
+
+            case 7:
+              loggedClient = _context3.sent;
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_SUCCESS
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
+                payload: loggedClient.data
               });
-              _context3.next = 11;
+              _context3.next = 14;
               break;
 
-            case 8:
-              _context3.prev = 8;
+            case 11:
+              _context3.prev = 11;
               _context3.t0 = _context3["catch"](0);
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_FAIL,
-                payload: _context3.t0
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
+                error: _context3.t0
               });
 
-            case 11:
+            case 14:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 8]]);
+      }, _callee3, null, [[0, 11]]);
     }));
 
     return function (_x3) {
@@ -2435,14 +2444,58 @@ var registerUser = function registerUser(user) {
     };
   }();
 };
-var refreshUser = function refreshUser() {
-  var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+var registerUser = function registerUser(user) {
   return /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
-      var res, refUser;
+      var data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_REQUEST
+              });
+              _context4.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/register', user);
+
+            case 4:
+              data = _context4.sent;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_SUCCESS
+              });
+              _context4.next = 11;
+              break;
+
+            case 8:
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](0);
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_FAIL,
+                payload: _context4.t0
+              });
+
+            case 11:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 8]]);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+};
+var refreshUser = function refreshUser() {
+  var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  return /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
+      var res, refUser;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
             case 0:
               if (refreshType !== 1) {
                 dispatch({
@@ -2450,27 +2503,27 @@ var refreshUser = function refreshUser() {
                 });
               }
 
-              _context4.next = 3;
+              _context5.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/refresh-token');
 
             case 3:
-              res = _context4.sent;
+              res = _context5.sent;
 
               if (!(res.status == 200)) {
-                _context4.next = 11;
+                _context5.next = 11;
                 break;
               }
 
-              _context4.next = 7;
+              _context5.next = 7;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/user');
 
             case 7:
-              refUser = _context4.sent;
+              refUser = _context5.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
                 payload: refUser.data
               });
-              _context4.next = 12;
+              _context5.next = 12;
               break;
 
             case 11:
@@ -2483,24 +2536,24 @@ var refreshUser = function refreshUser() {
 
             case 12:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4);
+      }, _callee5);
     }));
 
-    return function (_x4) {
-      return _ref4.apply(this, arguments);
+    return function (_x5) {
+      return _ref5.apply(this, arguments);
     };
   }();
 };
 var refreshClient = function refreshClient() {
   var refreshType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   return /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               if (refreshType !== 1) {
                 dispatch({
@@ -2535,41 +2588,6 @@ var refreshClient = function refreshClient() {
 
             case 2:
             case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }));
-
-    return function (_x5) {
-      return _ref5.apply(this, arguments);
-    };
-  }();
-};
-var logoutUser = function logoutUser() {
-  return /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
-      var _yield$axios$post2, status;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/logout');
-
-            case 2:
-              _yield$axios$post2 = _context6.sent;
-              status = _yield$axios$post2.status;
-
-              if (status == 200) {
-                dispatch({
-                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGOUT
-                });
-              }
-
-            case 5:
-            case "end":
               return _context6.stop();
           }
         }
@@ -2581,25 +2599,25 @@ var logoutUser = function logoutUser() {
     };
   }();
 };
-var logoutClient = function logoutClient() {
+var logoutUser = function logoutUser() {
   return /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(dispatch) {
-      var _yield$axios$post3, status;
+      var _yield$axios$post2, status;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/client-logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/logout');
 
             case 2:
-              _yield$axios$post3 = _context7.sent;
-              status = _yield$axios$post3.status;
+              _yield$axios$post2 = _context7.sent;
+              status = _yield$axios$post2.status;
 
               if (status == 200) {
                 dispatch({
-                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGOUT
+                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGOUT
                 });
               }
 
@@ -2616,19 +2634,29 @@ var logoutClient = function logoutClient() {
     };
   }();
 };
-var authUserIn = function authUserIn() {
+var logoutClient = function logoutClient() {
   return /*#__PURE__*/function () {
     var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(dispatch) {
+      var _yield$axios$post3, status;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
-              dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_IN_ADMIN_PANEL,
-                payload: true
-              });
+              _context8.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/client-logout');
 
-            case 1:
+            case 2:
+              _yield$axios$post3 = _context8.sent;
+              status = _yield$axios$post3.status;
+
+              if (status == 200) {
+                dispatch({
+                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGOUT
+                });
+              }
+
+            case 5:
             case "end":
               return _context8.stop();
           }
@@ -2641,7 +2669,7 @@ var authUserIn = function authUserIn() {
     };
   }();
 };
-var authUserOut = function authUserOut() {
+var authUserIn = function authUserIn() {
   return /*#__PURE__*/function () {
     var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(dispatch) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
@@ -2649,8 +2677,8 @@ var authUserOut = function authUserOut() {
           switch (_context9.prev = _context9.next) {
             case 0:
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_OUT_ADMIN_PANEL,
-                payload: false
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_IN_ADMIN_PANEL,
+                payload: true
               });
 
             case 1:
@@ -2666,7 +2694,7 @@ var authUserOut = function authUserOut() {
     };
   }();
 };
-var sidebarPos = function sidebarPos(pos) {
+var authUserOut = function authUserOut() {
   return /*#__PURE__*/function () {
     var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(dispatch) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
@@ -2674,11 +2702,8 @@ var sidebarPos = function sidebarPos(pos) {
           switch (_context10.prev = _context10.next) {
             case 0:
               dispatch({
-                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.ADMIN_SIDEBAR_POSITION,
-                payload: {
-                  admin: true,
-                  pos: pos
-                }
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_OUT_ADMIN_PANEL,
+                payload: false
               });
 
             case 1:
@@ -2691,6 +2716,34 @@ var sidebarPos = function sidebarPos(pos) {
 
     return function (_x10) {
       return _ref10.apply(this, arguments);
+    };
+  }();
+};
+var sidebarPos = function sidebarPos(pos) {
+  return /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.ADMIN_SIDEBAR_POSITION,
+                payload: {
+                  admin: true,
+                  pos: pos
+                }
+              });
+
+            case 1:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    return function (_x11) {
+      return _ref11.apply(this, arguments);
     };
   }();
 };
@@ -4584,7 +4637,7 @@ var AdminLayout = function AdminLayout(props) {
     name: "Orders",
     links: [{
       name: "New Order",
-      url: "/client/dashboard/orders"
+      url: "/client/dashboard/place-order"
     }, {
       name: "Sent Orders",
       url: "/client/dashboard/orders"
@@ -5384,7 +5437,7 @@ var Home = function Home() {
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Link, {
-          to: "/place-your-order",
+          to: "/client/dashboard/place-order",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("button", {
             className: "place-order",
             children: "Place Your Order"
@@ -5727,25 +5780,7 @@ var PlaceOrder = function PlaceOrder() {
     name: "Single Spacing",
     value: "single"
   }];
-  var numberOfPages = []; // const academicLevels = [
-  //     {
-  //         name : "High School",
-  //         value: "High School"
-  //     },
-  //     {
-  //         name : "Undergraduate",
-  //         value: "Undergraduate"
-  //     },
-  //     {
-  //         name : "Master",
-  //         value: "Master"
-  //     },
-  //     {
-  //         name : "Doctoral",
-  //         value: "Doctoral"
-  //     }
-  // ]
-
+  var numberOfPages = [];
   var urgency = [{
     name: "6 Hours",
     value: "6 Hours"
@@ -6802,9 +6837,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6824,6 +6860,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ClientLogin = function ClientLogin(_ref) {
   var location = _ref.location;
 
@@ -6833,7 +6870,7 @@ var ClientLogin = function ClientLogin(_ref) {
       setIsLogging = _useState2[1];
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.authClient;
   });
@@ -6858,41 +6895,54 @@ var ClientLogin = function ClientLogin(_ref) {
     });
   };
 
+  var autoLogin = function autoLogin(e) {
+    e.preventDefault();
+    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.autoLoginClient)());
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.refreshClient)());
+    setInterval(function () {
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.refreshClient)(1));
+    }, 840000);
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Client Login';
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "login-screen",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
       className: "w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center",
       onSubmit: function onSubmit(e) {
         return e.preventDefault();
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         className: "w-full mb-5 text-3xl text-center",
-        children: "Client Login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: "Client Login or Register"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "mt-10 flex",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "px-8 py-4 rounded bg-gray-600 text-white font-bold text-lg cursor-pointer",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          className: "px-8 py-4 rounded bg-github-1 text-github-2 font-bold text-lg cursor-pointer",
           onClick: function onClick(e) {
             return socialLogin(GITHUB_PROVIDER);
           },
-          children: "Login With Github"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "px-8 py-4 ml-4 rounded bg-red-600 text-white font-bold text-lg cursor-pointer",
+          children: "Github"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          className: "px-8 py-4 ml-4 rounded bg-google-1 text-white font-bold text-lg cursor-pointer",
           onClick: function onClick(e) {
             return socialLogin(GOOGLE_PROVIDER);
           },
-          children: "Login With Google"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "px-8 py-4 ml-4 rounded bg-blue-600 text-white font-bold text-lg cursor-pointer",
+          children: "Google"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          className: "px-8 py-4 ml-4 rounded bg-facebook-1 text-white font-bold text-lg cursor-pointer",
           onClick: function onClick(e) {
             return socialLogin(FACEBOOK_PROVIDER);
           },
-          children: "Login With Facebook"
+          children: "Facebook"
         })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        className: "px-10 py-2 mt-10 rounded-full bg-gray-400 text-dark-5 font-bold text-lg cursor-pointer",
+        onClick: autoLogin,
+        children: "AutoLogin"
       })]
     })
   });
@@ -7083,6 +7133,421 @@ var Payment = function Payment() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Payment);
+
+/***/ }),
+
+/***/ "./resources/js/pages/client/PlaceNewOrder.js":
+/*!****************************************************!*\
+  !*** ./resources/js/pages/client/PlaceNewOrder.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+ //actions
+
+
+
+
+
+
+
+var Orders = function Orders() {
+  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.authClient;
+  });
+  var clientAuth = authClient.clientAuth;
+  var AcademicLevels = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.academicLevels;
+  });
+  var allAcademicLevels = AcademicLevels.allAcademicLevels,
+      loading = AcademicLevels.loading;
+  var paperTypes = [{
+    name: "Annotated Bibliography",
+    value: "Annotated Bibliography"
+  }, {
+    name: "Admission essay",
+    value: "Admission essay"
+  }, {
+    name: "Book Review/Report",
+    value: "Book Review/Report"
+  }, {
+    name: "Creative Writing",
+    value: "Creative Writing"
+  }, {
+    name: "Scholarship Essay",
+    value: "Scholarship Essay"
+  }, {
+    name: "Summary",
+    value: "Summary"
+  }, {
+    name: "Discussion Board Forums",
+    value: "Discussion Board Forums"
+  }, {
+    name: "Capstone Project",
+    value: "Capstone Project"
+  }, {
+    name: "Argumentative Essay",
+    value: "Argumentative Essay"
+  }];
+  var subjectAreas = [{
+    name: "Accounting",
+    value: "Accounting"
+  }, {
+    name: "Agriculture",
+    value: "Agriculture"
+  }, {
+    name: "Anthropology",
+    value: "Anthropology"
+  }, {
+    name: "Chemistry",
+    value: "Chemistry"
+  }, {
+    name: "Business Studies",
+    value: "Business Studies"
+  }, {
+    name: "Ecology",
+    value: "Ecology"
+  }, {
+    name: "Criminal law",
+    value: "Criminal law"
+  }, {
+    name: "Linguistics",
+    value: "Linguistics"
+  }, {
+    name: "Public Administration",
+    value: "Public Administration"
+  }, {
+    name: "Tourism",
+    value: "Tourism"
+  }];
+  var paperFormats = [{
+    name: "AMA",
+    value: "AMA"
+  }, {
+    name: "APA",
+    value: "APA"
+  }, {
+    name: "Chicago/Turabian",
+    value: "Chicago/Turabian"
+  }, {
+    name: "Harvard",
+    value: "Harvard"
+  }, {
+    name: "IEEE",
+    value: "IEEE"
+  }, {
+    name: "MHRA",
+    value: "MHRA"
+  }, {
+    name: "MLA",
+    value: "MLA"
+  }, {
+    name: "Oscola",
+    value: "Oscola"
+  }, {
+    name: "Vancouver",
+    value: "Vancouver"
+  }, {
+    name: "Others",
+    value: "Others"
+  }, {
+    name: "Not Applicable",
+    value: "Not Applicable"
+  }];
+  var prefEnglish = [{
+    name: "UK-ESL",
+    value: "UK-ESL"
+  }, {
+    name: "UK",
+    value: "UK"
+  }, {
+    name: "US-ESL",
+    value: "US-ESL"
+  }, {
+    name: "US",
+    value: "US"
+  }];
+  var spacingTypes = [{
+    name: "Double Spacing",
+    value: "double"
+  }, {
+    name: "Single Spacing",
+    value: "single"
+  }];
+  var numberOfPages = [];
+  var urgency = [{
+    name: "6 Hours",
+    value: "6 Hours"
+  }, {
+    name: "12 Hours",
+    value: "12 Hours"
+  }, {
+    name: "1 Day",
+    value: "1 Day"
+  }, {
+    name: "2 Days",
+    value: "2 Days"
+  }, {
+    name: "2 Days",
+    value: "2 Days"
+  }, {
+    name: "3 Days",
+    value: "3 Days"
+  }, {
+    name: "5 Days",
+    value: "5 Days"
+  }, {
+    name: "7 Days",
+    value: "7 Days"
+  }, {
+    name: "10 Days",
+    value: "10 Days"
+  }, {
+    name: "2 Weeks",
+    value: "2 Weeks"
+  }, {
+    name: "1 Month",
+    value: "1 Month"
+  }, {
+    name: "2 Months",
+    value: "2 Months"
+  }];
+  var pages = 1;
+  var wordsPerPage = 275;
+
+  var calcPages = function calcPages(num) {
+    while (pages < num) {
+      numberOfPages.push({
+        pages: pages,
+        wordsPerPage: wordsPerPage * pages
+      });
+      pages++;
+    }
+  };
+
+  var orderForm = {
+    topic: '',
+    typeOfPaper: '',
+    subjectArea: '',
+    paperDetails: '',
+    additionalMaterials: null,
+    paperFormat: '',
+    prefEnglish: '',
+    numOfSources: '',
+    spacing: '',
+    academicLevel: '',
+    numberOfPages: '',
+    urgency: ''
+  };
+
+  var submitPlaceOrderForm = function submitPlaceOrderForm(e) {
+    e.preventDefault();
+    console.log(orderForm);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__.fetchAcademicLevels)());
+    calcPages(120);
+
+    if (!clientAuth) {
+      hist.push("/client");
+    }
+
+    window.scrollTo(0, 0);
+    document.querySelector('title').text = 'AcademiaSteph21 | Place Order';
+  }, [clientAuth]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    className: "dashboard",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "dash_overview",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: "place-order-page",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            className: "text-4xl",
+            children: "Order a Paper"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            className: "mt-6 text-lg text-primary-4",
+            children: "Paper Details"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+            action: "",
+            className: "w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.InputField, {
+              labelText: "Topic",
+              name: "topic",
+              type: "text",
+              placeholder: "Paper Topic",
+              onChange: function onChange(e) {
+                return orderForm.topic = e.target.value;
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              labelText: "Type of Paper",
+              selectName: "paper-type",
+              selectID: "paper-type",
+              selectOptions: paperTypes,
+              onChange: function onChange(e) {
+                return orderForm.typeOfPaper = e.target.value;
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              labelText: "Subject Area",
+              selectName: "subject-area",
+              selectID: "subject-area",
+              selectOptions: subjectAreas,
+              onChange: function onChange(e) {
+                return orderForm.subjectArea = e.target.value;
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.TextAreaInputField, {
+              labelText: "Paper Details",
+              textareaName: "message",
+              id: "message",
+              rows: "5",
+              placeholder: "Provide detailed additional information about your assignment",
+              onChange: function onChange(e) {
+                return orderForm.paperDetails = e.target.value;
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.FileInputField, {
+              labelText: "Additional Materials",
+              onChange: function onChange(e) {
+                return orderForm.additionalMaterials = e.target.files[0];
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "flex flex-col justify-between sm:flex-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+                parentClasses: "w-full sm:w-2/5",
+                labelText: "Paper Format",
+                selectName: "paper-format",
+                selectID: "paper-format",
+                selectOptions: paperFormats,
+                onChange: function onChange(e) {
+                  return orderForm.paperFormat = e.target.value;
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+                parentClasses: "w-full sm:w-2/5",
+                labelText: "Preferred English",
+                selectName: "preferred-english",
+                selectID: "preferred-english",
+                selectOptions: prefEnglish,
+                onChange: function onChange(e) {
+                  return orderForm.prefEnglish = e.target.value;
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "flex flex-col justify-between sm:flex-row ",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.InputField, {
+                type: "number",
+                parentClasses: "w-full sm:w-2/5",
+                labelText: "Number of sources",
+                name: "number-of-sources",
+                id: "number-of-sources",
+                onChange: function onChange(e) {
+                  return orderForm.numOfSources = e.target.value;
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+                parentClasses: "w-full sm:w-2/5",
+                labelText: "Spacing",
+                selectName: "spacing",
+                selectID: "spacing",
+                selectOptions: spacingTypes,
+                onChange: function onChange(e) {
+                  return orderForm.spacing = e.target.value;
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                children: "Academic Level"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+                name: "academic-level",
+                id: "academic-level",
+                onChange: function onChange(e) {
+                  return orderForm.academicLevel = e.target.value;
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Choose Academic Level"
+                }), allAcademicLevels.map(function (opt) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                    value: opt.level_name,
+                    children: opt.level_name
+                  });
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                children: "Number Of Pages"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+                name: "number-of-pages",
+                id: "number-of-pages",
+                onChange: function onChange(e) {
+                  return orderForm.numberOfPages = e.target.value;
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Choose Number Of Pages"
+                }), numberOfPages.map(function (opt) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
+                    value: opt.pages,
+                    children: [opt.pages, " Pages / ", opt.wordsPerPage, " Words"]
+                  }, opt.pages);
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              labelText: "Urgency",
+              selectName: "urgency",
+              selectID: "urgency",
+              selectOptions: urgency,
+              onChange: function onChange(e) {
+                return orderForm.urgency = e.target.value;
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "mb-3 price-estimate",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "mr-3",
+                children: "Total"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                className: "text-lg font-bold",
+                children: "$28.60"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              type: "submit",
+              className: "w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri",
+              onClick: submitPlaceOrderForm,
+              children: "Continue"
+            })]
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Orders);
 
 /***/ }),
 

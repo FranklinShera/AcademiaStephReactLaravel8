@@ -26,6 +26,7 @@ import ClientPayment from './pages/client/Payment';
 import ClientOrders from './pages/client/Orders';
 import ClientMessages from './pages/client/Messages';
 import ClientProfile from './pages/client/Profile';
+import PlaceNewOrder from './pages/client/PlaceNewOrder';
 
 
 import { useDispatch , useSelector} from 'react-redux'
@@ -118,7 +119,7 @@ function App() {
 
          <Header inAdminPanel={inAdminPanel}/>
           <Switch>
-            <Route path="/place-your-order" exact component={PlaceOrder}/>
+            {/*<Route path="/place-your-order" exact component={PlaceOrder}/>*/}
             <Route path="/find-writer" exact component={FindWriter}/>
             <Route path="/in/register" exact component={Register}/>
             <ProtectedRoute path={ `/in/dashboard/orders` } exact component={Orders}/>
@@ -128,10 +129,11 @@ function App() {
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
-           <ClientProtectedRoute path={ `/client/dashboard/orders` } exact component={ClientOrders}/>
-           <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
-           <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
-           <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
+            <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
+            <ClientProtectedRoute path={ `/client/dashboard/orders` } exact component={ClientOrders}/>
+            <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
+            <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
+            <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
             <Route path="/in" exact component={Login}/>
             <Route path="/client" exact component={ClientLogin}/>
             <Route path="/social/authorize/:provider" exact component={ProviderLoginResolve}/>

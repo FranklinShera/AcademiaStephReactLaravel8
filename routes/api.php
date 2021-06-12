@@ -26,6 +26,7 @@ Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
 
 //CLIENT
 Route::post('/client-login', [ClientAuthController::class , 'login']);
+Route::post('/autoclient', [ClientAuthController::class , 'autoClient']);
 Route::post('/client-register', [ClientAuthController::class , 'register']);
 
 

@@ -202,24 +202,7 @@ const PlaceOrder = () => {
 
     let numberOfPages = []
 
-    // const academicLevels = [
-    //     {
-    //         name : "High School",
-    //         value: "High School"
-    //     },
-    //     {
-    //         name : "Undergraduate",
-    //         value: "Undergraduate"
-    //     },
-    //     {
-    //         name : "Master",
-    //         value: "Master"
-    //     },
-    //     {
-    //         name : "Doctoral",
-    //         value: "Doctoral"
-    //     }
-    // ]
+
 
     const urgency = [
         {

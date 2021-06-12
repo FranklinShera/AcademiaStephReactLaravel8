@@ -5,6 +5,10 @@ import { useDispatch , useSelector } from 'react-redux'
 
 
 
+import {autoLoginClient, refreshClient, refreshUser} from "../../actions/AuthUserActions";
+
+
+
 const ClientLogin = ({ location }) => {
 
     const[isLoggin,setIsLogging] = useState(false)
@@ -49,8 +53,25 @@ const ClientLogin = ({ location }) => {
 
     }
 
+    const autoLogin = (e) =>{
+        e.preventDefault()
+
+        dispatch(autoLoginClient());
+    }
 
     useEffect(() => {
+
+            dispatch(refreshClient())
+
+
+
+        setInterval(() => {
+
+           dispatch(refreshClient(1))
+
+        }, 840000);
+
+
         window.scrollTo(0,0)
 
         document.querySelector('title').text = 'AcademiaSteph21 | Client Login'
@@ -61,22 +82,25 @@ const ClientLogin = ({ location }) => {
     return (
         <div className="login-screen">
             <form className="w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center" onSubmit={(e => e.preventDefault())}>
-                 <label className="w-full mb-5 text-3xl text-center">Client Login</label>
+                 <label className="w-full mb-5 text-3xl text-center">Client Login or Register</label>
                 <div className="mt-10 flex">
 
-                      <span className="px-8 py-4 rounded bg-gray-600 text-white font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(GITHUB_PROVIDER)}>Login With Github
+                      <span className="px-8 py-4 rounded bg-github-1 text-github-2 font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(GITHUB_PROVIDER)}>Github
                       </span>
 
-                      <span className="px-8 py-4 ml-4 rounded bg-red-600 text-white font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(GOOGLE_PROVIDER)}>Login With Google
+                      <span className="px-8 py-4 ml-4 rounded bg-google-1 text-white font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(GOOGLE_PROVIDER)}>Google
                       </span>
 
-                      <span className="px-8 py-4 ml-4 rounded bg-blue-600 text-white font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(FACEBOOK_PROVIDER)}>Login With Facebook
+                      <span className="px-8 py-4 ml-4 rounded bg-facebook-1 text-white font-bold text-lg cursor-pointer"
+                            onClick={e => socialLogin(FACEBOOK_PROVIDER)}>Facebook
                       </span>
 
-                  </div>
+                </div>
+                <span className="px-10 py-2 mt-10 rounded-full bg-gray-400 text-dark-5 font-bold text-lg cursor-pointer"
+                      onClick={autoLogin}>AutoLogin
+                </span>
             </form>
         </div>
     )

@@ -4,6 +4,17 @@ module.exports = {
   theme: {
     extend: {
       colors:{
+        facebook:{
+          1: "#4267B2"
+        },
+          google:{
+          1: "#DB4437",
+        },
+          github:{
+          1: "#333333",
+          2: "#fafafa",
+          3: "#f5f5f5",
+        },
         aswhite:{
           1: '#ffffffef',
           2: '#cccccc55',
@@ -29,7 +40,7 @@ module.exports = {
         palbluelight: "#6989ff22",
         palhighlight: "#ebf6f7",
         asgreen:  "#1DD400",
-            
+
       },
       spacing: {
         '5/100': '5%',

@@ -136,6 +136,26 @@ class ClientAuthController extends Controller
 
 
 
+    public function autoClient(Request $request){
+
+        $client = Client::whereEmail('client1@gmail.com')->first();
+
+        if(!$client){
+            return  response()->json(['error' => 'DEFAULT CLIENT NOT FOUND!'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $token = auth('client')->login($client , $remember = true);
+
+        if(!$token){
+            return  response()->json(['error' => 'AutoLogin Failed!'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return respondWithToken($token);
+
+    }
+
+
+
     public function register(Request $request){
 
         $validClient = Validator::make($request->all(),[

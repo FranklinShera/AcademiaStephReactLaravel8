@@ -24,7 +24,7 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"New Order",
-                    url: `/client/dashboard/orders`
+                    url: `/client/dashboard/place-order`
                 },
                 {
                     name:"Sent Orders",

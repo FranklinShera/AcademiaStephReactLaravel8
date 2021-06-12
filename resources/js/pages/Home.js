@@ -371,7 +371,7 @@ const Home = () => {
 
                 </div>
 
-                <Link to="/place-your-order">
+                <Link to="/client/dashboard/place-order">
                  <button className="place-order">Place Your Order</button>
                 </Link>
 
