@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class OrderFactory extends Factory
 {
@@ -26,13 +27,15 @@ class OrderFactory extends Factory
             "type_of_paper" => $this->faker->userName,
             "subject_area" => $this->faker->streetAddress,
             "paper_details" => $this->faker->sentence(50),
-            "addition_materials" => $this->faker->randomLetter,
+            "addition_materials" => "/orders/materials/".Str::random(12).".zip",
             "paper_format" => $this->faker->currencyCode,
             "prefered_english" => $this->faker->languageCode,
             "number_of_sources" => $this->faker->randomDigit,
             "spacing" => "Double Spacing",
             "academic_level" => $this->faker->jobTitle,
             "urgency" => "2 Weeks",
+            "stage" => 0,
+            "client_id" => 1,
         ];
     }
 }

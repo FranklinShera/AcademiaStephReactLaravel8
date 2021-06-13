@@ -2368,7 +2368,7 @@ var loginClient = function loginClient(code, provider) {
               loggedClient = _context2.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
-                payload: loggedClient.data
+                payload: loggedClient.data.data
               });
               _context2.next = 14;
               break;
@@ -2418,7 +2418,7 @@ var autoLoginClient = function autoLoginClient() {
               loggedClient = _context3.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
-                payload: loggedClient.data
+                payload: loggedClient.data.data
               });
               _context3.next = 14;
               break;
@@ -2566,7 +2566,7 @@ var refreshClient = function refreshClient() {
                   axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client').then(function (res) {
                     dispatch({
                       type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
-                      payload: res.data
+                      payload: res.data.data
                     });
                   })["catch"](function (err) {
                     dispatch({
@@ -3038,11 +3038,15 @@ var FileInputField = function FileInputField(_ref) {
   var labelText = _ref.labelText,
       classes = _ref.classes,
       placeholder = _ref.placeholder,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      errors = _ref.errors;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "input-group",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       children: labelText
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "field-errors",
+      children: errors
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "file",
       className: classes,
@@ -3363,16 +3367,20 @@ var InputField = function InputField(_ref) {
       placeholder = _ref.placeholder,
       parentClasses = _ref.parentClasses,
       onBlur = _ref.onBlur,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      errors = _ref.errors;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: parentClasses ? "input-group ".concat(parentClasses) : 'input-group',
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       children: labelText
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "field-errors",
+      children: errors
     }), type === 'number' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "number",
       name: name,
       id: id,
-      min: "0",
+      min: "1",
       step: "1",
       pattern: "{0-9}",
       onBlur: onBlur,
@@ -3732,11 +3740,15 @@ var SelectInputField = function SelectInputField(_ref) {
       selectID = _ref.selectID,
       selectOptions = _ref.selectOptions,
       parentClasses = _ref.parentClasses,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      errors = _ref.errors;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: parentClasses ? "input-group ".concat(parentClasses) : 'input-group',
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       children: labelText
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "field-errors",
+      children: errors
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
       name: selectName,
       id: selectID,
@@ -3960,11 +3972,15 @@ var TextAreaInputField = function TextAreaInputField(_ref) {
       cols = _ref.cols,
       rows = _ref.rows,
       placeholder = _ref.placeholder,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      errors = _ref.errors;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "input-group",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       children: labelText
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "field-errors",
+      children: errors
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
       name: textareaName,
       id: id,
@@ -7041,6 +7057,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Orders = function Orders() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -7060,12 +7077,15 @@ var Orders = function Orders() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "dashboard",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
           className: "text-xl",
           children: "ORDERS"
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "orders-client-view",
+          children: "Your Orders"
+        })]
       })
     })
   });
@@ -7149,14 +7169,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
-/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -7170,8 +7194,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Orders = function Orders() {
-  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
+  (axios__WEBPACK_IMPORTED_MODULE_4___default().defaults.withCredentials) = true;
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authClient;
@@ -7295,7 +7319,7 @@ var Orders = function Orders() {
     name: "Single Spacing",
     value: "single"
   }];
-  var numberOfPages = [];
+  var numberOfPages = 1;
   var urgency = [{
     name: "6 Hours",
     value: "6 Hours"
@@ -7333,19 +7357,58 @@ var Orders = function Orders() {
     name: "2 Months",
     value: "2 Months"
   }];
-  var pages = 1;
-  var wordsPerPage = 275;
-
-  var calcPages = function calcPages(num) {
-    while (pages < num) {
-      numberOfPages.push({
-        pages: pages,
-        wordsPerPage: wordsPerPage * pages
+  var Formik = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useFormik)({
+    initialValues: {
+      topic: '',
+      typeOfPaper: '',
+      subjectArea: '',
+      paperDetails: '',
+      additionalMaterials: null,
+      paperFormat: '',
+      prefEnglish: '',
+      numOfSources: '',
+      spacing: '',
+      academicLevel: '',
+      numberOfPages: '',
+      urgency: ''
+    },
+    validationSchema: yup__WEBPACK_IMPORTED_MODULE_3__.object({
+      topic: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(8).required(),
+      typeOfPaper: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      subjectArea: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      paperDetails: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      additionalMaterials: null,
+      paperFormat: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      prefEnglish: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      numOfSources: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      spacing: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      academicLevel: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      numberOfPages: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+      urgency: yup__WEBPACK_IMPORTED_MODULE_3__.string().required()
+    }),
+    onSubmit: function onSubmit(values, _ref) {
+      var setSubmitting = _ref.setSubmitting,
+          resetForm = _ref.resetForm;
+      submitPlaceOrderForm(values);
+      resetForm({
+        values: {
+          topic: '',
+          typeOfPaper: '',
+          subjectArea: '',
+          paperDetails: '',
+          additionalMaterials: null,
+          paperFormat: '',
+          prefEnglish: '',
+          numOfSources: '',
+          spacing: '',
+          academicLevel: '',
+          numberOfPages: '',
+          urgency: ''
+        }
       });
-      pages++;
+      setSubmitting(false);
     }
-  };
-
+  });
   var orderForm = {
     topic: '',
     typeOfPaper: '',
@@ -7361,14 +7424,17 @@ var Orders = function Orders() {
     urgency: ''
   };
 
-  var submitPlaceOrderForm = function submitPlaceOrderForm(e) {
-    e.preventDefault();
-    console.log(orderForm);
+  var numOfWordsHint = function numOfWordsHint() {
+    console.log(orderForm.numberOfPages);
+    return orderForm.numberOfPages || "1 Page = 275 Words";
+  };
+
+  var submitPlaceOrderForm = function submitPlaceOrderForm(formFields) {
+    console.log(formFields);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__.fetchAcademicLevels)());
-    calcPages(120);
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchAcademicLevels)());
 
     if (!clientAuth) {
       hist.push("/client");
@@ -7377,167 +7443,168 @@ var Orders = function Orders() {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Place Order';
   }, [clientAuth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
     className: "dashboard",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_5__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "place-order-page",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
             className: "text-4xl",
             children: "Order a Paper"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
             className: "mt-6 text-lg text-primary-4",
             children: "Paper Details"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
             action: "",
             className: "w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.InputField, {
+            onSubmit: Formik.handleSubmit,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
               labelText: "Topic",
+              onBlur: Formik.handleBlur,
               name: "topic",
               type: "text",
+              value: Formik.values.topic,
               placeholder: "Paper Topic",
-              onChange: function onChange(e) {
-                return orderForm.topic = e.target.value;
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              onChange: Formik.handleChange,
+              errors: Formik.errors.topic && Formik.touched.topic && Formik.errors.topic
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
               labelText: "Type of Paper",
+              onBlur: Formik.handleBlur,
               selectName: "paper-type",
               selectID: "paper-type",
               selectOptions: paperTypes,
-              onChange: function onChange(e) {
-                return orderForm.typeOfPaper = e.target.value;
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              value: Formik.values.typeOfPaper,
+              onChange: Formik.handleChange,
+              errors: Formik.errors.typeOfPaper && Formik.touched.typeOfPaper && Formik.errors.typeOfPaper
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
               labelText: "Subject Area",
+              onBlur: Formik.handleBlur,
               selectName: "subject-area",
               selectID: "subject-area",
+              value: Formik.values.subjectArea,
               selectOptions: subjectAreas,
-              onChange: function onChange(e) {
-                return orderForm.subjectArea = e.target.value;
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.TextAreaInputField, {
+              onChange: Formik.handleChange,
+              errors: Formik.errors.subjectArea && Formik.touched.subjectArea && Formik.errors.subjectArea
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.TextAreaInputField, {
               labelText: "Paper Details",
+              onBlur: Formik.handleBlur,
               textareaName: "message",
               id: "message",
               rows: "5",
               placeholder: "Provide detailed additional information about your assignment",
-              onChange: function onChange(e) {
-                return orderForm.paperDetails = e.target.value;
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.FileInputField, {
+              value: Formik.values.paperDetails,
+              onChange: Formik.handleChange,
+              errors: Formik.errors.paperDetails && Formik.touched.paperDetails && Formik.errors.paperDetails
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.FileInputField, {
               labelText: "Additional Materials",
+              onBlur: Formik.handleBlur,
+              value: Formik.values.additionalMaterials,
               onChange: function onChange(e) {
                 return orderForm.additionalMaterials = e.target.files[0];
               }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "flex flex-col justify-between sm:flex-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
                 parentClasses: "w-full sm:w-2/5",
+                onBlur: Formik.handleBlur,
                 labelText: "Paper Format",
                 selectName: "paper-format",
                 selectID: "paper-format",
+                value: Formik.values.paperFormat,
                 selectOptions: paperFormats,
-                onChange: function onChange(e) {
-                  return orderForm.paperFormat = e.target.value;
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+                onChange: Formik.handleChange,
+                errors: Formik.errors.paperFormat && Formik.touched.paperFormat && Formik.errors.paperFormat
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
                 parentClasses: "w-full sm:w-2/5",
+                onBlur: Formik.handleBlur,
                 labelText: "Preferred English",
                 selectName: "preferred-english",
                 selectID: "preferred-english",
+                value: Formik.values.prefEnglish,
                 selectOptions: prefEnglish,
-                onChange: function onChange(e) {
-                  return orderForm.prefEnglish = e.target.value;
-                }
+                onChange: Formik.handleChange,
+                errors: Formik.errors.prefEnglish && Formik.touched.prefEnglish && Formik.errors.prefEnglish
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "flex flex-col justify-between sm:flex-row ",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.InputField, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
                 type: "number",
                 parentClasses: "w-full sm:w-2/5",
+                onBlur: Formik.handleBlur,
                 labelText: "Number of sources",
                 name: "number-of-sources",
                 id: "number-of-sources",
-                onChange: function onChange(e) {
-                  return orderForm.numOfSources = e.target.value;
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+                value: Formik.values.numOfSources,
+                onChange: Formik.handleChange,
+                errors: Formik.errors.numOfSources && Formik.touched.numOfSources && Formik.errors.numOfSources
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
                 parentClasses: "w-full sm:w-2/5",
+                onBlur: Formik.handleBlur,
+                value: Formik.values.spacing,
                 labelText: "Spacing",
                 selectName: "spacing",
                 selectID: "spacing",
                 selectOptions: spacingTypes,
-                onChange: function onChange(e) {
-                  return orderForm.spacing = e.target.value;
-                }
+                onChange: Formik.handleChange,
+                errors: Formik.errors.spacing && Formik.touched.spacing && Formik.errors.spacing
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "input-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
                 children: "Academic Level"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+              }), Formik.errors.academicLevel && Formik.touched.academicLevel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "field-errors",
+                children: Formik.errors.academicLevel
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
                 name: "academic-level",
                 id: "academic-level",
-                onChange: function onChange(e) {
-                  return orderForm.academicLevel = e.target.value;
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                onBlur: Formik.handleBlur,
+                value: Formik.values.academicLevel,
+                onChange: Formik.handleChange,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
                   value: "",
                   selected: true,
                   disabled: true,
                   children: "Choose Academic Level"
                 }), allAcademicLevels.map(function (opt) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
                     value: opt.level_name,
                     children: opt.level_name
                   });
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-              className: "input-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                children: "Number Of Pages"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
-                name: "number-of-pages",
-                id: "number-of-pages",
-                onChange: function onChange(e) {
-                  return orderForm.numberOfPages = e.target.value;
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                  value: "",
-                  selected: true,
-                  disabled: true,
-                  children: "Choose Number Of Pages"
-                }), numberOfPages.map(function (opt) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
-                    value: opt.pages,
-                    children: [opt.pages, " Pages / ", opt.wordsPerPage, " Words"]
-                  }, opt.pages);
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_5__.SelectInputField, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
+              type: "number",
+              onBlur: Formik.handleBlur,
+              labelText: "Number of Pages",
+              name: "number-of-pages",
+              id: "number-of-pages",
+              value: Formik.values.numberOfPages,
+              onChange: Formik.handleChange,
+              errors: Formik.errors.numberOfPages && Formik.touched.numberOfPages && Formik.errors.numberOfPages
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
               labelText: "Urgency",
+              onBlur: Formik.handleBlur,
+              value: Formik.values.urgency,
               selectName: "urgency",
               selectID: "urgency",
               selectOptions: urgency,
-              onChange: function onChange(e) {
-                return orderForm.urgency = e.target.value;
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              onChange: Formik.handleChange,
+              errors: Formik.errors.urgency && Formik.touched.urgency && Formik.errors.urgency
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "mb-3 price-estimate",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
                 className: "mr-3",
                 children: "Total"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                 className: "text-lg font-bold",
                 children: "$28.60"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
               type: "submit",
               className: "w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri",
-              onClick: submitPlaceOrderForm,
               children: "Continue"
             })]
           })]
@@ -7579,6 +7646,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Profile = function Profile() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -7586,7 +7654,8 @@ var Profile = function Profile() {
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authClient;
   });
-  var clientAuth = authClient.clientAuth;
+  var clientAuth = authClient.clientAuth,
+      loggedInClient = authClient.loggedInClient;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!clientAuth) {
       hist.push("/client");
@@ -7600,8 +7669,56 @@ var Profile = function Profile() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-          children: "Profile Page"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "profile",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+            children: "Profile Page"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "profile-hub",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "profile-primary-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                children: "Primary Details"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInClient.name
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInClient.email
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Joined"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInClient.created_at
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "profile-sec-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                children: "Social Accounts"
+              }), loggedInClient.social_accounts.map(function (socialAccount) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "profile-detail",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                    className: "ti-".concat(socialAccount.provider)
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: socialAccount.provider
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                    children: socialAccount.provider_client_id
+                  })]
+                });
+              })]
+            })]
+          })]
         })
       })
     })

@@ -42,8 +42,9 @@ const Orders = () => {
         <div className="dashboard">
             <ClientLayout>
              <div className="dash_overview">
-             <h1 className="text-xl">ORDERS</h1>
-             </div>
+                 <h1 className="text-xl">ORDERS</h1>
+                     <div className="orders-client-view">Your Orders</div>
+              </div>
             </ClientLayout>
         </div>
     )

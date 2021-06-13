@@ -27,6 +27,8 @@ class CreateOrdersTable extends Migration
             $table->string("spacing");
             $table->string("academic_level");
             $table->string("urgency");
+            $table->string("stage")->default("0");
+            $table->string("client_id");
 
             $table->timestamps();
         });

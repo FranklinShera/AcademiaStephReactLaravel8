@@ -2,6 +2,7 @@
 @import "~tailwindcss/base.css";
 @import "~tailwindcss/components.css";
 @import "~tailwindcss/utilities.css";
+@import "../themify-icons/themify-icons.css";
 
 
 body , html{
@@ -478,6 +479,14 @@ body , html{
 
 .input-group label{
     @apply text-xl font-semibold ;
+}
+
+.field-errors{
+    @apply text-xs text-red-600 italic;
+}
+
+.input-group label .hint-box{
+    @apply text-sm ml-2 italic font-normal;
 }
 
 
@@ -1313,6 +1322,62 @@ footer{
     @apply flex flex-col items-center justify-center;
     min-height: 100vh;
 }
+
+
+
+
+/*PROFILE PAGE STYLES*/
+
+
+.profile{
+    @apply p-6;
+}
+
+
+.profile h1{
+    @apply text-2xl font-bold;
+}
+
+.profile-hub{
+    @apply flex mt-6;
+    min-height: 60vh;
+}
+
+
+.profile-hub .profile-primary-details{
+    @apply w-1/2;
+}
+
+.profile-hub .profile-sec-details{
+    @apply w-1/2;
+}
+
+
+.profile-hub .profile-primary-details h2 ,.profile-hub .profile-sec-details h2{
+    @apply font-bold text-lg;
+}
+
+
+.profile-detail{
+    @apply my-2 items-center;
+}
+
+.profile-detail i{
+    @apply mr-2;
+}
+
+.profile-detail label{
+    @apply font-bold my-2;
+}
+
+.profile-detail span{
+    @apply text-dark-1;
+}
+
+/*PROFILE PAGE STYLES END*/
+
+
+
 
 
 /*CLIENT STYLES END*/

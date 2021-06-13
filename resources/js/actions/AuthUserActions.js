@@ -81,7 +81,7 @@ export const loginClient = (code , provider) => async (dispatch) => {
 
         dispatch({
             type: CLIENT_LOGIN_SUCCESS,
-            payload: loggedClient.data
+            payload: loggedClient.data.data
         })
 
 
@@ -112,7 +112,7 @@ export const autoLoginClient = () => async (dispatch) => {
 
         dispatch({
             type: CLIENT_LOGIN_SUCCESS,
-            payload: loggedClient.data
+            payload: loggedClient.data.data
         })
 
 
@@ -187,11 +187,12 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
         axios.post('/api/auth/client/refresh-token')
             .then(response =>{
+
                 if(response.status == 200) {
 
                     axios.post('/api/auth/client')
                         .then(res => {
-                            dispatch({ type: CLIENT_REFRESH , payload : res.data})
+                            dispatch({ type: CLIENT_REFRESH , payload : res.data.data})
                         })
                         .catch(err =>{
                             dispatch({

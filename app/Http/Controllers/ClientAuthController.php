@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\SocialAccount;
 use Illuminate\Http\Request;
@@ -138,7 +139,7 @@ class ClientAuthController extends Controller
 
     public function autoClient(Request $request){
 
-        $client = Client::whereEmail('client1@gmail.com')->first();
+        $client = Client::whereEmail('fshera96@gmail.com')->first();
 
         if(!$client){
             return  response()->json(['error' => 'DEFAULT CLIENT NOT FOUND!'], Response::HTTP_BAD_REQUEST);
@@ -185,7 +186,7 @@ class ClientAuthController extends Controller
 
     public function profile(){
 
-        return response()->json(currentClient());
+        return new ClientResource(currentClient());
 
     }
 

@@ -2,6 +2,9 @@ import React, {useEffect,useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import {useHistory} from 'react-router'
 
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import axios from 'axios'
 
 import ClientLayout from '../../components/client/ClientLayout'
@@ -204,7 +207,7 @@ const Orders = () => {
         }
     ]
 
-    let numberOfPages = []
+    let numberOfPages = 1
 
 
 
@@ -272,20 +275,60 @@ const Orders = () => {
 
 
 
-    let pages = 1;
-    let wordsPerPage = 275
 
-    const calcPages = (num) =>{
+    const Formik = useFormik({
+        initialValues:{
+            topic: '',
+            typeOfPaper: '',
+            subjectArea: '',
+            paperDetails: '',
+            additionalMaterials: null,
+            paperFormat: '',
+            prefEnglish: '',
+            numOfSources: '',
+            spacing: '',
+            academicLevel: '',
+            numberOfPages: '',
+            urgency: ''
+        },
+        validationSchema:Yup.object({
+            topic: Yup.string()
+                     .min(8).required(),
+            typeOfPaper: Yup.string().required(),
+            subjectArea: Yup.string().required(),
+            paperDetails: Yup.string().required(),
+            additionalMaterials: null,
+            paperFormat: Yup.string().required(),
+            prefEnglish: Yup.string().required(),
+            numOfSources: Yup.string().required(),
+            spacing: Yup.string().required(),
+            academicLevel: Yup.string().required(),
+            numberOfPages: Yup.string().required(),
+            urgency: Yup.string().required()
+        }),
+        onSubmit: (values, { setSubmitting , resetForm }) => {
 
-        while(pages < num){
+            submitPlaceOrderForm(values)
 
+            resetForm({ values:{
+                    topic: '',
+                    typeOfPaper: '',
+                    subjectArea: '',
+                    paperDetails: '',
+                    additionalMaterials: null,
+                    paperFormat: '',
+                    prefEnglish: '',
+                    numOfSources: '',
+                    spacing: '',
+                    academicLevel: '',
+                    numberOfPages: '',
+                    urgency: ''
+                }})
 
-            numberOfPages.push({ pages ,  wordsPerPage: wordsPerPage * pages})
+            setSubmitting(false)
 
-            pages++
         }
-    }
-
+    })
 
 
     let orderForm = {
@@ -304,9 +347,14 @@ const Orders = () => {
     }
 
 
-    const submitPlaceOrderForm = (e) =>{
-        e.preventDefault();
-        console.log(orderForm);
+    const numOfWordsHint = () =>{
+        console.log(orderForm.numberOfPages)
+        return orderForm.numberOfPages || "1 Page = 275 Words";
+    }
+
+
+    const submitPlaceOrderForm = (formFields) =>{
+        console.log(formFields);
     }
 
 
@@ -317,8 +365,6 @@ const Orders = () => {
 
         dispatch(fetchAcademicLevels())
 
-
-        calcPages(120)
 
         if(!clientAuth){
             hist.push("/client")
@@ -340,28 +386,124 @@ const Orders = () => {
                  <div className="place-order-page">
                      <h1 className="text-4xl">Order a Paper</h1>
                      <h1 className="mt-6 text-lg text-primary-4">Paper Details</h1>
-                     <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2">
-                         <InputField labelText='Topic' name="topic" type='text' placeholder="Paper Topic" onChange={(e) => orderForm.topic = e.target.value}/>
-                         <SelectInputField labelText="Type of Paper" selectName="paper-type" selectID="paper-type" selectOptions={paperTypes} onChange={(e) => orderForm.typeOfPaper = e.target.value}/>
-                         <SelectInputField labelText="Subject Area" selectName="subject-area" selectID="subject-area" selectOptions={subjectAreas} onChange={(e) => orderForm.subjectArea = e.target.value}/>
-                         <TextAreaInputField labelText='Paper Details' textareaName='message' id='message' rows='5' placeholder='Provide detailed additional information about your assignment' onChange={(e) => orderForm.paperDetails = e.target.value}/>
+                     <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2" onSubmit={Formik.handleSubmit}>
 
-                         <FileInputField labelText="Additional Materials" onChange={(e) => orderForm.additionalMaterials = e.target.files[0]}/>
+                         <InputField labelText='Topic'
+                                     onBlur={Formik.handleBlur}
+                                     name="topic" type='text'
+                                     value={Formik.values.topic}
+                                     placeholder="Paper Topic"
+                                     onChange={Formik.handleChange}
+                                     errors= {(Formik.errors.topic && Formik.touched.topic) && Formik.errors.topic }
+                         />
+
+
+
+                         <SelectInputField labelText="Type of Paper"
+                                           onBlur={Formik.handleBlur}
+                                           selectName="paper-type"
+                                           selectID="paper-type"
+                                           selectOptions={paperTypes}
+                                           value={Formik.values.typeOfPaper}
+                                           onChange={Formik.handleChange}
+                                            errors={(Formik.errors.typeOfPaper && Formik.touched.typeOfPaper) && Formik.errors.typeOfPaper }
+                         />
+
+
+                         <SelectInputField labelText="Subject Area"
+                                           onBlur={Formik.handleBlur}
+                                           selectName="subject-area"
+                                           selectID="subject-area"
+                                           value={Formik.values.subjectArea}
+                                           selectOptions={subjectAreas}
+                                           onChange={Formik.handleChange}
+                                           errors= {(Formik.errors.subjectArea && Formik.touched.subjectArea) && Formik.errors.subjectArea }
+                         />
+
+
+                         <TextAreaInputField labelText='Paper Details'
+                                             onBlur={Formik.handleBlur}
+                                             textareaName='message' id='message' rows='5'
+                                             placeholder='Provide detailed additional information about your assignment'
+                                             value={Formik.values.paperDetails}
+                                             onChange={Formik.handleChange}
+                                             errors={(Formik.errors.paperDetails && Formik.touched.paperDetails) && Formik.errors.paperDetails}
+                         />
+
+
+
+
+                         <FileInputField labelText="Additional Materials"
+                                         onBlur={Formik.handleBlur}
+                                         value={Formik.values.additionalMaterials}
+                                         onChange={(e) => orderForm.additionalMaterials = e.target.files[0]}/>
 
                          <div className="flex flex-col justify-between sm:flex-row">
-                             <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Paper Format" selectName="paper-format" selectID="paper-format" selectOptions={paperFormats} onChange={(e) => orderForm.paperFormat = e.target.value}/>
-                             <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Preferred English" selectName="preferred-english" selectID="preferred-english" selectOptions={prefEnglish} onChange={(e) => orderForm.prefEnglish = e.target.value}/>
+
+                             <SelectInputField parentClasses="w-full sm:w-2/5"
+                                               onBlur={Formik.handleBlur}
+                                               labelText="Paper Format"
+                                               selectName="paper-format"
+                                               selectID="paper-format"
+                                               value={Formik.values.paperFormat}
+                                               selectOptions={paperFormats}
+                                               onChange={Formik.handleChange}
+                                               errors={(Formik.errors.paperFormat && Formik.touched.paperFormat) && Formik.errors.paperFormat }
+                             />
+
+
+                             <SelectInputField parentClasses="w-full sm:w-2/5"
+                                               onBlur={Formik.handleBlur}
+                                               labelText="Preferred English"
+                                               selectName="preferred-english"
+                                               selectID="preferred-english"
+                                               value={Formik.values.prefEnglish}
+                                               selectOptions={prefEnglish}
+                                               onChange={Formik.handleChange}
+                                               errors={(Formik.errors.prefEnglish && Formik.touched.prefEnglish) && Formik.errors.prefEnglish}
+                             />
+
+
+
                          </div>
 
                          <div className="flex flex-col justify-between sm:flex-row ">
-                             <InputField type="number" parentClasses="w-full sm:w-2/5" labelText="Number of sources"  name="number-of-sources" id="number-of-sources"onChange={(e) => orderForm.numOfSources = e.target.value}/>
-                             <SelectInputField parentClasses="w-full sm:w-2/5" labelText="Spacing" selectName="spacing" selectID="spacing" selectOptions={spacingTypes} onChange={(e) => orderForm.spacing = e.target.value}/>
+
+                             <InputField type="number"
+                                         parentClasses="w-full sm:w-2/5"
+                                         onBlur={Formik.handleBlur}
+                                         labelText="Number of sources"
+                                         name="number-of-sources"
+                                         id="number-of-sources"
+                                         value={Formik.values.numOfSources}
+                                         onChange={Formik.handleChange}
+                                         errors={(Formik.errors.numOfSources && Formik.touched.numOfSources) && Formik.errors.numOfSources}
+                             />
+
+
+                             <SelectInputField parentClasses="w-full sm:w-2/5"
+                                               onBlur={Formik.handleBlur}
+                                               value={Formik.values.spacing}
+                                               labelText="Spacing"
+                                               selectName="spacing"
+                                               selectID="spacing"
+                                               selectOptions={spacingTypes}
+                                               onChange={Formik.handleChange}
+                                               errors={(Formik.errors.spacing && Formik.touched.spacing) &&Formik.errors.spacing}
+                             />
+
+
                          </div>
 
 
                          <div className='input-group'>
                              <label >Academic Level</label>
-                             <select name="academic-level" id="academic-level" onChange={(e) => orderForm.academicLevel = e.target.value}>
+                             {(Formik.errors.academicLevel && Formik.touched.academicLevel) && <div className="field-errors">{Formik.errors.academicLevel}</div>}
+                             <select name="academic-level"
+                                     id="academic-level"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.academicLevel}
+                                     onChange={Formik.handleChange}>
                                  <option value='' selected disabled>Choose Academic Level</option>
 
                                  {allAcademicLevels.map((opt) => (
@@ -369,23 +511,30 @@ const Orders = () => {
                                  ))}
 
                              </select>
-                         </div>
+                        </div>
 
 
-                         <div className='input-group'>
-                             <label >Number Of Pages</label>
-                             <select name='number-of-pages' id='number-of-pages' onChange={(e) => orderForm.numberOfPages = e.target.value}>
 
-                                 <option value='' selected disabled>Choose Number Of Pages</option>
+                         <InputField type="number"
+                                     onBlur={Formik.handleBlur}
+                                     labelText="Number of Pages"
+                                     name="number-of-pages"
+                                     id="number-of-pages"
+                                     value={Formik.values.numberOfPages}
+                                     onChange={Formik.handleChange}
+                                     errors={(Formik.errors.numberOfPages && Formik.touched.numberOfPages) && Formik.errors.numberOfPages}
+                         />
 
-                                 {numberOfPages.map(opt => (
-                                     <option value={opt.pages} key={opt.pages}>{opt.pages} Pages / {opt.wordsPerPage} Words</option>
-                                 ))}
-
-                             </select>
-                         </div>
-
-                         <SelectInputField labelText="Urgency" selectName="urgency" selectID="urgency" selectOptions={urgency} onChange={(e) => orderForm.urgency = e.target.value}/>
+                         <SelectInputField
+                             labelText="Urgency"
+                             onBlur={Formik.handleBlur}
+                             value={Formik.values.urgency}
+                             selectName="urgency"
+                             selectID="urgency"
+                             selectOptions={urgency}
+                             onChange={Formik.handleChange}
+                             errors={(Formik.errors.urgency && Formik.touched.urgency) &&  Formik.errors.urgency }
+                         />
 
 
                          <div className="mb-3 price-estimate">
@@ -393,7 +542,7 @@ const Orders = () => {
                              <span className="text-lg font-bold">$28.60</span>
                          </div>
 
-                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" onClick={submitPlaceOrderForm}>Continue</button>
+                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" >Continue</button>
 
                      </form>
                  </div>

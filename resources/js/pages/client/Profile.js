@@ -20,7 +20,7 @@ const Profile = () => {
     const dispatch = useDispatch()
 
     const authClient = useSelector( state => state.authClient)
-    const { clientAuth } = authClient;
+    const { clientAuth , loggedInClient } = authClient;
 
 
     useEffect(() => {
@@ -43,7 +43,55 @@ const Profile = () => {
         <div className="dashboard">
             <ClientLayout>
              <div className="dash_overview">
-               <h1>Profile Page</h1>
+               <div className="profile">
+                   <h1>Profile Page</h1>
+                   <div className="profile-hub">
+
+                       <div className="profile-primary-details">
+
+                           <h2>Primary Details</h2>
+
+                           <div className="profile-detail">
+                               <label >Name</label>
+                               <span>{loggedInClient.name}</span>
+                           </div>
+
+
+                           <div className="profile-detail">
+                               <label >Email</label>
+                               <span>{loggedInClient.email}</span>
+                           </div>
+
+                           <div className="profile-detail">
+                               <label >Joined</label>
+                               <span>{loggedInClient.created_at}</span>
+                           </div>
+
+
+                       </div>
+
+                       <div className="profile-sec-details">
+
+                           <h2>Social Accounts</h2>
+
+                           {loggedInClient.social_accounts.map(socialAccount => (
+
+                               <div className="profile-detail">
+                                   <i className={ `ti-${socialAccount.provider}`}></i>
+                                   <label >{socialAccount.provider}</label>
+                                   <span>{socialAccount.provider_client_id}</span>
+                               </div>
+
+                           ))}
+
+
+                       </div>
+
+
+                   </div>
+
+
+               </div>
              </div>
             </ClientLayout>
         </div>
