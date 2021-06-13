@@ -23,7 +23,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->sentence,
+            "topic" => $this->faker->sentence,
             "type_of_paper" => $this->faker->userName,
             "subject_area" => $this->faker->streetAddress,
             "paper_details" => $this->faker->sentence(50),

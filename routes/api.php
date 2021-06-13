@@ -4,6 +4,7 @@ use App\Http\Controllers\AcademicLevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/' , [ClientAuthController::class , 'profile']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+            Route::get('/orders' , [OrderController::class , 'clientOrders']);
 
         });
 

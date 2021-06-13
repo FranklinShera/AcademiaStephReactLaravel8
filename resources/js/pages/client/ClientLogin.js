@@ -86,15 +86,15 @@ const ClientLogin = ({ location }) => {
                 <div className="mt-10 flex">
 
                       <span className="px-8 py-4 rounded bg-github-1 text-github-2 font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(GITHUB_PROVIDER)}>Github
+                            onClick={e => socialLogin(GITHUB_PROVIDER)}><i className="ti-github"></i> Github
                       </span>
 
                       <span className="px-8 py-4 ml-4 rounded bg-google-1 text-white font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(GOOGLE_PROVIDER)}>Google
+                            onClick={e => socialLogin(GOOGLE_PROVIDER)}><i className="ti-google"></i> Google
                       </span>
 
                       <span className="px-8 py-4 ml-4 rounded bg-facebook-1 text-white font-bold text-lg cursor-pointer"
-                            onClick={e => socialLogin(FACEBOOK_PROVIDER)}>Facebook
+                            onClick={e => socialLogin(FACEBOOK_PROVIDER)}><i className="ti-facebook"></i> Facebook
                       </span>
 
                 </div>

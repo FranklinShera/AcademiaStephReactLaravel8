@@ -1339,7 +1339,9 @@ footer{
 }
 
 .profile-hub{
-    @apply flex mt-6;
+    @apply flex mt-10 p-5;
+    border: #1a202c33 1px solid;
+    border-radius: 15px;
     min-height: 60vh;
 }
 
@@ -1359,7 +1361,7 @@ footer{
 
 
 .profile-detail{
-    @apply my-2 items-center;
+    @apply my-3 items-center;
 }
 
 .profile-detail i{
@@ -1367,7 +1369,7 @@ footer{
 }
 
 .profile-detail label{
-    @apply font-bold my-2;
+    @apply font-bold my-2 mr-2;
 }
 
 .profile-detail span{
@@ -1378,7 +1380,49 @@ footer{
 
 
 
+/*ORDERS VIEW*/
 
+.orderview-header{
+    @apply px-6 pt-6 flex justify-between;
+}
+.orders-views{
+    @apply p-6 flex flex-col;
+}
+
+
+.orders-views .order-view{
+    @apply my-1 flex;
+}
+
+
+.order-view-head{
+    @apply font-semibold;
+    border-bottom: #1a202c 2px solid;
+    padding-bottom: 10px;
+}
+
+.orders-views .order-view .order-topic{
+    @apply w-55/100;
+}
+
+
+.orders-views .order-view .order-type{
+    @apply w-15/100;
+}
+
+
+.orders-views .order-view .order-format{
+    @apply w-15/100;
+}
+
+
+.orders-views .order-view .order-urgency{
+    @apply w-15/100;
+}
+
+
+
+/*ORDERS VIEW END*/
 
 /*CLIENT STYLES END*/
 

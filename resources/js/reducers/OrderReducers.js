@@ -1,7 +1,7 @@
 import {
-    REQUEST_ACADEMIC_LEVELS ,
-    REQUEST_ACADEMIC_LEVELS_SUCCESS ,
-    REQUEST_ACADEMIC_LEVELS_FAIL ,
+    REQUEST_ACADEMIC_LEVELS,
+    REQUEST_ACADEMIC_LEVELS_SUCCESS,
+    REQUEST_ACADEMIC_LEVELS_FAIL, REQUEST_CLIENT_ORDERS, CLIENT_ORDERS_SUCCESS, CLIENT_ORDERS_FAIL,
 } from '../constants/OrderConstants'
 
 
@@ -13,12 +13,31 @@ export const OrderAcademicLevelsReducer = (state = { allAcademicLevels: [], link
         case REQUEST_ACADEMIC_LEVELS:
             return { loading: true , allAcademicLevels: [] , links:{} , meta:{} }
 
-    
+
         case REQUEST_ACADEMIC_LEVELS_SUCCESS:
 
             return { loading: false ,  allAcademicLevels: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
 
         case REQUEST_ACADEMIC_LEVELS_FAIL:
+            return { loading: false , error: action.payload }
+        default:
+            return state
+    }
+}
+
+
+export const ClientOrdersReducer = (state = { orders: [], links:{} , meta:{}} , action) => {
+    switch(action.type){
+
+        case REQUEST_CLIENT_ORDERS:
+            return { loading: true , orders: [] , links:{} , meta:{} }
+
+
+        case CLIENT_ORDERS_SUCCESS:
+
+            return { loading: false ,  orders: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
+
+        case CLIENT_ORDERS_FAIL:
             return { loading: false , error: action.payload }
         default:
             return state

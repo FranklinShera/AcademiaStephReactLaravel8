@@ -3,8 +3,10 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { reviewsListReducer } from './reducers/reviewsListReducers'
+
 import { AuthUserReducer,AuthClientReducer,RegisterUserReducer, AdminPanelReducer } from './reducers/AuthUserReducers'
-import { OrderAcademicLevelsReducer } from './reducers/OrderReducers'
+
+import {ClientOrdersReducer, OrderAcademicLevelsReducer} from './reducers/OrderReducers'
 
 const reducer =  combineReducers({
     reviewList: reviewsListReducer,
@@ -12,7 +14,8 @@ const reducer =  combineReducers({
     authClient: AuthClientReducer,
     registration: RegisterUserReducer,
     adminPanel: AdminPanelReducer,
-    academicLevels: OrderAcademicLevelsReducer
+    academicLevels: OrderAcademicLevelsReducer,
+    clientOrders: ClientOrdersReducer
 })
 
 
