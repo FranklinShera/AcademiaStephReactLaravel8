@@ -39,8 +39,11 @@ const Orders = ({ location }) => {
 
 
 
-    const getOrders = (orderLink) =>{
+    const getOrders = (orderLink) =>
+    {
+
         dispatch(ClientFetchOrders(orderLink))
+
     }
 
 
@@ -60,14 +63,21 @@ const Orders = ({ location }) => {
 
 
 
-        dispatch(ClientFetchOrders(SENT_ORDER_URI))
+        (routeParams.category.toUpperCase() === "SENT") && getOrders(SENT_ORDER_URI);
+
+        (routeParams.category.toUpperCase() === "PENDING") && getOrders(PENDING_ORDER_URI);
+
+        (routeParams.category.toUpperCase() === "COMPLETED") && getOrders(COMPLETED_ORDER_URI);
+
+
+
 
         window.scrollTo(0,0)
 
         document.querySelector('title').text = `AcademiaSteph21 | Client ${ titleCase(routeParams.category) } Orders`
 
 
-    }, [clientAuth])
+    }, [clientAuth,routeParams.category])
 
 
 
@@ -106,13 +116,18 @@ const Orders = ({ location }) => {
                                  TYPE OF PAPER
                               </div>
 
-                             <div className="order-format">
+                             <div className="order-progress">
                                  PROGRESS
                              </div>
 
 
                               <div className="order-urgency">
                                  URGENCY
+                              </div>
+
+
+                              <div className="order-created">
+                                 CREATED
                               </div>
 
                          </div>
@@ -126,18 +141,30 @@ const Orders = ({ location }) => {
                                  </div>
 
                                  <div className="order-type">
-                                     {order.type_of_paper}
+                                     { order.type_of_paper }
                                  </div>
 
 
-                                 <div className="order-format">
-                                     {(order.stage == 0) && <span className="text-yellow-600"> <i className="ti-info-alt"></i> Pending </span>}
-                                     {(order.stage == 1) && <span className="text-green-600"> <i className="ti-thumb-up"></i> Completed </span>}
-                                     {(order.stage == 2) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span>}
+                                 <div className="order-progress">
+                                     { (order.stage == 0) && <span className="text-yellow-600"> <i className="ti-info-alt"></i> Pending </span> }
+                                     { (order.stage == 1) && <span className="text-green-600"> <i className="ti-thumb-up"></i> Completed </span> }
+                                     { (order.stage == 2) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span> }
                                  </div>
 
                                  <div className="order-urgency">
-                                     {order.urgency}
+                                     { order.urgency }
+                                 </div>
+
+                                 <div className="order-created">
+
+                                     <div className="created-date">
+                                         { order.created_at_date }
+                                     </div>
+
+                                     <div className="created-time">
+                                         { order.created_at_time }
+                                     </div>
+
                                  </div>
                              </div>
                          ))}

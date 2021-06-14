@@ -1402,7 +1402,7 @@ footer{
 }
 
 .orders-views .order-view .order-topic{
-    @apply w-55/100;
+    @apply w-2/5;
 }
 
 
@@ -1411,13 +1411,24 @@ footer{
 }
 
 
-.orders-views .order-view .order-format{
+.orders-views .order-view .order-progress{
     @apply w-15/100;
 }
 
 
 .orders-views .order-view .order-urgency{
     @apply w-15/100;
+}
+
+.orders-views .order-view .order-created{
+    @apply w-15/100 flex ;
+}
+
+.orders-views .order-view .order-created .created-date{
+
+}
+.orders-views .order-view .order-created .created-time{
+    @apply ml-4 ;
 }
 
 

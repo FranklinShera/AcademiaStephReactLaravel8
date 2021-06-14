@@ -7155,10 +7155,12 @@ var Orders = function Orders(_ref) {
       hist.push("/client");
     }
 
-    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_5__.ClientFetchOrders)(SENT_ORDER_URI));
+    routeParams.category.toUpperCase() === "SENT" && getOrders(SENT_ORDER_URI);
+    routeParams.category.toUpperCase() === "PENDING" && getOrders(PENDING_ORDER_URI);
+    routeParams.category.toUpperCase() === "COMPLETED" && getOrders(COMPLETED_ORDER_URI);
     window.scrollTo(0, 0);
     document.querySelector('title').text = "AcademiaSteph21 | Client ".concat(titleCase(routeParams.category), " Orders");
-  }, [clientAuth]);
+  }, [clientAuth, routeParams.category]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "dashboard",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
@@ -7202,11 +7204,14 @@ var Orders = function Orders(_ref) {
               className: "order-type",
               children: "TYPE OF PAPER"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "order-format",
+              className: "order-progress",
               children: "PROGRESS"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "order-urgency",
               children: "URGENCY"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "order-created",
+              children: "CREATED"
             })]
           }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), orders.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
             children: "We Could not Find Your Orders"
@@ -7220,7 +7225,7 @@ var Orders = function Orders(_ref) {
                 className: "order-type",
                 children: order.type_of_paper
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "order-format",
+                className: "order-progress",
                 children: [order.stage == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
                   className: "text-yellow-600",
                   children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
@@ -7240,6 +7245,15 @@ var Orders = function Orders(_ref) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-urgency",
                 children: order.urgency
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "order-created",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "created-date",
+                  children: order.created_at_date
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "created-time",
+                  children: order.created_at_time
+                })]
               })]
             });
           })]
