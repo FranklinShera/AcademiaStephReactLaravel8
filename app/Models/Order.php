@@ -12,4 +12,16 @@ class Order extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+
+
+    public function scopePending($query){
+        return $query->where('stage' , 0);
+    }
+
+
+    public function scopeCompleted($query){
+        return $query->where('stage' , 1);
+    }
+
+
 }

@@ -18,6 +18,31 @@ class OrderController extends Controller
 
     }
 
+
+
+    public function clientPendingOrders()
+    {
+
+        $orders = Order::pending()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+
+    public function clientCompletedOrders()
+    {
+
+        $orders = Order::completed()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+
+
     public function store(Request $request)
     {
         //

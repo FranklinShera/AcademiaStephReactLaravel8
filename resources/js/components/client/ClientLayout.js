@@ -28,15 +28,15 @@ const AdminLayout = (props) => {
                 },
                 {
                     name:"Sent Orders",
-                    url: `/client/dashboard/orders`
+                    url: `/client/dashboard/orders/sent`
                 },
                 {
                     name:"Pending Orders",
-                    url: `/client/dashboard/orders`
+                    url: `/client/dashboard/orders/pending`
                 },
                 {
                     name:"Completed Orders",
-                    url: `/client/dashboard/orders`
+                    url: `/client/dashboard/orders/completed`
                 },
             ]
         },

@@ -2202,7 +2202,7 @@ function App() {
           exact: true,
           component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_23__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
-          path: "/client/dashboard/orders",
+          path: "/client/dashboard/orders/:category",
           exact: true,
           component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_20__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_31__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -4704,13 +4704,13 @@ var AdminLayout = function AdminLayout(props) {
       url: "/client/dashboard/place-order"
     }, {
       name: "Sent Orders",
-      url: "/client/dashboard/orders"
+      url: "/client/dashboard/orders/sent"
     }, {
       name: "Pending Orders",
-      url: "/client/dashboard/orders"
+      url: "/client/dashboard/orders/pending"
     }, {
       name: "Completed Orders",
-      url: "/client/dashboard/orders"
+      url: "/client/dashboard/orders/completed"
     }]
   }, {
     name: "Messages",
@@ -7102,13 +7102,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
 /* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_DotLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/DotLoader */ "./resources/js/components/DotLoader.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -7120,10 +7121,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Orders = function Orders() {
+
+var Orders = function Orders(_ref) {
+  var location = _ref.location;
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var routeParams = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useParams)();
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authClient;
   });
@@ -7132,11 +7136,18 @@ var Orders = function Orders() {
     return state.clientOrders;
   });
   var orders = clientOrders.orders,
-      links = clientOrders.links;
-  var ORDER_URI = '/api/auth/client/orders';
+      links = clientOrders.links,
+      loading = clientOrders.loading;
+  var SENT_ORDER_URI = '/api/auth/client/orders';
+  var PENDING_ORDER_URI = '/api/auth/client/orders-pending';
+  var COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
   var getOrders = function getOrders(orderLink) {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_5__.ClientFetchOrders)(orderLink));
+  };
+
+  var titleCase = function titleCase(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -7144,72 +7155,89 @@ var Orders = function Orders() {
       hist.push("/client");
     }
 
-    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_5__.ClientFetchOrders)(ORDER_URI));
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_5__.ClientFetchOrders)(SENT_ORDER_URI));
     window.scrollTo(0, 0);
-    document.querySelector('title').text = 'AcademiaSteph21 | Client Orders';
+    document.querySelector('title').text = "AcademiaSteph21 | Client ".concat(titleCase(routeParams.category), " Orders");
   }, [clientAuth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "dashboard",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "dash_overview",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "orderview-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
             className: " text-2xl font-bold",
-            children: "SENT ORDERS"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [routeParams.category.toUpperCase(), " ORDERS"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "orderview-controls",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-              className: links.prev ? "p-2 cursor-pointer" : "p-2 text-gray-200",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+              className: links.prev ? "p-2 cursor-pointer" : "p-2 text-gray-400",
               onClick: function onClick(e) {
                 e.preventDefault();
                 getOrders(links.prev);
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
                 className: "ti-angle-left"
               }), "PREV"]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-              className: links.next ? "p-2 cursor-pointer ml-4" : "p-2 text-gray-200 ml-4",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+              className: links.next ? "p-2 cursor-pointer ml-4" : "p-2 text-gray-400 ml-4",
               onClick: function onClick(e) {
                 e.preventDefault();
                 getOrders(links.next);
               },
-              children: ["NEXT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+              children: ["NEXT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
                 className: "ti-angle-right"
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "orders-views",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "order-view order-view-head",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "order-topic",
               children: "TOPIC"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "order-type",
               children: "TYPE OF PAPER"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "order-format",
-              children: "PAPER FORMAT"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              children: "PROGRESS"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "order-urgency",
               children: "URGENCY"
             })]
+          }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), orders.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            children: "We Could not Find Your Orders"
           }), orders.map(function (order, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-              className: "order-view bg-gray-100 p-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "order-view bg-gray-100 hover:shadow cursor-pointer p-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 className: "order-topic",
                 children: [index + 1 + ". ", order.topic]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-type",
                 children: order.type_of_paper
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 className: "order-format",
-                children: order.paper_format
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                children: [order.stage == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                  className: "text-yellow-600",
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+                    className: "ti-info-alt"
+                  }), " Pending "]
+                }), order.stage == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                  className: "text-green-600",
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+                    className: "ti-thumb-up"
+                  }), " Completed "]
+                }), order.stage == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                  className: "text-red-600",
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+                    className: "ti-thumb-down"
+                  }), " Cancelled "]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-urgency",
                 children: order.urgency
               })]

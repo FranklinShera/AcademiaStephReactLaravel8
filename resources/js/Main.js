@@ -119,7 +119,6 @@ function App() {
 
          <Header inAdminPanel={inAdminPanel}/>
           <Switch>
-            {/*<Route path="/place-your-order" exact component={PlaceOrder}/>*/}
             <Route path="/find-writer" exact component={FindWriter}/>
             <Route path="/in/register" exact component={Register}/>
             <ProtectedRoute path={ `/in/dashboard/orders` } exact component={Orders}/>
@@ -130,7 +129,7 @@ function App() {
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
-            <ClientProtectedRoute path={ `/client/dashboard/orders` } exact component={ClientOrders}/>
+            <ClientProtectedRoute path={ `/client/dashboard/orders/:category` } exact component={ClientOrders}/>
             <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
             <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
             <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>

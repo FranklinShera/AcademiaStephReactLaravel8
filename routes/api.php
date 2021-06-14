@@ -60,6 +60,8 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
             Route::get('/orders' , [OrderController::class , 'clientOrders']);
+            Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
+            Route::get('/orders-completed' , [OrderController::class , 'clientCompletedOrders']);
 
         });
 
