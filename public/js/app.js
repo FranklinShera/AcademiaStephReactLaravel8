@@ -2762,7 +2762,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchAcademicLevels": () => (/* binding */ fetchAcademicLevels),
 /* harmony export */   "adminFetchAcademicLevels": () => (/* binding */ adminFetchAcademicLevels),
 /* harmony export */   "adminFetchPaperTypes": () => (/* binding */ adminFetchPaperTypes),
+/* harmony export */   "fetchPaperTypes": () => (/* binding */ fetchPaperTypes),
 /* harmony export */   "adminFetchSubjectAreas": () => (/* binding */ adminFetchSubjectAreas),
+/* harmony export */   "fetchSubjectAreas": () => (/* binding */ fetchSubjectAreas),
 /* harmony export */   "ClientFetchOrders": () => (/* binding */ ClientFetchOrders)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
@@ -2922,8 +2924,7 @@ var adminFetchPaperTypes = function adminFetchPaperTypes() {
     };
   }();
 };
-var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
-  var subjectAreaUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/subject-areas';
+var fetchPaperTypes = function fetchPaperTypes() {
   return /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
       var _yield$axios$get4, data;
@@ -2934,16 +2935,16 @@ var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
             case 0:
               _context4.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES
               });
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(subjectAreaUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/paper-types');
 
             case 4:
               _yield$axios$get4 = _context4.sent;
               data = _yield$axios$get4.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES_SUCCESS,
                 payload: data
               });
               _context4.next = 12;
@@ -2953,7 +2954,7 @@ var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
               _context4.prev = 9;
               _context4.t0 = _context4["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES_FAIL,
                 error: _context4.t0
               });
 
@@ -2970,7 +2971,8 @@ var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
     };
   }();
 };
-var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
+  var subjectAreaUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/subject-areas';
   return /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
       var _yield$axios$get5, data;
@@ -2981,16 +2983,16 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
             case 0:
               _context5.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS
               });
               _context5.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(subjectAreaUrl);
 
             case 4:
               _yield$axios$get5 = _context5.sent;
               data = _yield$axios$get5.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_SUCCESS,
                 payload: data
               });
               _context5.next = 12;
@@ -3000,7 +3002,7 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
               _context5.prev = 9;
               _context5.t0 = _context5["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_FAIL,
                 error: _context5.t0
               });
 
@@ -3014,6 +3016,100 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
 
     return function (_x5) {
       return _ref5.apply(this, arguments);
+    };
+  }();
+};
+var fetchSubjectAreas = function fetchSubjectAreas() {
+  return /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
+      var _yield$axios$get6, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS
+              });
+              _context6.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/subject-areas');
+
+            case 4:
+              _yield$axios$get6 = _context6.sent;
+              data = _yield$axios$get6.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_SUCCESS,
+                payload: data
+              });
+              _context6.next = 12;
+              break;
+
+            case 9:
+              _context6.prev = 9;
+              _context6.t0 = _context6["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_FAIL,
+                error: _context6.t0
+              });
+
+            case 12:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6, null, [[0, 9]]);
+    }));
+
+    return function (_x6) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+};
+var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+  return /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(dispatch) {
+      var _yield$axios$get7, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+              });
+              _context7.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+
+            case 4:
+              _yield$axios$get7 = _context7.sent;
+              data = _yield$axios$get7.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                payload: data
+              });
+              _context7.next = 12;
+              break;
+
+            case 9:
+              _context7.prev = 9;
+              _context7.t0 = _context7["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                error: _context7.t0
+              });
+
+            case 12:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7, null, [[0, 9]]);
+    }));
+
+    return function (_x7) {
+      return _ref7.apply(this, arguments);
     };
   }();
 };
@@ -5147,13 +5243,6 @@ var SubjectArea = function SubjectArea() {
       setSubmitting(false);
     }
   });
-  var areaActiveSelects = [{
-    name: "Active",
-    value: true
-  }, {
-    name: "Inactive",
-    value: false
-  }];
 
   var deleteSubjectArea = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
@@ -8141,67 +8230,15 @@ var Orders = function Orders() {
   var AcademicLevels = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.academicLevels;
   });
-  var allAcademicLevels = AcademicLevels.allAcademicLevels,
-      loading = AcademicLevels.loading;
-  var paperTypes = [{
-    name: "Annotated Bibliography",
-    value: "Annotated Bibliography"
-  }, {
-    name: "Admission essay",
-    value: "Admission essay"
-  }, {
-    name: "Book Review/Report",
-    value: "Book Review/Report"
-  }, {
-    name: "Creative Writing",
-    value: "Creative Writing"
-  }, {
-    name: "Scholarship Essay",
-    value: "Scholarship Essay"
-  }, {
-    name: "Summary",
-    value: "Summary"
-  }, {
-    name: "Discussion Board Forums",
-    value: "Discussion Board Forums"
-  }, {
-    name: "Capstone Project",
-    value: "Capstone Project"
-  }, {
-    name: "Argumentative Essay",
-    value: "Argumentative Essay"
-  }];
-  var subjectAreas = [{
-    name: "Accounting",
-    value: "Accounting"
-  }, {
-    name: "Agriculture",
-    value: "Agriculture"
-  }, {
-    name: "Anthropology",
-    value: "Anthropology"
-  }, {
-    name: "Chemistry",
-    value: "Chemistry"
-  }, {
-    name: "Business Studies",
-    value: "Business Studies"
-  }, {
-    name: "Ecology",
-    value: "Ecology"
-  }, {
-    name: "Criminal law",
-    value: "Criminal law"
-  }, {
-    name: "Linguistics",
-    value: "Linguistics"
-  }, {
-    name: "Public Administration",
-    value: "Public Administration"
-  }, {
-    name: "Tourism",
-    value: "Tourism"
-  }];
+  var allAcademicLevels = AcademicLevels.allAcademicLevels;
+  var PaperTypes = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.paperTypes;
+  });
+  var allPaperTypes = PaperTypes.allPaperTypes;
+  var SubjectAreas = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.subjectAreas;
+  });
+  var allSubjectAreas = SubjectAreas.allSubjectAreas;
   var paperFormats = [{
     name: "AMA",
     value: "AMA"
@@ -8371,12 +8408,13 @@ var Orders = function Orders() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchAcademicLevels)());
-
     if (!clientAuth) {
       hist.push("/client");
     }
 
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchAcademicLevels)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchPaperTypes)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchSubjectAreas)());
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Place Order';
   }, [clientAuth]);
@@ -8406,28 +8444,60 @@ var Orders = function Orders() {
               placeholder: "Paper Topic",
               onChange: Formik.handleChange,
               errors: Formik.errors.topic && Formik.touched.topic && Formik.errors.topic
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
-              labelText: "Type of Paper",
-              onBlur: Formik.handleBlur,
-              selectName: "paper-type",
-              selectID: "paper-type",
-              selectOptions: paperTypes,
-              value: Formik.values.typeOfPaper,
-              onChange: Formik.handleChange,
-              errors: Formik.errors.typeOfPaper && Formik.touched.typeOfPaper && Formik.errors.typeOfPaper
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
-              labelText: "Subject Area",
-              onBlur: Formik.handleBlur,
-              selectName: "subject-area",
-              selectID: "subject-area",
-              value: Formik.values.subjectArea,
-              selectOptions: subjectAreas,
-              onChange: Formik.handleChange,
-              errors: Formik.errors.subjectArea && Formik.touched.subjectArea && Formik.errors.subjectArea
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                children: "Type of Paper"
+              }), Formik.errors.typeOfPaper && Formik.touched.typeOfPaper && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "field-errors",
+                children: Formik.errors.typeOfPaper
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
+                name: "typeOfPaper",
+                id: "paper-type",
+                onBlur: Formik.handleBlur,
+                value: Formik.values.typeOfPaper,
+                onChange: Formik.handleChange,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Choose Type of Paper"
+                }), allPaperTypes.map(function (opt) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                    value: opt.type_name,
+                    children: opt.type_name
+                  });
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                children: "Subject Area"
+              }), Formik.errors.subjectArea && Formik.touched.subjectArea && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "field-errors",
+                children: Formik.errors.subjectArea
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
+                name: "subjectArea",
+                id: "subject-area",
+                onBlur: Formik.handleBlur,
+                value: Formik.values.subjectArea,
+                onChange: Formik.handleChange,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Choose Subject Area"
+                }), allSubjectAreas.map(function (opt) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                    value: opt.area_name,
+                    children: opt.area_name
+                  });
+                })]
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.TextAreaInputField, {
               labelText: "Paper Details",
               onBlur: Formik.handleBlur,
-              textareaName: "message",
+              textareaName: "paperDetails",
               id: "message",
               rows: "5",
               placeholder: "Provide detailed additional information about your assignment",
@@ -8447,7 +8517,7 @@ var Orders = function Orders() {
                 parentClasses: "w-full sm:w-2/5",
                 onBlur: Formik.handleBlur,
                 labelText: "Paper Format",
-                selectName: "paper-format",
+                selectName: "paperFormat",
                 selectID: "paper-format",
                 value: Formik.values.paperFormat,
                 selectOptions: paperFormats,
@@ -8457,7 +8527,7 @@ var Orders = function Orders() {
                 parentClasses: "w-full sm:w-2/5",
                 onBlur: Formik.handleBlur,
                 labelText: "Preferred English",
-                selectName: "preferred-english",
+                selectName: "prefEnglish",
                 selectID: "preferred-english",
                 value: Formik.values.prefEnglish,
                 selectOptions: prefEnglish,
@@ -8471,7 +8541,7 @@ var Orders = function Orders() {
                 parentClasses: "w-full sm:w-2/5",
                 onBlur: Formik.handleBlur,
                 labelText: "Number of sources",
-                name: "number-of-sources",
+                name: "numOfSources",
                 id: "number-of-sources",
                 value: Formik.values.numOfSources,
                 onChange: Formik.handleChange,
@@ -8495,7 +8565,7 @@ var Orders = function Orders() {
                 className: "field-errors",
                 children: Formik.errors.academicLevel
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
-                name: "academic-level",
+                name: "academicLevel",
                 id: "academic-level",
                 onBlur: Formik.handleBlur,
                 value: Formik.values.academicLevel,
@@ -8516,7 +8586,7 @@ var Orders = function Orders() {
               type: "number",
               onBlur: Formik.handleBlur,
               labelText: "Number of Pages",
-              name: "number-of-pages",
+              name: "numberOfPages",
               id: "number-of-pages",
               value: Formik.values.numberOfPages,
               onChange: Formik.handleChange,

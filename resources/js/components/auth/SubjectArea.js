@@ -56,19 +56,6 @@ const SubjectArea = () => {
 
 
 
-    const areaActiveSelects = [
-        {
-            name : "Active",
-            value: true
-        },
-        {
-            name : "Inactive",
-            value: false
-        },
-    ]
-
-
-
     const deleteSubjectArea = async (id) =>{
 
         setLocalLoad(true)

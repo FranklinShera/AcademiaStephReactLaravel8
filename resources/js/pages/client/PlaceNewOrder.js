@@ -13,7 +13,12 @@ import ClientLayout from '../../components/client/ClientLayout'
 //actions
 import {  logoutUser } from '../../actions/AuthUserActions'
 import {FileInputField, InputField, SelectInputField, TextAreaInputField} from "../../config/FormElements";
-import {fetchAcademicLevels} from "../../actions/OrderActions";
+import {
+    adminFetchPaperTypes,
+    fetchAcademicLevels,
+    fetchPaperTypes,
+    fetchSubjectAreas
+} from "../../actions/OrderActions";
 
 
 
@@ -29,106 +34,18 @@ const Orders = () => {
 
 
     const AcademicLevels = useSelector( state => state.academicLevels)
+    const { allAcademicLevels  } = AcademicLevels;
 
 
-    const { allAcademicLevels , loading } = AcademicLevels;
+    const PaperTypes = useSelector( state => state.paperTypes)
+    const { allPaperTypes } = PaperTypes;
 
-    const paperTypes = [
-        {
-            name : "Annotated Bibliography",
-            value: "Annotated Bibliography"
-        },
-        {
-            name : "Admission essay",
-            value: "Admission essay"
-        }
-        ,
-        {
-            name : "Book Review/Report",
-            value: "Book Review/Report"
-        }
-        ,
-        {
-            name : "Creative Writing",
-            value: "Creative Writing"
-        }
-        ,
-        {
-            name : "Scholarship Essay",
-            value: "Scholarship Essay"
-        }
-        ,
-        {
-            name : "Summary",
-            value: "Summary"
-        }
-        ,
-        {
-            name : "Discussion Board Forums",
-            value: "Discussion Board Forums"
-        }
-        ,
-        {
-            name : "Capstone Project",
-            value: "Capstone Project"
-        }
-        ,
-        {
-            name : "Argumentative Essay",
-            value: "Argumentative Essay"
-        }
-    ]
 
-    const subjectAreas = [
-        {
-            name : "Accounting",
-            value: "Accounting"
-        },
-        {
-            name : "Agriculture",
-            value: "Agriculture"
-        }
-        ,
-        {
-            name : "Anthropology",
-            value: "Anthropology"
-        }
-        ,
-        {
-            name : "Chemistry",
-            value: "Chemistry"
-        }
-        ,
-        {
-            name : "Business Studies",
-            value: "Business Studies"
-        }
-        ,
-        {
-            name : "Ecology",
-            value: "Ecology"
-        }
-        ,
-        {
-            name : "Criminal law",
-            value: "Criminal law"
-        }
-        ,
-        {
-            name : "Linguistics",
-            value: "Linguistics"
-        }
-        ,
-        {
-            name : "Public Administration",
-            value: "Public Administration"
-        }
-        ,
-        {
-            name : "Tourism",
-            value: "Tourism"
-        }
-    ]
+    const SubjectAreas = useSelector( state => state.subjectAreas)
+    const { allSubjectAreas } = SubjectAreas;
+
+
+
 
     const paperFormats = [
         {
@@ -363,12 +280,14 @@ const Orders = () => {
 
     useEffect(() => {
 
-        dispatch(fetchAcademicLevels())
-
-
         if(!clientAuth){
             hist.push("/client")
         }
+
+        dispatch(fetchAcademicLevels())
+        dispatch(fetchPaperTypes())
+        dispatch(fetchSubjectAreas())
+
 
         window.scrollTo(0,0)
 
@@ -399,31 +318,48 @@ const Orders = () => {
 
 
 
-                         <SelectInputField labelText="Type of Paper"
-                                           onBlur={Formik.handleBlur}
-                                           selectName="paper-type"
-                                           selectID="paper-type"
-                                           selectOptions={paperTypes}
-                                           value={Formik.values.typeOfPaper}
-                                           onChange={Formik.handleChange}
-                                            errors={(Formik.errors.typeOfPaper && Formik.touched.typeOfPaper) && Formik.errors.typeOfPaper }
-                         />
+                         <div className='input-group'>
+                             <label >Type of Paper</label>
+                             {(Formik.errors.typeOfPaper && Formik.touched.typeOfPaper) && <div className="field-errors">{Formik.errors.typeOfPaper}</div>}
+                             <select name="typeOfPaper"
+                                     id="paper-type"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.typeOfPaper}
+                                     onChange={Formik.handleChange}>
+                                 <option value='' selected disabled>Choose Type of Paper</option>
+
+                                 {allPaperTypes.map((opt) => (
+                                     <option value={opt.type_name} >{opt.type_name}</option>
+                                 ))}
+
+                             </select>
+                         </div>
 
 
-                         <SelectInputField labelText="Subject Area"
-                                           onBlur={Formik.handleBlur}
-                                           selectName="subject-area"
-                                           selectID="subject-area"
-                                           value={Formik.values.subjectArea}
-                                           selectOptions={subjectAreas}
-                                           onChange={Formik.handleChange}
-                                           errors= {(Formik.errors.subjectArea && Formik.touched.subjectArea) && Formik.errors.subjectArea }
-                         />
+
+                         <div className='input-group'>
+                             <label >Subject Area</label>
+                             {(Formik.errors.subjectArea && Formik.touched.subjectArea) && <div className="field-errors">{Formik.errors.subjectArea}</div>}
+                             <select name="subjectArea"
+                                     id="subject-area"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.subjectArea}
+                                     onChange={Formik.handleChange}>
+                                 <option value='' selected disabled>Choose Subject Area</option>
+
+                                 {allSubjectAreas.map((opt) => (
+                                     <option value={opt.area_name} >{opt.area_name}</option>
+                                 ))}
+
+                             </select>
+                         </div>
 
 
                          <TextAreaInputField labelText='Paper Details'
                                              onBlur={Formik.handleBlur}
-                                             textareaName='message' id='message' rows='5'
+                                             textareaName='paperDetails'
+                                             id='message'
+                                             rows='5'
                                              placeholder='Provide detailed additional information about your assignment'
                                              value={Formik.values.paperDetails}
                                              onChange={Formik.handleChange}
@@ -443,7 +379,7 @@ const Orders = () => {
                              <SelectInputField parentClasses="w-full sm:w-2/5"
                                                onBlur={Formik.handleBlur}
                                                labelText="Paper Format"
-                                               selectName="paper-format"
+                                               selectName="paperFormat"
                                                selectID="paper-format"
                                                value={Formik.values.paperFormat}
                                                selectOptions={paperFormats}
@@ -455,7 +391,7 @@ const Orders = () => {
                              <SelectInputField parentClasses="w-full sm:w-2/5"
                                                onBlur={Formik.handleBlur}
                                                labelText="Preferred English"
-                                               selectName="preferred-english"
+                                               selectName="prefEnglish"
                                                selectID="preferred-english"
                                                value={Formik.values.prefEnglish}
                                                selectOptions={prefEnglish}
@@ -473,7 +409,7 @@ const Orders = () => {
                                          parentClasses="w-full sm:w-2/5"
                                          onBlur={Formik.handleBlur}
                                          labelText="Number of sources"
-                                         name="number-of-sources"
+                                         name="numOfSources"
                                          id="number-of-sources"
                                          value={Formik.values.numOfSources}
                                          onChange={Formik.handleChange}
@@ -499,7 +435,7 @@ const Orders = () => {
                          <div className='input-group'>
                              <label >Academic Level</label>
                              {(Formik.errors.academicLevel && Formik.touched.academicLevel) && <div className="field-errors">{Formik.errors.academicLevel}</div>}
-                             <select name="academic-level"
+                             <select name="academicLevel"
                                      id="academic-level"
                                      onBlur={Formik.handleBlur}
                                      value={Formik.values.academicLevel}
@@ -518,7 +454,7 @@ const Orders = () => {
                          <InputField type="number"
                                      onBlur={Formik.handleBlur}
                                      labelText="Number of Pages"
-                                     name="number-of-pages"
+                                     name="numberOfPages"
                                      id="number-of-pages"
                                      value={Formik.values.numberOfPages}
                                      onChange={Formik.handleChange}

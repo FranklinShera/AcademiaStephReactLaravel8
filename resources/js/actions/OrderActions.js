@@ -46,6 +46,8 @@ export const fetchAcademicLevels = () => async (dispatch) => {
     }
 }
 
+
+
 export const adminFetchAcademicLevels = (levelUrl = '/api/auth/admin/academic-levels') => async (dispatch) => {
 
 
@@ -102,6 +104,34 @@ export const adminFetchPaperTypes = (paperTypeUrl = '/api/auth/admin/paper-types
 
 
 
+export const fetchPaperTypes = () => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_PAPER_TYPES })
+
+        const { data } = await axios.get('/api/paper-types')
+
+
+        dispatch({
+            type: REQUEST_PAPER_TYPES_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_PAPER_TYPES_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
 
 
 
@@ -115,6 +145,39 @@ export const adminFetchSubjectAreas = (subjectAreaUrl = '/api/auth/admin/subject
         dispatch({ type: REQUEST_SUBJECT_AREAS })
 
         const { data } = await axios.get(subjectAreaUrl)
+
+
+        dispatch({
+            type: REQUEST_SUBJECT_AREAS_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_SUBJECT_AREAS_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
+
+
+
+
+export const fetchSubjectAreas = () => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_SUBJECT_AREAS })
+
+        const { data } = await axios.get('/api/subject-areas')
 
 
         dispatch({

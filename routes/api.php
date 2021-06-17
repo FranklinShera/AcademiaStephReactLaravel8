@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/reviews', [CustomerReviewController::class , 'index']);
 Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
+Route::get('/paper-types' , [PaperTypeController::class , 'index']);
+Route::get('/subject-areas' , [SubjectAreaController::class , 'index']);
 
 
 //CLIENT
