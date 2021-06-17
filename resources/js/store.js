@@ -6,7 +6,12 @@ import { reviewsListReducer } from './reducers/reviewsListReducers'
 
 import { AuthUserReducer,AuthClientReducer,RegisterUserReducer, AdminPanelReducer } from './reducers/AuthUserReducers'
 
-import {ClientOrdersReducer, OrderAcademicLevelsReducer, OrderPaperTypesReducer} from './reducers/OrderReducers'
+import {
+    ClientOrdersReducer,
+    OrderAcademicLevelsReducer,
+    OrderPaperTypesReducer,
+    OrderSubjectAreaReducer
+} from './reducers/OrderReducers'
 
 const reducer =  combineReducers({
     reviewList: reviewsListReducer,
@@ -16,6 +21,7 @@ const reducer =  combineReducers({
     adminPanel: AdminPanelReducer,
     academicLevels: OrderAcademicLevelsReducer,
     paperTypes: OrderPaperTypesReducer,
+    subjectAreas: OrderSubjectAreaReducer,
     clientOrders: ClientOrdersReducer
 })
 

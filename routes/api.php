@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperTypeController;
+use App\Http\Controllers\SubjectAreaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,13 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/user' , [AuthController::class , 'profile']);
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
+
+
+
+            //  Subject Area Routes
+            Route::get('/subject-areas' , [SubjectAreaController::class , 'adminIndex']);
+            Route::post('/subject-area' , [SubjectAreaController::class , 'create']);
+            Route::delete('/subject-area/{subjectArea}' , [SubjectAreaController::class , 'destroy']);
 
 
 

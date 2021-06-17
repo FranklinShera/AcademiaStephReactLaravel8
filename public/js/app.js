@@ -2762,6 +2762,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchAcademicLevels": () => (/* binding */ fetchAcademicLevels),
 /* harmony export */   "adminFetchAcademicLevels": () => (/* binding */ adminFetchAcademicLevels),
 /* harmony export */   "adminFetchPaperTypes": () => (/* binding */ adminFetchPaperTypes),
+/* harmony export */   "adminFetchSubjectAreas": () => (/* binding */ adminFetchSubjectAreas),
 /* harmony export */   "ClientFetchOrders": () => (/* binding */ ClientFetchOrders)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
@@ -2921,7 +2922,8 @@ var adminFetchPaperTypes = function adminFetchPaperTypes() {
     };
   }();
 };
-var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+var adminFetchSubjectAreas = function adminFetchSubjectAreas() {
+  var subjectAreaUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/subject-areas';
   return /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
       var _yield$axios$get4, data;
@@ -2932,16 +2934,16 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
             case 0:
               _context4.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS
               });
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(subjectAreaUrl);
 
             case 4:
               _yield$axios$get4 = _context4.sent;
               data = _yield$axios$get4.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_SUCCESS,
                 payload: data
               });
               _context4.next = 12;
@@ -2951,7 +2953,7 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
               _context4.prev = 9;
               _context4.t0 = _context4["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_SUBJECT_AREAS_FAIL,
                 error: _context4.t0
               });
 
@@ -2965,6 +2967,53 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
 
     return function (_x4) {
       return _ref4.apply(this, arguments);
+    };
+  }();
+};
+var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+  return /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
+      var _yield$axios$get5, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+              });
+              _context5.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+
+            case 4:
+              _yield$axios$get5 = _context5.sent;
+              data = _yield$axios$get5.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                payload: data
+              });
+              _context5.next = 12;
+              break;
+
+            case 9:
+              _context5.prev = 9;
+              _context5.t0 = _context5["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                error: _context5.t0
+              });
+
+            case 12:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 9]]);
+    }));
+
+    return function (_x5) {
+      return _ref5.apply(this, arguments);
     };
   }();
 };
@@ -4617,7 +4666,7 @@ var PaperType = function PaperType() {
       active: false
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
-      type_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Level Cannot Be Less Than 3 Characters').max(32, 'Level Cannot be More than 32 Characters').required('Level is Required!')
+      type_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Type Name Cannot Be Less Than 3 Characters').max(32, 'Type Name Cannot be More than 32 Characters').required('Type Name is Required!')
     }),
     onSubmit: function onSubmit(values, _ref) {
       var setSubmitting = _ref.setSubmitting,
@@ -4632,7 +4681,7 @@ var PaperType = function PaperType() {
       setSubmitting(false);
     }
   });
-  var levelActiveSelects = [{
+  var typeActiveSelects = [{
     name: "Active",
     value: true
   }, {
@@ -4809,7 +4858,7 @@ var PaperType = function PaperType() {
           selectName: "active",
           value: formik.values.active,
           selectID: "active",
-          selectOptions: levelActiveSelects,
+          selectOptions: typeActiveSelects,
           onChange: formik.handleChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
@@ -4991,14 +5040,320 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _DotLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DotLoader */ "./resources/js/components/DotLoader.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
 
 
 
 var SubjectArea = function SubjectArea() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "SUBJECT AREA"
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
+  var SubjectAreas = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
+    return state.subjectAreas;
+  });
+  var allSubjectAreas = SubjectAreas.allSubjectAreas,
+      loading = SubjectAreas.loading,
+      meta = SubjectAreas.meta,
+      links = SubjectAreas.links;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      areaChange = _useState2[0],
+      setAreaChange = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      localLoad = _useState4[0],
+      setLocalLoad = _useState4[1];
+
+  var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
+    initialValues: {
+      area_name: '',
+      active: false
+    },
+    validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
+      area_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Subject Area Cannot Be Less Than 3 Characters').max(32, 'Subject Area Cannot be More than 32 Characters').required('Subject Area is Required!')
+    }),
+    onSubmit: function onSubmit(values, _ref) {
+      var setSubmitting = _ref.setSubmitting,
+          resetForm = _ref.resetForm;
+      addSubjectArea(values);
+      resetForm({
+        values: {
+          area_name: '',
+          active: false
+        }
+      });
+      setSubmitting(false);
+    }
+  });
+  var areaActiveSelects = [{
+    name: "Active",
+    value: true
+  }, {
+    name: "Inactive",
+    value: false
+  }];
+
+  var deleteSubjectArea = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setLocalLoad(true);
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().delete('/api/auth/admin/subject-area/' + id);
+
+            case 3:
+              res = _context.sent;
+
+              if (res.status == 200) {
+                window.Toast.fire({
+                  icon: 'success',
+                  title: res.data.message
+                });
+              } else {
+                window.Toast.fire({
+                  icon: 'error',
+                  title: res.data.message
+                });
+              }
+
+              setLocalLoad(false);
+              setAreaChange(Date.now());
+
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function deleteSubjectArea(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var addSubjectArea = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(subjectAreaForm) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              setLocalLoad(true);
+              axios__WEBPACK_IMPORTED_MODULE_8___default().post('/api/auth/admin/subject-area', subjectAreaForm).then(function (res) {
+                if (res.status == 201) {
+                  window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                  });
+                } else {
+                  window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                  });
+                }
+              })["catch"](function (error) {
+                window.Swal.fire({
+                  icon: 'error',
+                  title: error
+                });
+              });
+              setLocalLoad(false);
+              setAreaChange(Date.now());
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addSubjectArea(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)());
+  }, [areaChange]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    className: "academic--level--group",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      className: "academic--levels",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "levels--table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "level--table--header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "level",
+            children: "SUBJECT AREA"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "status",
+            children: "STATUS"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "levels--table--body",
+          children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allSubjectAreas.map(function (subarea, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "academic--level",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "level",
+                children: [index + 1 + ".", "  ", subarea.area_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "status",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                  className: "active-state",
+                  children: subarea.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "ACTIVE"
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "INACTIVE"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                  className: "academic--level--actions",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      deleteSubjectArea(subarea.id);
+                    },
+                    className: "h-6 cursor-pointer ",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    xmlnsXlink: "http://www.w3.org/1999/xlink",
+                    viewBox: "0 0 32 32",
+                    fill: "#FF0000",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("path", {
+                      d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
+                      fill: "#FF0000"
+                    })
+                  })
+                })]
+              })]
+            }, index);
+          }), allSubjectAreas.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            className: "no--levels",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+              children: "We Could'nt Find Any Subject Areas!"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
+              children: "Please Try Adding More!"
+            })]
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      className: "new--academic--level",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+        action: "",
+        onSubmit: formik.handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
+          labelText: "Subject Area Name",
+          name: "area_name",
+          type: "text",
+          onBlur: formik.handleBlur,
+          value: formik.values.area_name,
+          placeholder: "Subject Area Name...",
+          onChange: formik.handleChange
+        }), formik.errors.area_name && formik.touched.area_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          className: "text-xs text-red-600",
+          children: formik.errors.area_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.SelectInputField, {
+          labelText: "Status",
+          selectName: "active",
+          value: formik.values.active,
+          selectID: "active",
+          selectOptions: areaActiveSelects,
+          onChange: formik.handleChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
+          type: "submit",
+          className: "w-full mt-6 btn-blue font-bold",
+          children: [" ", localLoad ? 'Adding' : 'Add Subject Area']
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "levels--links--meta",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+            className: "meta--info--value",
+            children: [meta.current_page, "  Of ", meta.last_page]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Total Items", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "meta--info--value",
+            children: meta.total
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "links--fetch",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)(links.prev));
+            },
+            children: "PREV"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)(links.first));
+            },
+            children: "FIRST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)(links.last));
+            },
+            children: "LAST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)(links.next));
+            },
+            children: "NEXT"
+          })]
+        })]
+      })]
+    })]
   });
 };
 
@@ -5257,6 +5612,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "REQUEST_PAPER_TYPES": () => (/* binding */ REQUEST_PAPER_TYPES),
 /* harmony export */   "REQUEST_PAPER_TYPES_SUCCESS": () => (/* binding */ REQUEST_PAPER_TYPES_SUCCESS),
 /* harmony export */   "REQUEST_PAPER_TYPES_FAIL": () => (/* binding */ REQUEST_PAPER_TYPES_FAIL),
+/* harmony export */   "REQUEST_SUBJECT_AREAS": () => (/* binding */ REQUEST_SUBJECT_AREAS),
+/* harmony export */   "REQUEST_SUBJECT_AREAS_SUCCESS": () => (/* binding */ REQUEST_SUBJECT_AREAS_SUCCESS),
+/* harmony export */   "REQUEST_SUBJECT_AREAS_FAIL": () => (/* binding */ REQUEST_SUBJECT_AREAS_FAIL),
 /* harmony export */   "REQUEST_CLIENT_ORDERS": () => (/* binding */ REQUEST_CLIENT_ORDERS),
 /* harmony export */   "CLIENT_ORDERS_SUCCESS": () => (/* binding */ CLIENT_ORDERS_SUCCESS),
 /* harmony export */   "CLIENT_ORDERS_FAIL": () => (/* binding */ CLIENT_ORDERS_FAIL)
@@ -5267,6 +5625,9 @@ var REQUEST_ACADEMIC_LEVELS_FAIL = 'REQUEST_ACADEMIC_LEVELS_FAIL';
 var REQUEST_PAPER_TYPES = 'REQUEST_PAPER_TYPES';
 var REQUEST_PAPER_TYPES_SUCCESS = 'REQUEST_PAPER_TYPES_SUCCESS';
 var REQUEST_PAPER_TYPES_FAIL = 'REQUEST_PAPER_TYPES_FAIL';
+var REQUEST_SUBJECT_AREAS = 'REQUEST_SUBJECT_AREAS';
+var REQUEST_SUBJECT_AREAS_SUCCESS = 'REQUEST_SUBJECT_AREAS_SUCCESS';
+var REQUEST_SUBJECT_AREAS_FAIL = 'REQUEST_SUBJECT_AREAS_FAIL';
 var REQUEST_CLIENT_ORDERS = 'REQUEST_CLIENT_ORDERS';
 var CLIENT_ORDERS_SUCCESS = 'CLIENT_ORDERS_SUCCESS';
 var CLIENT_ORDERS_FAIL = 'CLIENT_ORDERS_FAIL';
@@ -8531,6 +8892,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OrderAcademicLevelsReducer": () => (/* binding */ OrderAcademicLevelsReducer),
 /* harmony export */   "OrderPaperTypesReducer": () => (/* binding */ OrderPaperTypesReducer),
+/* harmony export */   "OrderSubjectAreaReducer": () => (/* binding */ OrderSubjectAreaReducer),
 /* harmony export */   "ClientOrdersReducer": () => (/* binding */ ClientOrdersReducer)
 /* harmony export */ });
 /* harmony import */ var _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/OrderConstants */ "./resources/js/constants/OrderConstants.js");
@@ -8596,6 +8958,41 @@ var OrderPaperTypesReducer = function OrderPaperTypesReducer() {
       };
 
     case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_TYPES_FAIL:
+      return {
+        loading: false,
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+};
+var OrderSubjectAreaReducer = function OrderSubjectAreaReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    allSubjectAreas: [],
+    links: {},
+    meta: {}
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_SUBJECT_AREAS:
+      return {
+        loading: true,
+        allSubjectAreas: [],
+        links: {},
+        meta: {}
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_SUBJECT_AREAS_SUCCESS:
+      return {
+        loading: false,
+        allSubjectAreas: action.payload.data,
+        links: action.payload.links,
+        meta: action.payload.meta
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_SUBJECT_AREAS_FAIL:
       return {
         loading: false,
         error: action.payload
@@ -8719,6 +9116,7 @@ var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   adminPanel: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AdminPanelReducer,
   academicLevels: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderAcademicLevelsReducer,
   paperTypes: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderPaperTypesReducer,
+  subjectAreas: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderSubjectAreaReducer,
   clientOrders: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.ClientOrdersReducer
 });
 var initialState = {};

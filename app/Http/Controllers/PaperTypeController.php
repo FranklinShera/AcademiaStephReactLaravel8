@@ -14,9 +14,9 @@ class PaperTypeController extends Controller
     public function index()
     {
 
-        $adminPaperTypes = PaperType::active()->orderBy('created_at', 'DESC')->paginate(10);
+        $paperTypes = PaperType::active()->orderBy('created_at', 'DESC')->paginate(10);
 
-        return PaperTypeResource::collection($adminPaperTypes)->response()->setStatusCode(Response::HTTP_OK);
+        return PaperTypeResource::collection($paperTypes)->response()->setStatusCode(Response::HTTP_OK);
 
     }
 
@@ -38,7 +38,7 @@ class PaperTypeController extends Controller
     {
 
         $data = $request->validate([
-            'level_name' => 'required|string|min:5',
+            'type_name' => 'required|string|min:5',
             'active' => 'required'
         ]);
 
@@ -55,12 +55,8 @@ class PaperTypeController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PaperType  $paperType
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function show(PaperType $paperType)
     {
         //

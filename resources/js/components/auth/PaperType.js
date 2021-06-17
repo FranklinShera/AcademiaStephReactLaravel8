@@ -33,9 +33,9 @@ const PaperType = () => {
         },
         validationSchema:Yup.object({
             type_name: Yup.string()
-                .min(3 , 'Level Cannot Be Less Than 3 Characters')
-                .max(32, 'Level Cannot be More than 32 Characters')
-                .required('Level is Required!')
+                .min(3 , 'Type Name Cannot Be Less Than 3 Characters')
+                .max(32, 'Type Name Cannot be More than 32 Characters')
+                .required('Type Name is Required!')
         }),
         onSubmit: (values, { setSubmitting , resetForm }) => {
 
@@ -55,7 +55,7 @@ const PaperType = () => {
 
 
 
-    const levelActiveSelects = [
+    const typeActiveSelects = [
         {
             name : "Active",
             value: true
@@ -212,7 +212,7 @@ const PaperType = () => {
                     <InputField labelText='Paper Type Name' name="type_name" type='text' onBlur={formik.handleBlur} value={formik.values.type_name} placeholder="Paper Type Name..." onChange={formik.handleChange}/>
                     {(formik.errors.type_name && formik.touched.type_name) && <div className="text-xs text-red-600">{formik.errors.type_name}</div>}
 
-                    <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>
+                    <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={typeActiveSelects} onChange={formik.handleChange}/>
                     <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Paper Type'}</button>
 
                 </form>

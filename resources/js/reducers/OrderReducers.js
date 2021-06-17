@@ -6,7 +6,11 @@ import {
     CLIENT_ORDERS_SUCCESS,
     CLIENT_ORDERS_FAIL,
     REQUEST_PAPER_TYPES,
-    REQUEST_PAPER_TYPES_SUCCESS, REQUEST_PAPER_TYPES_FAIL,
+    REQUEST_PAPER_TYPES_SUCCESS,
+    REQUEST_PAPER_TYPES_FAIL,
+    REQUEST_SUBJECT_AREAS,
+    REQUEST_SUBJECT_AREAS_SUCCESS,
+    REQUEST_SUBJECT_AREAS_FAIL,
 } from '../constants/OrderConstants'
 
 
@@ -47,6 +51,31 @@ export const OrderPaperTypesReducer = (state = { allPaperTypes: [], links:{} , m
             return state
     }
 }
+
+
+
+
+
+export const OrderSubjectAreaReducer = (state = { allSubjectAreas: [], links:{} , meta:{}} , action) => {
+    switch(action.type){
+
+        case REQUEST_SUBJECT_AREAS:
+            return { loading: true , allSubjectAreas: [] , links:{} , meta:{} }
+
+
+        case REQUEST_SUBJECT_AREAS_SUCCESS:
+
+            return { loading: false ,  allSubjectAreas: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
+
+        case REQUEST_SUBJECT_AREAS_FAIL:
+            return { loading: false , error: action.payload }
+        default:
+            return state
+    }
+}
+
+
+
 
 
 export const ClientOrdersReducer = (state = { orders: [], links:{} , meta:{}} , action) => {
