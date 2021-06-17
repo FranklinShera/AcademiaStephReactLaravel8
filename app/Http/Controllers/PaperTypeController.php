@@ -57,9 +57,17 @@ class PaperTypeController extends Controller
 
 
 
-    public function show(PaperType $paperType)
+
+
+    public function toggleStatus(PaperType $paperType)
     {
-        //
+        if($paperType->update([ 'active' => !$paperType->active])){
+
+            return response()->json(['message' => $paperType->type_name." Status Updated!"] ,Response::HTTP_OK);
+
+        }
+
+        return response()->json(['message' =>"Unable To Update Status!"] , Response::HTTP_BAD_REQUEST);
     }
 
 

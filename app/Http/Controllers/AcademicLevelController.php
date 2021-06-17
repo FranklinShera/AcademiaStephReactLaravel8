@@ -40,9 +40,15 @@ class AcademicLevelController extends Controller
     }
 
 
-    public function show(AcademicLevel $academicLevel)
+    public function toggleStatus(AcademicLevel $academicLevel)
     {
-        //
+        if($academicLevel->update([ 'active' => !$academicLevel->active])){
+
+            return response()->json(['message' => $academicLevel->level_name." Status Updated!"] ,Response::HTTP_OK);
+
+        }
+
+        return response()->json(['message' =>"Unable To Update Status!"] , Response::HTTP_BAD_REQUEST);
     }
 
 

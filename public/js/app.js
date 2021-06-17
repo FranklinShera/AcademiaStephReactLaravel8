@@ -4243,13 +4243,6 @@ var AcademicLevel = function AcademicLevel() {
     value: false
   }];
 
-  var showModal = function showModal(aLevel) {
-    window.Toast.fire({
-      icon: 'success',
-      title: aLevel.level
-    });
-  };
-
   var deleteLevel = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
@@ -4292,6 +4285,30 @@ var AcademicLevel = function AcademicLevel() {
     };
   }();
 
+  var toggleStatus = function toggleStatus(id) {
+    setLocalLoad(true);
+    axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-level-toggle/' + id).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+      } else {
+        window.Swal.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (error) {
+      window.Swal.fire({
+        icon: 'error',
+        title: error
+      });
+    });
+    setLocalLoad(false);
+    setLevelChange(Date.now());
+  };
+
   var addLevel = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(levelForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -4299,7 +4316,7 @@ var AcademicLevel = function AcademicLevel() {
           switch (_context2.prev = _context2.next) {
             case 0:
               setLocalLoad(true);
-              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-table--item--name', levelForm).then(function (res) {
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-level', levelForm).then(function (res) {
                 if (res.status == 201) {
                   window.Toast.fire({
                     icon: 'success',
@@ -4376,9 +4393,15 @@ var AcademicLevel = function AcademicLevel() {
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                     children: "INACTIVE"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
                   className: "table--item--actions",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
+                    className: "ti-exchange-vertical cursor-pointer ".concat(academicLevel.active ? 'text-palblue' : 'text-dark-1'),
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      toggleStatus(academicLevel.id);
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       deleteLevel(academicLevel.id);
@@ -4392,7 +4415,7 @@ var AcademicLevel = function AcademicLevel() {
                       d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
                       fill: "#FF0000"
                     })
-                  })
+                  })]
                 })]
               })]
             }, index);
@@ -4653,7 +4676,7 @@ var PaperType = function PaperType() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       typeChange = _useState2[0],
-      setTypelChange = _useState2[1];
+      setTypeChange = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -4716,7 +4739,7 @@ var PaperType = function PaperType() {
               }
 
               setLocalLoad(false);
-              setTypelChange(Date.now());
+              setTypeChange(Date.now());
 
             case 7:
             case "end":
@@ -4730,6 +4753,30 @@ var PaperType = function PaperType() {
       return _ref2.apply(this, arguments);
     };
   }();
+
+  var toggleStatus = function toggleStatus(id) {
+    setLocalLoad(true);
+    axios__WEBPACK_IMPORTED_MODULE_8___default().post('/api/auth/admin/paper-type-toggle/' + id).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+      } else {
+        window.Swal.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (error) {
+      window.Swal.fire({
+        icon: 'error',
+        title: error
+      });
+    });
+    setLocalLoad(false);
+    setTypeChange(Date.now());
+  };
 
   var addPaperType = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(paperTypeForm) {
@@ -4757,7 +4804,7 @@ var PaperType = function PaperType() {
                 });
               });
               setLocalLoad(false);
-              setTypelChange(Date.now());
+              setTypeChange(Date.now());
 
             case 4:
             case "end":
@@ -4807,9 +4854,15 @@ var PaperType = function PaperType() {
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                     children: "INACTIVE"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
                   className: "table--item--actions",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
+                    className: "ti-exchange-vertical cursor-pointer ".concat(papertype.active ? 'text-palblue' : 'text-dark-1'),
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      toggleStatus(papertype.id);
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       deletePaperType(papertype.id);
@@ -4823,7 +4876,7 @@ var PaperType = function PaperType() {
                       d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
                       fill: "#FF0000"
                     })
-                  })
+                  })]
                 })]
               })]
             }, index);
@@ -5172,6 +5225,30 @@ var SubjectArea = function SubjectArea() {
     };
   }();
 
+  var toggleStatus = function toggleStatus(id) {
+    setLocalLoad(true);
+    axios__WEBPACK_IMPORTED_MODULE_8___default().post('/api/auth/admin/subject-area-toggle/' + id).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+      } else {
+        window.Swal.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (error) {
+      window.Swal.fire({
+        icon: 'error',
+        title: error
+      });
+    });
+    setLocalLoad(false);
+    setAreaChange(Date.now());
+  };
+
   var addSubjectArea = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(subjectAreaForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -5248,9 +5325,15 @@ var SubjectArea = function SubjectArea() {
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                     children: "INACTIVE"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
                   className: "table--item--actions",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
+                    className: "ti-exchange-vertical cursor-pointer ".concat(subarea.active ? 'text-palblue' : 'text-dark-1'),
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      toggleStatus(subarea.id);
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       deleteSubjectArea(subarea.id);
@@ -5264,7 +5347,7 @@ var SubjectArea = function SubjectArea() {
                       d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
                       fill: "#FF0000"
                     })
-                  })
+                  })]
                 })]
               })]
             }, index);

@@ -57,9 +57,15 @@ class SubjectAreaController extends Controller
 
 
 
-    public function show(SubjectArea $subjectArea)
+    public function toggleStatus(SubjectArea $subjectArea)
     {
-        //
+        if($subjectArea->update([ 'active' => !$subjectArea->active])){
+
+            return response()->json(['message' => $subjectArea->area_name." Status Updated!"] ,Response::HTTP_OK);
+
+        }
+
+        return response()->json(['message' =>"Unable To Update Status!"] , Response::HTTP_BAD_REQUEST);
     }
 
 

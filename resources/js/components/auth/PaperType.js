@@ -18,7 +18,7 @@ const PaperType = () => {
     const { allPaperTypes , loading , meta , links } = PaperTypes;
 
 
-    let[typeChange, setTypelChange] = useState(0)
+    let[typeChange, setTypeChange] = useState(0)
 
     const[localLoad,setLocalLoad] = useState(false)
 
@@ -92,9 +92,40 @@ const PaperType = () => {
 
         }
         setLocalLoad(false)
-        setTypelChange(Date.now())
+        setTypeChange(Date.now())
     }
 
+
+    const toggleStatus = (id) =>{
+
+        setLocalLoad(true)
+
+        axios.post('/api/auth/admin/paper-type-toggle/'+id).then(res =>{
+            if(res.status == 200){
+
+                window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                })
+
+            } else{
+                window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                })
+            }
+        }).catch(error => {
+            window.Swal.fire({
+                icon: 'error',
+                title: error
+            })
+        })
+
+
+
+        setLocalLoad(false)
+        setTypeChange(Date.now())
+    }
 
 
     const addPaperType = async (paperTypeForm) =>{
@@ -128,7 +159,7 @@ const PaperType = () => {
 
 
         setLocalLoad(false)
-        setTypelChange(Date.now())
+        setTypeChange(Date.now())
     }
 
 
@@ -176,6 +207,14 @@ const PaperType = () => {
                                         </span>
 
                                         <span className="table--item--actions">
+
+                                            <i className={`ti-exchange-vertical cursor-pointer ${ papertype.active ? 'text-palblue' : 'text-dark-1'}`}
+                                               onClick={(e) => {
+                                                   e.preventDefault()
+                                                   toggleStatus(papertype.id)
+                                               }}>
+
+                                             </i>
 
                                             <svg onClick={(e) => {
                                                 e.preventDefault()

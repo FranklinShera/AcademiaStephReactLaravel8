@@ -97,6 +97,37 @@ const SubjectArea = () => {
     }
 
 
+    const toggleStatus = (id) =>{
+
+        setLocalLoad(true)
+
+        axios.post('/api/auth/admin/subject-area-toggle/'+id).then(res =>{
+            if(res.status == 200){
+
+                window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                })
+
+            } else{
+                window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                })
+            }
+        }).catch(error => {
+            window.Swal.fire({
+                icon: 'error',
+                title: error
+            })
+        })
+
+
+
+        setLocalLoad(false)
+        setAreaChange(Date.now())
+    }
+
 
     const addSubjectArea = async (subjectAreaForm) =>{
 
@@ -177,7 +208,13 @@ const SubjectArea = () => {
                                         </span>
 
                                         <span className="table--item--actions">
+                                             <i className={`ti-exchange-vertical cursor-pointer ${ subarea.active ? 'text-palblue' : 'text-dark-1'}`}
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    toggleStatus(subarea.id)
+                                                }}>
 
+                                             </i>
                                             <svg onClick={(e) => {
                                                 e.preventDefault()
                                                 deleteSubjectArea(subarea.id)

@@ -81,6 +81,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             //  Subject Area Routes
             Route::get('/subject-areas' , [SubjectAreaController::class , 'adminIndex']);
             Route::post('/subject-area' , [SubjectAreaController::class , 'create']);
+            Route::post('/subject-area-toggle/{subjectArea}' , [SubjectAreaController::class , 'toggleStatus']);
             Route::delete('/subject-area/{subjectArea}' , [SubjectAreaController::class , 'destroy']);
 
 
@@ -88,13 +89,16 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             //  Paper Type Routes
             Route::get('/paper-types' , [PaperTypeController::class , 'adminIndex']);
             Route::post('/paper-type' , [PaperTypeController::class , 'create']);
+            Route::post('/paper-type-toggle/{paperType}' , [PaperTypeController::class , 'toggleStatus']);
             Route::delete('/paper-type/{paperType}' , [PaperTypeController::class , 'destroy']);
+
 
 
             //  Academic Level Routes
             Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
-            Route::post('/academic-table--item--name' , [AcademicLevelController::class , 'create']);
-            Route::delete('/academic-table--item--name/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
+            Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
+            Route::post('/academic-level-toggle/{academicLevel}' , [AcademicLevelController::class , 'toggleStatus']);
+            Route::delete('/academic-level/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
 
 
 
