@@ -142,41 +142,41 @@ const SubjectArea = () => {
     }, [areaChange])
 
     return (
-        <div className="academic--level--group">
-            <div className="academic--levels">
-                <div className="levels--table">
+        <div className="table-group">
+            <div className="core-table">
+                <div className="core--list--table">
 
-                    <div className="level--table--header">
+                    <div className="core--table--header">
 
 
-                        <div className="level">
+                        <div className="table--item--name">
                             SUBJECT AREA
                         </div>
 
-                        <div className="status">
+                        <div className="table--item--status">
                             STATUS
                         </div>
 
                     </div>
 
-                    <div className="levels--table--body">
+                    <div className="core--table--body">
 
 
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allSubjectAreas.map((subarea,index) => (
-                                <div className="academic--level" key={index}>
+                                <div className="table--item" key={index}>
 
-                                    <div className="level" >
+                                    <div className="table--item--name" >
                                         {index + 1 +"."}  {subarea.area_name}
                                     </div>
 
-                                    <div className="status">
+                                    <div className="table--item--status">
                                         <span className="active-state">
                                         { (subarea.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
 
-                                        <span className="academic--level--actions">
+                                        <span className="table--item--actions">
 
                                             <svg onClick={(e) => {
                                                 e.preventDefault()
@@ -195,7 +195,7 @@ const SubjectArea = () => {
 
 
                         {(allSubjectAreas.length == 0 && !loading) && (
-                            <div className="no--levels">
+                            <div className="no--table--items">
                                 <h1>We Could'nt Find Any Subject Areas!</h1>
                                 <p>Please Try Adding More!</p>
                             </div>
@@ -207,7 +207,7 @@ const SubjectArea = () => {
                 </div>
             </div>
 
-            <div className="new--academic--level">
+            <div className="new--table--item">
                 <form action="" onSubmit={formik.handleSubmit}>
 
                     <InputField labelText='Subject Area Name' name="area_name" type='text' onBlur={formik.handleBlur} value={formik.values.area_name} placeholder="Subject Area Name..." onChange={formik.handleChange}/>
@@ -217,7 +217,7 @@ const SubjectArea = () => {
                     <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Subject Area'}</button>
 
                 </form>
-                <div className="levels--links--meta">
+                <div className="table--links--meta">
 
 
                     <div className="meta--info">

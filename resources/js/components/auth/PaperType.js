@@ -141,41 +141,41 @@ const PaperType = () => {
     }, [typeChange])
 
     return (
-        <div className="academic--level--group">
-            <div className="academic--levels">
-                <div className="levels--table">
+        <div className="table-group">
+            <div className="core-table">
+                <div className="core--list--table">
 
-                    <div className="level--table--header">
+                    <div className="core--table--header">
 
 
-                        <div className="level">
+                        <div className="table--item--name">
                             PAPER TYPE
                         </div>
 
-                        <div className="status">
+                        <div className="table--item--status">
                             STATUS
                         </div>
 
                     </div>
 
-                    <div className="levels--table--body">
+                    <div className="core--table--body">
 
 
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allPaperTypes.map((papertype,index) => (
-                                <div className="academic--level" key={index}>
+                                <div className="table--item" key={index}>
 
-                                    <div className="level" >
+                                    <div className="table--item--name" >
                                         {index + 1 +"."}  {papertype.type_name}
                                     </div>
 
-                                    <div className="status">
+                                    <div className="table--item--status">
                                         <span className="active-state">
                                         { (papertype.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
 
-                                        <span className="academic--level--actions">
+                                        <span className="table--item--actions">
 
                                             <svg onClick={(e) => {
                                                 e.preventDefault()
@@ -194,7 +194,7 @@ const PaperType = () => {
 
 
                         {(allPaperTypes.length == 0 && !loading) && (
-                            <div className="no--levels">
+                            <div className="no--table--items">
                                 <h1>We Could'nt Find Any Paper Types!</h1>
                                 <p>Please Try Adding More!</p>
                             </div>
@@ -206,7 +206,7 @@ const PaperType = () => {
                 </div>
             </div>
 
-            <div className="new--academic--level">
+            <div className="new--table--item">
                 <form action="" onSubmit={formik.handleSubmit}>
 
                     <InputField labelText='Paper Type Name' name="type_name" type='text' onBlur={formik.handleBlur} value={formik.values.type_name} placeholder="Paper Type Name..." onChange={formik.handleChange}/>
@@ -216,7 +216,7 @@ const PaperType = () => {
                     <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Paper Type'}</button>
 
                 </form>
-                <div className="levels--links--meta">
+                <div className="table--links--meta">
 
 
                     <div className="meta--info">

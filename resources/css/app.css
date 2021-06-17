@@ -1148,33 +1148,33 @@ footer{
 /* academiclevel */
 
 
-.academic--level--group{
+.table-group{
     @apply flex;
 }
 
-.academic--levels{
+.core-table{
     @apply w-3/4 ;
 }
 
 
-.levels--table{
+.core--list--table{
     @apply p-4;
 }
 
 
-.level--table--header{
+.core--table--header{
     @apply flex py-2 border-b-2 border-palbrown;
     /* border-bottom: 2px #111111 solid; */
 
 }
 
-.level--table--header .level , .level--table--header .status {
+.core--table--header .table--item--name , .core--table--header .table--item--status {
     @apply w-1/2 font-bold;
 
 }
 
 
-.levels--table--body{
+.core--table--body{
     @apply flex flex-col;
 }
 
@@ -1182,27 +1182,27 @@ footer{
     @apply block;
 }
 
-.academic--level{
+.table--item{
     @apply flex px-4 my-1 rounded hover:border-gray-700 hover:bg-primary-4 hover:text-white;
     background: #6989ff22;
 }
 
 
-.academic--level .level{
+.table--item .table--item--name{
     @apply w-1/2 py-2 cursor-pointer;
 }
 
 
-.academic--level .status .active-state{
+.table--item .table--item--status .active-state{
     @apply  cursor-pointer;
 }
 
 
-.academic--level .status{
+.table--item .table--item--status{
     @apply flex items-center justify-between w-1/2 py-2;
 }
 
-.academic--level--actions{
+.table--item--actions{
     @apply flex justify-between w-10 p-1 bg-white rounded;
 
 }
@@ -1210,21 +1210,21 @@ footer{
 
 
 
-.new--academic--level{
+.new--table--item{
     @apply w-1/4 px-4 py-2;
 }
 
 
-.levels--links--meta{
+.table--links--meta{
     @apply mt-20;
 }
 
 
-.levels--links--meta .meta--info{
+.table--links--meta .meta--info{
     @apply flex justify-between my-2;
 }
 
-.levels--links--meta .meta--info .meta--info--value{
+.table--links--meta .meta--info .meta--info--value{
     @apply font-bold;
 }
 
@@ -1295,16 +1295,16 @@ footer{
 
 /* loader end */
 
-.no--levels{
+.no--table--items{
     @apply flex flex-col items-center justify-center;
     height: 30vh;
 }
 
-.no--levels h1{
+.no--table--items h1{
     @apply text-lg font-bold;
 
 }
-.no--levels p{
+.no--table--items p{
     @apply text-sm font-bold text-primary-3;
 
 }

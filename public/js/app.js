@@ -4259,7 +4259,7 @@ var AcademicLevel = function AcademicLevel() {
             case 0:
               setLocalLoad(true);
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/academic-level/' + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/academic-table--item--name/' + id);
 
             case 3:
               res = _context.sent;
@@ -4299,7 +4299,7 @@ var AcademicLevel = function AcademicLevel() {
           switch (_context2.prev = _context2.next) {
             case 0:
               setLocalLoad(true);
-              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-level', levelForm).then(function (res) {
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/academic-table--item--name', levelForm).then(function (res) {
                 if (res.status == 201) {
                   window.Toast.fire({
                     icon: 'success',
@@ -4337,34 +4337,34 @@ var AcademicLevel = function AcademicLevel() {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchAcademicLevels)());
   }, [levelChange]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-    className: "academic--level--group",
+    className: "table-group",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-      className: "academic--levels",
+      className: "core-table",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--table",
+        className: "core--list--table",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "level--table--header",
+          className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "level",
+            className: "table--item--name",
             children: "LEVEL"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "status",
+            className: "table--item--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "levels--table--body",
+          className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}) : allAcademicLevels.map(function (academicLevel, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "academic--level",
+              className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "level",
+                className: "table--item--name",
                 onClick: function onClick(e) {
                   e.preventDefault();
                   showModal(academicLevel);
                 },
                 children: [index + 1 + ".", "  ", academicLevel.level_name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "status",
+                className: "table--item--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   onClick: function onClick(e) {
@@ -4377,7 +4377,7 @@ var AcademicLevel = function AcademicLevel() {
                     children: "INACTIVE"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
-                  className: "academic--level--actions",
+                  className: "table--item--actions",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
@@ -4397,7 +4397,7 @@ var AcademicLevel = function AcademicLevel() {
               })]
             }, index);
           }), allAcademicLevels.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-            className: "no--levels",
+            className: "no--table--items",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
               children: "We Could'nt Find Any Levels!"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
@@ -4407,7 +4407,7 @@ var AcademicLevel = function AcademicLevel() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-      className: "new--academic--level",
+      className: "new--table--item",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         action: "",
         onSubmit: formik.handleSubmit,
@@ -4435,7 +4435,7 @@ var AcademicLevel = function AcademicLevel() {
           children: [" ", localLoad ? 'Adding' : 'Add Level']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--links--meta",
+        className: "table--links--meta",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "meta--info",
           children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
@@ -4776,30 +4776,30 @@ var PaperType = function PaperType() {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)());
   }, [typeChange]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-    className: "academic--level--group",
+    className: "table-group",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-      className: "academic--levels",
+      className: "core-table",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--table",
+        className: "core--list--table",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "level--table--header",
+          className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "level",
+            className: "table--item--name",
             children: "PAPER TYPE"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "status",
+            className: "table--item--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "levels--table--body",
+          className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allPaperTypes.map(function (papertype, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "academic--level",
+              className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "level",
+                className: "table--item--name",
                 children: [index + 1 + ".", "  ", papertype.type_name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "status",
+                className: "table--item--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   children: papertype.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -4808,7 +4808,7 @@ var PaperType = function PaperType() {
                     children: "INACTIVE"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
-                  className: "academic--level--actions",
+                  className: "table--item--actions",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
@@ -4828,7 +4828,7 @@ var PaperType = function PaperType() {
               })]
             }, index);
           }), allPaperTypes.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-            className: "no--levels",
+            className: "no--table--items",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
               children: "We Could'nt Find Any Paper Types!"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
@@ -4838,7 +4838,7 @@ var PaperType = function PaperType() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-      className: "new--academic--level",
+      className: "new--table--item",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         action: "",
         onSubmit: formik.handleSubmit,
@@ -4866,7 +4866,7 @@ var PaperType = function PaperType() {
           children: [" ", localLoad ? 'Adding' : 'Add Paper Type']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--links--meta",
+        className: "table--links--meta",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "meta--info",
           children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
@@ -5217,30 +5217,30 @@ var SubjectArea = function SubjectArea() {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchSubjectAreas)());
   }, [areaChange]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-    className: "academic--level--group",
+    className: "table-group",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-      className: "academic--levels",
+      className: "core-table",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--table",
+        className: "core--list--table",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "level--table--header",
+          className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "level",
+            className: "table--item--name",
             children: "SUBJECT AREA"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "status",
+            className: "table--item--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: "levels--table--body",
+          className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allSubjectAreas.map(function (subarea, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "academic--level",
+              className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "level",
+                className: "table--item--name",
                 children: [index + 1 + ".", "  ", subarea.area_name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "status",
+                className: "table--item--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   children: subarea.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -5249,7 +5249,7 @@ var SubjectArea = function SubjectArea() {
                     children: "INACTIVE"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
-                  className: "academic--level--actions",
+                  className: "table--item--actions",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
@@ -5269,7 +5269,7 @@ var SubjectArea = function SubjectArea() {
               })]
             }, index);
           }), allSubjectAreas.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-            className: "no--levels",
+            className: "no--table--items",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
               children: "We Could'nt Find Any Subject Areas!"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
@@ -5279,7 +5279,7 @@ var SubjectArea = function SubjectArea() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-      className: "new--academic--level",
+      className: "new--table--item",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         action: "",
         onSubmit: formik.handleSubmit,
@@ -5307,7 +5307,7 @@ var SubjectArea = function SubjectArea() {
           children: [" ", localLoad ? 'Adding' : 'Add Subject Area']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: "levels--links--meta",
+        className: "table--links--meta",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "meta--info",
           children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {

@@ -93,8 +93,8 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
             //  Academic Level Routes
             Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
-            Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
-            Route::delete('/academic-level/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
+            Route::post('/academic-table--item--name' , [AcademicLevelController::class , 'create']);
+            Route::delete('/academic-table--item--name/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
 
 
 

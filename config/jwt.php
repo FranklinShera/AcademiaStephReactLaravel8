@@ -200,7 +200,7 @@ return [
     |
     | This property gives the jwt timestamp claims some "leeway".
     | Meaning that if you have any unavoidable slight clock skew on
-    | any of your servers then this will afford you some level of cushioning.
+    | any of your servers then this will afford you some table--item--name of cushioning.
     |
     | This applies to the claims `iat`, `nbf` and `exp`.
     |

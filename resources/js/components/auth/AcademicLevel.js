@@ -89,7 +89,7 @@ const AcademicLevel = () => {
 
         setLocalLoad(true)
 
-        const res = await axios.delete('/api/auth/admin/academic-level/'+ id )
+        const res = await axios.delete('/api/auth/admin/academic-table--item--name/'+ id )
 
 
 
@@ -119,7 +119,7 @@ const AcademicLevel = () => {
         setLocalLoad(true)
 
 
-          axios.post('/api/auth/admin/academic-level' , levelForm).then(res =>{
+          axios.post('/api/auth/admin/academic-table--item--name' , levelForm).then(res =>{
                 if(res.status == 201){
 
                     window.Toast.fire({
@@ -157,39 +157,39 @@ useEffect(() => {
 
     return (
 
-       <div className="academic--level--group">
-           <div className="academic--levels">
-                <div className="levels--table">
+       <div className="table-group">
+           <div className="core-table">
+                <div className="core--list--table">
 
-                    <div className="level--table--header">
+                    <div className="core--table--header">
 
 
-                        <div className="level">
+                        <div className="table--item--name">
                             LEVEL
                         </div>
 
-                        <div className="status">
+                        <div className="table--item--status">
                             STATUS
                         </div>
 
                     </div>
 
-                    <div className="levels--table--body">
+                    <div className="core--table--body">
 
 
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allAcademicLevels.map((academicLevel,index) => (
-                                <div className="academic--level" key={index}>
+                                <div className="table--item" key={index}>
 
-                                <div className="level" onClick={(e) => {
+                                <div className="table--item--name" onClick={(e) => {
                                     e.preventDefault()
                                     showModal(academicLevel)
                                 }}>
                                       {index + 1 +"."}  {academicLevel.level_name}
                                     </div>
 
-                                    <div className="status">
+                                    <div className="table--item--status">
                                         <span className="active-state" onClick={(e) => {
                                             e.preventDefault()
                                             showModal(academicLevel)
@@ -197,7 +197,7 @@ useEffect(() => {
                                         { (academicLevel.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
 
-                                        <span className="academic--level--actions">
+                                        <span className="table--item--actions">
 
                                             <svg onClick={(e) => {
                                                 e.preventDefault()
@@ -216,7 +216,7 @@ useEffect(() => {
 
 
                        {(allAcademicLevels.length == 0 && !loading) && (
-                           <div className="no--levels">
+                           <div className="no--table--items">
                                <h1>We Could'nt Find Any Levels!</h1>
                                <p>Please Try Adding More!</p>
                             </div>
@@ -228,7 +228,7 @@ useEffect(() => {
                 </div>
            </div>
 
-           <div className="new--academic--level">
+           <div className="new--table--item">
                <form action="" onSubmit={formik.handleSubmit}>
 
                 <InputField labelText='Level' name="level_name" type='text' onBlur={formik.handleBlur} value={formik.values.level_name} placeholder="Academic Level" onChange={formik.handleChange}/>
@@ -238,7 +238,7 @@ useEffect(() => {
                 <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
 
                </form>
-               <div className="levels--links--meta">
+               <div className="table--links--meta">
 
 
                    <div className="meta--info">
