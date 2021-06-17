@@ -44,7 +44,7 @@ const AcademicLevel = () => {
                 level_name: Yup.string()
                         .min(3 , 'Level Cannot Be Less Than 3 Characters')
                         .max(32, 'Level Cannot be More than 32 Characters')
-                        .required('Level is Required!')
+                        .required('Level is Required!'),
             }),
             onSubmit: (values, { setSubmitting , resetForm }) => {
 
@@ -64,25 +64,11 @@ const AcademicLevel = () => {
 
 
 
-    const levelActiveSelects = [
-        {
-            name : "Active",
-            value: true
-        },
-        {
-            name : "Inactive",
-            value: false
-        },
-    ]
-
-
-
-
     const deleteLevel = async (id) =>{
 
         setLocalLoad(true)
 
-        const res = await axios.delete('/api/auth/admin/academic-table--item--name/'+ id )
+        const res = await axios.delete('/api/auth/admin/academic-level/'+ id )
 
 
 
@@ -204,18 +190,12 @@ useEffect(() => {
                         { (loading || localLoad ) ? <DotLoader/>  :   allAcademicLevels.map((academicLevel,index) => (
                                 <div className="table--item" key={index}>
 
-                                <div className="table--item--name" onClick={(e) => {
-                                    e.preventDefault()
-                                    showModal(academicLevel)
-                                }}>
+                                <div className="table--item--name" >
                                       {index + 1 +"."}  {academicLevel.level_name}
                                     </div>
 
                                     <div className="table--item--status">
-                                        <span className="active-state" onClick={(e) => {
-                                            e.preventDefault()
-                                            showModal(academicLevel)
-                                        }}>
+                                        <span className="active-state" >
                                         { (academicLevel.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
 
@@ -266,11 +246,20 @@ useEffect(() => {
            <div className="new--table--item">
                <form action="" onSubmit={formik.handleSubmit}>
 
-                <InputField labelText='Level' name="level_name" type='text' onBlur={formik.handleBlur} value={formik.values.level_name} placeholder="Academic Level" onChange={formik.handleChange}/>
-                {(formik.errors.level_name && formik.touched.level_name) && <div className="text-xs text-red-600">{formik.errors.level_name}</div>}
+                <InputField
+                    labelText='Academic Level'
+                    name="level_name"
+                    type='text'
+                    onBlur={formik.handleBlur}
+                    value={formik.values.level_name}
+                    placeholder="Academic Level"
+                    onChange={formik.handleChange}
+                    errors={(formik.errors.level_name && formik.touched.level_name) && formik.errors.level_name}
+                />
 
-                <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={levelActiveSelects} onChange={formik.handleChange}/>
-                <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
+                <div className="text-sm">Default Academic Level Status is <span className="text-gray-800 font-extrabold">false</span></div>
+
+               <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
 
                </form>
                <div className="table--links--meta">

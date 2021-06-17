@@ -4235,13 +4235,6 @@ var AcademicLevel = function AcademicLevel() {
       setSubmitting(false);
     }
   });
-  var levelActiveSelects = [{
-    name: "Active",
-    value: true
-  }, {
-    name: "Inactive",
-    value: false
-  }];
 
   var deleteLevel = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
@@ -4252,7 +4245,7 @@ var AcademicLevel = function AcademicLevel() {
             case 0:
               setLocalLoad(true);
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/academic-table--item--name/' + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/academic-level/' + id);
 
             case 3:
               res = _context.sent;
@@ -4375,19 +4368,11 @@ var AcademicLevel = function AcademicLevel() {
               className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--name",
-                onClick: function onClick(e) {
-                  e.preventDefault();
-                  showModal(academicLevel);
-                },
                 children: [index + 1 + ".", "  ", academicLevel.level_name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
-                  onClick: function onClick(e) {
-                    e.preventDefault();
-                    showModal(academicLevel);
-                  },
                   children: academicLevel.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                     children: "ACTIVE"
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -4435,23 +4420,20 @@ var AcademicLevel = function AcademicLevel() {
         action: "",
         onSubmit: formik.handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.InputField, {
-          labelText: "Level",
+          labelText: "Academic Level",
           name: "level_name",
           type: "text",
           onBlur: formik.handleBlur,
           value: formik.values.level_name,
           placeholder: "Academic Level",
-          onChange: formik.handleChange
-        }), formik.errors.level_name && formik.touched.level_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-          className: "text-xs text-red-600",
-          children: formik.errors.level_name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.SelectInputField, {
-          labelText: "Status",
-          selectName: "active",
-          value: formik.values.active,
-          selectID: "active",
-          selectOptions: levelActiveSelects,
-          onChange: formik.handleChange
+          onChange: formik.handleChange,
+          errors: formik.errors.level_name && formik.touched.level_name && formik.errors.level_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "text-sm",
+          children: ["Default Academic Level Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "text-gray-800 font-extrabold",
+            children: "false"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
           className: "w-full mt-6 btn-blue font-bold",
@@ -4704,13 +4686,6 @@ var PaperType = function PaperType() {
       setSubmitting(false);
     }
   });
-  var typeActiveSelects = [{
-    name: "Active",
-    value: true
-  }, {
-    name: "Inactive",
-    value: false
-  }];
 
   var deletePaperType = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
@@ -4896,23 +4871,20 @@ var PaperType = function PaperType() {
         action: "",
         onSubmit: formik.handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
-          labelText: "Paper Type Name",
+          labelText: "Paper Type",
           name: "type_name",
           type: "text",
           onBlur: formik.handleBlur,
           value: formik.values.type_name,
           placeholder: "Paper Type Name...",
-          onChange: formik.handleChange
-        }), formik.errors.type_name && formik.touched.type_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-          className: "text-xs text-red-600",
-          children: formik.errors.type_name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.SelectInputField, {
-          labelText: "Status",
-          selectName: "active",
-          value: formik.values.active,
-          selectID: "active",
-          selectOptions: typeActiveSelects,
-          onChange: formik.handleChange
+          onChange: formik.handleChange,
+          errors: formik.errors.type_name && formik.touched.type_name && formik.errors.type_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "text-sm",
+          children: ["Default Paper Type Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "text-gray-800 font-extrabold",
+            children: "false"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
           className: "w-full mt-6 btn-blue font-bold",
@@ -5367,23 +5339,20 @@ var SubjectArea = function SubjectArea() {
         action: "",
         onSubmit: formik.handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
-          labelText: "Subject Area Name",
+          labelText: "Subject Area",
           name: "area_name",
           type: "text",
           onBlur: formik.handleBlur,
           value: formik.values.area_name,
           placeholder: "Subject Area Name...",
-          onChange: formik.handleChange
-        }), formik.errors.area_name && formik.touched.area_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-          className: "text-xs text-red-600",
-          children: formik.errors.area_name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.SelectInputField, {
-          labelText: "Status",
-          selectName: "active",
-          value: formik.values.active,
-          selectID: "active",
-          selectOptions: areaActiveSelects,
-          onChange: formik.handleChange
+          onChange: formik.handleChange,
+          errors: formik.errors.area_name && formik.touched.area_name && formik.errors.area_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "text-sm",
+          children: ["Default Subject Area Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "text-gray-800 font-extrabold",
+            children: "false"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
           className: "w-full mt-6 btn-blue font-bold",

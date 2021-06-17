@@ -55,19 +55,6 @@ const PaperType = () => {
 
 
 
-    const typeActiveSelects = [
-        {
-            name : "Active",
-            value: true
-        },
-        {
-            name : "Inactive",
-            value: false
-        },
-    ]
-
-
-
     const deletePaperType = async (id) =>{
 
         setLocalLoad(true)
@@ -248,10 +235,21 @@ const PaperType = () => {
             <div className="new--table--item">
                 <form action="" onSubmit={formik.handleSubmit}>
 
-                    <InputField labelText='Paper Type Name' name="type_name" type='text' onBlur={formik.handleBlur} value={formik.values.type_name} placeholder="Paper Type Name..." onChange={formik.handleChange}/>
-                    {(formik.errors.type_name && formik.touched.type_name) && <div className="text-xs text-red-600">{formik.errors.type_name}</div>}
+                    <InputField
+                        labelText='Paper Type'
+                        name="type_name"
+                        type='text'
+                        onBlur={formik.handleBlur}
+                        value={formik.values.type_name}
+                        placeholder="Paper Type Name..."
+                        onChange={formik.handleChange}
+                        errors={(formik.errors.type_name && formik.touched.type_name) && formik.errors.type_name}
+                    />
 
-                    <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={typeActiveSelects} onChange={formik.handleChange}/>
+
+
+                    <div className="text-sm">Default Paper Type Status is <span className="text-gray-800 font-extrabold">false</span></div>
+
                     <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Paper Type'}</button>
 
                 </form>

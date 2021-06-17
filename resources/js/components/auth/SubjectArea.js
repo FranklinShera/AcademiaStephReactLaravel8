@@ -247,10 +247,20 @@ const SubjectArea = () => {
             <div className="new--table--item">
                 <form action="" onSubmit={formik.handleSubmit}>
 
-                    <InputField labelText='Subject Area Name' name="area_name" type='text' onBlur={formik.handleBlur} value={formik.values.area_name} placeholder="Subject Area Name..." onChange={formik.handleChange}/>
-                    {(formik.errors.area_name && formik.touched.area_name) && <div className="text-xs text-red-600">{formik.errors.area_name}</div>}
+                    <InputField
+                        labelText='Subject Area'
+                        name="area_name"
+                        type='text'
+                        onBlur={formik.handleBlur}
+                        value={formik.values.area_name}
+                        placeholder="Subject Area Name..."
+                        onChange={formik.handleChange}
+                        errors={(formik.errors.area_name && formik.touched.area_name) && formik.errors.area_name}
+                    />
 
-                    <SelectInputField labelText="Status" selectName="active" value={formik.values.active} selectID="active" selectOptions={areaActiveSelects} onChange={formik.handleChange}/>
+
+                    <div className="text-sm">Default Subject Area Status is <span className="text-gray-800 font-extrabold">false</span></div>
+
                     <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Subject Area'}</button>
 
                 </form>
