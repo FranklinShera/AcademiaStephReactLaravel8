@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function clientOrders()
     {
 
-        $orders = Order::where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+        $orders = Order::where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(10);
 
         return OrderResource::collection($orders);
 
@@ -23,7 +23,18 @@ class OrderController extends Controller
     public function clientPendingOrders()
     {
 
-        $orders = Order::pending()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+        $orders = Order::pending()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(10);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+
+    public function clientCancelledOrders()
+    {
+
+        $orders = Order::cancelled()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(10);
 
         return OrderResource::collection($orders);
 

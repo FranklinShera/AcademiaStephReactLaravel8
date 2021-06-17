@@ -35,6 +35,10 @@ const AdminLayout = (props) => {
                     url: `/client/dashboard/orders/pending`
                 },
                 {
+                    name:"Cancelled Orders",
+                    url: `/client/dashboard/orders/cancelled`
+                },
+                {
                     name:"Completed Orders",
                     url: `/client/dashboard/orders/completed`
                 },

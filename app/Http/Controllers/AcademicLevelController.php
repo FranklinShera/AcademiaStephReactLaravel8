@@ -36,6 +36,7 @@ class AcademicLevelController extends Controller
         $alevel = AcademicLevel::create($data);
 
         return new AcademicLevelResource($alevel);
+
     }
 
 
@@ -54,9 +55,9 @@ class AcademicLevelController extends Controller
     public function destroy(AcademicLevel $academicLevel)
     {
         if($academicLevel->delete()){
-            return response("Deleted!")->setStatusCode(Response::HTTP_OK);
+            return response()->json(['message' => "Deleted!"] ,Response::HTTP_OK);
         }
 
-        return response("Unable To Delete!")->setStatusCode(Response::HTTP_BAD_REQUEST);
+        return response()->json(['message' =>"Unable To Delete!"] , Response::HTTP_BAD_REQUEST);
     }
 }

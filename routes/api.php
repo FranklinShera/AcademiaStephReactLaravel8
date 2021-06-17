@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaperTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
             Route::get('/orders' , [OrderController::class , 'clientOrders']);
             Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
+            Route::get('/orders-cancelled' , [OrderController::class , 'clientCancelledOrders']);
             Route::get('/orders-completed' , [OrderController::class , 'clientCompletedOrders']);
 
         });
@@ -73,9 +75,20 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
 
+
+
+            //  Paper Type Routes
+            Route::get('/paper-types' , [PaperTypeController::class , 'adminIndex']);
+            Route::post('/paper-type' , [PaperTypeController::class , 'create']);
+            Route::delete('/paper-type/{paperType}' , [PaperTypeController::class , 'destroy']);
+
+
+            //  Academic Level Routes
             Route::get('/academic-levels' , [AcademicLevelController::class , 'adminIndex']);
             Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
             Route::delete('/academic-level/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
+
+
 
         });
 

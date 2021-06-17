@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PaperType extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['type_name','active'];
+
+
+    public function scopeActive($query){
+        return $query->where('active' , 1);
+    }
+
 }

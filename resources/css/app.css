@@ -1203,7 +1203,7 @@ footer{
 }
 
 .academic--level--actions{
-    @apply flex justify-between w-20 p-1 bg-white rounded;
+    @apply flex justify-between w-10 p-1 bg-white rounded;
 
 }
 
@@ -1420,13 +1420,17 @@ footer{
     @apply w-15/100;
 }
 
+
 .orders-views .order-view .order-created{
     @apply w-15/100 flex ;
 }
 
+
 .orders-views .order-view .order-created .created-date{
 
 }
+
+
 .orders-views .order-view .order-created .created-time{
     @apply ml-4 ;
 }

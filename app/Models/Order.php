@@ -19,6 +19,11 @@ class Order extends Model
     }
 
 
+    public function scopeCancelled($query){
+        return $query->where('stage' , 2);
+    }
+
+
     public function scopeCompleted($query){
         return $query->where('stage' , 1);
     }

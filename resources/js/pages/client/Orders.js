@@ -35,6 +35,7 @@ const Orders = ({ location }) => {
 
     const SENT_ORDER_URI = '/api/auth/client/orders';
     const PENDING_ORDER_URI = '/api/auth/client/orders-pending';
+    const CANCELLED_ORDER_URI = '/api/auth/client/orders-cancelled';
     const COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
 
@@ -66,6 +67,8 @@ const Orders = ({ location }) => {
         (routeParams.category.toUpperCase() === "SENT") && getOrders(SENT_ORDER_URI);
 
         (routeParams.category.toUpperCase() === "PENDING") && getOrders(PENDING_ORDER_URI);
+
+        (routeParams.category.toUpperCase() === "CANCELLED") && getOrders(CANCELLED_ORDER_URI);
 
         (routeParams.category.toUpperCase() === "COMPLETED") && getOrders(COMPLETED_ORDER_URI);
 
@@ -112,9 +115,11 @@ const Orders = ({ location }) => {
                                  TOPIC
                              </div>
 
+
                               <div className="order-type">
                                  TYPE OF PAPER
                               </div>
+
 
                              <div className="order-progress">
                                  PROGRESS

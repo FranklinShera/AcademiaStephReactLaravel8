@@ -79,7 +79,7 @@ const Profile = () => {
                                <div className="profile-detail">
                                    <i className={ `ti-${socialAccount.provider}`}></i>
                                    <label >{socialAccount.provider}</label>
-                                   <span>{socialAccount.provider_client_id}</span>
+                                   <span>{socialAccount.created_at}</span>
                                </div>
 
                            ))}

@@ -2761,6 +2761,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchAcademicLevels": () => (/* binding */ fetchAcademicLevels),
 /* harmony export */   "adminFetchAcademicLevels": () => (/* binding */ adminFetchAcademicLevels),
+/* harmony export */   "adminFetchPaperTypes": () => (/* binding */ adminFetchPaperTypes),
 /* harmony export */   "ClientFetchOrders": () => (/* binding */ ClientFetchOrders)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
@@ -2872,7 +2873,8 @@ var adminFetchAcademicLevels = function adminFetchAcademicLevels() {
     };
   }();
 };
-var ClientFetchOrders = function ClientFetchOrders(levelUrl) {
+var adminFetchPaperTypes = function adminFetchPaperTypes() {
+  var paperTypeUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/paper-types';
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
       var _yield$axios$get3, data;
@@ -2883,16 +2885,16 @@ var ClientFetchOrders = function ClientFetchOrders(levelUrl) {
             case 0:
               _context3.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES
               });
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(levelUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(paperTypeUrl);
 
             case 4:
               _yield$axios$get3 = _context3.sent;
               data = _yield$axios$get3.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES_SUCCESS,
                 payload: data
               });
               _context3.next = 12;
@@ -2902,7 +2904,7 @@ var ClientFetchOrders = function ClientFetchOrders(levelUrl) {
               _context3.prev = 9;
               _context3.t0 = _context3["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_TYPES_FAIL,
                 error: _context3.t0
               });
 
@@ -2916,6 +2918,53 @@ var ClientFetchOrders = function ClientFetchOrders(levelUrl) {
 
     return function (_x3) {
       return _ref3.apply(this, arguments);
+    };
+  }();
+};
+var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+  return /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
+      var _yield$axios$get4, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_CLIENT_ORDERS
+              });
+              _context4.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+
+            case 4:
+              _yield$axios$get4 = _context4.sent;
+              data = _yield$axios$get4.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_SUCCESS,
+                payload: data
+              });
+              _context4.next = 12;
+              break;
+
+            case 9:
+              _context4.prev = 9;
+              _context4.t0 = _context4["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_ORDERS_FAIL,
+                error: _context4.t0
+              });
+
+            case 12:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 9]]);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
     };
   }();
 };
@@ -4278,28 +4327,14 @@ var AcademicLevel = function AcademicLevel() {
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                     children: "INACTIVE"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "academic--level--actions",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
-                    onClick: function onClick(e) {
-                      e.preventDefault();
-                      showModal(academicLevel);
-                    },
-                    className: "h-6 hover:cursor-pointer ",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    xmlnsXlink: "http://www.w3.org/1999/xlink",
-                    viewBox: "0 0 24 24",
-                    fill: "#0065CD",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("path", {
-                      d: "M14.1 5.9L3 17v4h4L18.1 9.9 14.1 5.9zM15.6 4.4L18 2l4 4-2.4 2.4L15.6 4.4z",
-                      fill: "#0065CD"
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       deleteLevel(academicLevel.id);
                     },
-                    className: "h-6 hover:cursor-pointer ",
+                    className: "h-6 cursor-pointer ",
                     xmlns: "http://www.w3.org/2000/svg",
                     xmlnsXlink: "http://www.w3.org/1999/xlink",
                     viewBox: "0 0 32 32",
@@ -4308,11 +4343,11 @@ var AcademicLevel = function AcademicLevel() {
                       d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
                       fill: "#FF0000"
                     })
-                  })]
+                  })
                 })]
               })]
             }, index);
-          }), allAcademicLevels.length == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          }), allAcademicLevels.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
             className: "no--levels",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
               children: "We Could'nt Find Any Levels!"
@@ -4515,14 +4550,320 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _DotLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DotLoader */ "./resources/js/components/DotLoader.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
 
 
 
 var PaperType = function PaperType() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "PAPER TYPE"
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
+  var PaperTypes = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
+    return state.paperTypes;
+  });
+  var allPaperTypes = PaperTypes.allPaperTypes,
+      loading = PaperTypes.loading,
+      meta = PaperTypes.meta,
+      links = PaperTypes.links;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      typeChange = _useState2[0],
+      setTypelChange = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      localLoad = _useState4[0],
+      setLocalLoad = _useState4[1];
+
+  var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
+    initialValues: {
+      type_name: '',
+      active: false
+    },
+    validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
+      type_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Level Cannot Be Less Than 3 Characters').max(32, 'Level Cannot be More than 32 Characters').required('Level is Required!')
+    }),
+    onSubmit: function onSubmit(values, _ref) {
+      var setSubmitting = _ref.setSubmitting,
+          resetForm = _ref.resetForm;
+      addPaperType(values);
+      resetForm({
+        values: {
+          type_name: '',
+          active: false
+        }
+      });
+      setSubmitting(false);
+    }
+  });
+  var levelActiveSelects = [{
+    name: "Active",
+    value: true
+  }, {
+    name: "Inactive",
+    value: false
+  }];
+
+  var deletePaperType = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setLocalLoad(true);
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().delete('/api/auth/admin/paper-type/' + id);
+
+            case 3:
+              res = _context.sent;
+
+              if (res.status == 200) {
+                window.Toast.fire({
+                  icon: 'success',
+                  title: res.data.message
+                });
+              } else {
+                window.Toast.fire({
+                  icon: 'error',
+                  title: res.data.message
+                });
+              }
+
+              setLocalLoad(false);
+              setTypelChange(Date.now());
+
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function deletePaperType(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var addPaperType = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(paperTypeForm) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              setLocalLoad(true);
+              axios__WEBPACK_IMPORTED_MODULE_8___default().post('/api/auth/admin/paper-type', paperTypeForm).then(function (res) {
+                if (res.status == 201) {
+                  window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                  });
+                } else {
+                  window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                  });
+                }
+              })["catch"](function (error) {
+                window.Swal.fire({
+                  icon: 'error',
+                  title: error
+                });
+              });
+              setLocalLoad(false);
+              setTypelChange(Date.now());
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addPaperType(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)());
+  }, [typeChange]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    className: "academic--level--group",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      className: "academic--levels",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "levels--table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "level--table--header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "level",
+            children: "PAPER TYPE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "status",
+            children: "STATUS"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "levels--table--body",
+          children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allPaperTypes.map(function (papertype, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "academic--level",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "level",
+                children: [index + 1 + ".", "  ", papertype.type_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "status",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                  className: "active-state",
+                  children: papertype.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "ACTIVE"
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "INACTIVE"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                  className: "academic--level--actions",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      deletePaperType(papertype.id);
+                    },
+                    className: "h-6 cursor-pointer ",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    xmlnsXlink: "http://www.w3.org/1999/xlink",
+                    viewBox: "0 0 32 32",
+                    fill: "#FF0000",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("path", {
+                      d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
+                      fill: "#FF0000"
+                    })
+                  })
+                })]
+              })]
+            }, index);
+          }), allPaperTypes.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            className: "no--levels",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+              children: "We Could'nt Find Any Paper Types!"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
+              children: "Please Try Adding More!"
+            })]
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      className: "new--academic--level",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+        action: "",
+        onSubmit: formik.handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
+          labelText: "Paper Type Name",
+          name: "type_name",
+          type: "text",
+          onBlur: formik.handleBlur,
+          value: formik.values.type_name,
+          placeholder: "Paper Type Name...",
+          onChange: formik.handleChange
+        }), formik.errors.type_name && formik.touched.type_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          className: "text-xs text-red-600",
+          children: formik.errors.type_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.SelectInputField, {
+          labelText: "Status",
+          selectName: "active",
+          value: formik.values.active,
+          selectID: "active",
+          selectOptions: levelActiveSelects,
+          onChange: formik.handleChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
+          type: "submit",
+          className: "w-full mt-6 btn-blue font-bold",
+          children: [" ", localLoad ? 'Adding' : 'Add Paper Type']
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "levels--links--meta",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+            className: "meta--info--value",
+            children: [meta.current_page, "  Of ", meta.last_page]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Total Items", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "meta--info--value",
+            children: meta.total
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "links--fetch",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)(links.prev));
+            },
+            children: "PREV"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)(links.first));
+            },
+            children: "FIRST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)(links.last));
+            },
+            children: "LAST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_4__.adminFetchPaperTypes)(links.next));
+            },
+            children: "NEXT"
+          })]
+        })]
+      })]
+    })]
   });
 };
 
@@ -4708,6 +5049,9 @@ var AdminLayout = function AdminLayout(props) {
     }, {
       name: "Pending Orders",
       url: "/client/dashboard/orders/pending"
+    }, {
+      name: "Cancelled Orders",
+      url: "/client/dashboard/orders/cancelled"
     }, {
       name: "Completed Orders",
       url: "/client/dashboard/orders/completed"
@@ -4910,6 +5254,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "REQUEST_ACADEMIC_LEVELS": () => (/* binding */ REQUEST_ACADEMIC_LEVELS),
 /* harmony export */   "REQUEST_ACADEMIC_LEVELS_SUCCESS": () => (/* binding */ REQUEST_ACADEMIC_LEVELS_SUCCESS),
 /* harmony export */   "REQUEST_ACADEMIC_LEVELS_FAIL": () => (/* binding */ REQUEST_ACADEMIC_LEVELS_FAIL),
+/* harmony export */   "REQUEST_PAPER_TYPES": () => (/* binding */ REQUEST_PAPER_TYPES),
+/* harmony export */   "REQUEST_PAPER_TYPES_SUCCESS": () => (/* binding */ REQUEST_PAPER_TYPES_SUCCESS),
+/* harmony export */   "REQUEST_PAPER_TYPES_FAIL": () => (/* binding */ REQUEST_PAPER_TYPES_FAIL),
 /* harmony export */   "REQUEST_CLIENT_ORDERS": () => (/* binding */ REQUEST_CLIENT_ORDERS),
 /* harmony export */   "CLIENT_ORDERS_SUCCESS": () => (/* binding */ CLIENT_ORDERS_SUCCESS),
 /* harmony export */   "CLIENT_ORDERS_FAIL": () => (/* binding */ CLIENT_ORDERS_FAIL)
@@ -4917,6 +5264,9 @@ __webpack_require__.r(__webpack_exports__);
 var REQUEST_ACADEMIC_LEVELS = 'REQUEST_ACADEMIC_LEVELS';
 var REQUEST_ACADEMIC_LEVELS_SUCCESS = 'REQUEST_ACADEMIC_LEVELS_SUCCESS';
 var REQUEST_ACADEMIC_LEVELS_FAIL = 'REQUEST_ACADEMIC_LEVELS_FAIL';
+var REQUEST_PAPER_TYPES = 'REQUEST_PAPER_TYPES';
+var REQUEST_PAPER_TYPES_SUCCESS = 'REQUEST_PAPER_TYPES_SUCCESS';
+var REQUEST_PAPER_TYPES_FAIL = 'REQUEST_PAPER_TYPES_FAIL';
 var REQUEST_CLIENT_ORDERS = 'REQUEST_CLIENT_ORDERS';
 var CLIENT_ORDERS_SUCCESS = 'CLIENT_ORDERS_SUCCESS';
 var CLIENT_ORDERS_FAIL = 'CLIENT_ORDERS_FAIL';
@@ -7140,6 +7490,7 @@ var Orders = function Orders(_ref) {
       loading = clientOrders.loading;
   var SENT_ORDER_URI = '/api/auth/client/orders';
   var PENDING_ORDER_URI = '/api/auth/client/orders-pending';
+  var CANCELLED_ORDER_URI = '/api/auth/client/orders-cancelled';
   var COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
   var getOrders = function getOrders(orderLink) {
@@ -7157,6 +7508,7 @@ var Orders = function Orders(_ref) {
 
     routeParams.category.toUpperCase() === "SENT" && getOrders(SENT_ORDER_URI);
     routeParams.category.toUpperCase() === "PENDING" && getOrders(PENDING_ORDER_URI);
+    routeParams.category.toUpperCase() === "CANCELLED" && getOrders(CANCELLED_ORDER_URI);
     routeParams.category.toUpperCase() === "COMPLETED" && getOrders(COMPLETED_ORDER_URI);
     window.scrollTo(0, 0);
     document.querySelector('title').text = "AcademiaSteph21 | Client ".concat(titleCase(routeParams.category), " Orders");
@@ -7885,7 +8237,7 @@ var Profile = function Profile() {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
                     children: socialAccount.provider
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                    children: socialAccount.provider_client_id
+                    children: socialAccount.created_at
                   })]
                 });
               })]
@@ -8178,6 +8530,7 @@ var AdminPanelReducer = function AdminPanelReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OrderAcademicLevelsReducer": () => (/* binding */ OrderAcademicLevelsReducer),
+/* harmony export */   "OrderPaperTypesReducer": () => (/* binding */ OrderPaperTypesReducer),
 /* harmony export */   "ClientOrdersReducer": () => (/* binding */ ClientOrdersReducer)
 /* harmony export */ });
 /* harmony import */ var _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/OrderConstants */ "./resources/js/constants/OrderConstants.js");
@@ -8208,6 +8561,41 @@ var OrderAcademicLevelsReducer = function OrderAcademicLevelsReducer() {
       };
 
     case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_ACADEMIC_LEVELS_FAIL:
+      return {
+        loading: false,
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+};
+var OrderPaperTypesReducer = function OrderPaperTypesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    allPaperTypes: [],
+    links: {},
+    meta: {}
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_TYPES:
+      return {
+        loading: true,
+        allPaperTypes: [],
+        links: {},
+        meta: {}
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_TYPES_SUCCESS:
+      return {
+        loading: false,
+        allPaperTypes: action.payload.data,
+        links: action.payload.links,
+        meta: action.payload.meta
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_TYPES_FAIL:
       return {
         loading: false,
         error: action.payload
@@ -8330,6 +8718,7 @@ var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   registration: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.RegisterUserReducer,
   adminPanel: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AdminPanelReducer,
   academicLevels: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderAcademicLevelsReducer,
+  paperTypes: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderPaperTypesReducer,
   clientOrders: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.ClientOrdersReducer
 });
 var initialState = {};
