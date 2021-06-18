@@ -190,7 +190,14 @@ const Orders = () => {
         }
     ]
 
-
+    const SUPPORTED_FORMATS = [
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/msword',
+        'application/pdf',
+        'text/plain',
+        'image/jpeg',
+        'application/x-zip-compressed',
+    ]
 
 
     const Formik = useFormik({
@@ -210,18 +217,28 @@ const Orders = () => {
         },
         validationSchema:Yup.object({
             topic: Yup.string()
-                     .min(8).required(),
-            typeOfPaper: Yup.string().required(),
-            subjectArea: Yup.string().required(),
-            paperDetails: Yup.string().required(),
-            additionalMaterials: null,
-            paperFormat: Yup.string().required(),
-            prefEnglish: Yup.string().required(),
-            numOfSources: Yup.string().required(),
-            spacing: Yup.string().required(),
-            academicLevel: Yup.string().required(),
-            numberOfPages: Yup.string().required(),
-            urgency: Yup.string().required()
+                     .min(8,"Topic must be atleast 8 characters!").required("Topic is a required field"),
+            typeOfPaper: Yup.string().required("Type of Paper is a required field"),
+            subjectArea: Yup.string().required("Subject Area is a required field"),
+            paperDetails: Yup.string().required("Paper Details is a required field"),
+            additionalMaterials: Yup.mixed()
+                .nullable()
+                .notRequired()
+                .test("FILE_SIZE", "Uploaded file is too big!",
+                    value =>  {
+                        return  value.size <= 5000000
+                    })
+                .test("FILE_FORMAT", "Uploaded file has unsupported format!",
+                    value => {
+                        return  SUPPORTED_FORMATS.includes(value.type)
+                    }),
+            paperFormat: Yup.string().required("Paper Format is a required field"),
+            prefEnglish: Yup.string().required("Preferred English is a required field"),
+            numOfSources: Yup.string().required("Number of Sources is a required field"),
+            spacing: Yup.string().required("Spacing is a required field"),
+            academicLevel: Yup.string().required("Academic Level is a required field"),
+            numberOfPages: Yup.string().required("Number of Pages is a required field"),
+            urgency: Yup.string().required("Urgency is a required field")
         }),
         onSubmit: (values, { setSubmitting , resetForm }) => {
 
@@ -248,26 +265,6 @@ const Orders = () => {
     })
 
 
-    let orderForm = {
-        topic: '',
-        typeOfPaper: '',
-        subjectArea: '',
-        paperDetails: '',
-        additionalMaterials: null,
-        paperFormat: '',
-        prefEnglish: '',
-        numOfSources: '',
-        spacing: '',
-        academicLevel: '',
-        numberOfPages: '',
-        urgency: ''
-    }
-
-
-    const numOfWordsHint = () =>{
-        console.log(orderForm.numberOfPages)
-        return orderForm.numberOfPages || "1 Page = 275 Words";
-    }
 
 
     const submitPlaceOrderForm = (formFields) =>{
@@ -372,7 +369,14 @@ const Orders = () => {
                          <FileInputField labelText="Additional Materials"
                                          onBlur={Formik.handleBlur}
                                          value={Formik.values.additionalMaterials}
-                                         onChange={(e) => orderForm.additionalMaterials = e.target.files[0]}/>
+                                         onChange={(e) => {
+                                             e.preventDefault();
+                                             Formik.setFieldValue("additionalMaterials" , e.target.files[0]);
+                                             console.log(Formik.values)
+                                         }}
+                                         errors={(Formik.errors.additionalMaterials && Formik.touched.additionalMaterials) && Formik.errors.additionalMaterials}
+                         />
+
 
                          <div className="flex flex-col justify-between sm:flex-row">
 
@@ -417,15 +421,16 @@ const Orders = () => {
                              />
 
 
-                             <SelectInputField parentClasses="w-full sm:w-2/5"
-                                               onBlur={Formik.handleBlur}
-                                               value={Formik.values.spacing}
-                                               labelText="Spacing"
-                                               selectName="spacing"
-                                               selectID="spacing"
-                                               selectOptions={spacingTypes}
-                                               onChange={Formik.handleChange}
-                                               errors={(Formik.errors.spacing && Formik.touched.spacing) &&Formik.errors.spacing}
+                             <SelectInputField
+                                 parentClasses="w-full sm:w-2/5"
+                                   onBlur={Formik.handleBlur}
+                                   value={Formik.values.spacing}
+                                   labelText="Spacing"
+                                   selectName="spacing"
+                                   selectID="spacing"
+                                   selectOptions={spacingTypes}
+                                   onChange={Formik.handleChange}
+                                   errors={(Formik.errors.spacing && Formik.touched.spacing) && Formik.errors.spacing}
                              />
 
 
@@ -434,7 +439,9 @@ const Orders = () => {
 
                          <div className='input-group'>
                              <label >Academic Level</label>
+
                              {(Formik.errors.academicLevel && Formik.touched.academicLevel) && <div className="field-errors">{Formik.errors.academicLevel}</div>}
+
                              <select name="academicLevel"
                                      id="academic-level"
                                      onBlur={Formik.handleBlur}
@@ -447,18 +454,20 @@ const Orders = () => {
                                  ))}
 
                              </select>
+
                         </div>
 
 
 
-                         <InputField type="number"
-                                     onBlur={Formik.handleBlur}
-                                     labelText="Number of Pages"
-                                     name="numberOfPages"
-                                     id="number-of-pages"
-                                     value={Formik.values.numberOfPages}
-                                     onChange={Formik.handleChange}
-                                     errors={(Formik.errors.numberOfPages && Formik.touched.numberOfPages) && Formik.errors.numberOfPages}
+                         <InputField
+                             type="number"
+                             onBlur={Formik.handleBlur}
+                             labelText="Number of Pages"
+                             name="numberOfPages"
+                             id="number-of-pages"
+                             value={Formik.values.numberOfPages}
+                             onChange={Formik.handleChange}
+                             errors={(Formik.errors.numberOfPages && Formik.touched.numberOfPages) && Formik.errors.numberOfPages}
                          />
 
                          <SelectInputField

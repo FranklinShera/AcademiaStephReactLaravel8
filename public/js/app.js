@@ -8331,6 +8331,7 @@ var Orders = function Orders() {
     name: "2 Months",
     value: "2 Months"
   }];
+  var SUPPORTED_FORMATS = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword', 'application/pdf', 'text/plain', 'image/jpeg', 'application/x-zip-compressed'];
   var Formik = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useFormik)({
     initialValues: {
       topic: '',
@@ -8347,18 +8348,22 @@ var Orders = function Orders() {
       urgency: ''
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_3__.object({
-      topic: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(8).required(),
-      typeOfPaper: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      subjectArea: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      paperDetails: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      additionalMaterials: null,
-      paperFormat: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      prefEnglish: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      numOfSources: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      spacing: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      academicLevel: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      numberOfPages: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
-      urgency: yup__WEBPACK_IMPORTED_MODULE_3__.string().required()
+      topic: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(8, "Topic must be atleast 8 characters!").required("Topic is a required field"),
+      typeOfPaper: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Type of Paper is a required field"),
+      subjectArea: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Subject Area is a required field"),
+      paperDetails: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Paper Details is a required field"),
+      additionalMaterials: yup__WEBPACK_IMPORTED_MODULE_3__.mixed().nullable().notRequired().test("FILE_SIZE", "Uploaded file is too big!", function (value) {
+        return value.size <= 5000000;
+      }).test("FILE_FORMAT", "Uploaded file has unsupported format!", function (value) {
+        return SUPPORTED_FORMATS.includes(value.type);
+      }),
+      paperFormat: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Paper Format is a required field"),
+      prefEnglish: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Preferred English is a required field"),
+      numOfSources: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Number of Sources is a required field"),
+      spacing: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Spacing is a required field"),
+      academicLevel: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Academic Level is a required field"),
+      numberOfPages: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Number of Pages is a required field"),
+      urgency: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Urgency is a required field")
     }),
     onSubmit: function onSubmit(values, _ref) {
       var setSubmitting = _ref.setSubmitting,
@@ -8383,25 +8388,6 @@ var Orders = function Orders() {
       setSubmitting(false);
     }
   });
-  var orderForm = {
-    topic: '',
-    typeOfPaper: '',
-    subjectArea: '',
-    paperDetails: '',
-    additionalMaterials: null,
-    paperFormat: '',
-    prefEnglish: '',
-    numOfSources: '',
-    spacing: '',
-    academicLevel: '',
-    numberOfPages: '',
-    urgency: ''
-  };
-
-  var numOfWordsHint = function numOfWordsHint() {
-    console.log(orderForm.numberOfPages);
-    return orderForm.numberOfPages || "1 Page = 275 Words";
-  };
 
   var submitPlaceOrderForm = function submitPlaceOrderForm(formFields) {
     console.log(formFields);
@@ -8509,8 +8495,11 @@ var Orders = function Orders() {
               onBlur: Formik.handleBlur,
               value: Formik.values.additionalMaterials,
               onChange: function onChange(e) {
-                return orderForm.additionalMaterials = e.target.files[0];
-              }
+                e.preventDefault();
+                Formik.setFieldValue("additionalMaterials", e.target.files[0]);
+                console.log(Formik.values);
+              },
+              errors: Formik.errors.additionalMaterials && Formik.touched.additionalMaterials && Formik.errors.additionalMaterials
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "flex flex-col justify-between sm:flex-row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
