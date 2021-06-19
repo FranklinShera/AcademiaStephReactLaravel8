@@ -10,7 +10,6 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        "additional_materials",
         "topic",
         "type_of_paper",
         "subject_area",
@@ -30,6 +29,9 @@ class Order extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function orderMaterials(){
+        return $this->hasMany(OrderMaterial::class);
+    }
 
     public function scopePending($query){
         return $query->where('stage' , 0);

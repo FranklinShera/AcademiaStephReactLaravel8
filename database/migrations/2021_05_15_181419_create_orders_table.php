@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->string("type_of_paper");
             $table->string("subject_area");
             $table->longText("paper_details");
-            $table->string("additional_materials");
             $table->string("paper_format");
             $table->string("prefered_english");
             $table->string("number_of_sources");

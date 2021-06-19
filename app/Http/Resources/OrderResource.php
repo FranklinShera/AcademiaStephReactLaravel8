@@ -15,7 +15,7 @@ class OrderResource extends JsonResource
             'type_of_paper' => $this->type_of_paper,
             'subject_area' => $this->subject_area,
             'paper_details' => $this->paper_details,
-            'additional_materials' => $this->additional_materials,
+            'additional_materials' => $this->orderMaterials,
             'paper_format' => $this->paper_format,
             'prefered_english' => $this->prefered_english,
             'number_of_sources' => $this->number_of_sources,
