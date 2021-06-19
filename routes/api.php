@@ -63,6 +63,9 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/' , [ClientAuthController::class , 'profile']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+
+            //   ORDERS
+            Route::post('/orders' , [OrderController::class , 'create']);
             Route::get('/orders' , [OrderController::class , 'clientOrders']);
             Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
             Route::get('/orders-cancelled' , [OrderController::class , 'clientCancelledOrders']);

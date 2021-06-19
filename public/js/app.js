@@ -8333,7 +8333,7 @@ var Orders = function Orders() {
     name: "2 Months",
     value: "2 Months"
   }];
-  var SUPPORTED_FORMATS = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword', 'application/pdf', 'text/plain', 'image/jpeg', 'application/x-zip-compressed'];
+  var SUPPORTED_FORMATS = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/msword', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png', 'application/x-zip-compressed'];
   var Formik = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useFormik)({
     initialValues: {
       topic: '',
@@ -8392,7 +8392,28 @@ var Orders = function Orders() {
   });
 
   var submitPlaceOrderForm = function submitPlaceOrderForm(formFields) {
-    console.log(formFields);
+    var orderFormData = new FormData();
+    orderFormData.append("topic", formFields.topic);
+    orderFormData.append("type_of_paper", formFields.typeOfPaper);
+    orderFormData.append("subject_area", formFields.subjectArea);
+    orderFormData.append("paper_details", formFields.paperDetails);
+    orderFormData.append("additional_materials", formFields.additionalMaterials);
+    orderFormData.append("paper_format", formFields.paperFormat);
+    orderFormData.append("prefered_english", formFields.prefEnglish);
+    orderFormData.append("number_of_sources", formFields.numOfSources);
+    orderFormData.append("spacing", formFields.spacing);
+    orderFormData.append("academic_level", formFields.academicLevel);
+    orderFormData.append("number_of_pages", formFields.numberOfPages);
+    orderFormData.append("urgency", formFields.urgency);
+    axios__WEBPACK_IMPORTED_MODULE_4___default().post('/api/auth/client/orders', orderFormData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    }).then(function (res) {
+      console.log(res);
+    })["catch"](function (err) {
+      console.log(err);
+    });
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {

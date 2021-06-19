@@ -192,10 +192,15 @@ const Orders = () => {
 
     const SUPPORTED_FORMATS = [
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'application/vnd.ms-excel',
+        'application/vnd.ms-powerpoint',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
         'application/msword',
         'application/pdf',
         'text/plain',
         'image/jpeg',
+        'image/png',
         'application/x-zip-compressed',
     ]
 
@@ -268,7 +273,38 @@ const Orders = () => {
 
 
     const submitPlaceOrderForm = (formFields) =>{
-        console.log(formFields);
+
+        let orderFormData = new FormData();
+
+
+        orderFormData.append("topic" , formFields.topic)
+        orderFormData.append("type_of_paper" , formFields.typeOfPaper)
+        orderFormData.append("subject_area" , formFields.subjectArea)
+        orderFormData.append("paper_details" , formFields.paperDetails)
+        orderFormData.append("additional_materials" , formFields.additionalMaterials)
+        orderFormData.append("paper_format" , formFields.paperFormat)
+        orderFormData.append("prefered_english" , formFields.prefEnglish)
+        orderFormData.append("number_of_sources" , formFields.numOfSources)
+        orderFormData.append("spacing" , formFields.spacing)
+        orderFormData.append("academic_level" , formFields.academicLevel)
+        orderFormData.append("number_of_pages" , formFields.numberOfPages)
+        orderFormData.append("urgency" , formFields.urgency)
+
+
+
+        axios.post('/api/auth/client/orders',
+            orderFormData ,
+            {
+                headers:{
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
     }
 
 

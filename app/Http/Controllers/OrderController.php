@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
+use App\Rules\AdditionMaterialTypeValidation;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
@@ -54,40 +56,86 @@ class OrderController extends Controller
 
 
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        //
+        $newOrder = $request->validate([
+                       "topic" => 'required|string|min:8',
+                       "type_of_paper" => 'required|string',
+                       "subject_area" => 'required|string',
+                       "paper_details" => 'required|string',
+                       "paper_format" => 'required|string',
+                       "prefered_english" => 'required|string',
+                       "number_of_sources" => 'required|string',
+                       "spacing" => 'required|string',
+                       "academic_level" => 'required|string',
+                       "number_of_pages" => 'required|string',
+                       "urgency" => 'required|string'
+                    ]);
+
+
+        if($request->has("additional_materials")){
+
+            $newOrderMaterial = $request->validate([
+                    "additional_materials" => ['required' , 'file' , new AdditionMaterialTypeValidation()],
+                    "topic" => 'required|string|min:8',
+                    "type_of_paper" => 'required|string',
+                    "subject_area" => 'required|string',
+                    "paper_details" => 'required|string',
+                    "paper_format" => 'required|string',
+                    "prefered_english" => 'required|string',
+                    "number_of_sources" => 'required|string',
+                    "spacing" => 'required|string',
+                    "academic_level" => 'required|string',
+                    "number_of_pages" => 'required|string',
+                    "urgency" => 'required|string'
+                ]);
+
+
+            $materialFile =  $request->file('additional_materials');
+            $materialFileName = time()."ORDER".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
+
+
+            if( $materialFile->storeAs('public/order/materials/', $materialFileName )){
+
+
+                $newOrderMaterial['additional_materials'] = $materialFileName;
+
+                $newOrderMaterial['client_id'] = currentClient()->id;
+
+                Order::create($newOrderMaterial);
+
+                return response('Order Created!', Response::HTTP_CREATED);
+
+            }else{
+
+                return response('Can not Create Order!', Response::HTTP_FORBIDDEN);
+
+            }
+
+        }else{
+
+            $newOrder['client_id'] = currentClient()->id;
+
+            Order::create($newOrder);
+
+            return response('Order Created!', Response::HTTP_CREATED);
+
+        }
+
     }
 
-    public function show(Order $order)
-    {
-        //
-    }
 
 
-    public function edit(Order $order)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function update(Request $request, Order $order)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function destroy(Order $order)
     {
         //

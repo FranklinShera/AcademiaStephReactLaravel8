@@ -9,6 +9,23 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "additional_materials",
+        "topic",
+        "type_of_paper",
+        "subject_area",
+        "paper_details",
+        "paper_format",
+        "prefered_english",
+        "number_of_sources",
+        "spacing",
+        "academic_level",
+        "number_of_pages",
+        "urgency",
+        "stage",
+        "client_id"
+    ];
+
     public function client(){
         return $this->belongsTo(Client::class);
     }
