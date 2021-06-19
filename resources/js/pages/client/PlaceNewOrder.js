@@ -226,11 +226,11 @@ const Orders = () => {
                 .notRequired()
                 .test("FILE_SIZE", "Uploaded file is too big!",
                     value =>  {
-                        return  value.size <= 5000000
+                        return !value || value && value.size <= 5000000
                     })
                 .test("FILE_FORMAT", "Uploaded file has unsupported format!",
                     value => {
-                        return  SUPPORTED_FORMATS.includes(value.type)
+                        return  !value || value && SUPPORTED_FORMATS.includes(value.type)
                     }),
             paperFormat: Yup.string().required("Paper Format is a required field"),
             prefEnglish: Yup.string().required("Preferred English is a required field"),
@@ -301,7 +301,7 @@ const Orders = () => {
              <div className="dash_overview">
                  <div className="place-order-page">
                      <h1 className="text-4xl">Order a Paper</h1>
-                     <h1 className="mt-6 text-lg text-primary-4">Paper Details</h1>
+                     <h4 className="mt-6 text-lg text-primary-4">Paper Details</h4>
                      <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2" onSubmit={Formik.handleSubmit}>
 
                          <InputField labelText='Topic'
@@ -352,55 +352,59 @@ const Orders = () => {
                          </div>
 
 
-                         <TextAreaInputField labelText='Paper Details'
-                                             onBlur={Formik.handleBlur}
-                                             textareaName='paperDetails'
-                                             id='message'
-                                             rows='5'
-                                             placeholder='Provide detailed additional information about your assignment'
-                                             value={Formik.values.paperDetails}
-                                             onChange={Formik.handleChange}
-                                             errors={(Formik.errors.paperDetails && Formik.touched.paperDetails) && Formik.errors.paperDetails}
+                         <TextAreaInputField
+                             labelText='Paper Details'
+                             onBlur={Formik.handleBlur}
+                             textareaName='paperDetails'
+                             id='message'
+                             rows='5'
+                             placeholder='Provide detailed additional information about your assignment'
+                             value={Formik.values.paperDetails}
+                             onChange={Formik.handleChange}
+                             errors={(Formik.errors.paperDetails && Formik.touched.paperDetails) && Formik.errors.paperDetails}
                          />
 
 
 
 
-                         <FileInputField labelText="Additional Materials"
-                                         onBlur={Formik.handleBlur}
-                                         value={Formik.values.additionalMaterials}
-                                         onChange={(e) => {
-                                             e.preventDefault();
-                                             Formik.setFieldValue("additionalMaterials" , e.target.files[0]);
-                                             console.log(Formik.values)
-                                         }}
-                                         errors={(Formik.errors.additionalMaterials && Formik.touched.additionalMaterials) && Formik.errors.additionalMaterials}
+                         <FileInputField
+                             labelText="Additional Materials"
+                             name="additionalMaterials"
+                             onBlur={Formik.handleBlur}
+                             value={Formik.values.additionalMaterials}
+                             onChange={(e) => {
+                                 e.preventDefault();
+                                 Formik.setFieldValue("additionalMaterials" , e.target.files[0]);
+                             }}
+                             errors={(Formik.errors.additionalMaterials && Formik.touched.additionalMaterials) && Formik.errors.additionalMaterials}
                          />
 
 
                          <div className="flex flex-col justify-between sm:flex-row">
 
-                             <SelectInputField parentClasses="w-full sm:w-2/5"
-                                               onBlur={Formik.handleBlur}
-                                               labelText="Paper Format"
-                                               selectName="paperFormat"
-                                               selectID="paper-format"
-                                               value={Formik.values.paperFormat}
-                                               selectOptions={paperFormats}
-                                               onChange={Formik.handleChange}
-                                               errors={(Formik.errors.paperFormat && Formik.touched.paperFormat) && Formik.errors.paperFormat }
+                             <SelectInputField
+                                 parentClasses="w-full sm:w-2/5"
+                                   onBlur={Formik.handleBlur}
+                                   labelText="Paper Format"
+                                   selectName="paperFormat"
+                                   selectID="paper-format"
+                                   value={Formik.values.paperFormat}
+                                   selectOptions={paperFormats}
+                                   onChange={Formik.handleChange}
+                                   errors={(Formik.errors.paperFormat && Formik.touched.paperFormat) && Formik.errors.paperFormat }
                              />
 
 
-                             <SelectInputField parentClasses="w-full sm:w-2/5"
-                                               onBlur={Formik.handleBlur}
-                                               labelText="Preferred English"
-                                               selectName="prefEnglish"
-                                               selectID="preferred-english"
-                                               value={Formik.values.prefEnglish}
-                                               selectOptions={prefEnglish}
-                                               onChange={Formik.handleChange}
-                                               errors={(Formik.errors.prefEnglish && Formik.touched.prefEnglish) && Formik.errors.prefEnglish}
+                             <SelectInputField
+                                 parentClasses="w-full sm:w-2/5"
+                                   onBlur={Formik.handleBlur}
+                                   labelText="Preferred English"
+                                   selectName="prefEnglish"
+                                   selectID="preferred-english"
+                                   value={Formik.values.prefEnglish}
+                                   selectOptions={prefEnglish}
+                                   onChange={Formik.handleChange}
+                                   errors={(Formik.errors.prefEnglish && Formik.touched.prefEnglish) && Formik.errors.prefEnglish}
                              />
 
 
@@ -409,15 +413,16 @@ const Orders = () => {
 
                          <div className="flex flex-col justify-between sm:flex-row ">
 
-                             <InputField type="number"
-                                         parentClasses="w-full sm:w-2/5"
-                                         onBlur={Formik.handleBlur}
-                                         labelText="Number of sources"
-                                         name="numOfSources"
-                                         id="number-of-sources"
-                                         value={Formik.values.numOfSources}
-                                         onChange={Formik.handleChange}
-                                         errors={(Formik.errors.numOfSources && Formik.touched.numOfSources) && Formik.errors.numOfSources}
+                             <InputField
+                                 type="number"
+                                 parentClasses="w-full sm:w-2/5"
+                                 onBlur={Formik.handleBlur}
+                                 labelText="Number of sources"
+                                 name="numOfSources"
+                                 id="number-of-sources"
+                                 value={Formik.values.numOfSources}
+                                 onChange={Formik.handleChange}
+                                 errors={(Formik.errors.numOfSources && Formik.touched.numOfSources) && Formik.errors.numOfSources}
                              />
 
 
@@ -442,11 +447,13 @@ const Orders = () => {
 
                              {(Formik.errors.academicLevel && Formik.touched.academicLevel) && <div className="field-errors">{Formik.errors.academicLevel}</div>}
 
-                             <select name="academicLevel"
-                                     id="academic-level"
-                                     onBlur={Formik.handleBlur}
-                                     value={Formik.values.academicLevel}
-                                     onChange={Formik.handleChange}>
+                             <select
+                                 name="academicLevel"
+                                 id="academic-level"
+                                 onBlur={Formik.handleBlur}
+                                 value={Formik.values.academicLevel}
+                                 onChange={Formik.handleChange}>
+
                                  <option value='' selected disabled>Choose Academic Level</option>
 
                                  {allAcademicLevels.map((opt) => (

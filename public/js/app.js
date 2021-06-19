@@ -3278,6 +3278,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var FileInputField = function FileInputField(_ref) {
   var labelText = _ref.labelText,
+      name = _ref.name,
       classes = _ref.classes,
       placeholder = _ref.placeholder,
       onChange = _ref.onChange,
@@ -3291,6 +3292,7 @@ var FileInputField = function FileInputField(_ref) {
       children: errors
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "file",
+      name: name,
       className: classes,
       onChange: onChange,
       placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : "Upload ".concat(labelText, " Here")
@@ -8353,9 +8355,9 @@ var Orders = function Orders() {
       subjectArea: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Subject Area is a required field"),
       paperDetails: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Paper Details is a required field"),
       additionalMaterials: yup__WEBPACK_IMPORTED_MODULE_3__.mixed().nullable().notRequired().test("FILE_SIZE", "Uploaded file is too big!", function (value) {
-        return value.size <= 5000000;
+        return !value || value && value.size <= 5000000;
       }).test("FILE_FORMAT", "Uploaded file has unsupported format!", function (value) {
-        return SUPPORTED_FORMATS.includes(value.type);
+        return !value || value && SUPPORTED_FORMATS.includes(value.type);
       }),
       paperFormat: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Paper Format is a required field"),
       prefEnglish: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Preferred English is a required field"),
@@ -8414,7 +8416,7 @@ var Orders = function Orders() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
             className: "text-4xl",
             children: "Order a Paper"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h4", {
             className: "mt-6 text-lg text-primary-4",
             children: "Paper Details"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
@@ -8492,12 +8494,12 @@ var Orders = function Orders() {
               errors: Formik.errors.paperDetails && Formik.touched.paperDetails && Formik.errors.paperDetails
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.FileInputField, {
               labelText: "Additional Materials",
+              name: "additionalMaterials",
               onBlur: Formik.handleBlur,
               value: Formik.values.additionalMaterials,
               onChange: function onChange(e) {
                 e.preventDefault();
                 Formik.setFieldValue("additionalMaterials", e.target.files[0]);
-                console.log(Formik.values);
               },
               errors: Formik.errors.additionalMaterials && Formik.touched.additionalMaterials && Formik.errors.additionalMaterials
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
