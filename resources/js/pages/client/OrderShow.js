@@ -54,18 +54,22 @@ const OrderShow = () => {
 
     const getOrder = (orderID) =>{
         axios.get(`/api/auth/client/order/${orderID}`)
-            .then(res => setOrder(res.data.data))
+            .then(res => {
+                setOrder(res.data.data)
+            })
             .catch(err => console.log(err))
     }
 
     useEffect(() => {
 
         if(!clientAuth){
+
             hist.push("/client")
+
         }
 
 
-        getOrder(routeParams.id)
+         getOrder(routeParams.id)
 
         window.scrollTo(0,0)
 
@@ -113,9 +117,9 @@ const OrderShow = () => {
                             <div className="order-preview-item">
                                 <label>Additional Materials</label>
 
-                                {/*{order && order.additional_materials.map(material => {*/}
-                                {/*    <span className="material">{material.material_name} | {material.type}</span>*/}
-                                {/*})}*/}
+                                {(order && order.additional_materials) && order.additional_materials.map((material , index) => {
+                                    <span className="material" key={index}>{material.material_name} | {material.type}</span>
+                                })}
                             </div>
 
 

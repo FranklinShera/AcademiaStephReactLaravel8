@@ -36,8 +36,8 @@ const Orders = ({ location }) => {
     const SENT_ORDER_URI = '/api/auth/client/orders';
     const PENDING_ORDER_URI = '/api/auth/client/orders-pending';
     const CANCELLED_ORDER_URI = '/api/auth/client/orders-cancelled';
+    const ACTIVE_ORDER_URI = '/api/auth/client/orders-active';
     const COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
-
 
 
     const showOrder = (id , topic) => {
@@ -77,6 +77,8 @@ const Orders = ({ location }) => {
         (routeParams.category.toUpperCase() === "PENDING") && getOrders(PENDING_ORDER_URI);
 
         (routeParams.category.toUpperCase() === "CANCELLED") && getOrders(CANCELLED_ORDER_URI);
+
+        (routeParams.category.toUpperCase() === "ACTIVE") && getOrders(ACTIVE_ORDER_URI);
 
         (routeParams.category.toUpperCase() === "COMPLETED") && getOrders(COMPLETED_ORDER_URI);
 
@@ -145,7 +147,11 @@ const Orders = ({ location }) => {
 
                          </div>
                          { loading && <DotLoader/>}
-                         { (orders.length == 0 && !loading) && <h1>We Could not Find Your Orders</h1> }
+                         { (orders.length == 0 && !loading) && <div className="flex justify-center items-center mt-44">
+                             <h1 className="text-3xl text-red-600">
+                                 We Could not Find {routeParams.category.charAt(0).toUpperCase()+routeParams.category.slice(1)} Orders
+                             </h1>
+                         </div> }
 
                          {orders.map( (order , index) => (
                              <div className="order-view bg-gray-100 hover:shadow cursor-pointer p-2" key={index} onClick={e => {

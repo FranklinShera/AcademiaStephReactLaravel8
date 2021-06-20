@@ -5557,6 +5557,9 @@ var AdminLayout = function AdminLayout(props) {
       name: "Cancelled Orders",
       url: "/client/dashboard/orders/cancelled"
     }, {
+      name: "Active Orders",
+      url: "/client/dashboard/orders/active"
+    }, {
       name: "Completed Orders",
       url: "/client/dashboard/orders/completed"
     }]
@@ -5576,9 +5579,6 @@ var AdminLayout = function AdminLayout(props) {
     name: "My Profile",
     links: [{
       name: "Personal Information",
-      url: "/client/dashboard/profile"
-    }, {
-      name: "Account Information",
       url: "/client/dashboard/profile"
     }]
   }];
@@ -8030,7 +8030,7 @@ var OrderShow = function OrderShow() {
 
   var getOrder = function getOrder(orderID) {
     axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/auth/client/order/".concat(orderID)).then(function (res) {
-      return setOrder(res.data.data);
+      setOrder(res.data.data);
     })["catch"](function (err) {
       return console.log(err);
     });
@@ -8088,11 +8088,17 @@ var OrderShow = function OrderShow() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
                 children: order && order.paper_details
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "order-preview-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
                 children: "Additional Materials"
-              })
+              }), order && order.additional_materials && order.additional_materials.map(function (material, index) {
+                /*#__PURE__*/
+                (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+                  className: "material",
+                  children: [material.material_name, " | ", material.type]
+                }, index);
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
@@ -8206,6 +8212,7 @@ var Orders = function Orders(_ref) {
   var SENT_ORDER_URI = '/api/auth/client/orders';
   var PENDING_ORDER_URI = '/api/auth/client/orders-pending';
   var CANCELLED_ORDER_URI = '/api/auth/client/orders-cancelled';
+  var ACTIVE_ORDER_URI = '/api/auth/client/orders-active';
   var COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
   var showOrder = function showOrder(id, topic) {
@@ -8229,6 +8236,7 @@ var Orders = function Orders(_ref) {
     routeParams.category.toUpperCase() === "SENT" && getOrders(SENT_ORDER_URI);
     routeParams.category.toUpperCase() === "PENDING" && getOrders(PENDING_ORDER_URI);
     routeParams.category.toUpperCase() === "CANCELLED" && getOrders(CANCELLED_ORDER_URI);
+    routeParams.category.toUpperCase() === "ACTIVE" && getOrders(ACTIVE_ORDER_URI);
     routeParams.category.toUpperCase() === "COMPLETED" && getOrders(COMPLETED_ORDER_URI);
     window.scrollTo(0, 0);
     document.querySelector('title').text = "AcademiaSteph21 | Client ".concat(titleCase(routeParams.category), " Orders");
@@ -8285,8 +8293,12 @@ var Orders = function Orders(_ref) {
               className: "order-created",
               children: "POSTED"
             })]
-          }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), orders.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
-            children: "We Could not Find Your Orders"
+          }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), orders.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "flex justify-center items-center mt-44",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
+              className: "text-3xl text-red-600",
+              children: ["We Could not Find ", routeParams.category.charAt(0).toUpperCase() + routeParams.category.slice(1), " Orders"]
+            })
           }), orders.map(function (order, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "order-view bg-gray-100 hover:shadow cursor-pointer p-2",

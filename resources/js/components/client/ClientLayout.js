@@ -39,9 +39,13 @@ const AdminLayout = (props) => {
                     url: `/client/dashboard/orders/cancelled`
                 },
                 {
+                    name:"Active Orders",
+                    url: `/client/dashboard/orders/active`
+                },
+                {
                     name:"Completed Orders",
                     url: `/client/dashboard/orders/completed`
-                },
+                }
             ]
         },
         {
@@ -67,10 +71,6 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Personal Information",
-                    url: `/client/dashboard/profile`
-                },
-                {
-                    name:"Account Information",
                     url: `/client/dashboard/profile`
                 }
             ]

@@ -38,8 +38,13 @@ class Order extends Model
     }
 
 
-    public function scopeCancelled($query){
+    public function scopeActive($query){
         return $query->where('stage' , 2);
+    }
+
+
+    public function scopeCancelled($query){
+        return $query->where('stage' , 3);
     }
 
 

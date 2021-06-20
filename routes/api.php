@@ -70,6 +70,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/order/{order}' , [OrderController::class , 'clientOrder']);
             Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
             Route::get('/orders-cancelled' , [OrderController::class , 'clientCancelledOrders']);
+            Route::get('/orders-active' , [OrderController::class , 'clientActiveOrders']);
             Route::get('/orders-completed' , [OrderController::class , 'clientCompletedOrders']);
 
         });

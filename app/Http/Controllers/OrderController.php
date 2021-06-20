@@ -59,6 +59,15 @@ class OrderController extends Controller
 
 
 
+    public function clientActiveOrders()
+    {
+
+        $orders = Order::active()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+
+        return OrderResource::collection($orders);
+
+    }
+
     public function clientCompletedOrders()
     {
 
