@@ -300,7 +300,13 @@ const Orders = () => {
                 }
             })
             .then(res => {
-                console.log(res)
+                if(res.status == 201){
+
+                    window.Toast.fire({
+                        icon: 'success',
+                        title: res.data.message
+                    })
+                }
             })
             .catch(err =>{
                 console.log(err)

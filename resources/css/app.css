@@ -312,7 +312,7 @@ body , html{
 
 
 
-.place-order-page, .find-writer-page{
+.place-order-page,.preview-order-page, .find-writer-page{
     @apply flex flex-col items-center  py-4;
     height: 90vh;
 }
@@ -1437,6 +1437,35 @@ footer{
 
 
 /*ORDERS VIEW END*/
+
+
+
+
+/*ORDER PREVIEW*/
+
+.order-preview{
+    @apply w-3/4 mt-5;
+}
+
+.order-preview-item{
+    @apply mb-6;
+}
+
+
+.order-preview-item label{
+    @apply text-xl font-semibold;
+}
+
+.order-preview-item p{
+    @apply p-3 mt-2 bg-gray-100;
+}
+
+
+/*ORDER PREVIEW END*/
+
+
+
+
 
 /*CLIENT STYLES END*/
 

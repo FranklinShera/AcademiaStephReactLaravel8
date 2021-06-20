@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
-import {useHistory, useParams} from 'react-router'
+import {Redirect, useHistory, useParams} from 'react-router'
 
 import axios from 'axios'
 
@@ -39,6 +39,14 @@ const Orders = ({ location }) => {
     const COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
 
+
+    const showOrder = (id , topic) => {
+
+        let topicSlug = topic.replace(/\s/g, '-').toLowerCase();
+
+        hist.push(`/client/dashboard/order-view/${id}/${topicSlug}`);
+
+    }
 
     const getOrders = (orderLink) =>
     {
@@ -132,7 +140,7 @@ const Orders = ({ location }) => {
 
 
                               <div className="order-created">
-                                 CREATED
+                                 POSTED
                               </div>
 
                          </div>
@@ -140,9 +148,13 @@ const Orders = ({ location }) => {
                          { (orders.length == 0 && !loading) && <h1>We Could not Find Your Orders</h1> }
 
                          {orders.map( (order , index) => (
-                             <div className="order-view bg-gray-100 hover:shadow cursor-pointer p-2">
+                             <div className="order-view bg-gray-100 hover:shadow cursor-pointer p-2" key={index} onClick={e => {
+                                 e.preventDefault();
+                                 showOrder(order.id , order.topic)
+                             }}>
+
                                  <div className="order-topic">
-                                     {index + 1+". "}{order.topic}
+                                     { index + 1+". " }{ order.topic.slice(0,50) + "..."}
                                  </div>
 
                                  <div className="order-type">
@@ -152,8 +164,9 @@ const Orders = ({ location }) => {
 
                                  <div className="order-progress">
                                      { (order.stage == 0) && <span className="text-yellow-600"> <i className="ti-info-alt"></i> Pending </span> }
-                                     { (order.stage == 1) && <span className="text-green-600"> <i className="ti-thumb-up"></i> Completed </span> }
-                                     { (order.stage == 2) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span> }
+                                     { (order.stage == 1) && <span className="text-blue-600"> <i className="ti-thumb-up"></i> Completed </span> }
+                                     { (order.stage == 2) && <span className="text-green-600"> <i className="ti-pulse"></i> Active </span> }
+                                     { (order.stage == 3) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span> }
                                  </div>
 
                                  <div className="order-urgency">

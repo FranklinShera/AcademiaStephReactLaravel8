@@ -23,6 +23,20 @@ class OrderController extends Controller
 
 
 
+    public function clientOrder(Request $request, Order $order)
+    {
+        if($order->client_id != currentClient()->id){
+
+            return response()->json(['error' => "You Are Not The Owner Of The Order Requested!"] , Response::HTTP_FORBIDDEN);
+
+        }
+
+        return new OrderResource($order);
+
+    }
+
+
+
     public function clientPendingOrders()
     {
 
@@ -104,7 +118,7 @@ class OrderController extends Controller
         }
 
 
-        return response('Order Created!', Response::HTTP_CREATED);
+        return response()->json(['message' => 'Order Created!'] , Response::HTTP_CREATED);
 
     }
 

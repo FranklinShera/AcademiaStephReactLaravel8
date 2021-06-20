@@ -42,6 +42,7 @@ import Swal2 from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Loader from "./components/Loader";
 import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
+import OrderShow from "./pages/client/OrderShow";
 
 
 
@@ -130,6 +131,7 @@ function App() {
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
             <ClientProtectedRoute path={ `/client/dashboard/orders/:category` } exact component={ClientOrders}/>
+            <ClientProtectedRoute path={ `/client/dashboard/order-view/:id/:topicSlug` } exact component={OrderShow}/>
             <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
             <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
             <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
