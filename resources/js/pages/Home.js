@@ -231,6 +231,27 @@ const Home = () => {
                     </div>
 
 
+                    <div className="service">
+                        <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>
+                        <span>Proofreading</span>
+                    </div>
+
+                    <div className="service sm:justify-start xl:justify-center">
+                        <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>
+                        <span>Transcription</span>
+                    </div>
+
+                    <div className="service">
+                        <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>
+                        <span>Editing</span>
+                    </div>
+
+                    <div className="service sm:justify-start xl:justify-center">
+                        <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>
+                        <span>Captioning</span>
+                    </div>
+
+
                 </div>
             </div>
 
@@ -281,9 +302,9 @@ const Home = () => {
                     WHY CHOOSE OUR ESSAY SERVICE
                 </h1>
                 <p className="px-5 mt-12 text-lg text-center lg:text-2xl text-dark-5">
-                    We seek to help students with assignments all to relieve them of their busy schedules.<br/>
-                    Most students find it hard to balance student life, family and work.<br/>
-                    We step in to help with assignments for we care.
+                    We aim to verily offer to subsidize the time constrain faced by students across the globe due to the busy schedules.<br/>
+                    Since most students find it hard to balance student life, family and work. <br/>
+                    Therefore, we chip in to extend a hand of care and concern in assignemnts and general school work.
                 </p>
 
                 <div className="score-card">
@@ -322,6 +343,7 @@ const Home = () => {
                         <img src={ApproveIcon} className="inline h-7 w-7" alt="Approved Service Icon"></img>
                         <span className="">Cheap rates</span>
                     </div>
+
                 </div>
 
 
@@ -334,38 +356,32 @@ const Home = () => {
                     <div className="benefit">
                         <h1 className="text-xl font-bold text-primary-1">Money-Back Guarantee</h1>
                         <p className="text-sm sm:pr-2">
-                            Our customers obtain their money back in full upon ascertaining
-                            that correct work was not delivered, cases of poor quality,
-                            and valid claims after confirmation by the quality department.
+                            Our esteemed clientele obtain their money back in full amounts where cases of dissatisfaction
+                            or poor quality arise and valid claims ascertained as true by our Quality assurance department.
                         </p>
                     </div>
 
                     <div className="benefit sm:pl-2">
                         <h1 className="text-xl font-bold text-primary-1">Non-Plagiarism Work Guarantee</h1>
                         <p className="text-sm">
-                            We have inbuilt plagiarism checker that ensures work is 100%
-                            non-plagiarized before submission to esteemed customers.
-                            We observe plagiarism and patent rights in line with
-                            international guidelines.
+                            The presence of systems and softwares that ensure quality and originality of work ensure 100% non-plagiarized work is delivered.
+                            This is in line with international guidelines and patent rights upheld in plagiarism.
                         </p>
                     </div>
 
 
                     <div className="benefit">
-                        <h1 className="text-xl font-bold text-primary-1">Approved and Skilled Writers</h1>
+                        <h1 className="text-xl font-bold text-primary-1">Approved and Skilled Writers/Editors</h1>
                         <p className="text-sm sm:pr-2">
-                            All writers are appointed through a step-wise interview.
-                            Our team is committed to delivery of the best content that
-                            qualifies for top quality always. We always guarantee success in
-                            the  completion of tasks to the satisfaction of the clients.
+                            The commitment of our team in ensuring quality and satisfaction is mantained, calls for dedicated step-wise interview of writers/editors appointment.
+                            This puts us at the forefront in delivery of timely, original, qualified and proficient success in completion of tasks to the desires of the clients.
                         </p>
                     </div>
 
                     <div className="benefit sm:pl-2">
                         <h1 className="text-xl font-bold text-primary-1">Free Limitless Ammendments</h1>
                         <p className="text-sm">
-                            Our customers are liable to free limitless modification of work in
-                            cases that clients present their original instructions for the task.
+                            Our clients are free to receive endless modification and revision of content/work in occasions deemed necessary by the clients' instructions.
                         </p>
                     </div>
 

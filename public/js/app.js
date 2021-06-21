@@ -6206,6 +6206,42 @@ var Home = function Home() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
               children: "Dissertation"
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+            className: "service",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+              src: _images_casestudy_svg__WEBPACK_IMPORTED_MODULE_8__.default,
+              className: "h-12",
+              alt: "Case Study icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+              children: "Proofreading"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+            className: "service sm:justify-start xl:justify-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+              src: _images_dissertations_svg__WEBPACK_IMPORTED_MODULE_9__.default,
+              className: "h-12",
+              alt: "Dissertation icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+              children: "Transcription"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+            className: "service",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+              src: _images_casestudy_svg__WEBPACK_IMPORTED_MODULE_8__.default,
+              className: "h-12",
+              alt: "Case Study icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+              children: "Editing"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+            className: "service sm:justify-start xl:justify-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+              src: _images_dissertations_svg__WEBPACK_IMPORTED_MODULE_9__.default,
+              className: "h-12",
+              alt: "Dissertation icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+              children: "Captioning"
+            })]
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
@@ -6261,7 +6297,7 @@ var Home = function Home() {
           children: "WHY CHOOSE OUR ESSAY SERVICE"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
           className: "px-5 mt-12 text-lg text-center lg:text-2xl text-dark-5",
-          children: ["We seek to help students with assignments all to relieve them of their busy schedules.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Most students find it hard to balance student life, family and work.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "We step in to help with assignments for we care."]
+          children: ["We aim to verily offer to subsidize the time constrain faced by students across the globe due to the busy schedules.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Since most students find it hard to balance student life, family and work. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Therefore, we chip in to extend a hand of care and concern in assignemnts and general school work."]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
           className: "score-card",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
@@ -6336,7 +6372,7 @@ var Home = function Home() {
               children: "Money-Back Guarantee"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
               className: "text-sm sm:pr-2",
-              children: "Our customers obtain their money back in full upon ascertaining that correct work was not delivered, cases of poor quality, and valid claims after confirmation by the quality department."
+              children: "Our esteemed clientele obtain their money back in full amounts where cases of dissatisfaction or poor quality arise and valid claims ascertained as true by our Quality assurance department."
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
             className: "benefit sm:pl-2",
@@ -6345,16 +6381,16 @@ var Home = function Home() {
               children: "Non-Plagiarism Work Guarantee"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
               className: "text-sm",
-              children: "We have inbuilt plagiarism checker that ensures work is 100% non-plagiarized before submission to esteemed customers. We observe plagiarism and patent rights in line with international guidelines."
+              children: "The presence of systems and softwares that ensure quality and originality of work ensure 100% non-plagiarized work is delivered. This is in line with international guidelines and patent rights upheld in plagiarism."
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
             className: "benefit",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
               className: "text-xl font-bold text-primary-1",
-              children: "Approved and Skilled Writers"
+              children: "Approved and Skilled Writers/Editors"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
               className: "text-sm sm:pr-2",
-              children: "All writers are appointed through a step-wise interview. Our team is committed to delivery of the best content that qualifies for top quality always. We always guarantee success in the  completion of tasks to the satisfaction of the clients."
+              children: "The commitment of our team in ensuring quality and satisfaction is mantained, calls for dedicated step-wise interview of writers/editors appointment. This puts us at the forefront in delivery of timely, original, qualified and proficient success in completion of tasks to the desires of the clients."
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
             className: "benefit sm:pl-2",
@@ -6363,7 +6399,7 @@ var Home = function Home() {
               children: "Free Limitless Ammendments"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
               className: "text-sm",
-              children: "Our customers are liable to free limitless modification of work in cases that clients present their original instructions for the task."
+              children: "Our clients are free to receive endless modification and revision of content/work in occasions deemed necessary by the clients' instructions."
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Link, {
@@ -8297,7 +8333,7 @@ var Orders = function Orders(_ref) {
             className: "flex justify-center items-center mt-44",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
               className: "text-3xl text-red-600",
-              children: ["We Could not Find ", routeParams.category.charAt(0).toUpperCase() + routeParams.category.slice(1), " Orders"]
+              children: ["We Could not Find ", titleCase(routeParams.category), " Orders"]
             })
           }), orders.map(function (order, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {

@@ -149,7 +149,7 @@ const Orders = ({ location }) => {
                          { loading && <DotLoader/>}
                          { (orders.length == 0 && !loading) && <div className="flex justify-center items-center mt-44">
                              <h1 className="text-3xl text-red-600">
-                                 We Could not Find {routeParams.category.charAt(0).toUpperCase()+routeParams.category.slice(1)} Orders
+                                 We Could not Find {titleCase(routeParams.category)} Orders
                              </h1>
                          </div> }
 
