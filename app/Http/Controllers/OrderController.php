@@ -21,6 +21,15 @@ class OrderController extends Controller
 
     }
 
+    public function adminOrders()
+    {
+
+        $orders = Order::orderBy('created_at' , 'DESC')->paginate(10);
+
+        return OrderResource::collection($orders);
+
+    }
+
 
 
     public function clientOrder(Request $request, Order $order)
@@ -28,6 +37,19 @@ class OrderController extends Controller
         if($order->client_id != currentClient()->id){
 
             return response()->json(['error' => "You Are Not The Owner Of The Order Requested!"] , Response::HTTP_FORBIDDEN);
+
+        }
+
+        return new OrderResource($order);
+
+    }
+
+
+    public function adminOrder(Request $request, Order $order)
+    {
+        if(!$order){
+
+            return response()->json(['error' => "The Order Requested was Not Found!"] , Response::HTTP_FORBIDDEN);
 
         }
 
@@ -72,6 +94,47 @@ class OrderController extends Controller
     {
 
         $orders = Order::completed()->where('client_id' , currentClient()->id)->orderBy('created_at' , 'DESC')->paginate(5);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+    public function adminPendingOrders()
+    {
+
+        $orders = Order::pending()->orderBy('created_at' , 'DESC')->paginate(10);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+
+    public function adminCancelledOrders()
+    {
+
+        $orders = Order::cancelled()->orderBy('created_at' , 'DESC')->paginate(10);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+
+    public function adminActiveOrders()
+    {
+
+        $orders = Order::active()->orderBy('created_at' , 'DESC')->paginate(5);
+
+        return OrderResource::collection($orders);
+
+    }
+
+    public function adminCompletedOrders()
+    {
+
+        $orders = Order::completed()->orderBy('created_at' , 'DESC')->paginate(5);
 
         return OrderResource::collection($orders);
 

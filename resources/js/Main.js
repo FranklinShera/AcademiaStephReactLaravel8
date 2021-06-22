@@ -19,6 +19,7 @@ import Dashboard from './pages/auth/Dashboard';
 import ClientDashboard from './pages/client/ClientDashboard';
 import Payment from './pages/auth/Payment';
 import Orders from './pages/auth/Orders';
+import OrderView from './pages/auth/OrderView';
 import OrderControl from './pages/auth/OrderControl';
 import Messages from './pages/auth/Messages';
 import Profile from './pages/auth/Profile';
@@ -122,7 +123,8 @@ function App() {
           <Switch>
             <Route path="/find-writer" exact component={FindWriter}/>
             <Route path="/in/register" exact component={Register}/>
-            <ProtectedRoute path={ `/in/dashboard/orders` } exact component={Orders}/>
+            <ProtectedRoute path={ `/in/dashboard/orders/:category` } exact component={Orders}/>
+            <ProtectedRoute path={ `/in/dashboard/order-view/:id/:topicSlug` } exact component={OrderView}/>
             <ProtectedRoute path={ `/in/dashboard/control/order-input` } exact component={OrderControl}/>
             <ProtectedRoute path={ `/in/dashboard/messages`} exact  component={Messages}/>
             <ProtectedRoute path={`/in/dashboard/payments`}  exact component={Payment}/>

@@ -2,14 +2,15 @@ import {
     REQUEST_ACADEMIC_LEVELS,
     REQUEST_ACADEMIC_LEVELS_SUCCESS,
     REQUEST_ACADEMIC_LEVELS_FAIL,
-    REQUEST_CLIENT_ORDERS,
-    CLIENT_ORDERS_SUCCESS,
-    CLIENT_ORDERS_FAIL,
     REQUEST_PAPER_TYPES_SUCCESS,
     REQUEST_PAPER_TYPES_FAIL,
     REQUEST_PAPER_TYPES,
     REQUEST_SUBJECT_AREAS,
-    REQUEST_SUBJECT_AREAS_SUCCESS, REQUEST_SUBJECT_AREAS_FAIL,
+    REQUEST_SUBJECT_AREAS_SUCCESS,
+    REQUEST_SUBJECT_AREAS_FAIL,
+    REQUEST_ORDERS_FAIL,
+    REQUEST_ORDERS_SUCCESS,
+    REQUEST_ORDERS,
 } from '../constants/OrderConstants'
 
 import axios from 'axios'
@@ -210,20 +211,51 @@ export const ClientFetchOrders = (ordersUrl) => async (dispatch) => {
     try {
 
 
-        dispatch({ type: REQUEST_CLIENT_ORDERS })
+        dispatch({ type: REQUEST_ORDERS })
 
         const { data } = await axios.get(ordersUrl)
 
 
         dispatch({
-            type: CLIENT_ORDERS_SUCCESS,
+            type: REQUEST_ORDERS_SUCCESS,
             payload: data
         })
 
 
     } catch (error) {
           dispatch({
-            type: CLIENT_ORDERS_FAIL,
+            type: REQUEST_ORDERS_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
+
+
+export const adminFetchOrders = (ordersUrl = '/api/auth/admin/orders') => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_ORDERS })
+
+        const { data } = await axios.get(ordersUrl)
+
+
+        dispatch({
+            type: REQUEST_ORDERS_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_ORDERS_FAIL,
             error: error
         })
 

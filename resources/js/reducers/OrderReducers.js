@@ -2,15 +2,15 @@ import {
     REQUEST_ACADEMIC_LEVELS,
     REQUEST_ACADEMIC_LEVELS_SUCCESS,
     REQUEST_ACADEMIC_LEVELS_FAIL,
-    REQUEST_CLIENT_ORDERS,
-    CLIENT_ORDERS_SUCCESS,
-    CLIENT_ORDERS_FAIL,
     REQUEST_PAPER_TYPES,
     REQUEST_PAPER_TYPES_SUCCESS,
     REQUEST_PAPER_TYPES_FAIL,
     REQUEST_SUBJECT_AREAS,
     REQUEST_SUBJECT_AREAS_SUCCESS,
     REQUEST_SUBJECT_AREAS_FAIL,
+    REQUEST_ORDERS,
+    REQUEST_ORDERS_SUCCESS,
+    REQUEST_ORDERS_FAIL,
 } from '../constants/OrderConstants'
 
 
@@ -78,18 +78,18 @@ export const OrderSubjectAreaReducer = (state = { allSubjectAreas: [], links:{} 
 
 
 
-export const ClientOrdersReducer = (state = { orders: [], links:{} , meta:{}} , action) => {
+export const OrdersReducer = (state = { orders: [], links:{} , meta:{}} , action) => {
     switch(action.type){
 
-        case REQUEST_CLIENT_ORDERS:
+        case REQUEST_ORDERS:
             return { loading: true , orders: [] , links:{} , meta:{} }
 
 
-        case CLIENT_ORDERS_SUCCESS:
+        case REQUEST_ORDERS_SUCCESS:
 
             return { loading: false ,  orders: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
 
-        case CLIENT_ORDERS_FAIL:
+        case REQUEST_ORDERS_FAIL:
             return { loading: false , error: action.payload }
         default:
             return state

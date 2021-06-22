@@ -85,6 +85,15 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
 
 
+            //   ORDERS
+            Route::get('/orders' , [OrderController::class , 'adminOrders']);
+            Route::get('/order/{order}' , [OrderController::class , 'adminOrder']);
+            Route::get('/orders-pending' , [OrderController::class , 'adminPendingOrders']);
+            Route::get('/orders-cancelled' , [OrderController::class , 'adminCancelledOrders']);
+            Route::get('/orders-active' , [OrderController::class , 'adminActiveOrders']);
+            Route::get('/orders-completed' , [OrderController::class , 'adminCompletedOrders']);
+
+
             //  Subject Area Routes
             Route::get('/subject-areas' , [SubjectAreaController::class , 'adminIndex']);
             Route::post('/subject-area' , [SubjectAreaController::class , 'create']);

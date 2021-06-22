@@ -3,32 +3,29 @@ import { useDispatch , useSelector } from 'react-redux'
 import {useHistory, useParams} from 'react-router'
 
 
-
-
 import axios from 'axios'
 
-import ClientLayout from '../../components/client/ClientLayout'
+
+import AdminLayout from "../../components/auth/AdminLayout";
 
 
 
-
-const OrderShow = () => {
+const OrderView = () => {
 
     axios.defaults.withCredentials = true;
 
     const hist = useHistory();
     const routeParams = useParams();
 
-    const authClient = useSelector( state => state.authClient)
-    const { clientAuth } = authClient;
+    const authUser = useSelector( state => state.authUser)
+    const { loggedInUser, auth } = authUser;
 
     const[order,setOrder] = useState({});
 
-    // additional_materials: [],​
 
 
     const getOrder = (orderID) =>{
-        axios.get(`/api/auth/client/order/${orderID}`)
+        axios.get(`/api/auth/admin/order/${orderID}`)
             .then(res => {
                 setOrder(res.data.data)
             })
@@ -37,9 +34,9 @@ const OrderShow = () => {
 
     useEffect(() => {
 
-        if(!clientAuth){
+        if(!auth){
 
-            hist.push("/client")
+            hist.push("/in")
 
         }
 
@@ -51,13 +48,13 @@ const OrderShow = () => {
         document.querySelector('title').text = 'AcademiaSteph21 | Order Preview'
 
 
-    }, [clientAuth])
+    }, [auth])
 
 
 
     return (
         <div className="dashboard">
-            <ClientLayout>
+            <AdminLayout>
              <div className="dash_overview">
                  <div className="preview-order-page">
                      <h1 className="text-4xl">Order Preview</h1>
@@ -144,9 +141,9 @@ const OrderShow = () => {
                </div>
              </div>
 
-            </ClientLayout>
+            </AdminLayout>
         </div>
     )
 }
 
-export default OrderShow
+export default OrderView
