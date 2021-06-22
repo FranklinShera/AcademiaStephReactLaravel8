@@ -350,6 +350,32 @@ const Orders = () => {
             })
     }
 
+    const loadDraft = (draftOrder) =>{
+
+         Formik.values = draftOrder;
+
+
+         setOpen(false)
+
+    }
+
+
+
+    const removeDraft = (index) =>{
+
+        localOrders.splice(index,1)
+
+        localStorage.removeItem(LOCAL_STORAGE_KEY)
+
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localOrders))
+
+        setOpen(false)
+
+        checkLocalOrders()
+
+    }
+
+
     const checkLocalOrders = () =>{
 
          localStorage.getItem(LOCAL_STORAGE_KEY) && setLocalOrders(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
@@ -449,11 +475,26 @@ const Orders = () => {
                                                          {localOrders.map((locOrder,index) => (
 
                                                             <div className="text-sm py-1 text-gray-500  hover:text-gray-900 w-full flex justify-between items-center" key={index}>
-                                                                <span className="cursor-pointer">{index+1+". "}{locOrder.topic}</span>
-                                                                <i className="ti-trash text-red-600 cursor-pointer"></i>
+                                                                <span className="cursor-pointer"
+                                                                    onClick={ e => {
+                                                                        e.preventDefault();
+                                                                        loadDraft(locOrder)
+                                                                    }}
+                                                                >{index+1+". "}{locOrder.topic}</span>
+                                                                <i className="ti-trash text-red-600 cursor-pointer"
+                                                                    onClick={e => {
+                                                                        e.preventDefault();
+                                                                        removeDraft(index)
+                                                                    }
+                                                                    }
+                                                                ></i>
                                                             </div>
 
                                                          ))}
+
+                                                         {localOrders.length == 0 && <div className="flex justify-center items-center p-7">
+                                                             <h3>No Drafts in Storage!</h3>
+                                                         </div>}
                                                      </div>
                                                  </div>
 
@@ -493,7 +534,7 @@ const Orders = () => {
                                      setOpen(!open)
                                  }}
                              >
-                                 Pick From Drafts <i className="ti-save ml-1"></i>
+                                 <i className="ti-cloud-down mr-1"></i>Drafts ({localOrders.length})
                              </span>
 
 

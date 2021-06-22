@@ -19319,6 +19319,19 @@ var Orders = function Orders() {
     });
   };
 
+  var loadDraft = function loadDraft(draftOrder) {
+    Formik.values = draftOrder;
+    setOpen(false);
+  };
+
+  var removeDraft = function removeDraft(index) {
+    localOrders.splice(index, 1);
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localOrders));
+    setOpen(false);
+    checkLocalOrders();
+  };
+
   var checkLocalOrders = function checkLocalOrders() {
     localStorage.getItem(LOCAL_STORAGE_KEY) && setLocalOrders(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
   };
@@ -19409,19 +19422,32 @@ var Orders = function Orders() {
                             className: "ml-2 text-lg leading-6 font-semibold text-gray-900 inline",
                             children: "Saved Orders"
                           })]
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                           className: "mt-2",
-                          children: localOrders.map(function (locOrder, index) {
+                          children: [localOrders.map(function (locOrder, index) {
                             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                               className: "text-sm py-1 text-gray-500  hover:text-gray-900 w-full flex justify-between items-center",
                               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
                                 className: "cursor-pointer",
+                                onClick: function onClick(e) {
+                                  e.preventDefault();
+                                  loadDraft(locOrder);
+                                },
                                 children: [index + 1 + ". ", locOrder.topic]
                               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
-                                className: "ti-trash text-red-600 cursor-pointer"
+                                className: "ti-trash text-red-600 cursor-pointer",
+                                onClick: function onClick(e) {
+                                  e.preventDefault();
+                                  removeDraft(index);
+                                }
                               })]
                             }, index);
-                          })
+                          }), localOrders.length == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                            className: "flex justify-center items-center p-7",
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
+                              children: "No Drafts in Storage!"
+                            })
+                          })]
                         })]
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
@@ -19458,9 +19484,9 @@ var Orders = function Orders() {
                   e.preventDefault();
                   setOpen(!open);
                 },
-                children: ["Pick From Drafts ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
-                  className: "ti-save ml-1"
-                })]
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
+                  className: "ti-cloud-down mr-1"
+                }), "Drafts (", localOrders.length, ")"]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
               labelText: "Topic",
