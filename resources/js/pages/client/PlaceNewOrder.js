@@ -29,6 +29,8 @@ const Orders = () => {
     const hist = useHistory();
     const dispatch = useDispatch()
 
+    const[localOrders,setLocalOrders] = useState([])
+
     const authClient = useSelector( state => state.authClient)
     const { clientAuth } = authClient;
 
@@ -45,7 +47,7 @@ const Orders = () => {
     const { allSubjectAreas } = SubjectAreas;
 
 
-
+    const LOCAL_STORAGE_KEY = "savedOrders";
 
     const paperFormats = [
         {
@@ -270,7 +272,33 @@ const Orders = () => {
     })
 
 
+    const saveOrder = (e) =>{
+          e.preventDefault()
 
+            if (Formik.values.topic == ''){
+
+                window.Swal.fire({
+                    icon:"error",
+                    title:"You Cant Save Without Order Topic!"
+                })
+
+                return;
+            }
+
+           let newSave = [];
+
+           if(localOrders.length != 0){
+               newSave.push(...localOrders)
+           }
+
+           newSave.push(Formik.values)
+
+           localStorage.removeItem(LOCAL_STORAGE_KEY)
+
+           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSave))
+
+           checkLocalOrders()
+    }
 
     const submitPlaceOrderForm = (formFields) =>{
 
@@ -313,6 +341,11 @@ const Orders = () => {
             })
     }
 
+    const checkLocalOrders = () =>{
+
+         localStorage.getItem(LOCAL_STORAGE_KEY) && setLocalOrders(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
+
+    }
 
 
 
@@ -326,6 +359,9 @@ const Orders = () => {
         dispatch(fetchAcademicLevels())
         dispatch(fetchPaperTypes())
         dispatch(fetchSubjectAreas())
+
+
+        checkLocalOrders();
 
 
         window.scrollTo(0,0)
@@ -345,6 +381,25 @@ const Orders = () => {
                      <h1 className="text-4xl">Order a Paper</h1>
                      <h4 className="mt-6 text-lg text-primary-4">Paper Details</h4>
                      <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2" onSubmit={Formik.handleSubmit}>
+
+                         <div className="local-order flex justify-between items-center">
+
+                             <span
+                                 className="saveBtn"
+                                 onClick={saveOrder}
+                             >
+                                 Save <i className="ti-save ml-1"></i>
+                             </span>
+
+                             <select name="selLocalOrder" id="">
+                                 <option value='' selected disabled>Choose Draft </option>
+                                 {localOrders.map((locOrder,index) =>(
+                                     <option value={index} key={index}>{locOrder.topic}</option>
+                                 ))}
+
+                             </select>
+
+                         </div>
 
                          <InputField labelText='Topic'
                                      onBlur={Formik.handleBlur}

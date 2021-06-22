@@ -34,23 +34,8 @@ const OrderShow = () => {
 
     const[order,setOrder] = useState({});
 
-
-    // academic_level: "",​​
     // additional_materials: [],​
-    // created_at_date: "",​​
-    // created_at_time:"",​​
-    // id: 0,​
-    // number_of_pages: "",​​
-    // number_of_sources:"",​​
-    // paper_details: "",​​
-    // paper_format:"",​​
-    // prefered_english: "",​​
-    // spacing:"",​​
-    // stage:"",​​
-    // subject_area:"",​​
-    // topic: "",​
-    // type_of_paper: "",​
-    // urgency: ""
+
 
     const getOrder = (orderID) =>{
         axios.get(`/api/auth/client/order/${orderID}`)
