@@ -1459,7 +1459,7 @@ footer{
 
 
 .order-preview-item label{
-    @apply text-xl font-semibold;
+    @apply text-xl font-semibold ;
 }
 
 .order-preview-item p{
@@ -1469,7 +1469,7 @@ footer{
 
 
 .material{
-    @apply  p-2;
+    @apply  mt-5;
 }
 /*ORDER PREVIEW END*/
 

@@ -9,6 +9,9 @@ import axios from 'axios'
 
 import ClientLayout from '../../components/client/ClientLayout'
 import {Dialog, Transition} from "@headlessui/react";
+import {FileInputField} from "../../config/FormElements";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 
 
@@ -38,6 +41,93 @@ const OrderShow = () => {
             })
             .catch(err => console.log(err))
     }
+
+
+
+
+    const SUPPORTED_FORMATS = [
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'application/vnd.ms-excel',
+        'application/vnd.ms-powerpoint',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'application/msword',
+        'application/pdf',
+        'text/plain',
+        'image/jpeg',
+        'image/png',
+        'application/x-zip-compressed',
+    ]
+
+
+    const Formik = useFormik({
+        initialValues:{
+            additionalMaterials: null
+        },
+        validationSchema:Yup.object({
+            additionalMaterials: Yup.mixed()
+                .nullable()
+                .notRequired()
+                .test("FILE_SIZE", "Uploaded file is too big!",
+                    value =>  {
+                        return !value || value && value.size <= 5000000
+                    })
+                .test("FILE_FORMAT", "Uploaded file has unsupported format!",
+                    value => {
+                        return  !value || value && SUPPORTED_FORMATS.includes(value.type)
+                    })
+        }),
+        onSubmit: (values, { setSubmitting , resetForm }) => {
+
+            submitMaterialForm(values)
+
+            resetForm({ values:{
+                    additionalMaterials: null,
+                }})
+
+            setSubmitting(false)
+
+        }
+    })
+
+
+
+
+    const submitMaterialForm = (formFields) =>{
+
+        let materialFormData = new FormData();
+
+        materialFormData.append("additional_materials" , formFields.additionalMaterials)
+
+
+        axios.post('/api/auth/client/add-material/'+ order.id,
+            materialFormData ,
+            {
+                headers:{
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            .then(res => {
+                if(res.status == 201){
+
+                    window.Toast.fire({
+                        icon: 'success',
+                        title: res.data.message
+                    })
+
+                    setAddMaterial(false)
+                    getOrder(routeParams.id)
+                }
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+    }
+
+
+
+
+
 
     useEffect(() => {
 
@@ -122,28 +212,43 @@ const OrderShow = () => {
                                                      </Dialog.Title>
                                                  </div>
                                                  <div className="mt-2">
+                                                     <form action="" onSubmit={Formik.handleSubmit}>
 
+                                                         <FileInputField
+                                                             labelText="Additional Materials"
+                                                             name="additionalMaterials"
+                                                             onBlur={Formik.handleBlur}
+                                                             value={Formik.values.additionalMaterials}
+                                                             onChange={(e) => {
+                                                                 e.preventDefault();
+                                                                 Formik.setFieldValue("additionalMaterials" , e.target.files[0]);
+                                                             }}
+                                                             errors={(Formik.errors.additionalMaterials && Formik.touched.additionalMaterials) && Formik.errors.additionalMaterials}
+                                                         />
+
+                                                         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+                                                             <button
+                                                                 type="button"
+                                                                 className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                                                 onClick={() => setAddMaterial(false)}
+                                                             >
+                                                                 Cancel
+                                                             </button>
+                                                             <button
+                                                                 type="submit"
+                                                                 className="mt-3 w-full inline-flex bg-green-600 justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-white hover:text-green-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+
+                                                             >
+                                                                 Add
+                                                             </button>
+                                                         </div>
+                                                     </form>
                                                  </div>
                                              </div>
 
                                          </div>
-                                         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
-                                             <button
-                                                 type="button"
-                                                 className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                                 onClick={() => setAddMaterial(false)}
-                                             >
-                                                 Cancel
-                                             </button>
-                                             <button
-                                                 type="button"
-                                                 className="mt-3 w-full inline-flex bg-green-600 justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-white hover:text-green-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                                 // onClick={() => setOpen(false)}
-                                             >
-                                                 Add
-                                             </button>
-                                         </div>
                                      </div>
                                  </Transition.Child>
                              </div>

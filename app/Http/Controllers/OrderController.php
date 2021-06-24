@@ -44,6 +44,43 @@ class OrderController extends Controller
 
     }
 
+    public function clientOrderAddMaterial(Request $request, Order $order)
+    {
+        if($order->client_id != currentClient()->id){
+
+            return response()->json(['error' => "You Are Not Authorised To This Function!"] , Response::HTTP_FORBIDDEN);
+
+        }
+
+
+        $request->validate([
+            "additional_materials" => ['required' , 'file' , new AdditionMaterialTypeValidation()]
+        ]);
+
+        $newOrderMaterial = [];
+
+        $materialFile =  $request->file('additional_materials');
+        $materialFileName = "ORDER_".time()."_".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
+
+
+        if( $materialFile->storeAs('public/order/materials/', $materialFileName )){
+
+            $newOrderMaterial['material_name'] = $materialFileName;
+            $newOrderMaterial['type'] = $materialFile->getClientOriginalExtension();
+            $newOrderMaterial['order_id'] = $order->id;
+
+            OrderMaterial::create($newOrderMaterial);
+
+            return response()->json(['message' => "Material Added!"] , Response::HTTP_CREATED);
+
+        }else{
+
+            return response()->json(['message' => "Can't Save Material!"] , Response::HTTP_BAD_REQUEST);
+
+        }
+
+    }
+
 
     public function adminOrder(Request $request, Order $order)
     {
@@ -130,6 +167,8 @@ class OrderController extends Controller
         return OrderResource::collection($orders);
 
     }
+
+
 
     public function adminCompletedOrders()
     {
