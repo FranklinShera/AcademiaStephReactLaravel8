@@ -157,6 +157,7 @@ const Orders = () => {
 
                                 <div className="order-type">
                                     { order.type_of_paper }
+
                                 </div>
 
 

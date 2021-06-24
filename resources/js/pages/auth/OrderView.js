@@ -89,9 +89,9 @@ const OrderView = () => {
                             <div className="order-preview-item">
                                 <label>Additional Materials</label>
 
-                                {(order && order.additional_materials) && order.additional_materials.map((material , index) => {
-                                    <span className="material" key={index}>{material.material_name} | {material.type}</span>
-                                })}
+                                {(order && order.additional_materials.length != 0) && order.additional_materials.map((material , index) => (
+                                    <div className="material" key={index}>{material.material_name} | {material.type}</div>
+                                ))}
                             </div>
 
 

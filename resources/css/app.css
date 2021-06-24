@@ -1467,6 +1467,10 @@ footer{
 }
 
 
+
+.material{
+    @apply  p-2;
+}
 /*ORDER PREVIEW END*/
 
 
