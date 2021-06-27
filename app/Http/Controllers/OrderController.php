@@ -60,7 +60,7 @@ class OrderController extends Controller
         $newOrderMaterial = [];
 
         $materialFile =  $request->file('additional_materials');
-        $materialFileName = "ORDER_".time()."_".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
+        $materialFileName = "ORDER_".$order->id."_".time()."_".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
 
 
         if( $materialFile->storeAs('public/order/materials/', $materialFileName )){
@@ -213,7 +213,7 @@ class OrderController extends Controller
 
 
             $materialFile =  $request->file('additional_materials');
-            $materialFileName = "ORDER_".time()."_".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
+            $materialFileName = "ORDER_".$createdOrder->id."_".time()."_".strtolower(str_replace(' ', '_',$materialFile->getClientOriginalName()));
 
 
             if( $materialFile->storeAs('public/order/materials/', $materialFileName )){

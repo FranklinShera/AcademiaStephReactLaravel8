@@ -15,7 +15,7 @@ class AdditionMaterialTypeValidation implements Rule
 
     public function passes($attribute, $value)
     {
-        $supportedTypes = ['pdf','doc','docx','ppt','pptx','xls','rar','zip','txt','jpg','png'];
+        $supportedTypes = ['pdf','doc','docx','ppt','pptx','xls','xlsx','rar','zip','txt','jpg','png'];
 
         if(!empty($value->getClientOriginalExtension()) && in_array( $value->getClientOriginalExtension() , $supportedTypes)) {
 

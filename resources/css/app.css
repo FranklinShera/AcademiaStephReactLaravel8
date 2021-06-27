@@ -1471,6 +1471,10 @@ footer{
 .material{
     @apply  mt-5;
 }
+
+.material-icon{
+    @apply h-6 inline mr-2;
+}
 /*ORDER PREVIEW END*/
 
 

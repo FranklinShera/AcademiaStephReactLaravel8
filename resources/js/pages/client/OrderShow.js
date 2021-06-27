@@ -12,6 +12,8 @@ import {Dialog, Transition} from "@headlessui/react";
 import {FileInputField} from "../../config/FormElements";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import DocumentIcons from "../../components/DocumentIcons";
+
 
 
 
@@ -298,7 +300,13 @@ const OrderShow = () => {
                                 </label>
 
                                 {(orderMaterials.length != 0) && orderMaterials.map((material , index) => (
-                                    <div className="material" key={index}>{material.type} | {material.material_name}</div>
+                                    <div className="material" key={index}>
+
+                                            <DocumentIcons doctype={material.type} />
+
+                                            {material.material_name}
+                                    </div>
+
                                 ))}
 
                             </div>
