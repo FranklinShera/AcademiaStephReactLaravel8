@@ -217,7 +217,7 @@ const OrderShow = () => {
                                                      <form action="" onSubmit={Formik.handleSubmit}>
 
                                                          <FileInputField
-                                                             labelText="Additional Materials"
+                                                             labelText=""
                                                              name="additionalMaterials"
                                                              onBlur={Formik.handleBlur}
                                                              value={Formik.values.additionalMaterials}
@@ -300,6 +300,7 @@ const OrderShow = () => {
                                 </label>
 
                                 {(orderMaterials.length != 0) && orderMaterials.map((material , index) => (
+
                                     <div className="material" key={index}>
 
                                             <DocumentIcons doctype={material.type} />

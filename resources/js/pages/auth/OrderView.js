@@ -7,6 +7,7 @@ import axios from 'axios'
 
 
 import AdminLayout from "../../components/auth/AdminLayout";
+import DocumentIcons from "../../components/DocumentIcons";
 
 
 
@@ -21,6 +22,7 @@ const OrderView = () => {
     const { loggedInUser, auth } = authUser;
 
     const[order,setOrder] = useState({});
+    const[orderMaterials,setOrderMaterials] = useState([]);
 
 
 
@@ -28,6 +30,7 @@ const OrderView = () => {
         axios.get(`/api/auth/admin/order/${orderID}`)
             .then(res => {
                 setOrder(res.data.data)
+                setOrderMaterials(res.data.data.additional_materials)
             })
             .catch(err => console.log(err))
     }
@@ -89,9 +92,18 @@ const OrderView = () => {
                             <div className="order-preview-item">
                                 <label>Additional Materials</label>
 
-                                {(order && order.additional_materials.length != 0) && order.additional_materials.map((material , index) => (
-                                    <div className="material" key={index}>{material.material_name} | {material.type}</div>
+
+                                {(orderMaterials.length != 0) && orderMaterials.map((material , index) => (
+
+                                    <div className="material" key={index}>
+
+                                        <DocumentIcons doctype={material.type} />
+
+                                        {material.material_name}
+                                    </div>
+
                                 ))}
+
                             </div>
 
 
