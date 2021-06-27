@@ -28,6 +28,7 @@ const Orders = () => {
 
     const  { orders , links , loading} = allOrders
 
+    const[searchedOrders,setSearchedOrders] = useState([])
 
     const ALL_ORDERS_URI = '/api/auth/admin/orders';
     const PENDING_ORDER_URI = '/api/auth/admin/orders-pending';
@@ -49,12 +50,25 @@ const Orders = () => {
 
         dispatch(adminFetchOrders(orderLink))
 
+        setSearchedOrders(orders)
+
     }
 
 
     const titleCase = (word) =>{
 
         return word.charAt(0).toUpperCase() + word.slice(1)
+
+    }
+
+    const searchOrder = (e) =>{
+
+        e.preventDefault();
+        let searchText = e.target.value
+
+        let filteredOrders = orders.filter(order => (order.topic.match(searchText)))
+
+        setSearchedOrders(filteredOrders);
 
     }
 
@@ -92,6 +106,13 @@ const Orders = () => {
                 <div className="dash_overview">
                     <div className="orderview-header">
                         <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
+
+                        {(orders.length != 0) && (
+                            <div className="orderview-search">
+                                <input type="text" placeholder="search orders here..." onChange={searchOrder} />
+                            </div>
+                        )}
+
                         <div className="orderview-controls">
                             <span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}
                                   onClick={e => {

@@ -100,6 +100,13 @@ const Orders = ({ location }) => {
              <div className="dash_overview">
                     <div className="orderview-header">
                         <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
+
+                        {(orders.length != 0) && (
+                            <div className="orderview-search">
+                                <input type="text" placeholder="search orders here..."  />
+                            </div>
+                        )}
+
                         <div className="orderview-controls">
                             <span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}
                                   onClick={e => {

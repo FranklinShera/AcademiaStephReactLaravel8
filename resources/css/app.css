@@ -1440,6 +1440,19 @@ footer{
     @apply ml-4 ;
 }
 
+.orderview-search {
+    border: 2px #11111133 solid;
+    border-radius: 20px;
+    padding: 5px 15px;
+    width: 50%;
+}
+
+
+.orderview-search input{
+    text-align: center;
+    width: 100%;
+}
+
 
 
 /*ORDERS VIEW END*/
@@ -1452,6 +1465,16 @@ footer{
 .order-preview{
     @apply w-3/4 mt-5;
 }
+
+
+.order-preview-notification{
+    @apply  my-4 p-4 text-center bg-gradient-to-l from-primary-1 to-primary-2 hover:from-yellow-100 hover:to-yellow-100 text-white rounded;
+}
+
+.order-preview-notification .payaction{
+    @apply  bg-white py-2 px-6 text-gray-700 hover:bg-green-500 hover:shadow cursor-pointer hover:text-white rounded ml-4 font-semibold;
+}
+
 
 .order-preview-item{
     @apply mb-6;

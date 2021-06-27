@@ -18421,6 +18421,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
 /* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -18449,6 +18461,12 @@ var Orders = function Orders() {
   var orders = allOrders.orders,
       links = allOrders.links,
       loading = allOrders.loading;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      searchedOrders = _useState2[0],
+      setSearchedOrders = _useState2[1];
+
   var ALL_ORDERS_URI = '/api/auth/admin/orders';
   var PENDING_ORDER_URI = '/api/auth/admin/orders-pending';
   var CANCELLED_ORDER_URI = '/api/auth/admin/orders-cancelled';
@@ -18462,10 +18480,20 @@ var Orders = function Orders() {
 
   var getOrders = function getOrders(orderLink) {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_6__.adminFetchOrders)(orderLink));
+    setSearchedOrders(orders);
   };
 
   var titleCase = function titleCase(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  var searchOrder = function searchOrder(e) {
+    e.preventDefault();
+    var searchText = e.target.value;
+    var filteredOrders = orders.filter(function (order) {
+      return order.topic.match(searchText);
+    });
+    setSearchedOrders(filteredOrders);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -18491,6 +18519,13 @@ var Orders = function Orders() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
             className: " text-2xl font-bold",
             children: [routeParams.category.toUpperCase(), " ORDERS"]
+          }), orders.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "orderview-search",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+              type: "text",
+              placeholder: "search orders here...",
+              onChange: searchOrder
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "orderview-controls",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
@@ -19189,6 +19224,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var OrderShow = function OrderShow() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
@@ -19285,6 +19321,14 @@ var OrderShow = function OrderShow() {
       }
     })["catch"](function (err) {
       console.log(err);
+    });
+  };
+
+  var payForOrder = function payForOrder(e) {
+    e.preventDefault();
+    window.Toast.fire({
+      icon: "success",
+      title: "Paying For Order..."
     });
   };
 
@@ -19410,7 +19454,16 @@ var OrderShow = function OrderShow() {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "order-preview",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            children: [order && order.stage == "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "order-preview-notification",
+                children: ["Pay For This Order For It To Be Assignable!", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                  className: "payaction",
+                  onClick: payForOrder,
+                  children: "Pay Now!"
+                })]
+              })
+            }), order && order.stage !== "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                 children: "ID"
@@ -19646,6 +19699,12 @@ var Orders = function Orders(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
             className: " text-2xl font-bold",
             children: [routeParams.category.toUpperCase(), " ORDERS"]
+          }), orders.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "orderview-search",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+              type: "text",
+              placeholder: "search orders here..."
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "orderview-controls",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {

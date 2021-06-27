@@ -154,6 +154,16 @@ const OrderShow = () => {
 
 
 
+    const payForOrder = (e) =>{
+        e.preventDefault();
+
+        window.Toast.fire({
+            icon: "success",
+            title: "Paying For Order..."
+        })
+
+    }
+
 
 
 
@@ -286,10 +296,25 @@ const OrderShow = () => {
                      <div className="order-preview">
 
 
-                         <div className="order-preview-item">
-                             <label>ID</label>
-                             <p>{order && order.serial}</p>
-                         </div>
+                         {(order && order.stage == "0") && (
+                             <>
+                                 <div className="order-preview-notification">
+                                     Pay For This Order For It To Be Assignable!
+                                     <span
+                                         className="payaction"
+                                         onClick={payForOrder}
+                                     >Pay Now!</span>
+                                 </div>
+
+                             </>
+                         )}
+
+                         {(order && order.stage !== "0") && (
+                             <div className="order-preview-item">
+                                 <label>ID</label>
+                                 <p>{order && order.serial}</p>
+                             </div>
+                         )}
 
 
 
