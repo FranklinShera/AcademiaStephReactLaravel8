@@ -484,7 +484,7 @@ const Home = () => {
                 <div className="cards-list">
 
 
-                    { reviews.map( (rate,index) => (
+                    { reviews && reviews.map( (rate,index) => (
                         <RatingCard cardData={rate} key={index} />
                     ) ) }
 

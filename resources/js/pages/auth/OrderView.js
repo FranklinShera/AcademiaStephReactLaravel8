@@ -66,6 +66,12 @@ const OrderView = () => {
                      <div className="order-preview">
 
                             <div className="order-preview-item">
+                                <label>ID</label>
+                                <p>{order && order.serial}</p>
+                            </div>
+
+
+                            <div className="order-preview-item">
                                 <label>Topic</label>
                                 <p>{order && order.topic}</p>
                             </div>
@@ -99,7 +105,9 @@ const OrderView = () => {
 
                                         <DocumentIcons doctype={material.type} />
 
-                                        {material.material_name}
+
+                                        <a target="blank" href={`/storage/order/materials/${material.material_name}`}> {material.material_name} </a>
+
                                     </div>
 
                                 ))}

@@ -94,6 +94,32 @@ const OrderShow = () => {
 
 
 
+    const deleteMaterial = (materialId) =>{
+
+        axios.delete('/api/auth/client/material/'+ materialId)
+            .then(res => {
+                if(res.status == 200){
+
+                    window.Toast.fire({
+                        icon: 'success',
+                        title: res.data.message
+                    })
+
+                    getOrder(routeParams.id)
+
+                }else{
+                    window.Toast.fire({
+                        icon: 'error',
+                        title: res.data.message
+                    })
+                }
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+
+    }
+
 
     const submitMaterialForm = (formFields) =>{
 
@@ -259,7 +285,15 @@ const OrderShow = () => {
 
                      <div className="order-preview">
 
-                            <div className="order-preview-item">
+
+                         <div className="order-preview-item">
+                             <label>ID</label>
+                             <p>{order && order.serial}</p>
+                         </div>
+
+
+
+                         <div className="order-preview-item">
                                 <label>Topic</label>
                                 <p>{order && order.topic}</p>
                             </div>
@@ -303,9 +337,30 @@ const OrderShow = () => {
 
                                     <div className="material" key={index}>
 
-                                            <DocumentIcons doctype={material.type} />
+                                         <DocumentIcons doctype={material.type} />
 
-                                            {material.material_name}
+                                        <a target="blank" href={`/storage/order/materials/${material.material_name}`}> {material.material_name} </a>
+
+                                        <span
+                                            className="ml-5"
+                                            onClick={e =>{
+                                            e.preventDefault();
+                                            window.Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You won't be able to revert this!",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, delete it!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                   deleteMaterial(material.id)
+                                                }
+                                            })
+                                        }}>
+                                            <i className="ti-trash text-red-600 h-5"></i>
+                                        </span>
                                     </div>
 
                                 ))}

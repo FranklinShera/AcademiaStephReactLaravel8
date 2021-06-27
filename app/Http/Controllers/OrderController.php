@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderMaterial;
 use App\Rules\AdditionMaterialTypeValidation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
@@ -248,5 +249,33 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+
+    public function destroyMaterial(OrderMaterial $orderMaterial)
+    {
+
+        $materialLink = "public/order/materials/".$orderMaterial->material_name;
+
+
+
+        if(Storage::delete($materialLink)){
+
+            if($orderMaterial->delete()){
+
+                return response()->json(['message' => 'Order Material Deleted!'], Response::HTTP_OK);
+
+            }else{
+
+                return response()->json(['message' => 'Unable To Delete Material!'], Response::HTTP_FORBIDDEN);
+
+            }
+
+        }else{
+
+            return response()->json(['message' => 'Unable To Delete File!'], Response::HTTP_FORBIDDEN);
+
+        }
+
     }
 }

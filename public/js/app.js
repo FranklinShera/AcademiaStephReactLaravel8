@@ -17292,7 +17292,7 @@ var Home = function Home() {
           children: "WHAT OUR CUSTOMERS SAY"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
           className: "cards-list",
-          children: reviews.map(function (rate, index) {
+          children: reviews && reviews.map(function (rate, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_RatingCard__WEBPACK_IMPORTED_MODULE_10__.default, {
               cardData: rate
             }, index);
@@ -18291,6 +18291,13 @@ var OrderView = function OrderView() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                children: "ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                children: order && order.serial
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "order-preview-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
                 children: "Topic"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
                 children: order && order.topic
@@ -18325,7 +18332,11 @@ var OrderView = function OrderView() {
                   className: "material",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_DocumentIcons__WEBPACK_IMPORTED_MODULE_4__.default, {
                     doctype: material.type
-                  }), material.material_name]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
+                    target: "blank",
+                    href: "/storage/order/materials/".concat(material.material_name),
+                    children: [" ", material.material_name, " "]
+                  })]
                 }, index);
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -19237,6 +19248,25 @@ var OrderShow = function OrderShow() {
     }
   });
 
+  var deleteMaterial = function deleteMaterial(materialId) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/api/auth/client/material/' + materialId).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+        getOrder(routeParams.id);
+      } else {
+        window.Toast.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
   var submitMaterialForm = function submitMaterialForm(formFields) {
     var materialFormData = new FormData();
     materialFormData.append("additional_materials", formFields.additionalMaterials);
@@ -19383,6 +19413,13 @@ var OrderShow = function OrderShow() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+                children: "ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                children: order && order.serial
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "order-preview-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                 children: "Topic"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                 children: order && order.topic
@@ -19429,7 +19466,32 @@ var OrderShow = function OrderShow() {
                   className: "material",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_DocumentIcons__WEBPACK_IMPORTED_MODULE_7__.default, {
                     doctype: material.type
-                  }), material.material_name]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                    target: "blank",
+                    href: "/storage/order/materials/".concat(material.material_name),
+                    children: [" ", material.material_name, " "]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                    className: "ml-5",
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      window.Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                      }).then(function (result) {
+                        if (result.isConfirmed) {
+                          deleteMaterial(material.id);
+                        }
+                      });
+                    },
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+                      className: "ti-trash text-red-600 h-5"
+                    })
+                  })]
                 }, index);
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
