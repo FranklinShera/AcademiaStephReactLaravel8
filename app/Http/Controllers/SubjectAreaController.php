@@ -45,7 +45,7 @@ class SubjectAreaController extends Controller
 
         $sarea = SubjectArea::create($data);
 
-        return new SubjectAreaResource($sarea);
+        return response()->json(['message' => $sarea->area_name." Added!"] , Response::HTTP_CREATED);
 
     }
 

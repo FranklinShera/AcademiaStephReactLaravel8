@@ -13,6 +13,7 @@ import AcademicLevel from '../../components/auth/AcademicLevel'
 import PaperType from '../../components/auth/PaperType'
 import SubjectArea from '../../components/auth/SubjectArea'
 import PrefferedEnglish from "../../components/auth/PrefferedEnglish";
+import PaperFormat from "../../components/auth/PaperFormat";
 
 
 
@@ -112,7 +113,7 @@ const OrderControl = () => {
                         {(currTab == 2) && <PaperType/>}
                         {(currTab == 3) &&  <SubjectArea/> }
                         {(currTab == 4) &&  <PrefferedEnglish/> }
-                        {(currTab == 5) &&  (<h1>PAPER FORMAT</h1>) }
+                        {(currTab == 5) &&  <PaperFormat/> }
                    </div>
 
                </div>

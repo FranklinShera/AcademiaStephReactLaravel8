@@ -37,7 +37,7 @@ class PrefferedEnglishController extends Controller
 
         $pEng = PrefferedEnglish::create($data);
 
-        return new PrefferedEnglishResource($pEng);
+        return response()->json(['message' => $pEng->lang_name." Added!"] , Response::HTTP_CREATED);
 
     }
 

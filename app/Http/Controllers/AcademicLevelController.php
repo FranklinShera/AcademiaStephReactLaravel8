@@ -35,7 +35,7 @@ class AcademicLevelController extends Controller
 
         $alevel = AcademicLevel::create($data);
 
-        return new AcademicLevelResource($alevel);
+        return response()->json(['message' => $alevel->level_name." Added!"] , Response::HTTP_CREATED);
 
     }
 

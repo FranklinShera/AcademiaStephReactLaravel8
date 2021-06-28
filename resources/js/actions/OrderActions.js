@@ -10,7 +10,11 @@ import {
     REQUEST_SUBJECT_AREAS_FAIL,
     REQUEST_ORDERS_FAIL,
     REQUEST_ORDERS_SUCCESS,
-    REQUEST_ORDERS, REQUEST_PREFERED_ENGLISH, REQUEST_PREFERED_ENGLISH_SUCCESS, REQUEST_PREFERED_ENGLISH_FAIL,
+    REQUEST_ORDERS,
+    REQUEST_PREFERED_ENGLISH,
+    REQUEST_PREFERED_ENGLISH_SUCCESS,
+    REQUEST_PREFERED_ENGLISH_FAIL,
+    REQUEST_PAPER_FORMAT_SUCCESS, REQUEST_PAPER_FORMAT, REQUEST_PAPER_FORMAT_FAIL,
 } from '../constants/OrderConstants'
 
 import axios from 'axios'
@@ -252,6 +256,73 @@ export const fetchPrefferedEnglish = () => async (dispatch) => {
     } catch (error) {
           dispatch({
             type: REQUEST_PREFERED_ENGLISH_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
+
+
+
+
+
+export const adminFetchPaperFormats = (paperFormatsUrl = '/api/auth/admin/paper-formats') => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_PAPER_FORMAT })
+
+        const { data } = await axios.get(paperFormatsUrl)
+
+
+        dispatch({
+            type: REQUEST_PAPER_FORMAT_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_PAPER_FORMAT_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
+
+
+
+
+export const fetchPaperFormats = () => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_PAPER_FORMAT })
+
+        const { data } = await axios.get('/api/paper-formats')
+
+
+        dispatch({
+            type: REQUEST_PAPER_FORMAT_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_PAPER_FORMAT_FAIL,
             error: error
         })
 

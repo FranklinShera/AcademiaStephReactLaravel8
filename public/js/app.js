@@ -13358,6 +13358,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchSubjectAreas": () => (/* binding */ fetchSubjectAreas),
 /* harmony export */   "adminFetchPrefferedEnglish": () => (/* binding */ adminFetchPrefferedEnglish),
 /* harmony export */   "fetchPrefferedEnglish": () => (/* binding */ fetchPrefferedEnglish),
+/* harmony export */   "adminFetchPaperFormats": () => (/* binding */ adminFetchPaperFormats),
+/* harmony export */   "fetchPaperFormats": () => (/* binding */ fetchPaperFormats),
 /* harmony export */   "ClientFetchOrders": () => (/* binding */ ClientFetchOrders),
 /* harmony export */   "adminFetchOrders": () => (/* binding */ adminFetchOrders)
 /* harmony export */ });
@@ -13755,7 +13757,8 @@ var fetchPrefferedEnglish = function fetchPrefferedEnglish() {
     };
   }();
 };
-var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+var adminFetchPaperFormats = function adminFetchPaperFormats() {
+  var paperFormatsUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/paper-formats';
   return /*#__PURE__*/function () {
     var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(dispatch) {
       var _yield$axios$get9, data;
@@ -13766,16 +13769,16 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
             case 0:
               _context9.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT
               });
               _context9.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(paperFormatsUrl);
 
             case 4:
               _yield$axios$get9 = _context9.sent;
               data = _yield$axios$get9.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT_SUCCESS,
                 payload: data
               });
               _context9.next = 12;
@@ -13785,7 +13788,7 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
               _context9.prev = 9;
               _context9.t0 = _context9["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT_FAIL,
                 error: _context9.t0
               });
 
@@ -13802,8 +13805,7 @@ var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
     };
   }();
 };
-var adminFetchOrders = function adminFetchOrders() {
-  var ordersUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/orders';
+var fetchPaperFormats = function fetchPaperFormats() {
   return /*#__PURE__*/function () {
     var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(dispatch) {
       var _yield$axios$get10, data;
@@ -13814,16 +13816,16 @@ var adminFetchOrders = function adminFetchOrders() {
             case 0:
               _context10.prev = 0;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT
               });
               _context10.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/paper-formats');
 
             case 4:
               _yield$axios$get10 = _context10.sent;
               data = _yield$axios$get10.data;
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_SUCCESS,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT_SUCCESS,
                 payload: data
               });
               _context10.next = 12;
@@ -13833,7 +13835,7 @@ var adminFetchOrders = function adminFetchOrders() {
               _context10.prev = 9;
               _context10.t0 = _context10["catch"](0);
               dispatch({
-                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_FAIL,
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_PAPER_FORMAT_FAIL,
                 error: _context10.t0
               });
 
@@ -13847,6 +13849,101 @@ var adminFetchOrders = function adminFetchOrders() {
 
     return function (_x10) {
       return _ref10.apply(this, arguments);
+    };
+  }();
+};
+var ClientFetchOrders = function ClientFetchOrders(ordersUrl) {
+  return /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(dispatch) {
+      var _yield$axios$get11, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              _context11.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS
+              });
+              _context11.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+
+            case 4:
+              _yield$axios$get11 = _context11.sent;
+              data = _yield$axios$get11.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_SUCCESS,
+                payload: data
+              });
+              _context11.next = 12;
+              break;
+
+            case 9:
+              _context11.prev = 9;
+              _context11.t0 = _context11["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_FAIL,
+                error: _context11.t0
+              });
+
+            case 12:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11, null, [[0, 9]]);
+    }));
+
+    return function (_x11) {
+      return _ref11.apply(this, arguments);
+    };
+  }();
+};
+var adminFetchOrders = function adminFetchOrders() {
+  var ordersUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/orders';
+  return /*#__PURE__*/function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(dispatch) {
+      var _yield$axios$get12, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              _context12.prev = 0;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS
+              });
+              _context12.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(ordersUrl);
+
+            case 4:
+              _yield$axios$get12 = _context12.sent;
+              data = _yield$axios$get12.data;
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_SUCCESS,
+                payload: data
+              });
+              _context12.next = 12;
+              break;
+
+            case 9:
+              _context12.prev = 9;
+              _context12.t0 = _context12["catch"](0);
+              dispatch({
+                type: _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_ORDERS_FAIL,
+                error: _context12.t0
+              });
+
+            case 12:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12, null, [[0, 9]]);
+    }));
+
+    return function (_x12) {
+      return _ref12.apply(this, arguments);
     };
   }();
 };
@@ -15607,6 +15704,358 @@ var AdminLayout = function AdminLayout(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/auth/PaperFormat.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/auth/PaperFormat.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var _DotLoader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../DotLoader */ "./resources/js/components/DotLoader.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+var PaperFormat = function PaperFormat() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
+  var PaperFormats = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
+    return state.paperFormats;
+  });
+  var allPaperFormats = PaperFormats.allPaperFormats,
+      loading = PaperFormats.loading,
+      meta = PaperFormats.meta,
+      links = PaperFormats.links;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      formatChange = _useState2[0],
+      setFormatChange = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      localLoad = _useState4[0],
+      setLocalLoad = _useState4[1];
+
+  var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
+    initialValues: {
+      format_name: '',
+      active: false
+    },
+    validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
+      format_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(2, 'Paper Format Cannot Be Less Than 3 Characters').max(32, 'Paper Format Cannot be More than 32 Characters').required('Paper Format is Required!')
+    }),
+    onSubmit: function onSubmit(values, _ref) {
+      var setSubmitting = _ref.setSubmitting,
+          resetForm = _ref.resetForm;
+      addPaperFormat(values);
+      resetForm({
+        values: {
+          format_name: '',
+          active: false
+        }
+      });
+      setSubmitting(false);
+    }
+  });
+
+  var deletePaperFormat = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setLocalLoad(true);
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/auth/admin/paper-format/' + id);
+
+            case 3:
+              res = _context.sent;
+
+              if (res.status == 200) {
+                window.Toast.fire({
+                  icon: 'success',
+                  title: res.data.message
+                });
+              } else {
+                window.Toast.fire({
+                  icon: 'error',
+                  title: res.data.message
+                });
+              }
+
+              setLocalLoad(false);
+              setFormatChange(Date.now());
+
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function deletePaperFormat(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var toggleStatus = function toggleStatus(id) {
+    setLocalLoad(true);
+    axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/paper-format-toggle/' + id).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+      } else {
+        window.Swal.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (error) {
+      window.Swal.fire({
+        icon: 'error',
+        title: error
+      });
+    });
+    setLocalLoad(false);
+    setFormatChange(Date.now());
+  };
+
+  var addPaperFormat = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(formatForm) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              setLocalLoad(true);
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/admin/paper-format', formatForm).then(function (res) {
+                if (res.status == 201) {
+                  window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                  });
+                } else {
+                  window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                  });
+                }
+              })["catch"](function (error) {
+                window.Swal.fire({
+                  icon: 'error',
+                  title: error
+                });
+              });
+              setLocalLoad(false);
+              setFormatChange(Date.now());
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addPaperFormat(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchPaperFormats)());
+  }, [formatChange]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    className: "table-group",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      className: "core-table",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "core--list--table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "core--table--header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "table--item--name",
+            children: "PAPER FORMAT"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "table--item--status",
+            children: "STATUS"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "core--table--body",
+          children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}) : allPaperFormats.map(function (paperFormat, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "table--item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "table--item--name",
+                children: [index + 1 + ".", "  ", paperFormat.format_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "table--item--status",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                  className: "active-state",
+                  children: paperFormat.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "ACTIVE"
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+                    children: "INACTIVE"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+                  className: "table--item--actions",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
+                    className: "ti-exchange-vertical cursor-pointer ".concat(paperFormat.active ? 'text-palblue' : 'text-dark-1'),
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      toggleStatus(paperFormat.id);
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("svg", {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      deletePaperFormat(paperFormat.id);
+                    },
+                    className: "h-6 cursor-pointer ",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    xmlnsXlink: "http://www.w3.org/1999/xlink",
+                    viewBox: "0 0 32 32",
+                    fill: "#FF0000",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("path", {
+                      d: "M14 4C13.477778 4 12.94539 4.1913289 12.568359 4.5683594C12.191329 4.9453899 12 5.4777778 12 6L12 7L7 7L6 7L6 9L7 9L7 25C7 26.645455 8.3545455 28 10 28L17 28L17 27.855469C18.367249 30.320181 20.996209 32 24 32C28.4 32 32 28.4 32 24C32 19.939374 28.931363 16.567445 25 16.070312L25 9L26 9L26 7L25 7L20 7L20 6C20 5.4777778 19.808671 4.9453899 19.431641 4.5683594C19.05461 4.1913289 18.522222 4 18 4L14 4 z M 14 6L18 6L18 7L14 7L14 6 z M 9 9L23 9L23 16.070312C22.301956 16.158582 21.631165 16.334117 21 16.591797L21 12L19 12L19 17.771484C18.18962 18.424016 17.507605 19.229482 17 20.144531L17 12L15 12L15 23L16.070312 23C16.028764 23.32857 16 23.660626 16 24C16 24.691044 16.098874 25.35927 16.265625 26L10 26C9.4454545 26 9 25.554545 9 25L9 9 z M 11 12L11 23L13 23L13 12L11 12 z M 24 18C27.3 18 30 20.7 30 24C30 27.3 27.3 30 24 30C20.7 30 18 27.3 18 24C18 20.7 20.7 18 24 18 z M 21.699219 20.300781L20.300781 21.699219L22.599609 24L20.300781 26.300781L21.699219 27.699219L24 25.400391L26.300781 27.699219L27.699219 26.300781L25.400391 24L27.699219 21.699219L26.300781 20.300781L24 22.599609L21.699219 20.300781 z",
+                      fill: "#FF0000"
+                    })
+                  })]
+                })]
+              })]
+            }, index);
+          }), allPaperFormats.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            className: "no--table--items",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+              children: "We Could'nt Find Any Paper Formats!"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
+              children: "Please Try Adding More!"
+            })]
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      className: "new--table--item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+        action: "",
+        onSubmit: formik.handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.InputField, {
+          labelText: "Paper Formats",
+          name: "format_name",
+          type: "text",
+          onBlur: formik.handleBlur,
+          value: formik.values.format_name,
+          placeholder: "Add Paper Format ...",
+          onChange: formik.handleChange,
+          errors: formik.errors.format_name && formik.touched.format_name && formik.errors.format_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "text-sm",
+          children: ["Default Paper Format Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "text-gray-800 font-extrabold",
+            children: "false"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
+          type: "submit",
+          className: "w-full mt-6 btn-blue font-bold",
+          children: [" ", localLoad ? 'Adding' : 'Add Paper Format']
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        className: "table--links--meta",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
+            className: "meta--info--value",
+            children: [meta.current_page, "  Of ", meta.last_page]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "meta--info",
+          children: ["Total Items", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            className: "meta--info--value",
+            children: meta.total
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: "links--fetch",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchPaperFormats)(links.prev));
+            },
+            children: "PREV"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.prev ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.prev && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchPaperFormats)(links.first));
+            },
+            children: "FIRST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchPaperFormats)(links.last));
+            },
+            children: "LAST"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+            className: links.next ? " bg-primary-3 text-white " : " bg-gray-100 text-gray-400 ",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              links.next && dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.adminFetchPaperFormats)(links.next));
+            },
+            children: "NEXT"
+          })]
+        })]
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PaperFormat);
+
+/***/ }),
+
 /***/ "./resources/js/components/auth/PaperType.js":
 /*!***************************************************!*\
   !*** ./resources/js/components/auth/PaperType.js ***!
@@ -17023,6 +17472,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "REQUEST_PREFERED_ENGLISH": () => (/* binding */ REQUEST_PREFERED_ENGLISH),
 /* harmony export */   "REQUEST_PREFERED_ENGLISH_SUCCESS": () => (/* binding */ REQUEST_PREFERED_ENGLISH_SUCCESS),
 /* harmony export */   "REQUEST_PREFERED_ENGLISH_FAIL": () => (/* binding */ REQUEST_PREFERED_ENGLISH_FAIL),
+/* harmony export */   "REQUEST_PAPER_FORMAT": () => (/* binding */ REQUEST_PAPER_FORMAT),
+/* harmony export */   "REQUEST_PAPER_FORMAT_SUCCESS": () => (/* binding */ REQUEST_PAPER_FORMAT_SUCCESS),
+/* harmony export */   "REQUEST_PAPER_FORMAT_FAIL": () => (/* binding */ REQUEST_PAPER_FORMAT_FAIL),
 /* harmony export */   "REQUEST_PAPER_TYPES": () => (/* binding */ REQUEST_PAPER_TYPES),
 /* harmony export */   "REQUEST_PAPER_TYPES_SUCCESS": () => (/* binding */ REQUEST_PAPER_TYPES_SUCCESS),
 /* harmony export */   "REQUEST_PAPER_TYPES_FAIL": () => (/* binding */ REQUEST_PAPER_TYPES_FAIL),
@@ -17039,6 +17491,9 @@ var REQUEST_ACADEMIC_LEVELS_FAIL = 'REQUEST_ACADEMIC_LEVELS_FAIL';
 var REQUEST_PREFERED_ENGLISH = 'REQUEST_PREFERED_ENGLISH';
 var REQUEST_PREFERED_ENGLISH_SUCCESS = 'REQUEST_PREFERED_ENGLISH_SUCCESS';
 var REQUEST_PREFERED_ENGLISH_FAIL = 'REQUEST_PREFERED_ENGLISH_FAIL';
+var REQUEST_PAPER_FORMAT = 'REQUEST_PAPER_FORMAT';
+var REQUEST_PAPER_FORMAT_SUCCESS = 'REQUEST_PAPER_FORMAT_SUCCESS';
+var REQUEST_PAPER_FORMAT_FAIL = 'REQUEST_PAPER_FORMAT_FAIL';
 var REQUEST_PAPER_TYPES = 'REQUEST_PAPER_TYPES';
 var REQUEST_PAPER_TYPES_SUCCESS = 'REQUEST_PAPER_TYPES_SUCCESS';
 var REQUEST_PAPER_TYPES_FAIL = 'REQUEST_PAPER_TYPES_FAIL';
@@ -18544,7 +18999,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/AdminLayout */ "./resources/js/components/auth/AdminLayout.js");
@@ -18553,7 +19008,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_auth_PaperType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/auth/PaperType */ "./resources/js/components/auth/PaperType.js");
 /* harmony import */ var _components_auth_SubjectArea__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/auth/SubjectArea */ "./resources/js/components/auth/SubjectArea.js");
 /* harmony import */ var _components_auth_PrefferedEnglish__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/auth/PrefferedEnglish */ "./resources/js/components/auth/PrefferedEnglish.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_auth_PaperFormat__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/auth/PaperFormat */ "./resources/js/components/auth/PaperFormat.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -18580,9 +19036,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var OrderControl = function OrderControl() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_11__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
@@ -18603,52 +19060,52 @@ var OrderControl = function OrderControl() {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Order Control';
   }, [auth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
     className: "dashboard",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "order-control",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "order--control--tabs",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "order--control--tab ".concat(currTab == 1 && ' active-control-tab '),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(1);
               },
               children: "Academic Level"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
               className: "vertline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "order--control--tab ".concat(currTab == 2 && ' active-control-tab '),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(2);
               },
               children: "Paper Type"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
               className: "vertline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "order--control--tab ".concat(currTab == 3 && ' active-control-tab '),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(3);
               },
               children: "Subject Area"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
               className: "vertline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "order--control--tab ".concat(currTab == 4 && ' active-control-tab '),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(4);
               },
               children: "Preffered English"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
               className: "vertline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "order--control--tab ".concat(currTab == 5 && ' active-control-tab '),
               onClick: function onClick(e) {
                 e.preventDefault();
@@ -18656,11 +19113,9 @@ var OrderControl = function OrderControl() {
               },
               children: "Paper Format"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "order--control-tabview",
-            children: [currTab == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_auth_AcademicLevel__WEBPACK_IMPORTED_MODULE_5__.default, {}), currTab == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_auth_PaperType__WEBPACK_IMPORTED_MODULE_6__.default, {}), currTab == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_auth_SubjectArea__WEBPACK_IMPORTED_MODULE_7__.default, {}), currTab == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_auth_PrefferedEnglish__WEBPACK_IMPORTED_MODULE_8__.default, {}), currTab == 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
-              children: "PAPER FORMAT"
-            })]
+            children: [currTab == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_AcademicLevel__WEBPACK_IMPORTED_MODULE_5__.default, {}), currTab == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperType__WEBPACK_IMPORTED_MODULE_6__.default, {}), currTab == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_SubjectArea__WEBPACK_IMPORTED_MODULE_7__.default, {}), currTab == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PrefferedEnglish__WEBPACK_IMPORTED_MODULE_8__.default, {}), currTab == 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperFormat__WEBPACK_IMPORTED_MODULE_9__.default, {})]
           })]
         })
       })
@@ -21494,6 +21949,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "OrderPaperTypesReducer": () => (/* binding */ OrderPaperTypesReducer),
 /* harmony export */   "OrderSubjectAreaReducer": () => (/* binding */ OrderSubjectAreaReducer),
 /* harmony export */   "OrderPrefferedEnglishReducer": () => (/* binding */ OrderPrefferedEnglishReducer),
+/* harmony export */   "OrderPaperFormatReducer": () => (/* binding */ OrderPaperFormatReducer),
 /* harmony export */   "OrdersReducer": () => (/* binding */ OrdersReducer)
 /* harmony export */ });
 /* harmony import */ var _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/OrderConstants */ "./resources/js/constants/OrderConstants.js");
@@ -21638,6 +22094,41 @@ var OrderPrefferedEnglishReducer = function OrderPrefferedEnglishReducer() {
       return state;
   }
 };
+var OrderPaperFormatReducer = function OrderPaperFormatReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    allPaperFormats: [],
+    links: {},
+    meta: {}
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_FORMAT:
+      return {
+        loading: true,
+        allPaperFormats: [],
+        links: {},
+        meta: {}
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_FORMAT_SUCCESS:
+      return {
+        loading: false,
+        allPaperFormats: action.payload.data,
+        links: action.payload.links,
+        meta: action.payload.meta
+      };
+
+    case _constants_OrderConstants__WEBPACK_IMPORTED_MODULE_0__.REQUEST_PAPER_FORMAT_FAIL:
+      return {
+        loading: false,
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+};
 var OrdersReducer = function OrdersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     orders: [],
@@ -21754,6 +22245,7 @@ var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   paperTypes: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderPaperTypesReducer,
   subjectAreas: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderSubjectAreaReducer,
   preffEnglish: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderPrefferedEnglishReducer,
+  paperFormats: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrderPaperFormatReducer,
   Orders: _reducers_OrderReducers__WEBPACK_IMPORTED_MODULE_4__.OrdersReducer
 });
 var initialState = {};

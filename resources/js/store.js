@@ -8,7 +8,7 @@ import { AuthUserReducer,AuthClientReducer,RegisterUserReducer, AdminPanelReduce
 
 import {
     ClientOrdersReducer,
-    OrderAcademicLevelsReducer,
+    OrderAcademicLevelsReducer, OrderPaperFormatReducer,
     OrderPaperTypesReducer, OrderPrefferedEnglishReducer, OrdersReducer,
     OrderSubjectAreaReducer
 } from './reducers/OrderReducers'
@@ -23,6 +23,7 @@ const reducer =  combineReducers({
     paperTypes: OrderPaperTypesReducer,
     subjectAreas: OrderSubjectAreaReducer,
     preffEnglish: OrderPrefferedEnglishReducer,
+    paperFormats: OrderPaperFormatReducer,
     Orders: OrdersReducer
 })
 

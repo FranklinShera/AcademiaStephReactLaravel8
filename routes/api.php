@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaperFormatController;
 use App\Http\Controllers\PaperTypeController;
 use App\Http\Controllers\PrefferedEnglishController;
 use App\Http\Controllers\SubjectAreaController;
@@ -30,6 +31,7 @@ Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
 Route::get('/paper-types' , [PaperTypeController::class , 'index']);
 Route::get('/subject-areas' , [SubjectAreaController::class , 'index']);
 Route::get('/preffered-english' , [PrefferedEnglishController::class , 'index']);
+Route::get('/paper-formats' , [PaperFormatController::class , 'index']);
 
 
 //CLIENT
@@ -131,6 +133,14 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/preffered-english' , [PrefferedEnglishController::class , 'create']);
             Route::post('/preffered-english-toggle/{prefferedEnglish}' , [PrefferedEnglishController::class , 'toggleStatus']);
             Route::delete('/preffered-english/{prefferedEnglish}' , [PrefferedEnglishController::class , 'destroy']);
+
+
+
+            //  Paper Format Routes
+            Route::get('/paper-formats' , [PaperFormatController::class , 'adminIndex']);
+            Route::post('/paper-format' , [PaperFormatController::class , 'create']);
+            Route::post('/paper-format-toggle/{paperFormat}' , [PaperFormatController::class , 'toggleStatus']);
+            Route::delete('/paper-format/{paperFormat}' , [PaperFormatController::class , 'destroy']);
 
 
 

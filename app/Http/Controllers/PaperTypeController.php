@@ -44,7 +44,7 @@ class PaperTypeController extends Controller
 
         $ptype = PaperType::create($data);
 
-        return new PaperTypeResource($ptype);
+        return response()->json(['message' => $ptype->type_name." Added!"] , Response::HTTP_CREATED);
 
     }
 

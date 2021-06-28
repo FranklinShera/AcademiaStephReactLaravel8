@@ -10,7 +10,11 @@ import {
     REQUEST_SUBJECT_AREAS_FAIL,
     REQUEST_ORDERS,
     REQUEST_ORDERS_SUCCESS,
-    REQUEST_ORDERS_FAIL, REQUEST_PREFERED_ENGLISH, REQUEST_PREFERED_ENGLISH_SUCCESS, REQUEST_PREFERED_ENGLISH_FAIL,
+    REQUEST_ORDERS_FAIL,
+    REQUEST_PREFERED_ENGLISH,
+    REQUEST_PREFERED_ENGLISH_SUCCESS,
+    REQUEST_PREFERED_ENGLISH_FAIL,
+    REQUEST_PAPER_FORMAT, REQUEST_PAPER_FORMAT_SUCCESS, REQUEST_PAPER_FORMAT_FAIL,
 } from '../constants/OrderConstants'
 
 
@@ -87,6 +91,27 @@ export const OrderPrefferedEnglishReducer = (state = { allPreffEnglish: [], link
             return { loading: false ,  allPreffEnglish: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
 
         case REQUEST_PREFERED_ENGLISH_FAIL:
+            return { loading: false , error: action.payload }
+        default:
+            return state
+    }
+}
+
+
+
+
+export const OrderPaperFormatReducer = (state = { allPaperFormats: [], links:{} , meta:{}} , action) => {
+    switch(action.type){
+
+        case REQUEST_PAPER_FORMAT:
+            return { loading: true , allPaperFormats: [] , links:{} , meta:{} }
+
+
+        case REQUEST_PAPER_FORMAT_SUCCESS:
+
+            return { loading: false ,  allPaperFormats: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
+
+        case REQUEST_PAPER_FORMAT_FAIL:
             return { loading: false , error: action.payload }
         default:
             return state
