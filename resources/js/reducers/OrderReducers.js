@@ -10,7 +10,7 @@ import {
     REQUEST_SUBJECT_AREAS_FAIL,
     REQUEST_ORDERS,
     REQUEST_ORDERS_SUCCESS,
-    REQUEST_ORDERS_FAIL,
+    REQUEST_ORDERS_FAIL, REQUEST_PREFERED_ENGLISH, REQUEST_PREFERED_ENGLISH_SUCCESS, REQUEST_PREFERED_ENGLISH_FAIL,
 } from '../constants/OrderConstants'
 
 
@@ -68,6 +68,25 @@ export const OrderSubjectAreaReducer = (state = { allSubjectAreas: [], links:{} 
             return { loading: false ,  allSubjectAreas: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
 
         case REQUEST_SUBJECT_AREAS_FAIL:
+            return { loading: false , error: action.payload }
+        default:
+            return state
+    }
+}
+
+
+export const OrderPrefferedEnglishReducer = (state = { allPreffEnglish: [], links:{} , meta:{}} , action) => {
+    switch(action.type){
+
+        case REQUEST_PREFERED_ENGLISH:
+            return { loading: true , allPreffEnglish: [] , links:{} , meta:{} }
+
+
+        case REQUEST_PREFERED_ENGLISH_SUCCESS:
+
+            return { loading: false ,  allPreffEnglish: action.payload.data ,  links:action.payload.links , meta:action.payload.meta }
+
+        case REQUEST_PREFERED_ENGLISH_FAIL:
             return { loading: false , error: action.payload }
         default:
             return state

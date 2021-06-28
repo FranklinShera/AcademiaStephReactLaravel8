@@ -12,6 +12,7 @@ import {  logoutUser } from '../../actions/AuthUserActions'
 import AcademicLevel from '../../components/auth/AcademicLevel'
 import PaperType from '../../components/auth/PaperType'
 import SubjectArea from '../../components/auth/SubjectArea'
+import PrefferedEnglish from "../../components/auth/PrefferedEnglish";
 
 
 
@@ -19,8 +20,8 @@ const OrderControl = () => {
 
     axios.defaults.withCredentials = true;
 
-   
-    
+
+
     const hist = useHistory();
     const dispatch = useDispatch()
 
@@ -31,7 +32,7 @@ const OrderControl = () => {
     const[currTab,setCurrTab] = useState(1)
 
     useEffect(() => {
-        
+
         if(!auth){
             hist.push("/in")
         }
@@ -39,8 +40,8 @@ const OrderControl = () => {
         window.scrollTo(0,0)
 
         document.querySelector('title').text = 'AcademiaSteph21 | Order Control'
-        
-       
+
+
     }, [auth])
 
 
@@ -79,13 +80,41 @@ const OrderControl = () => {
                         }}>
                            Subject Area
                        </div>
-                       
+
+
+                       <span className="vertline"></span>
+
+                       <div className={`order--control--tab ${ (currTab == 4) && ' active-control-tab '}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setCurrTab(4)
+                        }}>
+                           Preffered English
+                       </div>
+
+
+                       <span className="vertline"></span>
+
+                       <div className={`order--control--tab ${ (currTab == 5) && ' active-control-tab '}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setCurrTab(5)
+                        }}>
+                           Paper Format
+                       </div>
+
+
+
                    </div>
 
                    <div className="order--control-tabview">
-                        {(currTab == 1) ? ( <AcademicLevel/> ) : (currTab == 2) ? ( <PaperType/> ) : ( <SubjectArea/> )}
+                        {(currTab == 1) &&  <AcademicLevel/> }
+                        {(currTab == 2) && <PaperType/>}
+                        {(currTab == 3) &&  <SubjectArea/> }
+                        {(currTab == 4) &&  <PrefferedEnglish/> }
+                        {(currTab == 5) &&  (<h1>PAPER FORMAT</h1>) }
                    </div>
-                   
+
                </div>
              </div>
             </AdminLayout>

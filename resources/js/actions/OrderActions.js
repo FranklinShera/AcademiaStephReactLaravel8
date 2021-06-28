@@ -10,7 +10,7 @@ import {
     REQUEST_SUBJECT_AREAS_FAIL,
     REQUEST_ORDERS_FAIL,
     REQUEST_ORDERS_SUCCESS,
-    REQUEST_ORDERS,
+    REQUEST_ORDERS, REQUEST_PREFERED_ENGLISH, REQUEST_PREFERED_ENGLISH_SUCCESS, REQUEST_PREFERED_ENGLISH_FAIL,
 } from '../constants/OrderConstants'
 
 import axios from 'axios'
@@ -195,6 +195,72 @@ export const fetchSubjectAreas = () => async (dispatch) => {
 
     }
 }
+
+
+
+
+export const adminFetchPrefferedEnglish = (prefEnglishUrl = '/api/auth/admin/preffered-english') => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_PREFERED_ENGLISH })
+
+        const { data } = await axios.get(prefEnglishUrl)
+
+
+        dispatch({
+            type: REQUEST_PREFERED_ENGLISH_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_PREFERED_ENGLISH_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
+
+
+
+
+export const fetchPrefferedEnglish = () => async (dispatch) => {
+
+
+    try {
+
+
+        dispatch({ type: REQUEST_PREFERED_ENGLISH })
+
+        const { data } = await axios.get('/api/preffered-english')
+
+
+        dispatch({
+            type: REQUEST_PREFERED_ENGLISH_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+          dispatch({
+            type: REQUEST_PREFERED_ENGLISH_FAIL,
+            error: error
+        })
+
+    }
+}
+
+
+
+
 
 
 

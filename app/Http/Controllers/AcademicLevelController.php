@@ -54,7 +54,7 @@ class AcademicLevelController extends Controller
 
     public function update(Request $request, AcademicLevel $academicLevel)
     {
-        //
+
     }
 
 

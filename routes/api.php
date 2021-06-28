@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperTypeController;
+use App\Http\Controllers\PrefferedEnglishController;
 use App\Http\Controllers\SubjectAreaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/reviews', [CustomerReviewController::class , 'index']);
+
 Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
 Route::get('/paper-types' , [PaperTypeController::class , 'index']);
 Route::get('/subject-areas' , [SubjectAreaController::class , 'index']);
+Route::get('/preffered-english' , [PrefferedEnglishController::class , 'index']);
 
 
 //CLIENT
@@ -120,6 +123,14 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/academic-level' , [AcademicLevelController::class , 'create']);
             Route::post('/academic-level-toggle/{academicLevel}' , [AcademicLevelController::class , 'toggleStatus']);
             Route::delete('/academic-level/{academicLevel}' , [AcademicLevelController::class , 'destroy']);
+
+
+
+            //  Prefered English Routes
+            Route::get('/preffered-english' , [PrefferedEnglishController::class , 'adminIndex']);
+            Route::post('/preffered-english' , [PrefferedEnglishController::class , 'create']);
+            Route::post('/preffered-english-toggle/{prefferedEnglish}' , [PrefferedEnglishController::class , 'toggleStatus']);
+            Route::delete('/preffered-english/{prefferedEnglish}' , [PrefferedEnglishController::class , 'destroy']);
 
 
 
