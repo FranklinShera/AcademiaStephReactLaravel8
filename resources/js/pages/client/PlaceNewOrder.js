@@ -15,8 +15,8 @@ import {  logoutUser } from '../../actions/AuthUserActions'
 import {FileInputField, InputField, SelectInputField, TextAreaInputField} from "../../config/FormElements";
 import {
     adminFetchPaperTypes,
-    fetchAcademicLevels,
-    fetchPaperTypes,
+    fetchAcademicLevels, fetchPaperFormats,
+    fetchPaperTypes, fetchPrefferedEnglish,
     fetchSubjectAreas
 } from "../../actions/OrderActions";
 import {Dialog, Transition} from "@headlessui/react";
@@ -54,6 +54,17 @@ const Orders = () => {
 
     const SubjectAreas = useSelector( state => state.subjectAreas)
     const { allSubjectAreas } = SubjectAreas;
+
+
+    const PaperFormats = useSelector( state => state.paperFormats)
+    const { allPaperFormats} = PaperFormats;
+
+    const PreffEnglish = useSelector( state => state.preffEnglish)
+    const { allPreffEnglish } = PreffEnglish;
+
+
+
+
 
 
     const LOCAL_STORAGE_KEY = "savedOrders";
@@ -127,11 +138,11 @@ const Orders = () => {
     const spacingTypes = [
         {
             name : "Double Spacing",
-            value: "double"
+            value: "Double"
         },
         {
             name : "Single Spacing",
-            value: "single"
+            value: "Single"
         }
     ]
 
@@ -394,6 +405,8 @@ const Orders = () => {
         dispatch(fetchAcademicLevels())
         dispatch(fetchPaperTypes())
         dispatch(fetchSubjectAreas())
+        dispatch(fetchPaperFormats())
+        dispatch(fetchPrefferedEnglish())
 
 
         checkLocalOrders();
@@ -618,30 +631,52 @@ const Orders = () => {
 
                          <div className="flex flex-col justify-between sm:flex-row">
 
-                             <SelectInputField
-                                 parentClasses="w-full sm:w-2/5"
-                                   onBlur={Formik.handleBlur}
-                                   labelText="Paper Format"
-                                   selectName="paperFormat"
-                                   selectID="paper-format"
-                                   value={Formik.values.paperFormat}
-                                   selectOptions={paperFormats}
-                                   onChange={Formik.handleChange}
-                                   errors={(Formik.errors.paperFormat && Formik.touched.paperFormat) && Formik.errors.paperFormat }
-                             />
+
+                             <div className='input-group w-full sm:w-2/5'>
+                                 <label >Paper Format</label>
+
+                                 {(Formik.errors.paperFormat && Formik.touched.paperFormat)  && <div className="field-errors">{Formik.errors.paperFormat}</div>}
+
+                                 <select
+                                     name="paperFormat"
+                                     id="paper-format"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.paperFormat}
+                                     onChange={Formik.handleChange}>
+
+                                     <option value='' selected disabled>Choose Paper Format</option>
+
+                                     {allPaperFormats.map((opt) => (
+                                         <option value={opt.format_name} >{opt.format_name}</option>
+                                     ))}
+
+                                 </select>
+
+                             </div>
 
 
-                             <SelectInputField
-                                 parentClasses="w-full sm:w-2/5"
-                                   onBlur={Formik.handleBlur}
-                                   labelText="Preferred English"
-                                   selectName="prefEnglish"
-                                   selectID="preferred-english"
-                                   value={Formik.values.prefEnglish}
-                                   selectOptions={prefEnglish}
-                                   onChange={Formik.handleChange}
-                                   errors={(Formik.errors.prefEnglish && Formik.touched.prefEnglish) && Formik.errors.prefEnglish}
-                             />
+
+                             <div className='input-group w-full sm:w-2/5'>
+                                 <label >Preferred English</label>
+
+                                 {(Formik.errors.prefEnglish && Formik.touched.prefEnglish) && <div className="field-errors">{Formik.errors.prefEnglish}</div>}
+
+                                 <select
+                                     name="prefEnglish"
+                                     id="preferred-english"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.prefEnglish}
+                                     onChange={Formik.handleChange}>
+
+                                     <option value='' selected disabled>Choose Preferred English</option>
+
+                                     {allPreffEnglish.map((opt) => (
+                                         <option value={opt.lang_name} >{opt.lang_name}</option>
+                                     ))}
+
+                                 </select>
+
+                             </div>
 
 
 

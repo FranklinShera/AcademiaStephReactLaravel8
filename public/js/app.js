@@ -20992,6 +20992,14 @@ var Orders = function Orders() {
     return state.subjectAreas;
   });
   var allSubjectAreas = SubjectAreas.allSubjectAreas;
+  var PaperFormats = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.paperFormats;
+  });
+  var allPaperFormats = PaperFormats.allPaperFormats;
+  var PreffEnglish = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.preffEnglish;
+  });
+  var allPreffEnglish = PreffEnglish.allPreffEnglish;
   var LOCAL_STORAGE_KEY = "savedOrders";
   var paperFormats = [{
     name: "AMA",
@@ -21042,10 +21050,10 @@ var Orders = function Orders() {
   }];
   var spacingTypes = [{
     name: "Double Spacing",
-    value: "double"
+    value: "Double"
   }, {
     name: "Single Spacing",
-    value: "single"
+    value: "Single"
   }];
   var numberOfPages = 1;
   var urgency = [{
@@ -21221,6 +21229,8 @@ var Orders = function Orders() {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchAcademicLevels)());
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchPaperTypes)());
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchSubjectAreas)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchPaperFormats)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_8__.fetchPrefferedEnglish)());
     checkLocalOrders();
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Place Order';
@@ -21446,26 +21456,56 @@ var Orders = function Orders() {
               errors: Formik.errors.additionalMaterials && Formik.touched.additionalMaterials && Formik.errors.additionalMaterials
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
               className: "flex flex-col justify-between sm:flex-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
-                parentClasses: "w-full sm:w-2/5",
-                onBlur: Formik.handleBlur,
-                labelText: "Paper Format",
-                selectName: "paperFormat",
-                selectID: "paper-format",
-                value: Formik.values.paperFormat,
-                selectOptions: paperFormats,
-                onChange: Formik.handleChange,
-                errors: Formik.errors.paperFormat && Formik.touched.paperFormat && Formik.errors.paperFormat
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.SelectInputField, {
-                parentClasses: "w-full sm:w-2/5",
-                onBlur: Formik.handleBlur,
-                labelText: "Preferred English",
-                selectName: "prefEnglish",
-                selectID: "preferred-english",
-                value: Formik.values.prefEnglish,
-                selectOptions: prefEnglish,
-                onChange: Formik.handleChange,
-                errors: Formik.errors.prefEnglish && Formik.touched.prefEnglish && Formik.errors.prefEnglish
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "input-group w-full sm:w-2/5",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  children: "Paper Format"
+                }), Formik.errors.paperFormat && Formik.touched.paperFormat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "field-errors",
+                  children: Formik.errors.paperFormat
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", {
+                  name: "paperFormat",
+                  id: "paper-format",
+                  onBlur: Formik.handleBlur,
+                  value: Formik.values.paperFormat,
+                  onChange: Formik.handleChange,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                    value: "",
+                    selected: true,
+                    disabled: true,
+                    children: "Choose Paper Format"
+                  }), allPaperFormats.map(function (opt) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                      value: opt.format_name,
+                      children: opt.format_name
+                    });
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "input-group w-full sm:w-2/5",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  children: "Preferred English"
+                }), Formik.errors.prefEnglish && Formik.touched.prefEnglish && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "field-errors",
+                  children: Formik.errors.prefEnglish
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", {
+                  name: "prefEnglish",
+                  id: "preferred-english",
+                  onBlur: Formik.handleBlur,
+                  value: Formik.values.prefEnglish,
+                  onChange: Formik.handleChange,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                    value: "",
+                    selected: true,
+                    disabled: true,
+                    children: "Choose Preferred English"
+                  }), allPreffEnglish.map(function (opt) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                      value: opt.lang_name,
+                      children: opt.lang_name
+                    });
+                  })]
+                })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
               className: "flex flex-col justify-between sm:flex-row ",
