@@ -69,71 +69,7 @@ const Orders = () => {
 
     const LOCAL_STORAGE_KEY = "savedOrders";
 
-    const paperFormats = [
-        {
-            name : "AMA",
-            value: "AMA"
-        },
-        {
-            name : "APA",
-            value: "APA"
-        },
-        {
-            name : "Chicago/Turabian",
-            value: "Chicago/Turabian"
-        },
-        {
-            name : "Harvard",
-            value: "Harvard"
-        },
-        {
-            name : "IEEE",
-            value: "IEEE"
-        },
-        {
-            name : "MHRA",
-            value: "MHRA"
-        },
-        {
-            name : "MLA",
-            value: "MLA"
-        },
-        {
-            name : "Oscola",
-            value: "Oscola"
-        },
-        {
-            name : "Vancouver",
-            value: "Vancouver"
-        },
-        {
-            name : "Others",
-            value: "Others"
-        },
-        {
-            name : "Not Applicable",
-            value: "Not Applicable"
-        }
-    ]
 
-    const prefEnglish = [
-        {
-            name : "UK-ESL",
-            value: "UK-ESL"
-        },
-        {
-            name : "UK",
-            value: "UK"
-        },
-        {
-            name : "US-ESL",
-            value: "US-ESL"
-        },
-        {
-            name : "US",
-            value: "US"
-        }
-    ]
 
     const spacingTypes = [
         {
@@ -271,20 +207,7 @@ const Orders = () => {
 
             submitPlaceOrderForm(values)
 
-            resetForm({ values:{
-                    topic: '',
-                    typeOfPaper: '',
-                    subjectArea: '',
-                    paperDetails: '',
-                    additionalMaterials: null,
-                    paperFormat: '',
-                    prefEnglish: '',
-                    numOfSources: '',
-                    spacing: '',
-                    academicLevel: '',
-                    numberOfPages: '',
-                    urgency: ''
-                }})
+            resetForm()
 
             setSubmitting(false)
 

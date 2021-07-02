@@ -9,7 +9,7 @@ class SubjectArea extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['area_name' , 'active'];
+    protected $fillable = ['area_name' ,'rate', 'active'];
 
     public function scopeActive($query){
         return $query->where('active' , 1);

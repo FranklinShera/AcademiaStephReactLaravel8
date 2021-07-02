@@ -16,6 +16,7 @@ class CreateAcademicLevelsTable extends Migration
         Schema::create('academic_levels', function (Blueprint $table) {
             $table->id();
             $table->string("level_name");
+            $table->decimal("rate" , 4 , 2);
             $table->boolean("active")->default(false);
             $table->timestamps();
         });

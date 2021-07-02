@@ -14815,6 +14815,222 @@ var Overlay = function Overlay() {
 
 /***/ }),
 
+/***/ "./resources/js/components/PriceCalculator.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PriceCalculator.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var PriceCalculator = function PriceCalculator() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      paperAction = _useState2[0],
+      setPaperAction = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6, 7, 8]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      pageNums = _useState4[0],
+      setPageNum = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    page: 1,
+    words: 275
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      pageWords = _useState6[0],
+      setPageWord = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["School", "College", "University", "Master's", "Doctorate"]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      educationStage = _useState8[0],
+      setStage = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["Admission", "Article Review", "Business Plan"]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      essayType = _useState10[0],
+      setEssayType = _useState10[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "hidden price-calculator lg:block",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      className: "text-2xl font-bold",
+      children: "Price Calculator"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "calc-body",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "calc-tabs",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: paperAction == 0 ? 'curr-tab' : 'idle-tab',
+          onClick: function onClick() {
+            return setPaperAction(0);
+          },
+          children: "Writing"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: paperAction == 1 ? 'curr-tab' : 'idle-tab',
+          onClick: function onClick() {
+            return setPaperAction(1);
+          },
+          children: "Rewriting"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: paperAction == 2 ? 'curr-tab' : 'idle-tab',
+          onClick: function onClick() {
+            return setPaperAction(2);
+          },
+          children: "Editing"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mt-4 essay-type",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+          name: "essay-type",
+          id: "essay-type",
+          className: "w-full",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            selected: true,
+            children: "Essay (Any Type)"
+          }), essayType.map(function (essay) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: essay,
+              children: essay
+            });
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "flex justify-between mt-4 stage-time",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
+          name: "stage",
+          id: "stage",
+          className: "w-1/2",
+          children: educationStage.map(function (stage) {
+            return stage === "College" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: stage,
+              selected: true,
+              children: stage
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: stage,
+              children: stage
+            });
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+          name: "essay-time",
+          id: "essay-time",
+          className: "w-1/2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "6 Hours"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "12 Hours"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "1 Day"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "2 Days"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "3 Days"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "5 Days"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "7 Days"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "10 Days"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            selected: true,
+            children: "2 Weeks"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "1 Month"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+            value: "",
+            children: "2 Months"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "flex justify-between p-2 mt-4 essay-pages ",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "flex items-center justify-center font-extrabold border rounded page-minus border-primary-3 w-10/100",
+          children: " - "
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
+          name: "pages-words",
+          id: "pages-words",
+          className: "w-3/4 text-center",
+          children: pageNums.map(function (pageNum) {
+            return pageNum == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("option", {
+              value: pageNum,
+              selected: true,
+              children: [pageNum, " Page/", pageNum * pageWords.words, " Words"]
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("option", {
+              value: pageNum,
+              children: [pageNum, " Pages/", pageNum * pageWords.words, " Words"]
+            });
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "flex items-center justify-center w-1 font-extrabold border rounded page-plus border-primary-3 w-10/100",
+          children: " + "
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "flex justify-between mt-4 essay-spacing",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex justify-between double-spacing",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "radio"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "ml-1",
+            children: "Double Spacing"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex justify-between single-spacing",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "radio"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "ml-1",
+            children: "Single Spacing"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "flex justify-end px-3 mt-4 font-bold computed-price",
+        children: "$28.00"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        className: "w-full py-3 mt-4 font-bold text-white rounded bg-primary-4",
+        children: "Write My Paper"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PriceCalculator);
+
+/***/ }),
+
 /***/ "./resources/js/components/RadioInputField.js":
 /*!****************************************************!*\
   !*** ./resources/js/components/RadioInputField.js ***!
@@ -15325,6 +15541,7 @@ var AcademicLevel = function AcademicLevel() {
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
     initialValues: {
       level_name: '',
+      rate: 1,
       active: false
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
@@ -15334,12 +15551,7 @@ var AcademicLevel = function AcademicLevel() {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
       addLevel(values);
-      resetForm({
-        values: {
-          level_name: '',
-          active: false
-        }
-      });
+      resetForm();
       setSubmitting(false);
     }
   });
@@ -15463,10 +15675,13 @@ var AcademicLevel = function AcademicLevel() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--name",
+            className: "table--item--split--name",
             children: "LEVEL"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--status",
+            className: "table--item--split--rate",
+            children: "RATE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "table--item--split--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -15475,10 +15690,13 @@ var AcademicLevel = function AcademicLevel() {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--name",
+                className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", academicLevel.level_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "table--item--split--rate",
+                children: index
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--status",
+                className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   children: academicLevel.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -15536,6 +15754,15 @@ var AcademicLevel = function AcademicLevel() {
           placeholder: "Academic Level",
           onChange: formik.handleChange,
           errors: formik.errors.level_name && formik.touched.level_name && formik.errors.level_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_4__.InputField, {
+          labelText: "Rate",
+          name: "rate",
+          type: "number",
+          onBlur: formik.handleBlur,
+          value: formik.values.rate,
+          placeholder: "Enter rate...",
+          onChange: formik.handleChange,
+          errors: formik.errors.rate && formik.touched.rate && formik.errors.rate
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "text-sm",
           children: ["Default Academic Level Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -16131,6 +16358,7 @@ var PaperType = function PaperType() {
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
     initialValues: {
       type_name: '',
+      rate: 1,
       active: false
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
@@ -16140,12 +16368,7 @@ var PaperType = function PaperType() {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
       addPaperType(values);
-      resetForm({
-        values: {
-          type_name: '',
-          active: false
-        }
-      });
+      resetForm();
       setSubmitting(false);
     }
   });
@@ -16269,10 +16492,13 @@ var PaperType = function PaperType() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--name",
+            className: "table--item--split--name",
             children: "PAPER TYPE"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--status",
+            className: "table--item--split--rate",
+            children: "RATE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "table--item--split--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -16281,10 +16507,13 @@ var PaperType = function PaperType() {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--name",
+                className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", papertype.type_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "table--item--split--rate",
+                children: index
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--status",
+                className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   children: papertype.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -16342,6 +16571,15 @@ var PaperType = function PaperType() {
           placeholder: "Paper Type Name...",
           onChange: formik.handleChange,
           errors: formik.errors.type_name && formik.touched.type_name && formik.errors.type_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
+          labelText: "Rate",
+          name: "rate",
+          type: "number",
+          onBlur: formik.handleBlur,
+          value: formik.values.rate,
+          placeholder: "Enter rate...",
+          onChange: formik.handleChange,
+          errors: formik.errors.rate && formik.touched.rate && formik.errors.rate
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "text-sm",
           children: ["Default Paper Type Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -16944,6 +17182,7 @@ var SubjectArea = function SubjectArea() {
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_6__.useFormik)({
     initialValues: {
       area_name: '',
+      rate: 1,
       active: false
     },
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
@@ -16953,12 +17192,7 @@ var SubjectArea = function SubjectArea() {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
       addSubjectArea(values);
-      resetForm({
-        values: {
-          area_name: '',
-          active: false
-        }
-      });
+      resetForm();
       setSubmitting(false);
     }
   });
@@ -17082,10 +17316,13 @@ var SubjectArea = function SubjectArea() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "core--table--header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--name",
+            className: "table--item--split--name",
             children: "SUBJECT AREA"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "table--item--status",
+            className: "table--item--split--rate",
+            children: "RATE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "table--item--split--status",
             children: "STATUS"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -17094,10 +17331,13 @@ var SubjectArea = function SubjectArea() {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "table--item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--name",
+                className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", subarea.area_name]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "table--item--split--rate",
+                children: index + 1
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                className: "table--item--status",
+                className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "active-state",
                   children: subarea.active ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -17155,6 +17395,15 @@ var SubjectArea = function SubjectArea() {
           placeholder: "Subject Area Name...",
           onChange: formik.handleChange,
           errors: formik.errors.area_name && formik.touched.area_name && formik.errors.area_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_3__.InputField, {
+          labelText: "Rate",
+          name: "rate",
+          type: "number",
+          onBlur: formik.handleBlur,
+          value: formik.values.rate,
+          placeholder: "Enter rate...",
+          onChange: formik.handleChange,
+          errors: formik.errors.rate && formik.touched.rate && formik.errors.rate
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "text-sm",
           children: ["Default Subject Area Status is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -17567,7 +17816,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _images_forward_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/forward.svg */ "./resources/js/images/forward.svg");
 /* harmony import */ var _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! .././images/approval.svg */ "./resources/js/images/approval.svg");
@@ -17582,7 +17831,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RadioInputField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/RadioInputField */ "./resources/js/components/RadioInputField.js");
 /* harmony import */ var _components_TextAreaInputField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/TextAreaInputField */ "./resources/js/components/TextAreaInputField.js");
 /* harmony import */ var _actions_reviewActions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../actions/reviewActions */ "./resources/js/actions/reviewActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_PriceCalculator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/PriceCalculator */ "./resources/js/components/PriceCalculator.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -17624,6 +17874,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Home = function Home() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     name: "",
@@ -17650,575 +17901,395 @@ var Home = function Home() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_actions_reviewActions__WEBPACK_IMPORTED_MODULE_14__.listReviews)());
   }, [dispatch]);
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      paperAction = _useState4[0],
-      setPaperAction = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6, 7, 8]),
-      _useState6 = _slicedToArray(_useState5, 2),
-      pageNums = _useState6[0],
-      setPageNum = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    page: 1,
-    words: 275
-  }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      pageWords = _useState8[0],
-      setPageWord = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["School", "College", "University", "Master's", "Doctorate"]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      educationStage = _useState10[0],
-      setStage = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["Admission", "Article Review", "Business Plan"]),
-      _useState12 = _slicedToArray(_useState11, 2),
-      essayType = _useState12[0],
-      setEssayType = _useState12[1];
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Home - We are inclined to optimum dedication in providing top-quality services braced with inimitable creativity and perfectionism.The services we offer stand out for themselves in uniqueness.';
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
       className: "bg-gray-100",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         id: "hero",
         className: "hero",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "cta",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
             className: "cta-lead",
-            children: ["As ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            children: ["As ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "p-1 px-2 font-semibold bg-white text-primary-1",
               children: "Writers"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
             className: "hidden sm:block cta-word",
-            children: ["We are inclined to optimum dedication in ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "providing top-quality services braced with", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "inimitable creativity and perfectionism.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "The services we offer stand out for", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "themselves in uniqueness."]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            children: ["We are inclined to optimum dedication in ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "providing top-quality services braced with", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "inimitable creativity and perfectionism.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "The services we offer stand out for", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "themselves in uniqueness."]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
             className: "sm:hidden cta-word",
             children: "We are inclined to optimum dedication in providing top-quality services braced with inimitable creativity and perfectionism.The services we offer stand out for themselves in uniqueness."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("button", {
             onClick: function onClick(e) {
               e.preventDefault();
               window.location.hash = '#whyus';
             },
             className: "strt-btn",
-            children: ["CHECKOUT OUR SOLUTIONS  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: ["CHECKOUT OUR SOLUTIONS  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_forward_svg__WEBPACK_IMPORTED_MODULE_2__.default,
               className: "inline h-5 lg:h-8 xl:ml-2 md:ml-3",
               alt: "Check Our Solutions Button"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-          className: "hidden price-calculator lg:block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
-            className: "text-2xl font-bold",
-            children: "Price Calculator"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-            className: "calc-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-              className: "calc-tabs",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
-                className: paperAction == 0 ? 'curr-tab' : 'idle-tab',
-                onClick: function onClick() {
-                  return setPaperAction(0);
-                },
-                children: "Writing"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
-                className: paperAction == 1 ? 'curr-tab' : 'idle-tab',
-                onClick: function onClick() {
-                  return setPaperAction(1);
-                },
-                children: "Rewriting"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
-                className: paperAction == 2 ? 'curr-tab' : 'idle-tab',
-                onClick: function onClick() {
-                  return setPaperAction(2);
-                },
-                children: "Editing"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-              className: "mt-4 essay-type",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("select", {
-                name: "essay-type",
-                id: "essay-type",
-                className: "w-full",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  selected: true,
-                  children: "Essay (Any Type)"
-                }), essayType.map(function (essay) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                    value: essay,
-                    children: essay
-                  });
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-              className: "flex justify-between mt-4 stage-time",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("select", {
-                name: "stage",
-                id: "stage",
-                className: "w-1/2",
-                children: educationStage.map(function (stage) {
-                  return stage === "College" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                    value: stage,
-                    selected: true,
-                    children: stage
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                    value: stage,
-                    children: stage
-                  });
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("select", {
-                name: "essay-time",
-                id: "essay-time",
-                className: "w-1/2",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "6 Hours"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "12 Hours"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "1 Day"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "2 Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "3 Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "5 Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "7 Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "10 Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  selected: true,
-                  children: "2 Weeks"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "1 Month"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("option", {
-                  value: "",
-                  children: "2 Months"
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-              className: "flex justify-between p-2 mt-4 essay-pages ",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-                className: "flex items-center justify-center font-extrabold border rounded page-minus border-primary-3 w-10/100",
-                children: " - "
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("select", {
-                name: "pages-words",
-                id: "pages-words",
-                className: "w-3/4 text-center",
-                children: pageNums.map(function (pageNum) {
-                  return pageNum == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("option", {
-                    value: pageNum,
-                    selected: true,
-                    children: [pageNum, " Page/", pageNum * pageWords.words, " Words"]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("option", {
-                    value: pageNum,
-                    children: [pageNum, " Pages/", pageNum * pageWords.words, " Words"]
-                  });
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-                className: "flex items-center justify-center w-1 font-extrabold border rounded page-plus border-primary-3 w-10/100",
-                children: " + "
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-              className: "flex justify-between mt-4 essay-spacing",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-                className: "flex justify-between double-spacing",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("input", {
-                  type: "radio"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
-                  className: "ml-1",
-                  children: "Double Spacing"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-                className: "flex justify-between single-spacing",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("input", {
-                  type: "radio"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
-                  className: "ml-1",
-                  children: "Single Spacing"
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-              className: "flex justify-end px-3 mt-4 font-bold computed-price",
-              children: "$28.00"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("button", {
-              className: "w-full py-3 mt-4 font-bold text-white rounded bg-primary-4",
-              children: "Write My Paper"
-            })]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_PriceCalculator__WEBPACK_IMPORTED_MODULE_15__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
         id: "services",
         className: "services",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "serv-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
             className: "block w-full my-10 text-center header-text",
             children: "SERVICES"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_rules_svg__WEBPACK_IMPORTED_MODULE_4__.default,
               className: "h-12",
               alt: "Term paper icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Term Papers"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service sm:justify-start xl:justify-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_research_svg__WEBPACK_IMPORTED_MODULE_5__.default,
               className: "h-12",
               alt: "Research Paper icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Research Paper"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_whitepaper_svg__WEBPACK_IMPORTED_MODULE_6__.default,
               className: "h-12",
               alt: "White Paper icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "White Paper"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service sm:justify-start xl:justify-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_assignment_svg__WEBPACK_IMPORTED_MODULE_7__.default,
               className: "h-12",
               alt: "Class Assignment icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Class Assignment"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_casestudy_svg__WEBPACK_IMPORTED_MODULE_8__.default,
               className: "h-12",
               alt: "Case Study icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Case Study"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service sm:justify-start xl:justify-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_dissertations_svg__WEBPACK_IMPORTED_MODULE_9__.default,
               className: "h-12",
               alt: "Dissertation icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Dissertation"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_casestudy_svg__WEBPACK_IMPORTED_MODULE_8__.default,
               className: "h-12",
               alt: "Case Study icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Proofreading"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service sm:justify-start xl:justify-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_dissertations_svg__WEBPACK_IMPORTED_MODULE_9__.default,
               className: "h-12",
               alt: "Dissertation icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Transcription"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_casestudy_svg__WEBPACK_IMPORTED_MODULE_8__.default,
               className: "h-12",
               alt: "Case Study icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Editing"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "service sm:justify-start xl:justify-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_dissertations_svg__WEBPACK_IMPORTED_MODULE_9__.default,
               className: "h-12",
               alt: "Dissertation icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               children: "Captioning"
             })]
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         className: "overview",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
           className: "header-text",
           children: "OVERVIEW"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "views",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "view",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-4xl font-bold num text-primary-1",
               children: "2000"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
               className: "text-center caption",
-              children: ["Projects  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Completed"]
+              children: ["Projects  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Completed"]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "view",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-4xl font-bold num text-primary-1",
               children: "85"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
               className: "text-center caption",
-              children: ["Countries  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Represented"]
+              children: ["Countries  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Represented"]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "view",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-4xl font-bold num text-primary-1",
               children: "95%"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
               className: "text-center caption",
-              children: ["Success  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Rate"]
+              children: ["Success  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Rate"]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "view",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-4xl font-bold num text-primary-1",
               children: "100+"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
               className: "text-center caption",
-              children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Tutors"]
+              children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Tutors"]
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         id: "whyus",
         className: "why-us",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
           className: "mt-24 header-text",
           children: "WHY CHOOSE OUR ESSAY SERVICE"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
           className: "px-5 mt-12 text-lg text-center lg:text-2xl text-dark-5",
-          children: ["We aim to verily offer to subsidize the time constrain faced by students across the globe due to the busy schedules.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Since most students find it hard to balance student life, family and work. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "Therefore, we chip in to extend a hand of care and concern in assignemnts and general school work."]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          children: ["We aim to verily offer to subsidize the time constrain faced by students across the globe due to the busy schedules.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Since most students find it hard to balance student life, family and work. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "Therefore, we chip in to extend a hand of care and concern in assignemnts and general school work."]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "score-card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "score-start",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Our services are at optimal quality"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "score-end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Top-notch tutors at your disposal"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: " score-start",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Clients Are Our Top Priority"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "score-end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Responsive support"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "score-start",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Delivery on time"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "score-end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("img", {
               src: _images_approval_svg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "inline h-7 w-7",
               alt: "Approved Service Icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "",
               children: "Cheap rates"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
           className: "flex flex-col items-center justify-center w-full h-1 my-3 fancy-hr"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "mb-24 benefits",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "benefit",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
               className: "text-xl font-bold text-primary-1",
               children: "Money-Back Guarantee"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-sm sm:pr-2",
               children: "Our esteemed clientele obtain their money back in full amounts where cases of dissatisfaction or poor quality arise and valid claims ascertained as true by our Quality assurance department."
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "benefit sm:pl-2",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
               className: "text-xl font-bold text-primary-1",
               children: "Non-Plagiarism Work Guarantee"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-sm",
               children: "The presence of systems and softwares that ensure quality and originality of work ensure 100% non-plagiarized work is delivered. This is in line with international guidelines and patent rights upheld in plagiarism."
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "benefit",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
               className: "text-xl font-bold text-primary-1",
               children: "Approved and Skilled Writers/Editors"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-sm sm:pr-2",
               children: "The commitment of our team in ensuring quality and satisfaction is mantained, calls for dedicated step-wise interview of writers/editors appointment. This puts us at the forefront in delivery of timely, original, qualified and proficient success in completion of tasks to the desires of the clients."
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: "benefit sm:pl-2",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
               className: "text-xl font-bold text-primary-1",
               children: "Free Limitless Ammendments"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("p", {
               className: "text-sm",
               children: "Our clients are free to receive endless modification and revision of content/work in occasions deemed necessary by the clients' instructions."
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Link, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Link, {
           to: "/client/dashboard/place-order",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("button", {
             className: "place-order",
             children: "Place Your Order"
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         className: "subjects",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "info",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
             className: "pt-8 header-text",
             children: "SUBJECTS AVAILABLE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("p", {
             className: "px-5 py-8 text-center sm:text-xl",
-            children: ["Our team of experts is vast in various disciplines, something that we pride in as a team. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("br", {}), "We offer services in line with the following subjects."]
+            children: ["Our team of experts is vast in various disciplines, something that we pride in as a team. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("br", {}), "We offer services in line with the following subjects."]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
           className: "subgroup",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
             className: " sublist",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "English"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Literature"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "History"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Sociology"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Psychology"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Mathematics"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Finance"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Accounts"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Management"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Computer Science"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Economics and Econometrics Statistics"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "Healthcare and Nursing"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("span", {
               className: "subject",
               children: "All Branches of Sciences"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Link, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Link, {
             to: "/find-writer",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("button", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("button", {
               className: "find-my-writer",
               children: "Find My Writer"
             })
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         className: "customer-say",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
           className: "px-5 mt-14 lg:mt-28 header-text",
           children: "WHAT OUR CUSTOMERS SAY"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
           className: "cards-list",
           children: reviews && reviews.map(function (rate, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_RatingCard__WEBPACK_IMPORTED_MODULE_10__.default, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_RatingCard__WEBPACK_IMPORTED_MODULE_10__.default, {
               cardData: rate
             }, index);
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
         id: "contact",
         className: "contact",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h1", {
           className: "mt-14 lg:mt-28 header-text",
           children: "GET IN TOUCH WITH US"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("form", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("form", {
           action: "",
           className: "w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2",
           onSubmit: getInTouch,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
             name: "name",
             labelText: "Name",
             type: "text",
@@ -18228,7 +18299,7 @@ var Home = function Home() {
                 name: e.target.value
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
             name: "email",
             labelText: "Email",
             type: "text",
@@ -18238,7 +18309,7 @@ var Home = function Home() {
                 email: e.target.value
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_11__.default, {
             name: "whatsappnumber",
             labelText: "WhatsApp Number",
             type: "number",
@@ -18248,7 +18319,7 @@ var Home = function Home() {
                 whatsappnumber: e.target.value
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_TextAreaInputField__WEBPACK_IMPORTED_MODULE_13__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_TextAreaInputField__WEBPACK_IMPORTED_MODULE_13__.default, {
             labelText: "Message",
             textareaName: "message",
             id: "message",
@@ -18258,7 +18329,7 @@ var Home = function Home() {
                 message: e.target.value
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_RadioInputField__WEBPACK_IMPORTED_MODULE_12__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_RadioInputField__WEBPACK_IMPORTED_MODULE_12__.default, {
             labelText: "Email Me Back",
             inputName: "mailback",
             onChange: function onChange(e) {
@@ -18266,7 +18337,7 @@ var Home = function Home() {
                 mailback: e.target.cheked
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_RadioInputField__WEBPACK_IMPORTED_MODULE_12__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_RadioInputField__WEBPACK_IMPORTED_MODULE_12__.default, {
             labelText: "Add Me On WhatsApp",
             inputName: "addonwhatsapp",
             onChange: function onChange(e) {
@@ -18274,7 +18345,7 @@ var Home = function Home() {
                 addonwhatsapp: e.target.value
               }));
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("button", {
             type: "submit",
             className: "btn-pri",
             children: "SUBMIT"
@@ -21001,53 +21072,6 @@ var Orders = function Orders() {
   });
   var allPreffEnglish = PreffEnglish.allPreffEnglish;
   var LOCAL_STORAGE_KEY = "savedOrders";
-  var paperFormats = [{
-    name: "AMA",
-    value: "AMA"
-  }, {
-    name: "APA",
-    value: "APA"
-  }, {
-    name: "Chicago/Turabian",
-    value: "Chicago/Turabian"
-  }, {
-    name: "Harvard",
-    value: "Harvard"
-  }, {
-    name: "IEEE",
-    value: "IEEE"
-  }, {
-    name: "MHRA",
-    value: "MHRA"
-  }, {
-    name: "MLA",
-    value: "MLA"
-  }, {
-    name: "Oscola",
-    value: "Oscola"
-  }, {
-    name: "Vancouver",
-    value: "Vancouver"
-  }, {
-    name: "Others",
-    value: "Others"
-  }, {
-    name: "Not Applicable",
-    value: "Not Applicable"
-  }];
-  var prefEnglish = [{
-    name: "UK-ESL",
-    value: "UK-ESL"
-  }, {
-    name: "UK",
-    value: "UK"
-  }, {
-    name: "US-ESL",
-    value: "US-ESL"
-  }, {
-    name: "US",
-    value: "US"
-  }];
   var spacingTypes = [{
     name: "Double Spacing",
     value: "Double"
@@ -21131,22 +21155,7 @@ var Orders = function Orders() {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
       submitPlaceOrderForm(values);
-      resetForm({
-        values: {
-          topic: '',
-          typeOfPaper: '',
-          subjectArea: '',
-          paperDetails: '',
-          additionalMaterials: null,
-          paperFormat: '',
-          prefEnglish: '',
-          numOfSources: '',
-          spacing: '',
-          academicLevel: '',
-          numberOfPages: '',
-          urgency: ''
-        }
-      });
+      resetForm();
       setSubmitting(false);
     }
   });

@@ -16,6 +16,7 @@ class CreateSubjectAreasTable extends Migration
         Schema::create('subject_areas', function (Blueprint $table) {
             $table->id();
             $table->string("area_name");
+            $table->decimal("rate" , 4 , 2);
             $table->boolean("active")->default(false);
             $table->timestamps();
         });

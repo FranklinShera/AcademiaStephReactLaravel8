@@ -9,7 +9,7 @@ class AcademicLevel extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['level_name','active'];
+    protected $fillable = ['level_name','rate','active'];
 
 
 

@@ -9,7 +9,7 @@ class PaperType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type_name','active'];
+    protected $fillable = ['type_name','rate','active'];
 
 
     public function scopeActive($query){

@@ -38,6 +38,7 @@ const AcademicLevel = () => {
     const formik = useFormik({
             initialValues:{
                 level_name: '',
+                rate: 1,
                 active: false
             },
             validationSchema:Yup.object({
@@ -45,15 +46,13 @@ const AcademicLevel = () => {
                         .min(3 , 'Level Cannot Be Less Than 3 Characters')
                         .max(32, 'Level Cannot be More than 32 Characters')
                         .required('Level is Required!'),
+
             }),
             onSubmit: (values, { setSubmitting , resetForm }) => {
 
                 addLevel(values)
 
-                resetForm({ values:{
-                        level_name: '',
-                        active: false
-                    }})
+                resetForm()
 
                 setSubmitting(false)
 
@@ -172,11 +171,15 @@ useEffect(() => {
                     <div className="core--table--header">
 
 
-                        <div className="table--item--name">
+                        <div className="table--item--split--name">
                             LEVEL
                         </div>
 
-                        <div className="table--item--status">
+                        <div className="table--item--split--rate">
+                            RATE
+                        </div>
+
+                        <div className="table--item--split--status">
                             STATUS
                         </div>
 
@@ -190,11 +193,15 @@ useEffect(() => {
                         { (loading || localLoad ) ? <DotLoader/>  :   allAcademicLevels.map((academicLevel,index) => (
                                 <div className="table--item" key={index}>
 
-                                <div className="table--item--name" >
+                                     <div className="table--item--split--name" >
                                       {index + 1 +"."}  {academicLevel.level_name}
                                     </div>
 
-                                    <div className="table--item--status">
+                                    <div className="table--item--split--rate" >
+                                      {index}
+                                    </div>
+
+                                    <div className="table--item--split--status">
                                         <span className="active-state" >
                                         { (academicLevel.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
@@ -257,7 +264,20 @@ useEffect(() => {
                     errors={(formik.errors.level_name && formik.touched.level_name) && formik.errors.level_name}
                 />
 
-                <div className="text-sm">Default Academic Level Status is <span className="text-gray-800 font-extrabold">false</span></div>
+
+
+                   <InputField
+                       labelText='Rate'
+                       name="rate"
+                       type='number'
+                       onBlur={formik.handleBlur}
+                       value={formik.values.rate}
+                       placeholder="Enter rate..."
+                       onChange={formik.handleChange}
+                       errors={(formik.errors.rate && formik.touched.rate) && formik.errors.rate}
+                   />
+
+                   <div className="text-sm">Default Academic Level Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
                <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
 

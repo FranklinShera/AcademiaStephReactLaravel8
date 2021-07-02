@@ -1179,6 +1179,11 @@ footer{
 
 }
 
+.core--table--header .table--item--split--name , .core--table--header .table--item--split--rate , .core--table--header .table--item--split--status {
+    @apply w-1/3 font-bold;
+
+}
+
 
 .core--table--body{
     @apply flex flex-col;
@@ -1198,14 +1203,26 @@ footer{
     @apply w-1/2 py-2 cursor-pointer;
 }
 
+.table--item .table--item--split--name , .table--item .table--item--split--rate{
+    @apply w-1/3 py-2 cursor-pointer;
+}
+
 
 .table--item .table--item--status .active-state{
     @apply  cursor-pointer;
 }
 
+.table--item .table--item--split--status .active-state{
+    @apply  cursor-pointer ml-2;
+}
+
 
 .table--item .table--item--status{
     @apply flex items-center justify-between w-1/2 py-2;
+}
+
+.table--item .table--item--split--status{
+    @apply flex items-center justify-between w-1/3 py-2;
 }
 
 .table--item--actions{

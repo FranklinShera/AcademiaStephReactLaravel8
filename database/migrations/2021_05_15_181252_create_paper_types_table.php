@@ -16,6 +16,7 @@ class CreatePaperTypesTable extends Migration
         Schema::create('paper_types', function (Blueprint $table) {
             $table->id();
             $table->string("type_name");
+            $table->decimal("rate",4,2);
             $table->boolean("active")->default(false);
             $table->timestamps();
         });

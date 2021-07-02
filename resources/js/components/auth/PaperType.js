@@ -29,6 +29,7 @@ const PaperType = () => {
     const formik = useFormik({
         initialValues:{
             type_name: '',
+            rate: 1,
             active: false
         },
         validationSchema:Yup.object({
@@ -41,10 +42,7 @@ const PaperType = () => {
 
             addPaperType(values)
 
-            resetForm({ values:{
-                    type_name: '',
-                    active: false
-                }})
+            resetForm()
 
             setSubmitting(false)
 
@@ -166,11 +164,15 @@ const PaperType = () => {
                     <div className="core--table--header">
 
 
-                        <div className="table--item--name">
+                        <div className="table--item--split--name">
                             PAPER TYPE
                         </div>
 
-                        <div className="table--item--status">
+                        <div className="table--item--split--rate">
+                            RATE
+                        </div>
+
+                        <div className="table--item--split--status">
                             STATUS
                         </div>
 
@@ -184,11 +186,15 @@ const PaperType = () => {
                         { (loading || localLoad ) ? <DotLoader/>  :   allPaperTypes.map((papertype,index) => (
                                 <div className="table--item" key={index}>
 
-                                    <div className="table--item--name" >
+                                    <div className="table--item--split--name" >
                                         {index + 1 +"."}  {papertype.type_name}
                                     </div>
 
-                                    <div className="table--item--status">
+                                    <div className="table--item--split--rate" >
+                                        {index }
+                                    </div>
+
+                                    <div className="table--item--split--status">
                                         <span className="active-state">
                                         { (papertype.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
@@ -246,7 +252,16 @@ const PaperType = () => {
                         errors={(formik.errors.type_name && formik.touched.type_name) && formik.errors.type_name}
                     />
 
-
+                    <InputField
+                        labelText='Rate'
+                        name="rate"
+                        type='number'
+                        onBlur={formik.handleBlur}
+                        value={formik.values.rate}
+                        placeholder="Enter rate..."
+                        onChange={formik.handleChange}
+                        errors={(formik.errors.rate && formik.touched.rate) && formik.errors.rate}
+                    />
 
                     <div className="text-sm">Default Paper Type Status is <span className="text-gray-800 font-extrabold">false</span></div>
 

@@ -30,6 +30,7 @@ const SubjectArea = () => {
     const formik = useFormik({
         initialValues:{
             area_name: '',
+            rate: 1,
             active: false
         },
         validationSchema:Yup.object({
@@ -42,10 +43,7 @@ const SubjectArea = () => {
 
             addSubjectArea(values)
 
-            resetForm({ values:{
-                    area_name: '',
-                    active: false
-                }})
+            resetForm()
 
             setSubmitting(false)
 
@@ -167,11 +165,15 @@ const SubjectArea = () => {
                     <div className="core--table--header">
 
 
-                        <div className="table--item--name">
+                        <div className="table--item--split--name">
                             SUBJECT AREA
                         </div>
 
-                        <div className="table--item--status">
+                        <div className="table--item--split--rate">
+                            RATE
+                        </div>
+
+                        <div className="table--item--split--status">
                             STATUS
                         </div>
 
@@ -185,11 +187,16 @@ const SubjectArea = () => {
                         { (loading || localLoad ) ? <DotLoader/>  :   allSubjectAreas.map((subarea,index) => (
                                 <div className="table--item" key={index}>
 
-                                    <div className="table--item--name" >
+                                    <div className="table--item--split--name" >
                                         {index + 1 +"."}  {subarea.area_name}
                                     </div>
 
-                                    <div className="table--item--status">
+
+                                    <div className="table--item--split--rate" >
+                                        {index + 1}
+                                    </div>
+
+                                    <div className="table--item--split--status">
                                         <span className="active-state">
                                         { (subarea.active) ? <span>ACTIVE</span> : <span>INACTIVE</span> }
                                         </span>
@@ -245,6 +252,16 @@ const SubjectArea = () => {
                         errors={(formik.errors.area_name && formik.touched.area_name) && formik.errors.area_name}
                     />
 
+                    <InputField
+                        labelText='Rate'
+                        name="rate"
+                        type='number'
+                        onBlur={formik.handleBlur}
+                        value={formik.values.rate}
+                        placeholder="Enter rate..."
+                        onChange={formik.handleChange}
+                        errors={(formik.errors.rate && formik.touched.rate) && formik.errors.rate}
+                    />
 
                     <div className="text-sm">Default Subject Area Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
