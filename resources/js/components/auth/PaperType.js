@@ -191,7 +191,7 @@ const PaperType = () => {
                                     </div>
 
                                     <div className="table--item--split--rate" >
-                                        {index }
+                                        ${papertype.rate}
                                     </div>
 
                                     <div className="table--item--split--status">

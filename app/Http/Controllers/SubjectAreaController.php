@@ -39,7 +39,8 @@ class SubjectAreaController extends Controller
     {
 
         $data = $request->validate([
-            'area_name' => 'required|string|min:5',
+            'area_name' => 'required|string|min:3',
+            'rate' => 'required',
             'active' => 'required'
         ]);
 

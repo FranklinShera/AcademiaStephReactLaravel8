@@ -193,7 +193,7 @@ const SubjectArea = () => {
 
 
                                     <div className="table--item--split--rate" >
-                                        {index + 1}
+                                        ${subarea.rate}
                                     </div>
 
                                     <div className="table--item--split--status">

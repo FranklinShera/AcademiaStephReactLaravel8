@@ -38,7 +38,8 @@ class PaperTypeController extends Controller
     {
 
         $data = $request->validate([
-            'type_name' => 'required|string|min:5',
+            'type_name' => 'required|string|min:3',
+            'rate' => 'required',
             'active' => 'required'
         ]);
 

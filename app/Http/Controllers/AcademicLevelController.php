@@ -29,7 +29,8 @@ class AcademicLevelController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
-                     'level_name' => 'required|string|min:5',
+                     'level_name' => 'required|string|min:3',
+                     'rate' => 'required',
                      'active' => 'required'
                     ]);
 

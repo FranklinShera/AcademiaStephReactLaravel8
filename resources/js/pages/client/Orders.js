@@ -42,7 +42,7 @@ const Orders = ({ location }) => {
 
     const showOrder = (id , topic) => {
 
-        let topicSlug = topic.replace(/\s/g, '-').toLowerCase();
+        let topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
 
         hist.push(`/client/dashboard/order-view/${id}/${topicSlug}`);
 

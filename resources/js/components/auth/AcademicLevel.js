@@ -198,7 +198,7 @@ useEffect(() => {
                                     </div>
 
                                     <div className="table--item--split--rate" >
-                                      {index}
+                                      ${academicLevel.rate}
                                     </div>
 
                                     <div className="table--item--split--status">

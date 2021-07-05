@@ -1,10 +1,34 @@
-import React, {useState} from "react";
+import React, {useState , useEffect , useRef} from "react";
+
+import {useSelector, useDispatch} from "react-redux";
+import {fetchAcademicLevels, fetchPaperTypes} from "../actions/OrderActions";
 
 const PriceCalculator = () => {
+
+    const dispatch =  useDispatch()
+
+
+
+    const essayTypeRef  = useRef();
+    const  levelRef  = useRef();
+    const urgencyRef   = useRef();
+    const  pagesRef  = useRef();
+    const essaySpacingRef   = useRef();
+
+
+
+    const AcademicLevels = useSelector( state => state.academicLevels)
+    const { allAcademicLevels  } = AcademicLevels;
+
+
+    const PaperTypes = useSelector( state => state.paperTypes)
+    const { allPaperTypes } = PaperTypes;
 
 
 
     const[paperAction,setPaperAction] = useState(0)
+
+    const[orderPrice,setOrderPrice] = useState(0)
 
     const[pageNums,setPageNum] = useState([1,2,3,4,5,6,7,8])
 
@@ -14,16 +38,43 @@ const PriceCalculator = () => {
         words: 275
     })
 
-    const[educationStage,setStage] = useState([
-        "School" , "College" ,"University","Master's", "Doctorate"
-    ])
-
-    const[essayType,setEssayType] = useState([
-        "Admission" ,"Article Review","Business Plan"
-    ])
+    const checkCalcFields = (e) =>{
+        e.preventDefault();
 
 
 
+        if( essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "" ){
+
+            let typeRate = parseFloat(essayTypeRef.current.value);
+            let levelRate = parseFloat(levelRef.current.value);
+            let urgencyVal = parseFloat(urgencyRef.current.value);
+            let spacingVal = parseInt(essaySpacingRef.current.value , 10);
+            let pagesVal = parseInt(pagesRef.current.value , 10);
+
+
+            let multi =  spacingVal * pagesVal;
+
+            let rates = typeRate + levelRate;
+
+            let orderTotal = multi * rates;
+
+
+            setOrderPrice(orderTotal);
+
+
+        }else{
+            setOrderPrice(0)
+        }
+
+    }
+
+
+
+
+    useEffect( () => {
+        dispatch(fetchAcademicLevels())
+        dispatch(fetchPaperTypes())
+    },[])
 
     return (
         <div className="hidden price-calculator lg:block">
@@ -36,68 +87,57 @@ const PriceCalculator = () => {
                     <span className={(paperAction == 2) ? 'curr-tab' : 'idle-tab'} onClick={() => setPaperAction(2)}>Editing</span>
                 </div>
                 <div className="mt-4 essay-type">
-                    <select name="essay-type" id="essay-type" className="w-full">
-                        <option value="" selected>Essay (Any Type)</option>
+                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef} onChange={checkCalcFields}>
+                        <option value="" selected>Choose Essay Type)</option>
 
-                        {essayType.map(essay =>(
-                            <option value={essay}>{essay}</option>
+                        {allPaperTypes.map(papertype =>(
+                            <option value={papertype.rate}>{papertype.type_name}</option>
                         ))}
 
                     </select>
                 </div>
 
                 <div className="flex justify-between mt-4 stage-time">
-                    <select name="stage" id="stage" className="w-1/2">
-                        {educationStage.map(stage =>(
-                            (stage === "College") ? <option value={stage} selected>{stage}</option> : <option value={stage}>{stage}</option>
-                        ))}
-                    </select>
-                    <select name="essay-time" id="essay-time" className="w-1/2">
-                        <option value="">6 Hours</option>
-                        <option value="">12 Hours</option>
-                        <option value="">1 Day</option>
-                        <option value="">2 Days</option>
-                        <option value="">3 Days</option>
-                        <option value="">5 Days</option>
-                        <option value="">7 Days</option>
-                        <option value="">10 Days</option>
-                        <option value="" selected>2 Weeks</option>
-                        <option value="">1 Month</option>
-                        <option value="">2 Months</option>
-                    </select>
-                </div>
 
-                <div className="flex justify-between p-2 mt-4 essay-pages ">
-
-                    <div className="flex items-center justify-center font-extrabold border rounded page-minus border-primary-3 w-10/100"> - </div>
-
-                    <select name="pages-words" id="pages-words" className="w-3/4 text-center">
-                        {pageNums.map(pageNum => (
-                            (pageNum == 1) ? <option value={pageNum} selected>{pageNum} Page/{pageNum*pageWords.words} Words</option> : <option value={pageNum}>{pageNum} Pages/{pageNum*pageWords.words} Words</option>
+                    <select name="stage" id="stage" className="w-45/100 p-1" ref={levelRef} onChange={checkCalcFields}>
+                        {allAcademicLevels.map(academiclevel =>(
+                            (academiclevel.level_name === "School") ? <option value={academiclevel.rate} selected>{academiclevel.level_name}</option> : <option value={academiclevel.rate}>{academiclevel.level_name}</option>
                         ))}
                     </select>
 
-                    <div className="flex items-center justify-center w-1 font-extrabold border rounded page-plus border-primary-3 w-10/100"> + </div>
+                    <select name="essay-time" id="essay-time" className="w-45/100 p-1" ref={urgencyRef} onChange={checkCalcFields}>
+                        <option value="0.25">6 Hours</option>
+                        <option value="0.5">12 Hours</option>
+                        <option value="1">1 Day</option>
+                        <option value="2">2 Days</option>
+                        <option value="3">3 Days</option>
+                        <option value="5">5 Days</option>
+                        <option value="7">7 Days</option>
+                        <option value="10">10 Days</option>
+                        <option value="14" selected>2 Weeks</option>
+                        <option value="30">1 Month</option>
+                        <option value="60">2 Months</option>
+                    </select>
+                </div>
+
+                <div className="flex justify-center  mt-4 essay-pages ">
+
+                    <input type="number" step="1" min="1" className="w-full text-center p-1 rounded" ref={pagesRef} onChange={checkCalcFields} placeholder="Enter Number Of Pages..." />
 
                 </div>
 
-                <div className="flex justify-between mt-4 essay-spacing">
+                <div className="flex justify-center mt-4 essay-spacing">
 
-                    <div className="flex justify-between double-spacing">
-                        <input type="radio"/>
-                        <span className="ml-1">Double Spacing</span>
-                    </div>
-
-
-                    <div className="flex justify-between single-spacing">
-                        <input type="radio"/>
-                        <span className="ml-1">Single Spacing</span>
-                    </div>
+                    <select name="spacing" id="spacing-input" className="w-full text-center p-1 rounded" ref={essaySpacingRef} onChange={checkCalcFields}>
+                        <option value="" selected>Choose Spacing</option>
+                        <option value="1">Single Spacing</option>
+                        <option value="2">Double Spacing</option>
+                    </select>
 
                 </div>
 
                 <div className="flex justify-end px-3 mt-4 font-bold computed-price">
-                    $28.00
+                    ${orderPrice}
                 </div>
 
                 <button className="w-full py-3 mt-4 font-bold text-white rounded bg-primary-4">Write My Paper</button>

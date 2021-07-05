@@ -14827,7 +14827,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -14844,182 +14846,211 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var PriceCalculator = function PriceCalculator() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var essayTypeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var levelRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var urgencyRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var pagesRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var essaySpacingRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var AcademicLevels = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.academicLevels;
+  });
+  var allAcademicLevels = AcademicLevels.allAcademicLevels;
+  var PaperTypes = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.paperTypes;
+  });
+  var allPaperTypes = PaperTypes.allPaperTypes;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       paperAction = _useState2[0],
       setPaperAction = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6, 7, 8]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
-      pageNums = _useState4[0],
-      setPageNum = _useState4[1];
+      orderPrice = _useState4[0],
+      setOrderPrice = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6, 7, 8]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      pageNums = _useState6[0],
+      setPageNum = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     page: 1,
     words: 275
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      pageWords = _useState6[0],
-      setPageWord = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["School", "College", "University", "Master's", "Doctorate"]),
       _useState8 = _slicedToArray(_useState7, 2),
-      educationStage = _useState8[0],
-      setStage = _useState8[1];
+      pageWords = _useState8[0],
+      setPageWord = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["Admission", "Article Review", "Business Plan"]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      essayType = _useState10[0],
-      setEssayType = _useState10[1];
+  var checkCalcFields = function checkCalcFields(e) {
+    e.preventDefault();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    if (essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "") {
+      var typeRate = parseFloat(essayTypeRef.current.value);
+      var levelRate = parseFloat(levelRef.current.value);
+      var urgencyVal = parseFloat(urgencyRef.current.value);
+      var spacingVal = parseInt(essaySpacingRef.current.value, 10);
+      var pagesVal = parseInt(pagesRef.current.value, 10);
+      var multi = spacingVal * pagesVal;
+      var rates = typeRate + levelRate;
+      var orderTotal = multi * rates;
+      setOrderPrice(orderTotal);
+    } else {
+      setOrderPrice(0);
+    }
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__.fetchAcademicLevels)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__.fetchPaperTypes)());
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "hidden price-calculator lg:block",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       className: "text-2xl font-bold",
       children: "Price Calculator"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "calc-body",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "calc-tabs",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 0 ? 'curr-tab' : 'idle-tab',
           onClick: function onClick() {
             return setPaperAction(0);
           },
           children: "Writing"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 1 ? 'curr-tab' : 'idle-tab',
           onClick: function onClick() {
             return setPaperAction(1);
           },
           children: "Rewriting"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 2 ? 'curr-tab' : 'idle-tab',
           onClick: function onClick() {
             return setPaperAction(2);
           },
           children: "Editing"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mt-4 essay-type",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
           name: "essay-type",
           id: "essay-type",
-          className: "w-full",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+          className: "w-full p-1",
+          ref: essayTypeRef,
+          onChange: checkCalcFields,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
             selected: true,
-            children: "Essay (Any Type)"
-          }), essayType.map(function (essay) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: essay,
-              children: essay
+            children: "Choose Essay Type)"
+          }), allPaperTypes.map(function (papertype) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: papertype.rate,
+              children: papertype.type_name
             });
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "flex justify-between mt-4 stage-time",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
           name: "stage",
           id: "stage",
-          className: "w-1/2",
-          children: educationStage.map(function (stage) {
-            return stage === "College" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: stage,
+          className: "w-45/100 p-1",
+          ref: levelRef,
+          onChange: checkCalcFields,
+          children: allAcademicLevels.map(function (academiclevel) {
+            return academiclevel.level_name === "School" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: academiclevel.rate,
               selected: true,
-              children: stage
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: stage,
-              children: stage
+              children: academiclevel.level_name
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: academiclevel.rate,
+              children: academiclevel.level_name
             });
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
           name: "essay-time",
           id: "essay-time",
-          className: "w-1/2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          className: "w-45/100 p-1",
+          ref: urgencyRef,
+          onChange: checkCalcFields,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "0.25",
             children: "6 Hours"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "0.5",
             children: "12 Hours"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "1",
             children: "1 Day"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "2",
             children: "2 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "3",
             children: "3 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "5",
             children: "5 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "7",
             children: "7 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "10",
             children: "10 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "14",
             selected: true,
             children: "2 Weeks"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "30",
             children: "1 Month"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-            value: "",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "60",
             children: "2 Months"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "flex justify-between p-2 mt-4 essay-pages ",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "flex items-center justify-center font-extrabold border rounded page-minus border-primary-3 w-10/100",
-          children: " - "
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-          name: "pages-words",
-          id: "pages-words",
-          className: "w-3/4 text-center",
-          children: pageNums.map(function (pageNum) {
-            return pageNum == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("option", {
-              value: pageNum,
-              selected: true,
-              children: [pageNum, " Page/", pageNum * pageWords.words, " Words"]
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("option", {
-              value: pageNum,
-              children: [pageNum, " Pages/", pageNum * pageWords.words, " Words"]
-            });
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "flex items-center justify-center w-1 font-extrabold border rounded page-plus border-primary-3 w-10/100",
-          children: " + "
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "flex justify-between mt-4 essay-spacing",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "flex justify-between double-spacing",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            type: "radio"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "ml-1",
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "flex justify-center  mt-4 essay-pages ",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          type: "number",
+          step: "1",
+          min: "1",
+          className: "w-full text-center p-1 rounded",
+          ref: pagesRef,
+          onChange: checkCalcFields,
+          placeholder: "Enter Number Of Pages..."
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "flex justify-center mt-4 essay-spacing",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+          name: "spacing",
+          id: "spacing-input",
+          className: "w-full text-center p-1 rounded",
+          ref: essaySpacingRef,
+          onChange: checkCalcFields,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "",
+            selected: true,
+            children: "Choose Spacing"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "1",
+            children: "Single Spacing"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "2",
             children: "Double Spacing"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "flex justify-between single-spacing",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            type: "radio"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "ml-1",
-            children: "Single Spacing"
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "flex justify-end px-3 mt-4 font-bold computed-price",
-        children: "$28.00"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        children: ["$", orderPrice]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "w-full py-3 mt-4 font-bold text-white rounded bg-primary-4",
         children: "Write My Paper"
       })]
@@ -15692,9 +15723,9 @@ var AcademicLevel = function AcademicLevel() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", academicLevel.level_name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--rate",
-                children: index
+                children: ["$", academicLevel.rate]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -16509,9 +16540,9 @@ var PaperType = function PaperType() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", papertype.type_name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--rate",
-                children: index
+                children: ["$", papertype.rate]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -17333,9 +17364,9 @@ var SubjectArea = function SubjectArea() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", subarea.area_name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--rate",
-                children: index + 1
+                children: ["$", subarea.rate]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--status",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -19477,7 +19508,7 @@ var Orders = function Orders() {
   var COMPLETED_ORDER_URI = '/api/auth/admin/orders-completed';
 
   var showOrder = function showOrder(id, topic) {
-    var topicSlug = topic.replace(/\s/g, '-').toLowerCase();
+    var topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
     hist.push("/in/dashboard/order-view/".concat(id, "/").concat(topicSlug));
   };
 
@@ -20758,7 +20789,7 @@ var Orders = function Orders(_ref) {
   var COMPLETED_ORDER_URI = '/api/auth/client/orders-completed';
 
   var showOrder = function showOrder(id, topic) {
-    var topicSlug = topic.replace(/\s/g, '-').toLowerCase();
+    var topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
     hist.push("/client/dashboard/order-view/".concat(id, "/").concat(topicSlug));
   };
 
