@@ -167,7 +167,7 @@ const Orders = ({ location }) => {
                              }}>
 
                                  <div className="order-topic">
-                                     { index + 1+". " }{ order.topic.slice(0,50) + "..."}
+                                     { index + 1+". " }{ (order.topic.length > 55) ? order.topic.slice(0,55) + "..." : order.topic}
                                  </div>
 
                                  <div className="order-type">

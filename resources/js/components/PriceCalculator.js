@@ -2,12 +2,13 @@ import React, {useState , useEffect , useRef} from "react";
 
 import {useSelector, useDispatch} from "react-redux";
 import {fetchAcademicLevels, fetchPaperTypes} from "../actions/OrderActions";
+import {useHistory} from "react-router";
 
 const PriceCalculator = () => {
 
     const dispatch =  useDispatch()
 
-
+    const hist = useHistory();
 
     const essayTypeRef  = useRef();
     const  levelRef  = useRef();
@@ -30,6 +31,7 @@ const PriceCalculator = () => {
 
     const[orderPrice,setOrderPrice] = useState(0)
 
+
     const[pageNums,setPageNum] = useState([1,2,3,4,5,6,7,8])
 
 
@@ -38,10 +40,12 @@ const PriceCalculator = () => {
         words: 275
     })
 
-    const checkCalcFields = (e) =>{
+    const writeMyPaper = (e) =>{
         e.preventDefault();
+        hist.push("/client/dashboard/place-order")
+    }
 
-
+    const checkCalcFields = () =>{
 
         if( essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "" ){
 
@@ -56,14 +60,25 @@ const PriceCalculator = () => {
 
             let rates = typeRate + levelRate;
 
-            let orderTotal = multi * rates;
+            let orderSubTotal = multi * rates;
+
+            let deduction = urgencyVal * 0.2;
+
+            let serviceDeduction = (paperAction == 1) ? 2 : (paperAction == 2) ? 4 : 0;
+
+            let totalDeduction =  (deduction > 0.6) ?  0.6 + serviceDeduction : deduction + serviceDeduction;
+
+
+            let orderTotal =  (urgencyVal => 1) ? orderSubTotal - totalDeduction : orderSubTotal + totalDeduction;
 
 
             setOrderPrice(orderTotal);
 
 
         }else{
+
             setOrderPrice(0)
+
         }
 
     }
@@ -82,12 +97,27 @@ const PriceCalculator = () => {
             <div className="calc-body">
                 <div className="calc-tabs">
 
-                    <span className={(paperAction == 0) ? 'curr-tab' : 'idle-tab'} onClick={() => setPaperAction(0)}>Writing</span>
-                    <span className={(paperAction == 1) ? 'curr-tab' : 'idle-tab'} onClick={() => setPaperAction(1)}>Rewriting</span>
-                    <span className={(paperAction == 2) ? 'curr-tab' : 'idle-tab'} onClick={() => setPaperAction(2)}>Editing</span>
+                    <span className={(paperAction == 0) ? 'curr-tab' : 'idle-tab'} onClick={(e) => {
+                        e.preventDefault();
+                        setPaperAction(0)
+                        checkCalcFields()
+                    }}>Writing</span>
+                    <span className={(paperAction == 1) ? 'curr-tab' : 'idle-tab'} onClick={(e) => {
+                        e.preventDefault();
+                        setPaperAction(1)
+                        checkCalcFields()
+                    }}>Rewriting</span>
+                    <span className={(paperAction == 2) ? 'curr-tab' : 'idle-tab'} onClick={(e) => {
+                        e.preventDefault();
+                        setPaperAction(2)
+                        checkCalcFields()
+                    }}>Editing</span>
                 </div>
                 <div className="mt-4 essay-type">
-                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef} onChange={checkCalcFields}>
+                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef} onChange={(e) => {
+                        e.preventDefault();
+                        checkCalcFields()
+                    }}>
                         <option value="" selected>Choose Essay Type)</option>
 
                         {allPaperTypes.map(papertype =>(
@@ -99,13 +129,18 @@ const PriceCalculator = () => {
 
                 <div className="flex justify-between mt-4 stage-time">
 
-                    <select name="stage" id="stage" className="w-45/100 p-1" ref={levelRef} onChange={checkCalcFields}>
+                    <select name="stage" id="stage" className="w-45/100 p-1" ref={levelRef} onChange={(e) => { e.preventDefault();
+                        checkCalcFields()
+                    }}>
                         {allAcademicLevels.map(academiclevel =>(
                             (academiclevel.level_name === "School") ? <option value={academiclevel.rate} selected>{academiclevel.level_name}</option> : <option value={academiclevel.rate}>{academiclevel.level_name}</option>
                         ))}
                     </select>
 
-                    <select name="essay-time" id="essay-time" className="w-45/100 p-1" ref={urgencyRef} onChange={checkCalcFields}>
+                    <select name="essay-time" id="essay-time" className="w-45/100 p-1" ref={urgencyRef} onChange={(e) => {
+                        e.preventDefault();
+                        checkCalcFields()
+                    }}>
                         <option value="0.25">6 Hours</option>
                         <option value="0.5">12 Hours</option>
                         <option value="1">1 Day</option>
@@ -122,13 +157,19 @@ const PriceCalculator = () => {
 
                 <div className="flex justify-center  mt-4 essay-pages ">
 
-                    <input type="number" step="1" min="1" className="w-full text-center p-1 rounded" ref={pagesRef} onChange={checkCalcFields} placeholder="Enter Number Of Pages..." />
+                    <input type="number" step="1" min="1" className="w-full text-center p-1 rounded" ref={pagesRef} onChange={(e) => {
+                        e.preventDefault();
+                        checkCalcFields()
+                    }} placeholder="Enter Number Of Pages..." />
 
                 </div>
 
                 <div className="flex justify-center mt-4 essay-spacing">
 
-                    <select name="spacing" id="spacing-input" className="w-full text-center p-1 rounded" ref={essaySpacingRef} onChange={checkCalcFields}>
+                    <select name="spacing" id="spacing-input" className="w-full text-center p-1 rounded" ref={essaySpacingRef} onChange={(e) => {
+                        e.preventDefault();
+                        checkCalcFields()
+                    }}>
                         <option value="" selected>Choose Spacing</option>
                         <option value="1">Single Spacing</option>
                         <option value="2">Double Spacing</option>
@@ -140,7 +181,7 @@ const PriceCalculator = () => {
                     ${orderPrice}
                 </div>
 
-                <button className="w-full py-3 mt-4 font-bold text-white rounded bg-primary-4">Write My Paper</button>
+                <button className="w-full py-3 mt-4 font-bold text-white rounded bg-primary-4" onClick={writeMyPaper}>Write My Paper</button>
             </div>
         </div>
     )

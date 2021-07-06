@@ -14829,6 +14829,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/OrderActions */ "./resources/js/actions/OrderActions.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -14848,8 +14849,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var PriceCalculator = function PriceCalculator() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
   var essayTypeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var levelRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var urgencyRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
@@ -14887,9 +14890,12 @@ var PriceCalculator = function PriceCalculator() {
       pageWords = _useState8[0],
       setPageWord = _useState8[1];
 
-  var checkCalcFields = function checkCalcFields(e) {
+  var writeMyPaper = function writeMyPaper(e) {
     e.preventDefault();
+    hist.push("/client/dashboard/place-order");
+  };
 
+  var checkCalcFields = function checkCalcFields() {
     if (essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "") {
       var typeRate = parseFloat(essayTypeRef.current.value);
       var levelRate = parseFloat(levelRef.current.value);
@@ -14898,7 +14904,13 @@ var PriceCalculator = function PriceCalculator() {
       var pagesVal = parseInt(pagesRef.current.value, 10);
       var multi = spacingVal * pagesVal;
       var rates = typeRate + levelRate;
-      var orderTotal = multi * rates;
+      var orderSubTotal = multi * rates;
+      var deduction = urgencyVal * 0.2;
+      var serviceDeduction = paperAction == 1 ? 2 : paperAction == 2 ? 4 : 0;
+      var totalDeduction = deduction > 0.6 ? 0.6 + serviceDeduction : deduction + serviceDeduction;
+      var orderTotal = function (urgencyVal) {
+        return 1;
+      } ? orderSubTotal - totalDeduction : orderSubTotal + totalDeduction;
       setOrderPrice(orderTotal);
     } else {
       setOrderPrice(0);
@@ -14920,20 +14932,26 @@ var PriceCalculator = function PriceCalculator() {
         className: "calc-tabs",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 0 ? 'curr-tab' : 'idle-tab',
-          onClick: function onClick() {
-            return setPaperAction(0);
+          onClick: function onClick(e) {
+            e.preventDefault();
+            setPaperAction(0);
+            checkCalcFields();
           },
           children: "Writing"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 1 ? 'curr-tab' : 'idle-tab',
-          onClick: function onClick() {
-            return setPaperAction(1);
+          onClick: function onClick(e) {
+            e.preventDefault();
+            setPaperAction(1);
+            checkCalcFields();
           },
           children: "Rewriting"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: paperAction == 2 ? 'curr-tab' : 'idle-tab',
-          onClick: function onClick() {
-            return setPaperAction(2);
+          onClick: function onClick(e) {
+            e.preventDefault();
+            setPaperAction(2);
+            checkCalcFields();
           },
           children: "Editing"
         })]
@@ -14944,7 +14962,10 @@ var PriceCalculator = function PriceCalculator() {
           id: "essay-type",
           className: "w-full p-1",
           ref: essayTypeRef,
-          onChange: checkCalcFields,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
             selected: true,
@@ -14963,7 +14984,10 @@ var PriceCalculator = function PriceCalculator() {
           id: "stage",
           className: "w-45/100 p-1",
           ref: levelRef,
-          onChange: checkCalcFields,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
           children: allAcademicLevels.map(function (academiclevel) {
             return academiclevel.level_name === "School" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: academiclevel.rate,
@@ -14979,7 +15003,10 @@ var PriceCalculator = function PriceCalculator() {
           id: "essay-time",
           className: "w-45/100 p-1",
           ref: urgencyRef,
-          onChange: checkCalcFields,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "0.25",
             children: "6 Hours"
@@ -15024,7 +15051,10 @@ var PriceCalculator = function PriceCalculator() {
           min: "1",
           className: "w-full text-center p-1 rounded",
           ref: pagesRef,
-          onChange: checkCalcFields,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
           placeholder: "Enter Number Of Pages..."
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -15034,7 +15064,10 @@ var PriceCalculator = function PriceCalculator() {
           id: "spacing-input",
           className: "w-full text-center p-1 rounded",
           ref: essaySpacingRef,
-          onChange: checkCalcFields,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
             selected: true,
@@ -15052,6 +15085,7 @@ var PriceCalculator = function PriceCalculator() {
         children: ["$", orderPrice]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "w-full py-3 mt-4 font-bold text-white rounded bg-primary-4",
+        onClick: writeMyPaper,
         children: "Write My Paper"
       })]
     })]
@@ -20887,7 +20921,7 @@ var Orders = function Orders(_ref) {
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 className: "order-topic",
-                children: [index + 1 + ". ", order.topic.slice(0, 50) + "..."]
+                children: [index + 1 + ". ", order.topic.length > 55 ? order.topic.slice(0, 55) + "..." : order.topic]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-type",
                 children: order.type_of_paper
@@ -21149,21 +21183,28 @@ var Orders = function Orders() {
     value: "2 Months"
   }];
   var SUPPORTED_FORMATS = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/msword', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png', 'application/x-zip-compressed'];
+  var initial = {
+    topic: '',
+    typeOfPaper: '',
+    subjectArea: '',
+    paperDetails: '',
+    additionalMaterials: null,
+    paperFormat: '',
+    prefEnglish: '',
+    numOfSources: '',
+    spacing: '',
+    academicLevel: '',
+    numberOfPages: '',
+    urgency: ''
+  };
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      savedValues = _useState6[0],
+      setSavedValues = _useState6[1];
+
   var Formik = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useFormik)({
-    initialValues: {
-      topic: '',
-      typeOfPaper: '',
-      subjectArea: '',
-      paperDetails: '',
-      additionalMaterials: null,
-      paperFormat: '',
-      prefEnglish: '',
-      numOfSources: '',
-      spacing: '',
-      academicLevel: '',
-      numberOfPages: '',
-      urgency: ''
-    },
+    initialValues: savedValues || initial,
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_3__.object({
       topic: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(8, "Topic must be atleast 8 characters!").required("Topic is a required field"),
       typeOfPaper: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Type of Paper is a required field"),
@@ -21182,6 +21223,7 @@ var Orders = function Orders() {
       numberOfPages: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Number of Pages is a required field"),
       urgency: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Urgency is a required field")
     }),
+    enableReinitialize: true,
     onSubmit: function onSubmit(values, _ref) {
       var setSubmitting = _ref.setSubmitting,
           resetForm = _ref.resetForm;
@@ -21212,6 +21254,7 @@ var Orders = function Orders() {
     localStorage.removeItem(LOCAL_STORAGE_KEY);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSave));
     checkLocalOrders();
+    Formik.resetForm();
   };
 
   var submitPlaceOrderForm = function submitPlaceOrderForm(formFields) {
@@ -21245,7 +21288,7 @@ var Orders = function Orders() {
   };
 
   var loadDraft = function loadDraft(draftOrder) {
-    Formik.values = draftOrder;
+    setSavedValues(draftOrder);
     setOpen(false);
   };
 
@@ -21360,7 +21403,7 @@ var Orders = function Orders() {
                                   e.preventDefault();
                                   loadDraft(locOrder);
                                 },
-                                children: [index + 1 + ". ", locOrder.topic]
+                                children: [index + 1 + ". ", locOrder.topic.length > 65 ? locOrder.topic.slice(0, 65) + "..." : locOrder.topic]
                               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
                                 className: "ti-trash text-red-600 cursor-pointer",
                                 onClick: function onClick(e) {
@@ -21404,6 +21447,15 @@ var Orders = function Orders() {
                 onClick: saveOrder,
                 children: ["Save ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
                   className: "ti-save ml-1"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
+                className: "resetBtn",
+                onClick: function onClick(e) {
+                  e.preventDefault();
+                  setSavedValues(initial);
+                },
+                children: ["Reset ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
+                  className: "ti-reload ml-1"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
                 className: "draftBtn",

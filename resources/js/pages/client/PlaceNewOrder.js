@@ -162,10 +162,8 @@ const Orders = () => {
         'application/x-zip-compressed',
     ]
 
-
-    const Formik = useFormik({
-        initialValues:{
-            topic: '',
+    const initial = {
+        topic: '',
             typeOfPaper: '',
             subjectArea: '',
             paperDetails: '',
@@ -177,7 +175,13 @@ const Orders = () => {
             academicLevel: '',
             numberOfPages: '',
             urgency: ''
-        },
+    }
+
+    const[savedValues,setSavedValues] = useState(null)
+
+    const Formik = useFormik({
+
+        initialValues: savedValues || initial ,
         validationSchema:Yup.object({
             topic: Yup.string()
                      .min(8,"Topic must be atleast 8 characters!").required("Topic is a required field"),
@@ -203,6 +207,7 @@ const Orders = () => {
             numberOfPages: Yup.string().required("Number of Pages is a required field"),
             urgency: Yup.string().required("Urgency is a required field")
         }),
+        enableReinitialize: true,
         onSubmit: (values, { setSubmitting , resetForm }) => {
 
             submitPlaceOrderForm(values)
@@ -241,9 +246,12 @@ const Orders = () => {
            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSave))
 
            checkLocalOrders()
+
+        Formik.resetForm();
+
     }
 
-    const submitPlaceOrderForm = (formFields) =>{
+   const submitPlaceOrderForm = (formFields) =>{
 
         let orderFormData = new FormData();
 
@@ -286,10 +294,8 @@ const Orders = () => {
 
     const loadDraft = (draftOrder) =>{
 
-         Formik.values = draftOrder;
-
-
-         setOpen(false)
+        setSavedValues(draftOrder)
+        setOpen(false)
 
     }
 
@@ -315,6 +321,8 @@ const Orders = () => {
          localStorage.getItem(LOCAL_STORAGE_KEY) && setLocalOrders(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
 
     }
+
+
 
 
 
@@ -416,7 +424,7 @@ const Orders = () => {
                                                                         e.preventDefault();
                                                                         loadDraft(locOrder)
                                                                     }}
-                                                                >{index+1+". "}{locOrder.topic}</span>
+                                                                >{index+1+". "}{ (locOrder.topic.length > 65) ? locOrder.topic.slice(0,65)+"..." : locOrder.topic}</span>
                                                                 <i className="ti-trash text-red-600 cursor-pointer"
                                                                     onClick={e => {
                                                                         e.preventDefault();
@@ -461,6 +469,16 @@ const Orders = () => {
                                  onClick={saveOrder}
                              >
                                  Save <i className="ti-save ml-1"></i>
+                             </span>
+
+                             <span
+                                 className="resetBtn"
+                                 onClick={(e) => {
+                                     e.preventDefault();
+                                     setSavedValues(initial)
+                                 }}
+                             >
+                                 Reset <i className="ti-reload ml-1"></i>
                              </span>
 
                              <span
