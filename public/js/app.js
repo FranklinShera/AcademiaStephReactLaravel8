@@ -14749,6 +14749,42 @@ var Loader = function Loader() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Message.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Message.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Message = function Message(_ref) {
+  var msg = _ref.msg,
+      isAdmin = _ref.isAdmin;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: !isAdmin && msg.direction == 0 ? "message self-start bg-blue-400" : "message self-end ",
+    children: [msg.direction == 0 && !isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "msg-owner",
+      children: "SUPPORT"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "msg-content",
+      children: [msg.content, " ", msg.direction == 1 ? "" : "^SK"]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Message);
+
+/***/ }),
+
 /***/ "./resources/js/components/Overlay.js":
 /*!********************************************!*\
   !*** ./resources/js/components/Overlay.js ***!
@@ -20195,12 +20231,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Message__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Message */ "./resources/js/components/Message.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -20210,14 +20259,70 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var Messages = function Messages() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authClient;
   });
   var clientAuth = authClient.clientAuth;
+  var initialMessages = [{
+    client_id: 1,
+    direction: 1,
+    content: "Hello"
+  }, {
+    client_id: 1,
+    direction: 0,
+    content: "How is work"
+  }, {
+    client_id: 1,
+    direction: 0,
+    content: "I am Feeling Fine"
+  }, {
+    client_id: 1,
+    direction: 1,
+    content: "The Book was not fully covered by the writer"
+  }, {
+    client_id: 1,
+    direction: 0,
+    content: "My order is late!"
+  }, {
+    client_id: 1,
+    direction: 1,
+    content: "PayPal payment is down!"
+  }];
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      newMsg = _useState2[0],
+      setNewMsg = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialMessages),
+      _useState4 = _slicedToArray(_useState3, 2),
+      messages = _useState4[0],
+      setMessages = _useState4[1];
+
+  var getDirection = function getDirection() {
+    var lastDirection = messages.reverse()[0].direction;
+    return lastDirection == 1 ? 0 : 1;
+  };
+
+  var sendMessage = function sendMessage() {
+    var msg = {
+      client_id: 1,
+      direction: getDirection(),
+      content: newMsg
+    };
+    initialMessages = messages;
+    initialMessages.push(msg);
+    setMessages(initialMessages);
+    setNewMsg("");
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!clientAuth) {
       hist.push("/client");
@@ -20226,13 +20331,51 @@ var Messages = function Messages() {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Client Messages';
   }, [clientAuth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     className: "dashboard",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-          children: "Messages Page"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "messages",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "message-head",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+              className: "lead-title inline",
+              children: "Messages"
+            }), messages.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "create-msg",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                name: "new-message",
+                id: "",
+                value: newMsg,
+                onChange: function onChange(e) {
+                  return setNewMsg(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+                onClick: function onClick(e) {
+                  e.preventDefault();
+                  sendMessage();
+                },
+                children: "SEND"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "messages-group",
+            children: [messages.length != 0 && messages.map(function (msg, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Message__WEBPACK_IMPORTED_MODULE_5__.default, {
+                msg: msg,
+                isAdmin: false
+              });
+            }), messages.length == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                className: "no-messages",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+                  children: "You Don't Have Messages!"
+                })
+              })
+            })]
+          })]
         })
       })
     })
@@ -20856,7 +20999,7 @@ var Orders = function Orders(_ref) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "orderview-header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
-            className: " text-2xl font-bold",
+            className: "lead-title",
             children: [routeParams.category.toUpperCase(), " ORDERS"]
           }), orders.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "orderview-search",

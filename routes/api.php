@@ -4,6 +4,7 @@ use App\Http\Controllers\AcademicLevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CustomerReviewController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperFormatController;
 use App\Http\Controllers\PaperTypeController;
@@ -68,6 +69,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/' , [ClientAuthController::class , 'profile']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+
+            //MESSAGE
+            Route::post('/message' , [MessageController::class , 'clientCreate']);
+
 
             //ORDER MATERIAL
 

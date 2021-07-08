@@ -31,7 +31,11 @@ body , html{
     border: 3px solid var(--scrollbarBG);
 }
 
-
+/*GLOBALS*/
+.lead-title{
+    @apply text-2xl font-bold;
+}
+/*GLOBALS END*/
 
 /*LOADER STYLES*/
 
@@ -1522,7 +1526,51 @@ footer{
 /*ORDER PREVIEW END*/
 
 
+/*MESSAGES*/
 
+.messages{
+    @apply p-6;
+}
+
+.messages-group{
+    @apply w-full h-full flex flex-col pt-3 ;
+}
+
+.no-messages{
+    @apply self-center mt-48;
+}
+.no-messages h3{
+    @apply text-red-600 font-bold;
+}
+
+
+.message{
+    @apply py-2 px-4 flex flex-col border border-gray-400 w-45/100 m-1 rounded-xl;
+}
+
+.message .msg-owner{
+    @apply font-bold;
+}
+
+.message .msg-content{
+    @apply font-light italic;
+}
+
+.message-head{
+    @apply flex justify-between mb-5;
+}
+
+.create-msg{
+    @apply  flex justify-around items-center w-4/5;
+}
+.create-msg input{
+    @apply w-10/12 border border-blue-400 rounded-xl p-2;
+}
+.create-msg button{
+    @apply bg-blue-500 text-white py-2 px-4 rounded;
+}
+
+/*MESSAGES END*/
 
 
 /*CLIENT STYLES END*/

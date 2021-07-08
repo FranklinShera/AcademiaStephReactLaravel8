@@ -99,7 +99,7 @@ const Orders = ({ location }) => {
             <ClientLayout>
              <div className="dash_overview">
                     <div className="orderview-header">
-                        <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
+                        <h1 className="lead-title">{routeParams.category.toUpperCase()} ORDERS</h1>
 
                         {(orders.length != 0) && (
                             <div className="orderview-search">
