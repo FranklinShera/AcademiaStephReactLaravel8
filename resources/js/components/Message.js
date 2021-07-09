@@ -13,6 +13,7 @@ const Message = ({msg ,isAdmin}) => {
             <div className="msg-content">
                 {msg.content} {(msg.direction == 1) ? "" : "^SK"}
             </div>
+            <div className="italic font-light text-xs self-end">{msg.created_at}</div>
         </div>
     )
 }

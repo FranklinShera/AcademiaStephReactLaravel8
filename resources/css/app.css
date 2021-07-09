@@ -1533,7 +1533,9 @@ footer{
 }
 
 .messages-group{
-    @apply w-full h-full flex flex-col pt-3 ;
+    @apply w-full flex flex-col pt-3 mt-3;
+    overflow-y: scroll;
+    height: 76vh;
 }
 
 .no-messages{
@@ -1553,18 +1555,15 @@ footer{
 }
 
 .message .msg-content{
-    @apply font-light italic;
+    @apply font-medium ;
 }
 
-.message-head{
-    @apply flex justify-between mb-5;
-}
 
 .create-msg{
-    @apply  flex justify-around items-center w-4/5;
+    @apply  flex justify-around items-center w-full;
 }
 .create-msg input{
-    @apply w-10/12 border border-blue-400 rounded-xl p-2;
+    @apply w-11/12 border border-blue-400 rounded-xl p-2;
 }
 .create-msg button{
     @apply bg-blue-500 text-white py-2 px-4 rounded;

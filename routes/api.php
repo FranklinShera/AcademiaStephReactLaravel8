@@ -71,6 +71,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
 
             //MESSAGE
+            Route::get('/messages' , [MessageController::class , 'clientIndex']);
             Route::post('/message' , [MessageController::class , 'clientCreate']);
 
 

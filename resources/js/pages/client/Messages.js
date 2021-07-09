@@ -10,6 +10,7 @@ import ClientLayout from '../../components/client/ClientLayout'
 //actions
 import {  logoutUser } from '../../actions/AuthUserActions'
 import Message from "../../components/Message";
+import DotLoader from "../../components/DotLoader";
 
 
 
@@ -23,73 +24,74 @@ const Messages = () => {
     const authClient = useSelector( state => state.authClient)
     const { clientAuth } = authClient;
 
-    let initialMessages = [
-        {
-            client_id: 1,
-            direction: 1,
-            content: "Hello"
-        },
-
-        {
-            client_id: 1,
-            direction: 0,
-            content: "How is work"
-        },
-
-        {
-            client_id: 1,
-            direction: 0,
-            content: "I am Feeling Fine"
-        },
-
-        {
-            client_id: 1,
-            direction: 1,
-            content: "The Book was not fully covered by the writer"
-        },
-
-        {
-            client_id: 1,
-            direction: 0,
-            content: "My order is late!"
-        },
-
-        {
-            client_id: 1,
-            direction: 1,
-            content: "PayPal payment is down!"
-        }
-
-    ]
 
     const[newMsg,setNewMsg] = useState("")
+    const[loading,setLoading] = useState(true)
 
-    const[messages,setMessages] = useState(initialMessages)
+    const[messages,setMessages] = useState([])
 
+    const fetchMessages = () =>{
+        setLoading(true)
+        axios.get('/api/auth/client/messages')
+            .then(res =>{
+                if(res.status == 200){
 
-    const getDirection = () => {
-        let lastDirection = messages.reverse()[0].direction
+                    setMessages(res.data.data)
 
-        return (lastDirection == 1) ? 0 : 1;
+                }else{
+                    console.log(res)
+                }
+
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+
+        setLoading(false)
     }
 
     const sendMessage = () =>{
 
-        let msg = {
-            client_id: 1,
-            direction: getDirection(),
-            content: newMsg
+        if(newMsg === ""){
+            window.Swal.fire({
+                icon:"error",
+                title:"Message Cannot Be Null!"
+            })
+
+            return;
         }
 
-        initialMessages = messages;
-        initialMessages.push(msg);
+        setLoading(true)
 
-        setMessages(initialMessages);
+        axios.post('/api/auth/client/message', { message: newMsg})
+            .then(res =>{
+                if(res.status == 201){
 
-        setNewMsg("")
+                    window.Toast.fire({
+                        icon:"success",
+                        title:"Message Sent!"
+                    })
+                    setNewMsg("")
+
+                    fetchMessages();
+
+                }else{
+                    window.Toast.fire({
+                        icon:"error",
+                        title:"Message Not Sent!"
+                    })
+                }
+
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+
     }
 
     useEffect(() => {
+
+
 
         if(!clientAuth){
             hist.push("/client")
@@ -99,6 +101,7 @@ const Messages = () => {
 
         document.querySelector('title').text = 'AcademiaSteph21 | Client Messages'
 
+        fetchMessages();
 
     }, [clientAuth])
 
@@ -109,29 +112,15 @@ const Messages = () => {
             <ClientLayout>
              <div className="dash_overview">
               <div className="messages">
-                  <div className="message-head">
-                      <h1 className="lead-title inline">Messages</h1>
-
-                      {messages.length != 0 && <div className="create-msg">
-
-                          <input name="new-message" id="" value={newMsg} onChange={e => setNewMsg(e.target.value)}/>
-
-                          <button onClick={ e => {
-                              e.preventDefault();
-                              sendMessage();
-                          }
-                          }>SEND</button>
-                      </div> }
-
-                  </div>
+                   <h1 className="lead-title inline">Messages</h1>
                   <div className="messages-group">
 
 
-                         {messages.length != 0 && messages.map((msg , index) => (<Message msg={msg} isAdmin={false}/>) )}
+                      {(messages.length != 0 && !loading ) && messages.map((msg , index) => (<Message msg={msg} isAdmin={false}/>) )}
 
+                      {loading && <DotLoader/>}
 
-
-                      {(messages.length == 0) && <>
+                      {(messages.length == 0  && !loading) && <>
                           <div className="no-messages">
                               <h3>You Don't Have Messages!</h3>
                           </div>
@@ -140,6 +129,20 @@ const Messages = () => {
 
 
                   </div>
+
+                  {messages.length != 0 && <div className="create-msg">
+
+                      <input name="new-message" id="" value={newMsg} onKeyPress={e => {
+                          (e.charCode == 13) && sendMessage();
+                      }} onChange={e => setNewMsg(e.target.value)}/>
+
+                      <button onClick={ e => {
+                          e.preventDefault();
+                          sendMessage();
+                      }
+                      }>SEND</button>
+                  </div> }
+
               </div>
              </div>
             </ClientLayout>
