@@ -1027,7 +1027,7 @@ footer{
 
 .dashboard{
     @apply flex items-center justify-center;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 

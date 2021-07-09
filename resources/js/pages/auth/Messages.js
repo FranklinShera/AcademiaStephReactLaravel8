@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState , useRef} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import {useHistory, useParams} from 'react-router'
 
@@ -11,6 +11,7 @@ import AdminLayout from '../../components/auth/AdminLayout'
 import {  logoutUser } from '../../actions/AuthUserActions'
 import Message from "../../components/Message";
 import DotLoader from "../../components/DotLoader";
+import ChatHolder from "../../components/ChatHolder";
 
 
 
@@ -26,17 +27,30 @@ const Messages = () => {
     const authUser = useSelector( state => state.authUser)
     const { loggedInUser, auth } = authUser;
 
+    const messagesEndRef = useRef(null)
 
     const[newMsg,setNewMsg] = useState("")
     const[loading,setLoading] = useState(true)
 
     const[messages,setMessages] = useState([])
     const[chatSign,setChatSign] = useState("")
+    const[clientsName,setClientsName] = useState("")
 
+    const titleCase = (word) =>{
+
+        return word.charAt(0).toUpperCase() + word.slice(1)
+
+    }
 
     const getSign = () => {
        let sign =  loggedInUser.name.split(" ");
         setChatSign(" ^"+ sign[0][0] + sign[1][0])
+
+       let cname =  routeParams.clientName.split("-")
+
+        let capName = titleCase(cname[0])+" "+ titleCase(cname[1])
+
+        setClientsName(capName)
     }
 
     const fetchMessages = (id) =>{
@@ -46,6 +60,8 @@ const Messages = () => {
                 if(res.status == 200){
 
                     setMessages(res.data.data)
+
+                    scrollToBottom();
 
                 }else{
                     console.log(res)
@@ -104,6 +120,10 @@ const Messages = () => {
 
 
 
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+
     useEffect(() => {
 
         if(!auth){
@@ -116,6 +136,7 @@ const Messages = () => {
 
         fetchMessages(routeParams.id)
         getSign();
+
 
     }, [auth])
 
@@ -133,15 +154,7 @@ const Messages = () => {
                      <h1 className="lead-title inline">Messages</h1>
                      <div className="messages-group">
 
-                         {(messages.length != 0 && !loading ) && messages.map((msg , index) => (<Message msg={msg} key={index} clientName={routeParams.clientName.replace(/-/g,"")} isAdmin={true}/>) )}
-
-                         {loading && <DotLoader/>}
-
-                         {(messages.length == 0  && !loading) && <>
-                             <div className="no-messages">
-                                 <h3>You Don't Have Messages!</h3>
-                             </div>
-                         </> }
+                         <ChatHolder messages={messages}  isAdmin={true} clientsName={clientsName} loading={loading} divRef={messagesEndRef}/>
 
                      </div>
 

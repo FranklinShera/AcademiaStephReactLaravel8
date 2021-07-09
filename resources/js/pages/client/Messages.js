@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import {useHistory} from 'react-router'
 
@@ -11,6 +11,7 @@ import ClientLayout from '../../components/client/ClientLayout'
 import {  logoutUser } from '../../actions/AuthUserActions'
 import Message from "../../components/Message";
 import DotLoader from "../../components/DotLoader";
+import ChatHolder from "../../components/ChatHolder";
 
 
 
@@ -25,6 +26,8 @@ const Messages = () => {
     const { clientAuth } = authClient;
 
 
+    const messagesEndRef = useRef(null)
+
     const[newMsg,setNewMsg] = useState("")
     const[loading,setLoading] = useState(true)
 
@@ -37,6 +40,7 @@ const Messages = () => {
                 if(res.status == 200){
 
                     setMessages(res.data.data)
+                    scrollToBottom();
 
                 }else{
                     console.log(res)
@@ -89,6 +93,12 @@ const Messages = () => {
 
     }
 
+
+
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+
     useEffect(() => {
 
 
@@ -115,15 +125,7 @@ const Messages = () => {
                    <h1 className="lead-title inline">Messages</h1>
                   <div className="messages-group">
 
-                      {(messages.length != 0 && !loading ) && messages.map((msg , index) => (<Message msg={msg} isAdmin={false}/>) )}
-
-                      {loading && <DotLoader/>}
-
-                      {(messages.length == 0  && !loading) && <>
-                          <div className="no-messages">
-                              <h3>You Don't Have Messages!</h3>
-                          </div>
-                      </> }
+                      <ChatHolder messages={messages}  isAdmin={false} clientsName="SUPPORT" loading={loading} divRef={messagesEndRef}/>
 
                   </div>
 
