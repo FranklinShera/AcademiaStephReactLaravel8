@@ -42,6 +42,12 @@ class Client extends Authenticatable implements JWTSubject
 
 
 
+    public function conversation(){
+        return $this->hasOne(Conversation::class);
+    }
+
+
+
 
     public function getJWTIdentifier()
     {

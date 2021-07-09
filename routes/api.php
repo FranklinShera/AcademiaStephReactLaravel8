@@ -99,7 +99,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
 
-
+            //MESSAGES
+            Route::get('/conversations' , [MessageController::class ,'adminIndex']);
+            Route::post('/message' , [MessageController::class , 'adminCreate']);
+            Route::get('/conversation/{conversation}/messages' , [MessageController::class , 'adminMessages']);
 
             //   ORDERS
             Route::get('/orders' , [OrderController::class , 'adminOrders']);

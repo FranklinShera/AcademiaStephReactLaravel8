@@ -115,7 +115,6 @@ const Messages = () => {
                    <h1 className="lead-title inline">Messages</h1>
                   <div className="messages-group">
 
-
                       {(messages.length != 0 && !loading ) && messages.map((msg , index) => (<Message msg={msg} isAdmin={false}/>) )}
 
                       {loading && <DotLoader/>}
@@ -126,11 +125,10 @@ const Messages = () => {
                           </div>
                       </> }
 
-
-
                   </div>
 
-                  {messages.length != 0 && <div className="create-msg">
+                  {/*{messages.length != 0 &&*/}
+                  <div className="create-msg">
 
                       <input name="new-message" id="" value={newMsg} onKeyPress={e => {
                           (e.charCode == 13) && sendMessage();
@@ -141,7 +139,8 @@ const Messages = () => {
                           sendMessage();
                       }
                       }>SEND</button>
-                  </div> }
+                  </div>
+                  {/*// }*/}
 
               </div>
              </div>

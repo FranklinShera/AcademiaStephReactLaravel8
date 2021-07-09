@@ -1574,4 +1574,28 @@ footer{
 
 /*CLIENT STYLES END*/
 
+
+/*ADMIN STYLES*/
+
+.messages-list{
+    @apply mt-4;
+}
+
+.single-msg{
+    @apply flex justify-between p-2 bg-blue-50 my-1;
+}
+
+.msg-client{
+
+}
+
+.message-content{
+    @apply w-8/12;
+}
+
+.msg-time{
+
+}
+/*ADMIN STYLES END*/
+
 /* END AUTH STYLES */

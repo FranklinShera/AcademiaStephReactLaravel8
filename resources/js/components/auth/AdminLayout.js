@@ -49,8 +49,8 @@ const AdminLayout = (props) => {
             name : "Messages",
             links: [
                 {
-                    name:"New Messages",
-                    url: `/in/dashboard/messages`
+                    name:"Conversations",
+                    url: `/in/dashboard/conversations`
                 }
             ]
         },

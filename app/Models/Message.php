@@ -9,5 +9,16 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['client_id','direction' , 'content'];
+    protected $fillable = ['conversation_id','direction' , 'content'];
+
+
+    public function client(){
+        return $this->belongsTo(Client::class);
+    }
+
+
+    public function conversation(){
+        return $this->belongsTo(Conversation::class,'conversation_id');
+    }
+
 }

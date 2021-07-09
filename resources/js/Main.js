@@ -8,9 +8,7 @@ import ClientProtectedRoute from './components/client/ClientProtectedRoute'
 
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Overlay from './components/Overlay';
 import Home from './pages/Home';
-import PlaceOrder from './pages/PlaceOrder';
 import FindWriter from './pages/FindWriter';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
@@ -21,7 +19,7 @@ import Payment from './pages/auth/Payment';
 import Orders from './pages/auth/Orders';
 import OrderView from './pages/auth/OrderView';
 import OrderControl from './pages/auth/OrderControl';
-import Messages from './pages/auth/Messages';
+import Conversations from './pages/auth/Conversations';
 import Profile from './pages/auth/Profile';
 import ClientPayment from './pages/client/Payment';
 import ClientOrders from './pages/client/Orders';
@@ -44,6 +42,7 @@ import withReactContent from 'sweetalert2-react-content'
 import Loader from "./components/Loader";
 import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
 import OrderShow from "./pages/client/OrderShow";
+import Messages from "./pages/auth/Messages";
 
 
 
@@ -125,8 +124,9 @@ function App() {
             <Route path="/in/register" exact component={Register}/>
             <ProtectedRoute path={ `/in/dashboard/orders/:category` } exact component={Orders}/>
             <ProtectedRoute path={ `/in/dashboard/order-view/:id/:topicSlug` } exact component={OrderView}/>
+            <ProtectedRoute path={ `/in/dashboard/conversation/:id/:clientName` } exact component={Messages}/>
             <ProtectedRoute path={ `/in/dashboard/control/order-input` } exact component={OrderControl}/>
-            <ProtectedRoute path={ `/in/dashboard/messages`} exact  component={Messages}/>
+            <ProtectedRoute path={ `/in/dashboard/conversations`} exact  component={Conversations}/>
             <ProtectedRoute path={`/in/dashboard/payments`}  exact component={Payment}/>
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
