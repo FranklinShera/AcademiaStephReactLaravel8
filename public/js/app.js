@@ -19328,43 +19328,35 @@ var OrderControl = function OrderControl() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "order--control--tabs",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "order--control--tab ".concat(currTab == 1 && ' active-control-tab '),
+              className: "order--control--tab   ".concat(currTab == 1 ? ' active-control-tab bg-green-900' : 'bg-green-500'),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(1);
               },
               children: "Academic Level"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-              className: "vertline"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "order--control--tab ".concat(currTab == 2 && ' active-control-tab '),
+              className: "order--control--tab ".concat(currTab == 2 ? ' active-control-tab bg-blue-900' : 'bg-blue-500'),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(2);
               },
               children: "Paper Type"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-              className: "vertline"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "order--control--tab ".concat(currTab == 3 && ' active-control-tab '),
+              className: "order--control--tab ".concat(currTab == 3 ? ' active-control-tab bg-pink-900' : 'bg-pink-500'),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(3);
               },
               children: "Subject Area"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-              className: "vertline"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "order--control--tab ".concat(currTab == 4 && ' active-control-tab '),
+              className: "order--control--tab ".concat(currTab == 4 ? ' active-control-tab bg-indigo-900' : 'bg-indigo-500'),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(4);
               },
               children: "Preffered English"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-              className: "vertline"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "order--control--tab ".concat(currTab == 5 && ' active-control-tab '),
+              className: "order--control--tab ".concat(currTab == 5 ? ' active-control-tab bg-purple-900' : 'bg-purple-500'),
               onClick: function onClick(e) {
                 e.preventDefault();
                 setCurrTab(5);

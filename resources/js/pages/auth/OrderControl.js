@@ -55,16 +55,16 @@ const OrderControl = () => {
 
                    <div className="order--control--tabs">
 
-                       <div className={`order--control--tab ${ (currTab == 1) && ' active-control-tab '}`} onClick={(e) => {
+                       <div className={`order--control--tab   ${ (currTab == 1) ? ' active-control-tab bg-green-900' : 'bg-green-500'}`} onClick={(e) => {
                            e.preventDefault();
                            setCurrTab(1)
                        }}>
                             Academic Level
                        </div>
 
-                       <span className="vertline"></span>
+                       {/*<span className="vertline"></span>*/}
 
-                       <div className={`order--control--tab ${ (currTab == 2) && ' active-control-tab '}`}
+                       <div className={`order--control--tab ${ (currTab == 2) ? ' active-control-tab bg-blue-900' : 'bg-blue-500'}`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCurrTab(2)
@@ -72,9 +72,9 @@ const OrderControl = () => {
                             Paper Type
                        </div>
 
-                       <span className="vertline"></span>
+                       {/*<span className="vertline"></span>*/}
 
-                       <div className={`order--control--tab ${ (currTab == 3) && ' active-control-tab '}`}
+                       <div className={`order--control--tab ${ (currTab == 3) ? ' active-control-tab bg-pink-900' : 'bg-pink-500'}`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCurrTab(3)
@@ -83,9 +83,9 @@ const OrderControl = () => {
                        </div>
 
 
-                       <span className="vertline"></span>
+                       {/*<span className="vertline"></span>*/}
 
-                       <div className={`order--control--tab ${ (currTab == 4) && ' active-control-tab '}`}
+                       <div className={`order--control--tab ${ (currTab == 4) ? ' active-control-tab bg-indigo-900' : 'bg-indigo-500'}`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCurrTab(4)
@@ -94,9 +94,9 @@ const OrderControl = () => {
                        </div>
 
 
-                       <span className="vertline"></span>
+                       {/*<span className="vertline"></span>*/}
 
-                       <div className={`order--control--tab ${ (currTab == 5) && ' active-control-tab '}`}
+                       <div className={`order--control--tab ${ (currTab == 5) ? ' active-control-tab bg-purple-900' : 'bg-purple-500'}`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCurrTab(5)

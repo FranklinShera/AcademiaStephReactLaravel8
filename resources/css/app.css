@@ -1214,7 +1214,7 @@ footer{
 
 .order--control--tabs{
     @apply flex items-center rounded-sm;
-    background: #a0afa055;
+    /*background: #a0afa055;*/
 }
 .vertline{
     background-color: white;
@@ -1224,12 +1224,12 @@ footer{
 
 
 .active-control-tab{
-    @apply font-bold;
+    @apply font-bold shadow-lg;
 }
 
 
 .order--control--tab{
-    @apply px-5 py-2 cursor-pointer text-palbrowner ;
+    @apply px-5 py-2 cursor-pointer text-white ;
 }
 
 
