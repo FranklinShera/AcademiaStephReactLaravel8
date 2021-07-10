@@ -12,6 +12,7 @@ import {  logoutUser } from '../../actions/AuthUserActions'
 import Message from "../../components/Message";
 import DotLoader from "../../components/DotLoader";
 import ChatHolder from "../../components/ChatHolder";
+import CreateMessage from "../../components/CreateMessage";
 
 
 
@@ -158,19 +159,7 @@ const Messages = () => {
 
                      </div>
 
-
-                     <div className="create-msg">
-
-                         <input name="new-message" id="" value={newMsg} onKeyPress={e => {
-                             (e.charCode == 13) && sendMessage();
-                         }} onChange={e => setNewMsg(e.target.value)}/>
-
-                         <button onClick={ e => {
-                             e.preventDefault();
-                             sendMessage();
-                         }
-                         }>SEND</button>
-                     </div>
+                        <CreateMessage setNewMsg={setNewMsg} sendMessage={sendMessage} newMsg={newMsg}/>
 
 
                  </div>

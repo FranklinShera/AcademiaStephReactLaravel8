@@ -6,10 +6,6 @@ const ChatHolder = ({ messages , isAdmin , clientsName , loading , divRef }) =>{
 
 
 
-
-
-
-
     return (
         <>
 
@@ -17,7 +13,7 @@ const ChatHolder = ({ messages , isAdmin , clientsName , loading , divRef }) =>{
                 {messages.map((msg, index) => (
                     <Message msg={msg} key={index} clientName={clientsName} isAdmin={isAdmin}/>
                 ))}
-                <div className="w-full h-4 " ref={divRef} />
+                <div className="w-full h-4 my-1" ref={divRef} />
             </>}
 
             {loading && <DotLoader/>}

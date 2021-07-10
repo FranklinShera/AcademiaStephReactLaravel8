@@ -1036,6 +1036,87 @@ footer{
 
 }
 
+.admin-section{
+    @apply p-6;
+}
+
+/*ADMIN DASH ANALYTICS*/
+
+.dashboard-analytics{
+    @apply flex flex-col pt-2;
+}
+
+.dash-analytics-area{
+    @apply  flex  flex-col py-5  border-t border-gray-300;
+}
+
+
+.analytics-area-title{
+    @apply  font-bold text-xl text-gray-900;
+}
+
+.analytics-area-groups{
+    @apply flex mt-4;
+}
+
+
+.analytics-area-group{
+    @apply py-4  bg-white shadow-sm hover:shadow cursor-pointer rounded-md flex flex-col justify-center items-center w-44;
+}
+
+/*CARD COLOR GROUPS*/
+
+.group-norm .analytics-area-group .area-group-name, .group-norm .analytics-area-group .area-group-value{
+    @apply border-l-4 border-gray-700 ;
+}
+
+.group-active .area-group-name, .group-active .area-group-value{
+    @apply border-l-4 border-green-400 ;
+}
+
+.group-received .area-group-name, .group-received .area-group-value{
+    @apply border-l-4 border-blue-600 ;
+}
+
+.group-completed .area-group-name, .group-completed .area-group-value{
+    @apply border-l-4 border-green-600 ;
+}
+
+.group-pending .area-group-name, .group-pending .area-group-value{
+    @apply border-l-4 border-yellow-600 ;
+}
+
+.group-cancelled .area-group-name, .group-cancelled .area-group-value{
+    @apply border-l-4 border-red-600 ;
+}
+
+/*CARD COLOR GROUPS END*/
+
+
+
+
+
+
+.area-group-name,.area-group-value{
+    @apply font-semibold px-10   w-full text-center;
+}
+
+
+.area-group-name{
+    @apply  text-xl;
+}
+
+.area-group-value{
+    @apply  text-lg;
+}
+
+
+
+/*ADMIN DASH ANALYTICS END*/
+
+
+
+
 /* logout button */
 .admin-logout{
     @apply inline ml-2 cursor-pointer;
