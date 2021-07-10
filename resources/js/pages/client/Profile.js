@@ -7,9 +7,6 @@ import axios from 'axios'
 import ClientLayout from '../../components/client/ClientLayout'
 
 
-//actions
-import {  logoutUser } from '../../actions/AuthUserActions'
-
 
 
 const Profile = () => {
@@ -40,7 +37,7 @@ const Profile = () => {
 
 
     return (
-        <div className="dashboard">
+        <div className="dashboard bg-gray-100">
             <ClientLayout>
              <div className="dash_overview">
                <div className="profile">
@@ -76,10 +73,15 @@ const Profile = () => {
 
                            {loggedInClient.social_accounts.map(socialAccount => (
 
-                               <div className="profile-detail">
-                                   <i className={ `ti-${socialAccount.provider}`}></i>
-                                   <label >{socialAccount.provider}</label>
-                                   <span>{socialAccount.created_at}</span>
+                               <div className={`profile-detail mt-5 bg-${socialAccount.provider}-1 p-3`}>
+                                    <div className="icon-label-provider">
+                                        <i className={ `ti-${socialAccount.provider}  text-${socialAccount.provider}-1  bg-white p-2 rounded-full`}></i>
+                                        <label >{socialAccount.provider}</label>
+                                    </div>
+                                   <div className="provider-date-time">
+                                       <span>{socialAccount.created_date}</span>
+                                       <span className="mr-3">{socialAccount.created_time}</span>
+                                   </div>
                                </div>
 
                            ))}

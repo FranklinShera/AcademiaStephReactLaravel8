@@ -19,6 +19,8 @@ class SocialAccountResource extends JsonResource
             'client_id' => $this->client_id,
             'provider_client_id' => $this->provider_client_id,
             'provider' => $this->provider,
+            'created_date' => date('D jS F Y',strtotime($this->created_at)),
+            'created_time' => date('h:i A',strtotime($this->created_at)),
             'created_at' => date('l jS F Y \@ h:i A',strtotime($this->created_at)),
         ];
     }

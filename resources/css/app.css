@@ -1454,19 +1454,19 @@ footer{
 }
 
 .profile-hub{
-    @apply flex mt-10 p-5;
-    border: #1a202c33 1px solid;
-    border-radius: 15px;
-    min-height: 60vh;
+    @apply flex justify-between mt-5 ;
+    /*border: #1a202c33 1px solid;*/
+    /*border-radius: 15px;*/
+    min-height: 20vh;
 }
 
 
 .profile-hub .profile-primary-details{
-    @apply w-1/2;
+    @apply w-2/5 bg-white p-7 shadow-sm rounded-md;
 }
 
 .profile-hub .profile-sec-details{
-    @apply w-1/2;
+    @apply w-1/2 bg-white p-7 shadow-sm rounded-md;
 }
 
 
@@ -1476,19 +1476,39 @@ footer{
 
 
 .profile-detail{
-    @apply my-3 items-center;
+    @apply my-3 flex items-center;
 }
 
-.profile-detail i{
-    @apply mr-2;
+.profile-detail .icon-label-provider i{
+    @apply mr-3;
 }
 
 .profile-detail label{
-    @apply font-bold my-2 mr-2;
+    @apply font-bold my-2 mr-2 text-dark-1;
 }
 
 .profile-detail span{
     @apply text-dark-1;
+}
+
+.profile-sec-details .profile-detail {
+    @apply flex justify-between items-center  rounded-full;
+}
+
+
+.profile-sec-details .profile-detail .icon-label-provider label{
+    @apply font-bold my-2 mr-2 text-white;
+}
+
+
+.profile-sec-details .profile-detail .provider-date-time {
+    @apply w-3/5 flex justify-between items-center;
+
+}
+
+
+.profile-sec-details .profile-detail .provider-date-time span{
+    @apply text-white ;
 }
 
 /*PROFILE PAGE STYLES END*/
