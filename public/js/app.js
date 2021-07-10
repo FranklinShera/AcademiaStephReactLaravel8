@@ -15664,7 +15664,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AcademicLevel = function AcademicLevel() {
+var AcademicLevel = function AcademicLevel(_ref) {
+  var themeClass = _ref.themeClass;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   var AcademicLevels = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.academicLevels;
@@ -15693,9 +15694,9 @@ var AcademicLevel = function AcademicLevel() {
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
       level_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Level Cannot Be Less Than 3 Characters').max(32, 'Level Cannot be More than 32 Characters').required('Level is Required!')
     }),
-    onSubmit: function onSubmit(values, _ref) {
-      var setSubmitting = _ref.setSubmitting,
-          resetForm = _ref.resetForm;
+    onSubmit: function onSubmit(values, _ref2) {
+      var setSubmitting = _ref2.setSubmitting,
+          resetForm = _ref2.resetForm;
       addLevel(values);
       resetForm();
       setSubmitting(false);
@@ -15703,7 +15704,7 @@ var AcademicLevel = function AcademicLevel() {
   });
 
   var deleteLevel = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -15740,7 +15741,7 @@ var AcademicLevel = function AcademicLevel() {
     }));
 
     return function deleteLevel(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -15769,7 +15770,7 @@ var AcademicLevel = function AcademicLevel() {
   };
 
   var addLevel = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(levelForm) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(levelForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -15805,7 +15806,7 @@ var AcademicLevel = function AcademicLevel() {
     }));
 
     return function addLevel(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -15834,7 +15835,7 @@ var AcademicLevel = function AcademicLevel() {
           className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}) : allAcademicLevels.map(function (academicLevel, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "table--item",
+              className: "table--item ".concat(themeClass),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", academicLevel.level_name]
@@ -15917,7 +15918,7 @@ var AcademicLevel = function AcademicLevel() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue font-bold",
+          className: "w-full mt-6 btn-add  font-bold ".concat(themeClass),
           children: [" ", localLoad ? 'Adding' : 'Add Level']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -16129,7 +16130,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var PaperFormat = function PaperFormat() {
+var PaperFormat = function PaperFormat(_ref) {
+  var themeClass = _ref.themeClass;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   var PaperFormats = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.paperFormats;
@@ -16157,9 +16159,9 @@ var PaperFormat = function PaperFormat() {
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
       format_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(2, 'Paper Format Cannot Be Less Than 3 Characters').max(32, 'Paper Format Cannot be More than 32 Characters').required('Paper Format is Required!')
     }),
-    onSubmit: function onSubmit(values, _ref) {
-      var setSubmitting = _ref.setSubmitting,
-          resetForm = _ref.resetForm;
+    onSubmit: function onSubmit(values, _ref2) {
+      var setSubmitting = _ref2.setSubmitting,
+          resetForm = _ref2.resetForm;
       addPaperFormat(values);
       resetForm({
         values: {
@@ -16172,7 +16174,7 @@ var PaperFormat = function PaperFormat() {
   });
 
   var deletePaperFormat = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -16209,7 +16211,7 @@ var PaperFormat = function PaperFormat() {
     }));
 
     return function deletePaperFormat(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -16238,7 +16240,7 @@ var PaperFormat = function PaperFormat() {
   };
 
   var addPaperFormat = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(formatForm) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(formatForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -16274,7 +16276,7 @@ var PaperFormat = function PaperFormat() {
     }));
 
     return function addPaperFormat(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -16300,7 +16302,7 @@ var PaperFormat = function PaperFormat() {
           className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}) : allPaperFormats.map(function (paperFormat, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "table--item",
+              className: "table--item ".concat(themeClass),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--name",
                 children: [index + 1 + ".", "  ", paperFormat.format_name]
@@ -16371,7 +16373,7 @@ var PaperFormat = function PaperFormat() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue font-bold",
+          className: "w-full mt-6 btn-add  font-bold ".concat(themeClass),
           children: [" ", localLoad ? 'Adding' : 'Add Paper Format']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -16481,7 +16483,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var PaperType = function PaperType() {
+var PaperType = function PaperType(_ref) {
+  var themeClass = _ref.themeClass;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
   var PaperTypes = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
     return state.paperTypes;
@@ -16510,9 +16513,9 @@ var PaperType = function PaperType() {
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
       type_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Type Name Cannot Be Less Than 3 Characters').max(32, 'Type Name Cannot be More than 32 Characters').required('Type Name is Required!')
     }),
-    onSubmit: function onSubmit(values, _ref) {
-      var setSubmitting = _ref.setSubmitting,
-          resetForm = _ref.resetForm;
+    onSubmit: function onSubmit(values, _ref2) {
+      var setSubmitting = _ref2.setSubmitting,
+          resetForm = _ref2.resetForm;
       addPaperType(values);
       resetForm();
       setSubmitting(false);
@@ -16520,7 +16523,7 @@ var PaperType = function PaperType() {
   });
 
   var deletePaperType = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -16557,7 +16560,7 @@ var PaperType = function PaperType() {
     }));
 
     return function deletePaperType(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -16586,7 +16589,7 @@ var PaperType = function PaperType() {
   };
 
   var addPaperType = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(paperTypeForm) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(paperTypeForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -16622,7 +16625,7 @@ var PaperType = function PaperType() {
     }));
 
     return function addPaperType(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -16651,7 +16654,7 @@ var PaperType = function PaperType() {
           className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allPaperTypes.map(function (papertype, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "table--item",
+              className: "table--item ".concat(themeClass),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", papertype.type_name]
@@ -16734,7 +16737,7 @@ var PaperType = function PaperType() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue font-bold",
+          className: "w-full mt-6 btn-add  font-bold ".concat(themeClass),
           children: [" ", localLoad ? 'Adding' : 'Add Paper Type']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -16844,7 +16847,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var PrefferedEnglish = function PrefferedEnglish() {
+var PrefferedEnglish = function PrefferedEnglish(_ref) {
+  var themeClass = _ref.themeClass;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   var PreffEnglish = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.preffEnglish;
@@ -16872,9 +16876,9 @@ var PrefferedEnglish = function PrefferedEnglish() {
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
       lang_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(2, 'Lang Cannot Be Less Than 3 Characters').max(32, 'Lang Cannot be More than 32 Characters').required('Lang is Required!')
     }),
-    onSubmit: function onSubmit(values, _ref) {
-      var setSubmitting = _ref.setSubmitting,
-          resetForm = _ref.resetForm;
+    onSubmit: function onSubmit(values, _ref2) {
+      var setSubmitting = _ref2.setSubmitting,
+          resetForm = _ref2.resetForm;
       addPreffLang(values);
       resetForm({
         values: {
@@ -16887,7 +16891,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
   });
 
   var deletePreffEng = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -16924,7 +16928,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
     }));
 
     return function deletePreffEng(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -16953,7 +16957,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
   };
 
   var addPreffLang = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(langForm) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(langForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -16989,7 +16993,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
     }));
 
     return function addPreffLang(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -17015,7 +17019,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
           className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}) : allPreffEnglish.map(function (prefferedLang, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "table--item",
+              className: "table--item ".concat(themeClass),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--name",
                 children: [index + 1 + ".", "  ", prefferedLang.lang_name]
@@ -17086,7 +17090,7 @@ var PrefferedEnglish = function PrefferedEnglish() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue font-bold",
+          className: "w-full mt-6 btn-add  font-bold ".concat(themeClass),
           children: [" ", localLoad ? 'Adding' : 'Add Eng Type']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -17305,7 +17309,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var SubjectArea = function SubjectArea() {
+var SubjectArea = function SubjectArea(_ref) {
+  var themeClass = _ref.themeClass;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
   var SubjectAreas = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
     return state.subjectAreas;
@@ -17334,9 +17339,9 @@ var SubjectArea = function SubjectArea() {
     validationSchema: yup__WEBPACK_IMPORTED_MODULE_7__.object({
       area_name: yup__WEBPACK_IMPORTED_MODULE_7__.string().min(3, 'Subject Area Cannot Be Less Than 3 Characters').max(32, 'Subject Area Cannot be More than 32 Characters').required('Subject Area is Required!')
     }),
-    onSubmit: function onSubmit(values, _ref) {
-      var setSubmitting = _ref.setSubmitting,
-          resetForm = _ref.resetForm;
+    onSubmit: function onSubmit(values, _ref2) {
+      var setSubmitting = _ref2.setSubmitting,
+          resetForm = _ref2.resetForm;
       addSubjectArea(values);
       resetForm();
       setSubmitting(false);
@@ -17344,7 +17349,7 @@ var SubjectArea = function SubjectArea() {
   });
 
   var deleteSubjectArea = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -17381,7 +17386,7 @@ var SubjectArea = function SubjectArea() {
     }));
 
     return function deleteSubjectArea(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -17410,7 +17415,7 @@ var SubjectArea = function SubjectArea() {
   };
 
   var addSubjectArea = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(subjectAreaForm) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(subjectAreaForm) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -17446,7 +17451,7 @@ var SubjectArea = function SubjectArea() {
     }));
 
     return function addSubjectArea(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -17475,7 +17480,7 @@ var SubjectArea = function SubjectArea() {
           className: "core--table--body",
           children: [loading || localLoad ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}) : allSubjectAreas.map(function (subarea, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-              className: "table--item",
+              className: "table--item ".concat(themeClass),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "table--item--split--name",
                 children: [index + 1 + ".", "  ", subarea.area_name]
@@ -17558,7 +17563,7 @@ var SubjectArea = function SubjectArea() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
           type: "submit",
-          className: "w-full mt-6 btn-blue font-bold",
+          className: "w-full mt-6 btn-add  font-bold ".concat(themeClass),
           children: [" ", localLoad ? 'Adding' : 'Add Subject Area']
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -19365,7 +19370,17 @@ var OrderControl = function OrderControl() {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "order--control-tabview",
-            children: [currTab == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_AcademicLevel__WEBPACK_IMPORTED_MODULE_5__.default, {}), currTab == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperType__WEBPACK_IMPORTED_MODULE_6__.default, {}), currTab == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_SubjectArea__WEBPACK_IMPORTED_MODULE_7__.default, {}), currTab == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PrefferedEnglish__WEBPACK_IMPORTED_MODULE_8__.default, {}), currTab == 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperFormat__WEBPACK_IMPORTED_MODULE_9__.default, {})]
+            children: [currTab == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_AcademicLevel__WEBPACK_IMPORTED_MODULE_5__.default, {
+              themeClass: "bg-green-900 hover:bg-green-900"
+            }), currTab == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperType__WEBPACK_IMPORTED_MODULE_6__.default, {
+              themeClass: "bg-blue-900 hover:bg-blue-900"
+            }), currTab == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_SubjectArea__WEBPACK_IMPORTED_MODULE_7__.default, {
+              themeClass: "bg-pink-900 hover:bg-pink-900"
+            }), currTab == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PrefferedEnglish__WEBPACK_IMPORTED_MODULE_8__.default, {
+              themeClass: "bg-indigo-900 hover:bg-indigo-900"
+            }), currTab == 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_auth_PaperFormat__WEBPACK_IMPORTED_MODULE_9__.default, {
+              themeClass: "bg-purple-900 hover:bg-purple-900"
+            })]
           })]
         })
       })

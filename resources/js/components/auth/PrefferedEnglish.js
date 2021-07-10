@@ -16,7 +16,7 @@ import { adminFetchPrefferedEnglish} from '../../actions/OrderActions'
 
 
 
-const PrefferedEnglish = () => {
+const PrefferedEnglish = ({themeClass}) => {
 
 
     const dispatch =  useDispatch();
@@ -190,7 +190,7 @@ const PrefferedEnglish = () => {
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allPreffEnglish.map((prefferedLang,index) => (
-                                <div className="table--item" key={index}>
+                                <div className={`table--item ${themeClass}`} key={index}>
 
                                     <div className="table--item--name" >
                                         {index + 1 +"."}  {prefferedLang.lang_name}
@@ -261,7 +261,7 @@ const PrefferedEnglish = () => {
 
                     <div className="text-sm">Default Preffered English Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
-                    <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Eng Type'}</button>
+                    <button type="submit" className={`w-full mt-6 btn-add  font-bold ${themeClass}`} > { localLoad ? 'Adding' : 'Add Eng Type'}</button>
 
                 </form>
                 <div className="table--links--meta">

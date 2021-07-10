@@ -987,6 +987,10 @@ footer{
     @apply py-3 mt-10 text-white rounded-full px-11 bg-primary-3;
 }
 
+.btn-add{
+    @apply py-3 mt-10 text-white rounded-full px-11 ;
+}
+
 
 
 .btn-grn{
@@ -1213,7 +1217,7 @@ footer{
 }
 
 .order--control--tabs{
-    @apply flex items-center rounded-sm;
+    @apply flex items-center ml-4 mt-4 rounded-sm;
     /*background: #a0afa055;*/
 }
 .vertline{
@@ -1224,7 +1228,7 @@ footer{
 
 
 .active-control-tab{
-    @apply font-bold shadow-lg;
+    @apply font-bold shadow-lg border-l border-r border-white;
 }
 
 
@@ -1283,7 +1287,7 @@ footer{
 }
 
 .table--item{
-    @apply flex px-4 my-1 rounded hover:border-gray-700 hover:bg-primary-4 hover:text-white;
+    @apply flex px-4 my-1 rounded hover:border-gray-700  hover:text-white;
     background: #6989ff22;
 }
 

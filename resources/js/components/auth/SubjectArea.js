@@ -7,7 +7,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SubjectArea = () => {
+const SubjectArea = ({themeClass}) => {
 
 
 
@@ -185,7 +185,7 @@ const SubjectArea = () => {
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allSubjectAreas.map((subarea,index) => (
-                                <div className="table--item" key={index}>
+                                <div className={`table--item ${themeClass}`} key={index}>
 
                                     <div className="table--item--split--name" >
                                         {index + 1 +"."}  {subarea.area_name}
@@ -265,7 +265,7 @@ const SubjectArea = () => {
 
                     <div className="text-sm">Default Subject Area Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
-                    <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Subject Area'}</button>
+                    <button type="submit" className={`w-full mt-6 btn-add  font-bold ${themeClass}`} > { localLoad ? 'Adding' : 'Add Subject Area'}</button>
 
                 </form>
                 <div className="table--links--meta">

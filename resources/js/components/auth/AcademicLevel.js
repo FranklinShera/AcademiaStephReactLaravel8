@@ -16,7 +16,7 @@ import { adminFetchAcademicLevels } from '../../actions/OrderActions'
 
 
 
-const AcademicLevel = () => {
+const AcademicLevel = ({ themeClass }) => {
 
 
     const dispatch =  useDispatch();
@@ -191,7 +191,7 @@ useEffect(() => {
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allAcademicLevels.map((academicLevel,index) => (
-                                <div className="table--item" key={index}>
+                                <div className={`table--item ${themeClass}`} key={index}>
 
                                      <div className="table--item--split--name" >
                                       {index + 1 +"."}  {academicLevel.level_name}
@@ -279,7 +279,7 @@ useEffect(() => {
 
                    <div className="text-sm">Default Academic Level Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
-               <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Level'}</button>
+               <button type="submit" className={`w-full mt-6 btn-add  font-bold ${themeClass}`} > { localLoad ? 'Adding' : 'Add Level'}</button>
 
                </form>
                <div className="table--links--meta">

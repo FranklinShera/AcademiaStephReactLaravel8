@@ -62,7 +62,7 @@ const OrderControl = () => {
                             Academic Level
                        </div>
 
-                       {/*<span className="vertline"></span>*/}
+
 
                        <div className={`order--control--tab ${ (currTab == 2) ? ' active-control-tab bg-blue-900' : 'bg-blue-500'}`}
                         onClick={(e) => {
@@ -72,7 +72,6 @@ const OrderControl = () => {
                             Paper Type
                        </div>
 
-                       {/*<span className="vertline"></span>*/}
 
                        <div className={`order--control--tab ${ (currTab == 3) ? ' active-control-tab bg-pink-900' : 'bg-pink-500'}`}
                         onClick={(e) => {
@@ -83,8 +82,6 @@ const OrderControl = () => {
                        </div>
 
 
-                       {/*<span className="vertline"></span>*/}
-
                        <div className={`order--control--tab ${ (currTab == 4) ? ' active-control-tab bg-indigo-900' : 'bg-indigo-500'}`}
                         onClick={(e) => {
                             e.preventDefault();
@@ -93,8 +90,6 @@ const OrderControl = () => {
                            Preffered English
                        </div>
 
-
-                       {/*<span className="vertline"></span>*/}
 
                        <div className={`order--control--tab ${ (currTab == 5) ? ' active-control-tab bg-purple-900' : 'bg-purple-500'}`}
                         onClick={(e) => {
@@ -109,11 +104,11 @@ const OrderControl = () => {
                    </div>
 
                    <div className="order--control-tabview">
-                        {(currTab == 1) &&  <AcademicLevel/> }
-                        {(currTab == 2) && <PaperType/>}
-                        {(currTab == 3) &&  <SubjectArea/> }
-                        {(currTab == 4) &&  <PrefferedEnglish/> }
-                        {(currTab == 5) &&  <PaperFormat/> }
+                        {(currTab == 1) &&  <AcademicLevel themeClass={`bg-green-900 hover:bg-green-900`}/> }
+                        {(currTab == 2) && <PaperType themeClass={`bg-blue-900 hover:bg-blue-900`}/>}
+                        {(currTab == 3) &&  <SubjectArea themeClass={`bg-pink-900 hover:bg-pink-900`}/> }
+                        {(currTab == 4) &&  <PrefferedEnglish themeClass={`bg-indigo-900 hover:bg-indigo-900`}/> }
+                        {(currTab == 5) &&  <PaperFormat themeClass={`bg-purple-900 hover:bg-purple-900`}/> }
                    </div>
 
                </div>

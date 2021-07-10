@@ -16,7 +16,7 @@ import { adminFetchPaperFormats} from '../../actions/OrderActions'
 
 
 
-const PaperFormat = () => {
+const PaperFormat = ({themeClass}) => {
 
 
     const dispatch =  useDispatch();
@@ -189,7 +189,7 @@ const PaperFormat = () => {
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allPaperFormats.map((paperFormat,index) => (
-                                <div className="table--item" key={index}>
+                                <div className={`table--item ${themeClass}`} key={index}>
 
                                     <div className="table--item--name" >
                                         {index + 1 +"."}  {paperFormat.format_name}
@@ -260,7 +260,7 @@ const PaperFormat = () => {
 
                     <div className="text-sm">Default Paper Format Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
-                    <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Paper Format'}</button>
+                    <button type="submit" className={`w-full mt-6 btn-add  font-bold ${themeClass}`} > { localLoad ? 'Adding' : 'Add Paper Format'}</button>
 
                 </form>
                 <div className="table--links--meta">

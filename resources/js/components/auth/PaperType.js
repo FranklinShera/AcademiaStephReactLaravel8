@@ -7,7 +7,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const PaperType = () => {
+const PaperType = ({ themeClass }) => {
 
 
     const dispatch =  useDispatch();
@@ -184,7 +184,7 @@ const PaperType = () => {
 
 
                         { (loading || localLoad ) ? <DotLoader/>  :   allPaperTypes.map((papertype,index) => (
-                                <div className="table--item" key={index}>
+                                    <div className={`table--item ${themeClass}`} key={index}>
 
                                     <div className="table--item--split--name" >
                                         {index + 1 +"."}  {papertype.type_name}
@@ -265,7 +265,7 @@ const PaperType = () => {
 
                     <div className="text-sm">Default Paper Type Status is <span className="text-gray-800 font-extrabold">false</span></div>
 
-                    <button type="submit" className="w-full mt-6 btn-blue font-bold" > { localLoad ? 'Adding' : 'Add Paper Type'}</button>
+                    <button type="submit" className={`w-full mt-6 btn-add  font-bold ${themeClass}`} > { localLoad ? 'Adding' : 'Add Paper Type'}</button>
 
                 </form>
                 <div className="table--links--meta">
