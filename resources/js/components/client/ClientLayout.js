@@ -10,7 +10,7 @@ import SideBar from '../auth/SideBar'
 //actions
 import {  authUserIn, authUserOut } from '../../actions/AuthUserActions'
 
-const AdminLayout = (props) => {
+const ClientLayout = (props) => {
 
     const dispatch = useDispatch()
 
@@ -96,7 +96,7 @@ const AdminLayout = (props) => {
 
     return (
         <div className="admin-layout">
-            <SideBar className="sidebar_component" links={linkForSidebar}/>
+            <SideBar className="sidebar_component"  isAdmin={false} links={linkForSidebar}/>
             <div className="dash_items_component">
              {props.children}
             </div>
@@ -104,4 +104,4 @@ const AdminLayout = (props) => {
     )
 }
 
-export default AdminLayout
+export default ClientLayout

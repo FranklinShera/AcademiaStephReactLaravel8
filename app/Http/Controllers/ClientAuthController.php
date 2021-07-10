@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ClientResource;
+use App\Models\AcademicLevel;
 use App\Models\Client;
+use App\Models\Message;
+use App\Models\Order;
+use App\Models\PaperFormat;
+use App\Models\PaperType;
 use App\Models\SocialAccount;
+use App\Models\SubjectArea;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -20,6 +27,36 @@ class ClientAuthController extends Controller
 
     }
 
+
+    public function analytics()
+    {
+
+        $sentOrders = Order::all()->count();
+        $pendingOrders = Order::pending()->where('client_id',currentClient()->id)->count();
+        $activeOrders = Order::active()->where('client_id',currentClient()->id)->count();
+        $completedOrders = Order::completed()->where('client_id',currentClient()->id)->count();
+        $cancelledOrders = Order::cancelled()->where('client_id',currentClient()->id)->count();
+
+        $messagesCount = Message::where('conversation_id',currentClient()->conversation->id)->count();
+        $paymentsCount = "$0";
+
+        $clientAnalytics = [
+            'order' => [
+                'sent' => $sentOrders,
+                'pending' => $pendingOrders,
+                'active' => $activeOrders,
+                'completed' => $completedOrders,
+                'cancelled' => $cancelledOrders
+            ],
+
+            'misc' => [
+                'messages' => $messagesCount,
+                'payments' => $paymentsCount,
+            ],
+        ];
+
+        return response()->json($clientAnalytics , 200);
+    }
 
 
 

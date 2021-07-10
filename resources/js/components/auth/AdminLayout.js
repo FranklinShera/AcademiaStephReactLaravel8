@@ -106,7 +106,7 @@ const AdminLayout = (props) => {
 
     return (
         <div className="admin-layout">
-            <SideBar className="sidebar_component" links={linkForSidebar}/>
+            <SideBar className="sidebar_component" isAdmin={true} links={linkForSidebar}/>
             <div className="dash_items_component">
              {props.children}
             </div>

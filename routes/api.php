@@ -67,6 +67,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
         Route::middleware(['isClient'])->prefix('/client')->group(function(){
 
             Route::post('/' , [ClientAuthController::class , 'profile']);
+            Route::get('/analytics' , [ClientAuthController::class , 'analytics']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
 
@@ -96,6 +97,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
         Route::middleware(['isAdmin'])->prefix('/admin')->group(function(){
 
             Route::post('/user' , [AuthController::class , 'profile']);
+            Route::get('/analytics' , [AuthController::class , 'analytics']);
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
 

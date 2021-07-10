@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicLevel;
+use App\Models\Client;
+use App\Models\Message;
+use App\Models\Order;
+use App\Models\PaperFormat;
+use App\Models\PaperType;
+use App\Models\SubjectArea;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
+use Tymon\JWTAuth\Claims\Subject;
 
 
 class AuthController extends Controller
@@ -19,8 +26,51 @@ class AuthController extends Controller
    }
 
 
+    public function analytics()
+    {
+
+        $receivedOrders = Order::all()->count();
+        $pendingOrders = Order::pending()->count();
+        $activeOrders = Order::active()->count();
+        $completedOrders = Order::completed()->count();
+        $cancelledOrders = Order::cancelled()->count();
 
 
+        $levelsCount = AcademicLevel::all()->count();
+        $subjectsCount = SubjectArea::all()->count();
+        $typesCount = PaperType::all()->count();
+        $formatsCount = PaperFormat::all()->count();
+
+        $messagesCount = Message::all()->count();
+        $clientsCount = Client::all()->count();
+        $adminsCount = User::all()->count();
+        $paymentsCount = "$0";
+
+
+        $adminAnalytics = [
+            'order' => [
+                'received' => $receivedOrders,
+                'pending' => $pendingOrders,
+                'active' => $activeOrders,
+                'completed' => $completedOrders,
+                'cancelled' => $cancelledOrders
+            ],
+            'control' => [
+                'academic_levels' => $levelsCount,
+                'subject_areas' => $subjectsCount,
+                'paper_types' => $typesCount,
+                'paper_formats' => $formatsCount
+            ],
+            'misc' => [
+                'messages' => $messagesCount,
+                'payments' => $paymentsCount,
+                'clients' => $clientsCount,
+                'admins' => $adminsCount,
+            ],
+        ];
+
+        return response()->json($adminAnalytics , 200);
+    }
 
     public function login(Request $request){
 

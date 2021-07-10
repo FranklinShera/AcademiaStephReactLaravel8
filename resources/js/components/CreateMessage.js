@@ -12,7 +12,7 @@ const CreateMessage = ({ newMsg , sendMessage , setNewMsg }) => {
                 e.preventDefault();
                 sendMessage();
             }
-            }>SEND</button>
+            }><i className="ti-location-arrow" /></button>
 
         </div>
     )

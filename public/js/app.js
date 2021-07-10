@@ -14083,15 +14083,19 @@ var ChatHolder = function ChatHolder(_ref) {
       divRef = _ref.divRef;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [messages.length != 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-      children: [messages.map(function (msg, index) {
+      children: [" ", messages.map(function (msg, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Message__WEBPACK_IMPORTED_MODULE_1__.default, {
           msg: msg,
           clientName: clientsName,
           isAdmin: isAdmin
         }, index);
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "w-full h-4 my-1",
-        ref: divRef
+        className: "w-full h-4 py-2 flex justify-center items-center ",
+        ref: divRef,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "text-center italic text-xs text-gray-400 bg-gray-50 py-1 px-3 rounded-2xl",
+          children: "Today"
+        })
       })]
     }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_DotLoader__WEBPACK_IMPORTED_MODULE_2__.default, {}), messages.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -14146,7 +14150,9 @@ var CreateMessage = function CreateMessage(_ref) {
         e.preventDefault();
         sendMessage();
       },
-      children: "SEND"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "ti-location-arrow"
+      })
     })]
   });
 };
@@ -16066,6 +16072,7 @@ var AdminLayout = function AdminLayout(props) {
     className: "admin-layout",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SideBar__WEBPACK_IMPORTED_MODULE_2__.default, {
       className: "sidebar_component",
+      isAdmin: true,
       links: linkForSidebar
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "dash_items_component",
@@ -17232,11 +17239,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SideBar = function SideBar(_ref) {
-  var links = _ref.links;
+  var links = _ref.links,
+      isAdmin = _ref.isAdmin;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "admin_sidebar",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-      to: "/in/dashboard",
+      to: isAdmin ? "/in/dashboard" : "/client/dashboard/",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
         className: "text-2xl font-bold",
         children: "DASHBOARD"
@@ -17646,7 +17654,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var AdminLayout = function AdminLayout(props) {
+var ClientLayout = function ClientLayout(props) {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var authUserInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.adminPanel;
@@ -17705,6 +17713,7 @@ var AdminLayout = function AdminLayout(props) {
     className: "admin-layout",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_auth_SideBar__WEBPACK_IMPORTED_MODULE_2__.default, {
       className: "sidebar_component",
+      isAdmin: false,
       links: linkForSidebar
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "dash_items_component",
@@ -17713,7 +17722,7 @@ var AdminLayout = function AdminLayout(props) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminLayout);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ClientLayout);
 
 /***/ }),
 
@@ -18709,31 +18718,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/AdminLayout */ "./resources/js/components/auth/AdminLayout.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
- //actions
 
 
 
 
 
 var Dashboard = function Dashboard() {
+  var _analytics$order, _analytics$order2, _analytics$order3, _analytics$order4, _analytics$order5, _analytics$control, _analytics$control2, _analytics$control3, _analytics$control4, _analytics$misc, _analytics$misc2, _analytics$misc3, _analytics$misc4;
+
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
   });
   var loggedInUser = authUser.loggedInUser,
       auth = authUser.auth;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      analytics = _useState2[0],
+      setAnalytics = _useState2[1];
+
+  var loadAnalytics = function loadAnalytics() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/analytics').then(function (res) {
+      setAnalytics(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!auth) {
       hist.push("/in");
@@ -18741,160 +18775,161 @@ var Dashboard = function Dashboard() {
 
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Dashboard';
+    loadAnalytics();
   }, [auth]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    className: "dashboard bg-gray-200",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "dashboard bg-gray-100",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "admin-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
             className: "lead-title",
             children: "ADMIN DASHBOARD"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "dashboard-analytics",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "dash-analytics-area",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
                 className: "analytics-area-title",
                 children: " ORDERS"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "analytics-area-groups",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-received ",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Received"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "430"
+                    children: ((_analytics$order = analytics.order) === null || _analytics$order === void 0 ? void 0 : _analytics$order.received) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-completed ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Completed"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "400"
+                    children: ((_analytics$order2 = analytics.order) === null || _analytics$order2 === void 0 ? void 0 : _analytics$order2.completed) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-active ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Active"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "430"
+                    children: ((_analytics$order3 = analytics.order) === null || _analytics$order3 === void 0 ? void 0 : _analytics$order3.active) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-pending ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Pending"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "14"
+                    children: ((_analytics$order4 = analytics.order) === null || _analytics$order4 === void 0 ? void 0 : _analytics$order4.pending) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-cancelled ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Cancelled"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "400"
+                    children: ((_analytics$order5 = analytics.order) === null || _analytics$order5 === void 0 ? void 0 : _analytics$order5.cancelled) || "N/A"
                   })]
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "dash-analytics-area",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
                 className: "analytics-area-title",
                 children: "Control Items"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "analytics-area-groups group-norm",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Levels"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "5"
+                    children: ((_analytics$control = analytics.control) === null || _analytics$control === void 0 ? void 0 : _analytics$control.academic_levels) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Subjects"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "14"
+                    children: ((_analytics$control2 = analytics.control) === null || _analytics$control2 === void 0 ? void 0 : _analytics$control2.subject_areas) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Types"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "7"
+                    children: ((_analytics$control3 = analytics.control) === null || _analytics$control3 === void 0 ? void 0 : _analytics$control3.paper_types) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Formats"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "4"
+                    children: ((_analytics$control4 = analytics.control) === null || _analytics$control4 === void 0 ? void 0 : _analytics$control4.paper_formats) || "N/A"
                   })]
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "dash-analytics-area",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
                 className: "analytics-area-title",
                 children: "Misc"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "analytics-area-groups group-norm",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group ",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Messages"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "715"
+                    children: ((_analytics$misc = analytics.misc) === null || _analytics$misc === void 0 ? void 0 : _analytics$misc.messages) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Payments"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "$56,714"
+                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.payments) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Clients"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "74"
+                    children: ((_analytics$misc3 = analytics.misc) === null || _analytics$misc3 === void 0 ? void 0 : _analytics$misc3.clients) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Admins"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: "2"
+                    children: ((_analytics$misc4 = analytics.misc) === null || _analytics$misc4 === void 0 ? void 0 : _analytics$misc4.admins) || "N/A"
                   })]
                 })]
               })]
@@ -20132,6 +20167,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/client/ClientLayout */ "./resources/js/components/client/ClientLayout.js");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -20141,7 +20188,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var ClientDashboard = function ClientDashboard() {
+  var _analytics$order, _analytics$order2, _analytics$order3, _analytics$order4, _analytics$order5, _analytics$misc, _analytics$misc2;
+
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
@@ -20150,6 +20200,20 @@ var ClientDashboard = function ClientDashboard() {
   });
   var loggedInClient = authClient.loggedInClient,
       clientAuth = authClient.clientAuth;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      analytics = _useState2[0],
+      setAnalytics = _useState2[1];
+
+  var loadAnalytics = function loadAnalytics() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/client/analytics').then(function (res) {
+      setAnalytics(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!clientAuth) {
       hist.push("/client");
@@ -20157,15 +20221,103 @@ var ClientDashboard = function ClientDashboard() {
 
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Client Dashboard';
+    loadAnalytics();
   }, [clientAuth]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    className: "client-dashboard",
+    className: "client-dashboard bg-gray-100",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_client_ClientLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-          className: "text-xl",
-          children: "DASHBOARD .JS"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "admin-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+            className: "lead-title",
+            children: "CLIENT DASHBOARD"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "dashboard-analytics",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "dash-analytics-area",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                className: "analytics-area-title",
+                children: " ORDERS"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "analytics-area-groups",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group group-received ",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Sent"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order = analytics.order) === null || _analytics$order === void 0 ? void 0 : _analytics$order.sent) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group group-completed ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Completed"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order2 = analytics.order) === null || _analytics$order2 === void 0 ? void 0 : _analytics$order2.completed) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group group-active ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Active"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order3 = analytics.order) === null || _analytics$order3 === void 0 ? void 0 : _analytics$order3.active) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group group-pending ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Pending"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order4 = analytics.order) === null || _analytics$order4 === void 0 ? void 0 : _analytics$order4.pending) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group group-cancelled ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Cancelled"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order5 = analytics.order) === null || _analytics$order5 === void 0 ? void 0 : _analytics$order5.cancelled) || "N/A"
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "dash-analytics-area",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                className: "analytics-area-title",
+                children: "Misc"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "analytics-area-groups group-norm",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group ",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Messages"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$misc = analytics.misc) === null || _analytics$misc === void 0 ? void 0 : _analytics$misc.messages) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "analytics-area-group  ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Payments"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.payments) || "N/A"
+                  })]
+                })]
+              })]
+            })]
+          })]
         })
       })
     })
