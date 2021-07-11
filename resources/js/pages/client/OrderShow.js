@@ -392,13 +392,20 @@ const OrderShow = () => {
                                              e.preventDefault();
                                              setShowOrderPayment(true)
                                          }}
-                                     >Pay Now!</span>
+                                     >Pay ${order && order.cost} Now!</span>
                                  </div>
 
                              </>
                          )}
 
                          {(order && order.stage !== "0") && (
+                             <div className="order-preview-item">
+                                 <label>Cost</label>
+                                 <p>${order && order.cost}</p>
+                             </div>
+                         )}
+
+                        {(order && order.stage !== "0") && (
                              <div className="order-preview-item">
                                  <label>ID</label>
                                  <p>{order && order.serial}</p>

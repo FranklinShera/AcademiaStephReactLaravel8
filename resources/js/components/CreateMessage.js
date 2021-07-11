@@ -1,5 +1,7 @@
 import React from "react";
 
+import SendIcon from "../../images/sent.svg"
+
 const CreateMessage = ({ newMsg , sendMessage , setNewMsg }) => {
     return (
         <div className="create-msg">
@@ -12,7 +14,9 @@ const CreateMessage = ({ newMsg , sendMessage , setNewMsg }) => {
                 e.preventDefault();
                 sendMessage();
             }
-            }><i className="ti-location-arrow" /></button>
+            }>
+                <img src={SendIcon} className="h-6" alt="Send Message Button icon"/>
+            </button>
 
         </div>
     )

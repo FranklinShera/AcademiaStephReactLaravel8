@@ -74,11 +74,11 @@ const Orders = () => {
     const spacingTypes = [
         {
             name : "Double Spacing",
-            value: "Double"
+            value: 2
         },
         {
             name : "Single Spacing",
-            value: "Single"
+            value: 1
         }
     ]
 
@@ -89,62 +89,58 @@ const Orders = () => {
     const urgency = [
         {
             name : "6 Hours",
-            value: "6 Hours"
+            value: 0.25
         }
         ,
         {
             name : "12 Hours",
-            value: "12 Hours"
+            value: 0.5
         }
         ,
         {
             name : "1 Day",
-            value: "1 Day"
+            value: 1
         }
         ,
         {
             name : "2 Days",
-            value: "2 Days"
+            value: 2
         }
-        ,
-        {
-            name : "2 Days",
-            value: "2 Days"
-        }
+
         ,
         {
             name : "3 Days",
-            value: "3 Days"
+            value: 3
         }
         ,
         {
             name : "5 Days",
-            value: "5 Days"
+            value: 5
         }
         ,
         {
             name : "7 Days",
-            value: "7 Days"
+            value: 7
         }
         ,
         {
             name : "10 Days",
-            value: "10 Days"
+            value: 10
         }
         ,
         {
             name : "2 Weeks",
-            value: "2 Weeks"
+            value: 14
         }
         ,
         {
             name : "1 Month",
-            value: "1 Month"
+            value: 30
         }
         ,
         {
             name : "2 Months",
-            value: "2 Months"
+            value: 60
         }
     ]
 
@@ -516,7 +512,7 @@ const Orders = () => {
                                  <option value='' selected disabled>Choose Type of Paper</option>
 
                                  {allPaperTypes.map((opt) => (
-                                     <option value={opt.type_name} >{opt.type_name}</option>
+                                     <option value={opt.id} >{opt.type_name}</option>
                                  ))}
 
                              </select>
@@ -535,7 +531,7 @@ const Orders = () => {
                                  <option value='' selected disabled>Choose Subject Area</option>
 
                                  {allSubjectAreas.map((opt) => (
-                                     <option value={opt.area_name} >{opt.area_name}</option>
+                                     <option value={opt.id} >{opt.area_name}</option>
                                  ))}
 
                              </select>
@@ -669,7 +665,7 @@ const Orders = () => {
                                  <option value='' selected disabled>Choose Academic Level</option>
 
                                  {allAcademicLevels.map((opt) => (
-                                     <option value={opt.level_name} >{opt.level_name}</option>
+                                     <option value={opt.id} >{opt.level_name}</option>
                                  ))}
 
                              </select>
@@ -701,12 +697,12 @@ const Orders = () => {
                          />
 
 
-                         <div className="mb-3 price-estimate">
-                             <label className="mr-3">Total</label>
-                             <span className="text-lg font-bold">$28.60</span>
-                         </div>
+                         {/*<div className="mb-3 price-estimate">*/}
+                         {/*    <label className="mr-3">Total</label>*/}
+                         {/*    <span className="text-lg font-bold">$28.60</span>*/}
+                         {/*</div>*/}
 
-                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" >Continue</button>
+                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" >Create</button>
 
                      </form>
                  </div>

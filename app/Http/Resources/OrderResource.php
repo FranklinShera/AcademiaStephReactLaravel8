@@ -24,6 +24,7 @@ class OrderResource extends JsonResource
             'academic_level' => $this->academic_level,
             'urgency' => $this->urgency,
             'stage' => $this->stage,
+            'cost' => $this->cost,
             'serial' => strtoupper(dechex(date('U' ,strtotime($this->created_at)))),
             'created_at_date' => date('j M Y' ,strtotime($this->created_at)),
             'created_at_time' => date('H:i' ,strtotime($this->created_at))

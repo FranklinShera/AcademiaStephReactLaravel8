@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\OrderResource;
+use App\Models\AcademicLevel;
 use App\Models\Order;
 use App\Models\OrderMaterial;
+use App\Models\PaperType;
+use App\Models\SubjectArea;
 use App\Rules\AdditionMaterialTypeValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -180,33 +183,89 @@ class OrderController extends Controller
 
     }
 
+    private function orderPrice($paperRate , $subjectRate ,$levelRate , $pages , $spacing , $urgency){
+
+        $multi =  $pages * $spacing;
+
+            $rates = $paperRate + $subjectRate + $levelRate;
+
+            $orderSubTotal = $multi * $rates;
+
+            $deduction = $urgency * 0.2;
+
+//            let serviceDeduction = (paperAction == 1) ? 2 : (paperAction == 2) ? 4 : 0;
+
+            $totalDeduction =  ($deduction > 0.6) ?  0.6  : $deduction ;
 
 
+            $orderTotal =  ($urgency > 1 || $urgency == 1) ? $orderSubTotal - $totalDeduction : $orderSubTotal + $totalDeduction;
+
+
+
+        return $orderTotal;
+    }
+
+
+    private function fixUrgency($urgency) {
+
+        $orderUrgency = "";
+
+        if($urgency > 60){
+            $orderUrgency = ($urgency / 30)." Month(s)";
+        }else  if($urgency == 14){
+            $orderUrgency = "2 Weeks";
+        }else  if($urgency < 1){
+            $orderUrgency =  ($urgency * 24)." Hours";
+        }else  if($urgency < 14 ){
+            $orderUrgency = $urgency." Day(s)";
+        }
+
+
+        return $orderUrgency;
+
+    }
 
     public function create(Request $request)
     {
         $newOrder = $request->validate([
                        "topic" => 'required|string|min:8',
-                       "type_of_paper" => 'required|string',
-                       "subject_area" => 'required|string',
+                       "type_of_paper" => 'required',
+                       "subject_area" => 'required',
                        "paper_details" => 'required|string',
                        "paper_format" => 'required|string',
                        "prefered_english" => 'required|string',
                        "number_of_sources" => 'required|string',
-                       "spacing" => 'required|string',
-                       "academic_level" => 'required|string',
+                       "spacing" => 'required',
+                       "academic_level" => 'required',
                        "number_of_pages" => 'required|string',
-                       "urgency" => 'required|string'
+                       "urgency" => 'required'
                     ]);
 
 
+            $paperType = PaperType::findOrfail($newOrder['type_of_paper']);
+            $subjectArea = SubjectArea::findOrfail($newOrder['subject_area']);
+            $academicLevel = AcademicLevel::findOrfail($newOrder['academic_level']);
+
+
+
+            $orderPrice = $this->orderPrice($paperType->rate ,$subjectArea->rate ,$academicLevel->rate ,$newOrder['number_of_pages'] , $newOrder['spacing'] , $newOrder['urgency']);
+
+            $newOrder['urgency'] = $this->fixUrgency($newOrder['urgency']);
+
+
+            $newOrder['spacing'] = ($newOrder['spacing'] == 1) ? "Single Spacing" : "Double Spacing";
+            $newOrder['type_of_paper'] = $paperType->type_name;
+            $newOrder['subject_area'] = $subjectArea->area_name;
+            $newOrder['academic_level'] = $academicLevel->level_name;
+
             $newOrder['client_id'] = currentClient()->id;
+            $newOrder['cost'] = $orderPrice;
 
             $createdOrder = Order::create($newOrder);
 
 
 
-        if($request->has("additional_materials") && $createdOrder){
+        if($request->has("additional_materials")  && $createdOrder != null){
 
             $request->validate([
                 "additional_materials" => ['required' , 'file' , new AdditionMaterialTypeValidation()]

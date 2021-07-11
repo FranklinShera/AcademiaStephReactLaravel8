@@ -22,7 +22,8 @@ class Order extends Model
         "number_of_pages",
         "urgency",
         "stage",
-        "client_id"
+        "client_id",
+        "cost"
     ];
 
     public function client(){

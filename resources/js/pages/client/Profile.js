@@ -41,7 +41,7 @@ const Profile = () => {
             <ClientLayout>
              <div className="dash_overview">
                <div className="profile">
-                   <h1>Profile Page</h1>
+                   <h1 className="lead-title">Profile Page</h1>
                    <div className="profile-hub">
 
                        <div className="profile-primary-details">
@@ -69,11 +69,11 @@ const Profile = () => {
 
                        <div className="profile-sec-details">
 
-                           <h2>Social Accounts</h2>
+                           <h2 className="mb-3">Social Accounts</h2>
 
                            {loggedInClient.social_accounts.map(socialAccount => (
 
-                               <div className={`profile-detail mt-5 bg-${socialAccount.provider}-1 p-3`}>
+                               <div className={`profile-detail  bg-${socialAccount.provider}-1 p-3`}>
                                     <div className="icon-label-provider">
                                         <i className={ `ti-${socialAccount.provider}  text-${socialAccount.provider}-1  bg-white p-2 rounded-full`}></i>
                                         <label >{socialAccount.provider}</label>

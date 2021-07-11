@@ -14124,7 +14124,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _images_sent_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/sent.svg */ "./resources/images/sent.svg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -14133,9 +14135,9 @@ var CreateMessage = function CreateMessage(_ref) {
   var newMsg = _ref.newMsg,
       sendMessage = _ref.sendMessage,
       setNewMsg = _ref.setNewMsg;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "create-msg",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
       name: "new-message",
       id: "new-message",
       placeholder: "Type Your Message...",
@@ -14146,13 +14148,15 @@ var CreateMessage = function CreateMessage(_ref) {
       onChange: function onChange(e) {
         return setNewMsg(e.target.value);
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: function onClick(e) {
         e.preventDefault();
         sendMessage();
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-        className: "ti-location-arrow"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        src: _images_sent_svg__WEBPACK_IMPORTED_MODULE_1__.default,
+        className: "h-6",
+        alt: "Send Message Button icon"
       })
     })]
   });
@@ -19524,6 +19528,13 @@ var OrderView = function OrderView() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                children: "Cost"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                children: order && order.cost
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "order-preview-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
                 children: "ID"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
                 children: order && order.serial
@@ -21003,15 +21014,22 @@ var OrderShow = function OrderShow() {
             }), order && order.stage == "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "order-preview-notification",
-                children: ["Pay For This Order For It To Be Assignable!", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                children: ["Pay For This Order For It To Be Assignable!", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                   className: "payaction",
                   onClick: function onClick(e) {
                     e.preventDefault();
                     setShowOrderPayment(true);
                   },
-                  children: "Pay Now!"
+                  children: ["Pay $", order && order.cost, " Now!"]
                 })]
               })
+            }), order && order.stage !== "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "order-preview-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+                children: "Cost"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
+                children: ["$", order && order.cost]
+              })]
             }), order && order.stage !== "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
@@ -21529,48 +21547,45 @@ var Orders = function Orders() {
   var LOCAL_STORAGE_KEY = "savedOrders";
   var spacingTypes = [{
     name: "Double Spacing",
-    value: "Double"
+    value: 2
   }, {
     name: "Single Spacing",
-    value: "Single"
+    value: 1
   }];
   var numberOfPages = 1;
   var urgency = [{
     name: "6 Hours",
-    value: "6 Hours"
+    value: 0.25
   }, {
     name: "12 Hours",
-    value: "12 Hours"
+    value: 0.5
   }, {
     name: "1 Day",
-    value: "1 Day"
+    value: 1
   }, {
     name: "2 Days",
-    value: "2 Days"
-  }, {
-    name: "2 Days",
-    value: "2 Days"
+    value: 2
   }, {
     name: "3 Days",
-    value: "3 Days"
+    value: 3
   }, {
     name: "5 Days",
-    value: "5 Days"
+    value: 5
   }, {
     name: "7 Days",
-    value: "7 Days"
+    value: 7
   }, {
     name: "10 Days",
-    value: "10 Days"
+    value: 10
   }, {
     name: "2 Weeks",
-    value: "2 Weeks"
+    value: 14
   }, {
     name: "1 Month",
-    value: "1 Month"
+    value: 30
   }, {
     name: "2 Months",
-    value: "2 Months"
+    value: 60
   }];
   var SUPPORTED_FORMATS = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/msword', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png', 'application/x-zip-compressed'];
   var initial = {
@@ -21886,7 +21901,7 @@ var Orders = function Orders() {
                   children: "Choose Type of Paper"
                 }), allPaperTypes.map(function (opt) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                    value: opt.type_name,
+                    value: opt.id,
                     children: opt.type_name
                   });
                 })]
@@ -21911,7 +21926,7 @@ var Orders = function Orders() {
                   children: "Choose Subject Area"
                 }), allSubjectAreas.map(function (opt) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                    value: opt.area_name,
+                    value: opt.id,
                     children: opt.area_name
                   });
                 })]
@@ -22032,7 +22047,7 @@ var Orders = function Orders() {
                   children: "Choose Academic Level"
                 }), allAcademicLevels.map(function (opt) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                    value: opt.level_name,
+                    value: opt.id,
                     children: opt.level_name
                   });
                 })]
@@ -22055,19 +22070,10 @@ var Orders = function Orders() {
               selectOptions: urgency,
               onChange: Formik.handleChange,
               errors: Formik.errors.urgency && Formik.touched.urgency && Formik.errors.urgency
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-              className: "mb-3 price-estimate",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
-                className: "mr-3",
-                children: "Total"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-                className: "text-lg font-bold",
-                children: "$28.60"
-              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
               type: "submit",
               className: "w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri",
-              children: "Continue"
+              children: "Create"
             })]
           })]
         })
@@ -22131,6 +22137,7 @@ var Profile = function Profile() {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "profile",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+            className: "lead-title",
             children: "Profile Page"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "profile-hub",
@@ -22163,10 +22170,11 @@ var Profile = function Profile() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "profile-sec-details",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+                className: "mb-3",
                 children: "Social Accounts"
               }), loggedInClient.social_accounts.map(function (socialAccount) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "profile-detail mt-5 bg-".concat(socialAccount.provider, "-1 p-3"),
+                  className: "profile-detail  bg-".concat(socialAccount.provider, "-1 p-3"),
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                     className: "icon-label-provider",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
@@ -22884,6 +22892,21 @@ var deepmerge_1 = deepmerge;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deepmerge_1);
 
+
+/***/ }),
+
+/***/ "./resources/images/sent.svg":
+/*!***********************************!*\
+  !*** ./resources/images/sent.svg ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sent.svg?c162f8a2d0ec7a3ecaac3da44ddfe84f");
 
 /***/ }),
 
