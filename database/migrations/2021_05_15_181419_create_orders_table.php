@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string("urgency");
             $table->string("stage")->default("0");
             $table->string("client_id");
+            $table->string("paypal_order_id")->nullable(true);
             $table->decimal("cost",5,2);
 
             $table->timestamps();

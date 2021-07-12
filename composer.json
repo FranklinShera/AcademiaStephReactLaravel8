@@ -13,6 +13,7 @@
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "paypal/paypal-checkout-sdk": "1.0.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

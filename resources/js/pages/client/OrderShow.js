@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
-import {useHistory, useParams} from 'react-router'
+import {Redirect, useHistory, useParams} from 'react-router'
 
 
 
@@ -166,7 +166,9 @@ const OrderShow = () => {
     }
 
 
-
+const payNow = (id) =>{
+        window.location = `/paypal/checkout/${id}`
+}
 
     useEffect(() => {
 
@@ -390,7 +392,8 @@ const OrderShow = () => {
                                          className="payaction"
                                          onClick={e =>{
                                              e.preventDefault();
-                                             setShowOrderPayment(true)
+                                             payNow(order.id);
+
                                          }}
                                      >Pay ${order && order.cost} Now!</span>
                                  </div>

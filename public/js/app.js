@@ -12737,6 +12737,11 @@ function App() {
       auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_24__.refreshClient)(1));
     }, 840000);
   }, [location.pathname]);
+
+  var BlankPage = function BlankPage() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)("div", {});
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_28__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_33__.BrowserRouter, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
@@ -12790,6 +12795,14 @@ function App() {
           path: "/client/dashboard/place-order",
           exact: true,
           component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_22__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          path: "/paypal/:payment/:orderid",
+          exact: true,
+          component: BlankPage
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          path: "/paypal/:paymentres",
+          exact: true,
+          component: BlankPage
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_32__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/orders/:category",
           exact: true,
@@ -20806,6 +20819,10 @@ var OrderShow = function OrderShow() {
     });
   };
 
+  var payNow = function payNow(id) {
+    window.location = "/paypal/checkout/".concat(id);
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!clientAuth) {
       hist.push("/client");
@@ -21018,7 +21035,7 @@ var OrderShow = function OrderShow() {
                   className: "payaction",
                   onClick: function onClick(e) {
                     e.preventDefault();
-                    setShowOrderPayment(true);
+                    payNow(order.id);
                   },
                   children: ["Pay $", order && order.cost, " Now!"]
                 })]

@@ -110,7 +110,13 @@ function App() {
 
     },[location.pathname])
 
+const BlankPage = () =>{
+        return(
+            <div>
 
+            </div>
+        )
+}
 
   return (
   <>
@@ -132,6 +138,8 @@ function App() {
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
+            <ClientProtectedRoute path={ `/paypal/:payment/:orderid` } exact component={BlankPage}/>
+            <ClientProtectedRoute path={ `/paypal/:paymentres` } exact component={BlankPage}/>
             <ClientProtectedRoute path={ `/client/dashboard/orders/:category` } exact component={ClientOrders}/>
             <ClientProtectedRoute path={ `/client/dashboard/order-view/:id/:topicSlug` } exact component={OrderShow}/>
             <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
