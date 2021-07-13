@@ -54,28 +54,28 @@ const AdminLayout = (props) => {
                 }
             ]
         },
-        {
-            name : "Payment",
-            links: [
-                {
-                    name:"Received",
-                    url: `/in/dashboard/payments`
-                }
-            ]
-        },
-        {
-            name : "My Profile",
-            links: [
-                {
-                    name:"Personal Information",
-                    url: `/in/dashboard/profile`
-                },
-                {
-                    name:"Account Information",
-                    url: `/in/dashboard/profile`
-                }
-            ]
-        },
+        // {
+        //     name : "Payment",
+        //     links: [
+        //         {
+        //             name:"Received",
+        //             url: `/in/dashboard/payments`
+        //         }
+        //     ]
+        // },
+        // {
+        //     name : "My Profile",
+        //     links: [
+        //         {
+        //             name:"Personal Information",
+        //             url: `/in/dashboard/profile`
+        //         },
+        //         {
+        //             name:"Account Information",
+        //             url: `/in/dashboard/profile`
+        //         }
+        //     ]
+        // },
         {
             name : "Control",
             links: [

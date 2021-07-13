@@ -43,6 +43,7 @@ import Loader from "./components/Loader";
 import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
 import OrderShow from "./pages/client/OrderShow";
 import Messages from "./pages/auth/Messages";
+import Overlay from "./components/Overlay";
 
 
 
@@ -120,13 +121,13 @@ const BlankPage = () =>{
 
   return (
   <>
-    {/*<Overlay/>*/}
+    <Overlay/>
       <Loader/>
         <Router>
 
          <Header inAdminPanel={inAdminPanel}/>
           <Switch>
-            <Route path="/find-writer" exact component={FindWriter}/>
+            {/*<Route path="/find-writer" exact component={FindWriter}/>*/}
             <Route path="/in/register" exact component={Register}/>
             <ProtectedRoute path={ `/in/dashboard/orders/:category` } exact component={Orders}/>
             <ProtectedRoute path={ `/in/dashboard/order-view/:id/:topicSlug` } exact component={OrderView}/>
@@ -139,7 +140,7 @@ const BlankPage = () =>{
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
             <ClientProtectedRoute path={ `/paypal/:payment/:orderid` } exact component={BlankPage}/>
-            <ClientProtectedRoute path={ `/paypal/:paymentres` } exact component={BlankPage}/>
+            <ClientProtectedRoute path={ `/paypal/:paymentredirect` } exact component={BlankPage}/>
             <ClientProtectedRoute path={ `/client/dashboard/orders/:category` } exact component={ClientOrders}/>
             <ClientProtectedRoute path={ `/client/dashboard/order-view/:id/:topicSlug` } exact component={OrderShow}/>
             <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>

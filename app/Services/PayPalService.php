@@ -19,28 +19,34 @@ class PayPalService
         $this->client = new PayPalHttpClient($environment);
     }
 
+
+
     public function createOrder($orderId)
     {
 
-        $request = new OrdersCreateRequest();
-        $request->headers["prefer"] = "return=representation";
+        $createOrderRquest = new OrdersCreateRequest();
+        $createOrderRquest->headers["prefer"] = "return=representation";
 
-         $request->body = $this->simpleCheckoutData($orderId);
+        $createOrderRquest->body = $this->simpleCheckoutData($orderId);
 
-        return $this->client->execute($request);
+        return $this->client->execute($createOrderRquest);
     }
+
+
 
     public function captureOrder($paypalOrderId)
     {
-        $request = new OrdersCaptureRequest($paypalOrderId);
 
-        return $this->client->execute($request);
+        $captureOrderRequest = new OrdersCaptureRequest($paypalOrderId);
+
+        return $this->client->execute($captureOrderRequest);
+
     }
 
 
     private function simpleCheckoutData($orderId)
     {
-        $order = Order::find($orderId);
+        $order = Order::findOrfail($orderId);
 
         return [
             "intent" => "CAPTURE",

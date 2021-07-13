@@ -28,9 +28,10 @@ class PayPalController extends Controller
             abort(500);
         }
 
-        $order = Order::find($orderId);
+        $order = Order::findOrfail($orderId);
 
-
+        $order->paypal_order_id = $response->result->id;
+        $order->save();
 
 
         foreach ($response->result->links as $link) {
@@ -50,10 +51,14 @@ class PayPalController extends Controller
 
     public function getExpressCheckoutSuccess(Request $request, $orderId)
     {
+
         $order = Order::findOrfail($orderId);
 
 
+
         $response = $this->paypalService->captureOrder($order->paypal_order_id);
+
+
 
         if ($response->result->status == 'COMPLETED') {
 
@@ -68,11 +73,11 @@ class PayPalController extends Controller
             $order->save();
 
 //            Mail::to($order->user->email)->send(new OrderPaid($order));
-            return redirect()->back();
+            return redirect('/client/dashboard/orders/sent');
 
         }
 
-        return redirect()->back();
+        return redirect('/client/dashboard/orders/sent');
 
 
     }

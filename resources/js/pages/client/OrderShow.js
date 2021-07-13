@@ -395,6 +395,7 @@ const payNow = (id) =>{
                                              payNow(order.id);
 
                                          }}
+
                                      >Pay ${order && order.cost} Now!</span>
                                  </div>
 

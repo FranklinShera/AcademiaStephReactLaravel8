@@ -138,25 +138,25 @@ const Home = () => {
                     </div>
 
 
-                    <div className="service">
-                        <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>
-                        <span>Proofreading</span>
-                    </div>
+                    {/*<div className="service">*/}
+                    {/*    <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>*/}
+                    {/*    <span>Proofreading</span>*/}
+                    {/*</div>*/}
 
-                    <div className="service sm:justify-start xl:justify-center">
-                        <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>
-                        <span>Transcription</span>
-                    </div>
+                    {/*<div className="service sm:justify-start xl:justify-center">*/}
+                    {/*    <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>*/}
+                    {/*    <span>Transcription</span>*/}
+                    {/*</div>*/}
 
-                    <div className="service">
-                        <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>
-                        <span>Editing</span>
-                    </div>
+                    {/*<div className="service">*/}
+                    {/*    <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>*/}
+                    {/*    <span>Editing</span>*/}
+                    {/*</div>*/}
 
-                    <div className="service sm:justify-start xl:justify-center">
-                        <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>
-                        <span>Captioning</span>
-                    </div>
+                    {/*<div className="service sm:justify-start xl:justify-center">*/}
+                    {/*    <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>*/}
+                    {/*    <span>Captioning</span>*/}
+                    {/*</div>*/}
 
 
                 </div>
@@ -373,9 +373,9 @@ const Home = () => {
 
                   </div>
 
-                  <Link to="/find-writer">
-                    <button className="find-my-writer">Find My Writer</button>
-                  </Link>
+                  {/*<Link to="/find-writer">*/}
+                  {/*  <button className="find-my-writer">Find My Writer</button>*/}
+                  {/*</Link>*/}
               </div>
 
 

@@ -57,15 +57,15 @@ const ClientLayout = (props) => {
                 }
             ]
         },
-        {
-            name : "Payment",
-            links: [
-                {
-                    name:"Received",
-                    url: `/client/dashboard/payments`
-                }
-            ]
-        },
+        // {
+        //     name : "Payment",
+        //     links: [
+        //         {
+        //             name:"Received",
+        //             url: `/client/dashboard/payments`
+        //         }
+        //     ]
+        // },
         {
             name : "My Profile",
             links: [
