@@ -1685,6 +1685,9 @@ footer{
 }
 /*SUCCESS PAYMENT END*/
 
+
+
+
 /*FAILED PAYMENT*/
 .payment-failed-page{
     min-height:90vh;
@@ -1692,7 +1695,57 @@ footer{
 }
 /*FAILED PAYMENT END*/
 
+/*PAYMENTS PAGE*/
+
+.payments-page{
+    @apply p-6 flex flex-col ;
+}
+
+
+.payments-list{
+    @apply flex flex-col ;
+}
+
+.payments-list-head{
+    @apply flex items-center mt-10 font-bold border-b border-dark-5 pb-2;
+}
+
+.payment-item{
+    @apply flex items-center p-1 my-1 bg-blue-100;
+}
+
+.payment-id{
+    @apply w-1/5;
+}
+
+
+.payment-order-id{
+    @apply w-10/100;
+}
+
+.payment-order-title{
+    @apply w-2/5;
+}
+
+.payment-date{
+    @apply w-1/5;
+}
+
+
+.payment-amount{
+    @apply w-10/100 pl-2;
+}
+
+
+/*PAYMENTS PAGE END*/
+
+
 /*CLIENT STYLES END*/
+
+
+
+
+
 
 
 /*ADMIN STYLES*/

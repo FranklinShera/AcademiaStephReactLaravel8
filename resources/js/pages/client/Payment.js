@@ -22,6 +22,17 @@ const Payment = () => {
     const authClient = useSelector( state => state.authClient)
     const { clientAuth } = authClient;
 
+        const[orderPayments,setOrderPayments] = useState([])
+
+    const getMyPayments = () =>{
+        axios.get('/api/auth/client/order-payments')
+            .then(response => {
+                setOrderPayments(response.data);
+            // console.log(response)
+        }).catch(err => console.log(err))
+    }
+
+
 
     useEffect(() => {
 
@@ -33,6 +44,7 @@ const Payment = () => {
 
         document.querySelector('title').text = 'AcademiaSteph21 | Client Payment'
 
+        getMyPayments();
 
     }, [clientAuth])
 
@@ -43,7 +55,71 @@ const Payment = () => {
         <div className="dashboard">
             <ClientLayout>
              <div className="dash_overview">
-                <h1>Payment Page</h1>
+                <div className="payments-page">
+                     <h1 className="lead-title">My Payments</h1>
+
+                    <div className="payments-list">
+
+                        <div className="payments-list-head">
+
+
+                            <div className="payment-id">
+                                PAYMENT ID
+                            </div>
+
+                            <div className="payment-order-id">
+                                ORDER ID
+                            </div>
+
+                            <div className="payment-order-title">
+                                ORDER TITLE
+                            </div>
+
+                            <div className="payment-date">
+                                DATE
+                            </div>
+
+                            <div className="payment-amount">
+                                AMOUNT($)
+                            </div>
+
+
+                        </div>
+                        <div className="orderPayments-list-body">
+
+
+                            {orderPayments.length != 0 && orderPayments.map(orderPayment => (
+                                <div className="payment-item">
+
+                                    <div className="payment-id">
+                                        { orderPayment.payment.paypal_order_id}
+                                    </div>
+
+                                    <div className="payment-order-id">
+                                        { orderPayment.payment.order_id }
+                                    </div>
+
+                                    <div className="payment-order-title">
+                                        {  (orderPayment.topic.length > 50) ? orderPayment.topic.slice(0,50)+'...' : orderPayment.topic }
+                                    </div>
+
+                                    <div className="payment-date">
+                                        { orderPayment.payment.created_at }
+                                    </div>
+
+                                    <div className="payment-amount">
+                                        ${ orderPayment.payment.amount }
+                                    </div>
+
+                                </div>
+                            ))}
+
+
+                        </div>
+
+                    </div>
+
+                </div>
              </div>
             </ClientLayout>
         </div>

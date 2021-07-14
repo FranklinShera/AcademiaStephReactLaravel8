@@ -8,6 +8,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperFormatController;
 use App\Http\Controllers\PaperTypeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrefferedEnglishController;
 use App\Http\Controllers\SubjectAreaController;
 use Illuminate\Http\Request;
@@ -70,6 +71,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/analytics' , [ClientAuthController::class , 'analytics']);
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
+
+            //PAYMENTS
+            Route::get('/order-payments' , [PaymentController::class , 'index']);
+
 
             //MESSAGE
             Route::get('/messages' , [MessageController::class , 'clientIndex']);

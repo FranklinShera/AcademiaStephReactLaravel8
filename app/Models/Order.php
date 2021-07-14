@@ -26,6 +26,13 @@ class Order extends Model
         "cost"
     ];
 
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class)->orderByDesc('created_at');
+    }
+
+
     public function client(){
         return $this->belongsTo(Client::class);
     }
