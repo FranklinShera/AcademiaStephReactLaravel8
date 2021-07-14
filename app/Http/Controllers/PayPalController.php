@@ -45,7 +45,7 @@ class PayPalController extends Controller
 
     public function cancelPage()
     {
-        dd('payment failed');
+        return redirect('/client/dashboard/payment-failed');
     }
 
 
@@ -72,8 +72,8 @@ class PayPalController extends Controller
             $order->stage = 2;
             $order->save();
 
-//            Mail::to($order->user->email)->send(new OrderPaid($order));
-            return redirect('/client/dashboard/orders/sent');
+
+            return redirect('/client/dashboard/payment-successful');
 
         }
 

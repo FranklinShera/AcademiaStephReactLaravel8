@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        facebook:{
+        paypal:{
+          1: "#3b7bbf"
+        },facebook:{
           1: "#4267B2"
         },
           google:{

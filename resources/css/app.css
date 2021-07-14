@@ -1677,6 +1677,21 @@ footer{
 /*MESSAGES END*/
 
 
+
+/*SUCCESS PAYMENT*/
+.payment-successful-page{
+    min-height:90vh;
+    @apply flex  flex-col justify-center items-center;
+}
+/*SUCCESS PAYMENT END*/
+
+/*FAILED PAYMENT*/
+.payment-failed-page{
+    min-height:90vh;
+    @apply flex  flex-col justify-center items-center;
+}
+/*FAILED PAYMENT END*/
+
 /*CLIENT STYLES END*/
 
 

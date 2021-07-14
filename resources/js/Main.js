@@ -9,7 +9,6 @@ import ClientProtectedRoute from './components/client/ClientProtectedRoute'
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
-import FindWriter from './pages/FindWriter';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
 import ClientLogin from './pages/client/ClientLogin';
@@ -22,6 +21,8 @@ import OrderControl from './pages/auth/OrderControl';
 import Conversations from './pages/auth/Conversations';
 import Profile from './pages/auth/Profile';
 import ClientPayment from './pages/client/Payment';
+import ClientPaymentSuccess from './pages/client/PaymentSuccess';
+import ClientPaymentFailed from './pages/client/PaymentFailed';
 import ClientOrders from './pages/client/Orders';
 import ClientMessages from './pages/client/Messages';
 import ClientProfile from './pages/client/Profile';
@@ -145,6 +146,8 @@ const BlankPage = () =>{
             <ClientProtectedRoute path={ `/client/dashboard/order-view/:id/:topicSlug` } exact component={OrderShow}/>
             <ClientProtectedRoute path={ `/client/dashboard/messages`} exact  component={ClientMessages}/>
             <ClientProtectedRoute path={`/client/dashboard/payments`}  exact component={ClientPayment}/>
+            <ClientProtectedRoute path={`/client/dashboard/payment-successful`}  exact component={ClientPaymentSuccess}/>
+            <ClientProtectedRoute path={`/client/dashboard/payment-failed`}  exact component={ClientPaymentFailed}/>
             <ClientProtectedRoute path={`/client/dashboard/profile`}  exact component={ClientProfile}/>
             <Route path="/in" exact component={Login}/>
             <Route path="/client" exact component={ClientLogin}/>
