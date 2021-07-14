@@ -106,6 +106,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
 
+
+            //PAYMENTS
+            Route::get('/order-payments' , [PaymentController::class , 'adminIndex']);
+
             //MESSAGES
             Route::get('/conversations' , [MessageController::class ,'adminIndex']);
             Route::post('/message' , [MessageController::class , 'adminCreate']);

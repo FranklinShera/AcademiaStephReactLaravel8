@@ -9,6 +9,7 @@ import ClientLayout from '../../components/client/ClientLayout'
 
 //actions
 import {  logoutUser } from '../../actions/AuthUserActions'
+import DotLoader from "../../components/DotLoader";
 
 
 
@@ -22,14 +23,19 @@ const Payment = () => {
     const authClient = useSelector( state => state.authClient)
     const { clientAuth } = authClient;
 
-        const[orderPayments,setOrderPayments] = useState([])
+    const[orderPayments,setOrderPayments] = useState([])
+    const[loading,setLoading] = useState(true)
 
     const getMyPayments = () =>{
+
         axios.get('/api/auth/client/order-payments')
             .then(response => {
                 setOrderPayments(response.data);
-            // console.log(response)
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            console.log(err)
+        })
+
+        setLoading(false)
     }
 
 
@@ -85,8 +91,9 @@ const Payment = () => {
 
 
                         </div>
-                        <div className="orderPayments-list-body">
+                        <div className="payments-list-body">
 
+                            {(orderPayments.length == 0 && loading) && <DotLoader/>}
 
                             {orderPayments.length != 0 && orderPayments.map(orderPayment => (
                                 <div className="payment-item">

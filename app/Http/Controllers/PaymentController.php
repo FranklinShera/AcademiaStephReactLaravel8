@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
 
+
     public function index()
     {
         $payments = currentClient()->orders()->with('payment')->get();
@@ -18,17 +19,20 @@ class PaymentController extends Controller
     }
 
 
-    public function create()
+
+
+
+    public function adminIndex()
     {
-        //
+        $adminPayments = Order::with('payment')->get();
+
+        return response()->json($adminPayments , 200);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function store(Request $request)
     {
         //
