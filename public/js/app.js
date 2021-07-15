@@ -19959,7 +19959,7 @@ var Payment = function Payment() {
 
   var getMyPayments = function getMyPayments() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/order-payments').then(function (response) {
-      setOrderPayments(response.data);
+      setOrderPayments(response.data.data);
     })["catch"](function (err) {
       console.log(err);
     });

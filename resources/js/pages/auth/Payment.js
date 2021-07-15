@@ -32,7 +32,9 @@ const Payment = () => {
 
         axios.get('/api/auth/admin/order-payments')
             .then(response => {
-                setOrderPayments(response.data);
+
+                setOrderPayments(response.data.data);
+
             }).catch(err => {
             console.log(err)
         })

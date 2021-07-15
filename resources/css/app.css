@@ -1714,6 +1714,13 @@ footer{
     @apply flex items-center p-1 my-1 bg-blue-100;
 }
 
+
+.payment-item .payment-order-title{
+    @apply hover:underline cursor-pointer;
+}
+
+
+
 .payment-id{
     @apply w-1/5;
 }
