@@ -16137,6 +16137,12 @@ var AdminLayout = function AdminLayout(props) {
       url: "/in/dashboard/payments"
     }]
   }, {
+    name: "Control",
+    links: [{
+      name: "Order Input",
+      url: "/in/dashboard/control/order-input"
+    }]
+  }, {
     name: "My Profile",
     links: [{
       name: "Personal Information",
@@ -16144,12 +16150,6 @@ var AdminLayout = function AdminLayout(props) {
     }, {
       name: "Account Information",
       url: "/in/dashboard/profile"
-    }]
-  }, {
-    name: "Control",
-    links: [{
-      name: "Order Input",
-      url: "/in/dashboard/control/order-input"
     }]
   }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -18685,7 +18685,7 @@ var Conversations = function Conversations() {
           className: "messages",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
             className: "lead-title inline",
-            children: "Conversations"
+            children: "CONVERSATIONS"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "messages-list",
             children: [conversations.length != 0 && !loading && conversations.map(function (conv, index) {
@@ -18695,9 +18695,9 @@ var Conversations = function Conversations() {
                   e.preventDefault();
                   openConversation(conv);
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                   className: "msg-client",
-                  children: conv.client.name
+                  children: [index + 1 + ". ", " ", conv.client.name]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                   className: "message-content",
                   children: conv.messages.reverse()[0].content
@@ -19544,8 +19544,8 @@ var OrderView = function OrderView() {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
                 children: "Cost"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-                children: order && order.cost
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                children: ["$", order && order.cost]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-preview-item",
@@ -19957,6 +19957,11 @@ var Payment = function Payment() {
       loading = _useState4[0],
       setLoading = _useState4[1];
 
+  var showOrder = function showOrder(id, topic) {
+    var topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
+    hist.push("/in/dashboard/order-view/".concat(id, "/").concat(topicSlug));
+  };
+
   var getMyPayments = function getMyPayments() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/order-payments').then(function (response) {
       setOrderPayments(response.data.data);
@@ -19984,7 +19989,7 @@ var Payment = function Payment() {
           className: "payments-page",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
             className: "lead-title",
-            children: "My Payments"
+            children: "PAYMENTS"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
             className: "payments-list",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -20018,6 +20023,10 @@ var Payment = function Payment() {
                     children: orderPayment.payment.order_id
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                     className: "payment-order-title",
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      showOrder(orderPayment.id, orderPayment.topic);
+                    },
                     children: orderPayment.topic.length > 50 ? orderPayment.topic.slice(0, 50) + '...' : orderPayment.topic
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                     className: "payment-date",
@@ -20068,6 +20077,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Profile = function Profile() {
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -20090,8 +20100,47 @@ var Profile = function Profile() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "dash_overview",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-          children: "Profile Page"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "profile",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+            className: "lead-title",
+            children: "Profile Page"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "profile-hub",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "profile-primary-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                children: "Primary Details"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInUser.name
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInUser.email
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "profile-detail",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Joined"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                  children: loggedInUser.created_at
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "profile-sec-details",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                className: "mb-3",
+                children: "Social Accounts"
+              })
+            })]
+          })]
         })
       })
     })
@@ -20714,7 +20763,7 @@ var Messages = function Messages() {
           className: "messages",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
             className: "lead-title inline",
-            children: "Messages"
+            children: "MESSAGES"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "messages-group",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_ChatHolder__WEBPACK_IMPORTED_MODULE_7__.default, {

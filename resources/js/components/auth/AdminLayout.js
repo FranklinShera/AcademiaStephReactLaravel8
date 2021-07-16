@@ -64,6 +64,16 @@ const AdminLayout = (props) => {
             ]
         },
         {
+            name : "Control",
+            links: [
+                {
+                    name: "Order Input",
+                    url: "/in/dashboard/control/order-input"
+                }
+            ],
+
+        },
+        {
             name : "My Profile",
             links: [
                 {
@@ -75,16 +85,6 @@ const AdminLayout = (props) => {
                     url: `/in/dashboard/profile`
                 }
             ]
-        },
-        {
-            name : "Control",
-            links: [
-               {
-                name: "Order Input",
-                url: "/in/dashboard/control/order-input"
-               }
-            ],
-
         }
     ]
 

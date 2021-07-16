@@ -28,6 +28,17 @@ const Payment = () => {
     const[orderPayments,setOrderPayments] = useState([])
     const[loading,setLoading] = useState(true)
 
+
+
+    const showOrder = (id , topic) => {
+
+        let topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
+
+        hist.push(`/in/dashboard/order-view/${id}/${topicSlug}`);
+
+    }
+
+
     const getMyPayments = () =>{
 
         axios.get('/api/auth/admin/order-payments')
@@ -66,7 +77,7 @@ const Payment = () => {
             <AdminLayout>
              <div className="dash_overview">
                  <div className="payments-page">
-                     <h1 className="lead-title">My Payments</h1>
+                     <h1 className="lead-title">PAYMENTS</h1>
 
                      <div className="payments-list">
 
@@ -110,7 +121,10 @@ const Payment = () => {
                                          { orderPayment.payment.order_id }
                                      </div>
 
-                                     <div className="payment-order-title">
+                                     <div className="payment-order-title" onClick={(e) => {
+                                         e.preventDefault();
+                                         showOrder(orderPayment.id , orderPayment.topic);
+                                     }}>
                                          {  (orderPayment.topic.length > 50) ? orderPayment.topic.slice(0,50)+'...' : orderPayment.topic }
                                      </div>
 

@@ -1443,6 +1443,10 @@ footer{
 
 /*PROFILE PAGE STYLES*/
 
+.admin-profile-detail{
+    @apply w-full;
+}
+
 
 .profile{
     @apply p-6;

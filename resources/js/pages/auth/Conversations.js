@@ -90,7 +90,7 @@ const Conversations = () => {
             <AdminLayout>
              <div className="dash_overview">
                  <div className="messages">
-                     <h1 className="lead-title inline">Conversations</h1>
+                     <h1 className="lead-title inline">CONVERSATIONS</h1>
                      <div className="messages-list">
 
 
@@ -100,7 +100,7 @@ const Conversations = () => {
                                  openConversation(conv);
                              }}>
                                  <div className="msg-client">
-                                     {conv.client.name}
+                                     { index+1+". "} {conv.client.name}
                                  </div>
                                  <div className="message-content">
                                      {conv.messages.reverse()[0].content}

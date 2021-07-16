@@ -123,7 +123,7 @@ const Messages = () => {
             <ClientLayout>
              <div className="dash_overview">
               <div className="messages">
-                   <h1 className="lead-title inline">Messages</h1>
+                   <h1 className="lead-title inline">MESSAGES</h1>
 
                   <div className="messages-group">
                       <ChatHolder messages={messages}  isAdmin={false} clientsName="SUPPORT" loading={loading} divRef={messagesEndRef}/>

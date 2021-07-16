@@ -67,7 +67,7 @@ const OrderView = () => {
 
                             <div className="order-preview-item">
                                 <label>Cost</label>
-                                <p>{order && order.cost}</p>
+                                <p>${order && order.cost}</p>
                             </div>
 
                             <div className="order-preview-item">
