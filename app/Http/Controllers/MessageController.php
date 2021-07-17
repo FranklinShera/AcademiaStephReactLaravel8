@@ -7,6 +7,7 @@ use App\Http\Resources\MessageResource;
 use App\Models\Conversation;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MessageController extends Controller
 {
@@ -15,13 +16,13 @@ class MessageController extends Controller
     {
         $messages = Message::where('conversation_id',currentClient()->conversation->id)->orderBy('created_at', 'ASC')->get();
 
-        return MessageResource::collection($messages);
+        return MessageResource::collection($messages)->response()->setStatusCode(Response::HTTP_OK);
     }
 
     public function adminMessages(Conversation $conversation)
     {
 
-        return MessageResource::collection($conversation->messages);
+        return MessageResource::collection($conversation->messages)->response()->setStatusCode(Response::HTTP_OK);
 
     }
 
@@ -30,9 +31,9 @@ class MessageController extends Controller
     public function adminIndex()
     {
 
-        $conversations = Conversation::with('latestMessage')->get()->sortByDesc('latestMessage.created_at');
+        $conversations = Conversation::with('latestMessage')->paginate(10)->sortByDesc('latestMessage.created_at');
 
-        return ConversationResource::collection($conversations);
+        return ConversationResource::collection($conversations)->response()->setStatusCode(Response::HTTP_OK);
 
     }
 

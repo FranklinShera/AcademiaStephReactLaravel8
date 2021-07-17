@@ -25,7 +25,7 @@ class PaymentController extends Controller
 
     public function adminIndex()
     {
-        $adminPayments = Order::with('payment')->get()->sortByDesc( function($query){
+        $adminPayments = Order::with('payment')->paginate(10)->sortByDesc( function($query){
             return $query->orderBy('payment.created_at');
         });
 

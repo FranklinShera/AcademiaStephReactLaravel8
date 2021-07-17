@@ -104,11 +104,11 @@ const Orders = () => {
         <div className="dashboard">
             <AdminLayout>
                 <div className="dash_overview">
-                    <div className="orderview-header">
+                    <div className="second-nav">
                         <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
 
                         {(orders.length != 0) && (
-                            <div className="orderview-search">
+                            <div className="second-nav-search">
                                 <input type="text" placeholder="search orders here..." onChange={searchOrder} />
                             </div>
                         )}

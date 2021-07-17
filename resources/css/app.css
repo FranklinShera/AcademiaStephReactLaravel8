@@ -1521,9 +1521,10 @@ footer{
 
 /*ORDERS VIEW*/
 
-.orderview-header{
-    @apply px-6 pt-6 flex justify-between;
+.second-nav{
+    @apply  flex justify-between;
 }
+
 .orders-views{
     @apply p-6 flex flex-col;
 }
@@ -1574,7 +1575,7 @@ footer{
     @apply ml-4 ;
 }
 
-.orderview-search {
+.second-nav-search {
     border: 2px #11111133 solid;
     border-radius: 20px;
     padding: 5px 15px;
@@ -1582,7 +1583,7 @@ footer{
 }
 
 
-.orderview-search input{
+.second-nav-search input{
     text-align: center;
     width: 100%;
 }

@@ -1,7 +1,12 @@
 import React, { useState , useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
+import axios from 'axios'
+
 import { useDispatch ,useSelector} from 'react-redux'
+
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 
 //icons
@@ -28,6 +33,7 @@ import TextAreaInputField from '../components/TextAreaInputField'
 import { listReviews } from '../actions/reviewActions'
 import PriceCalculator from "../components/PriceCalculator";
 
+
 const Home = () => {
 
     const[newMsg,setNewMsg] = useState({
@@ -40,9 +46,20 @@ const Home = () => {
     })
 
 
-    const getInTouch = (e) =>{
-            e.preventDefault()
-            console.log(newMsg);
+    const getInTouch = (formValues) =>{
+
+            axios.post('/api/create-contact', formValues)
+                .then(res =>{
+
+                    window.Toast.fire({
+                        icon:'success',
+                        title:'Message Sent!'
+                    })
+
+                    Formik.resetForm();
+
+                })
+                .catch(err => console.log(err))
     }
 
 
@@ -51,18 +68,51 @@ const Home = () => {
     const reviewList = useSelector( state => state.reviewList)
     const {reviews} = reviewList;
 
+
+    const Formik = useFormik({
+        initialValues:{
+            name: "",
+            message: "",
+            email: "",
+            whatsappnumber: "",
+            mailback: false,
+            addonwhatsapp: false
+        },
+        validationSchema:Yup.object({
+            name: Yup.string()
+                .min(3 , 'Name Cannot Be Less Than 3 Characters')
+                .max(32, 'Name Cannot be More than 32 Characters')
+                .required('Name is Required!'),
+            message: Yup.string()
+                .required('Message is Required!'),
+            email: Yup.string()
+                .email("Email is Invalid!")
+                .required('Email is Required!'),
+            whatsappnumber: Yup.string()
+                .min(9 , 'WhatsApp Number Cannot Be Less Than 9 Characters')
+                .max(15, 'WhatsApp Number Cannot be More than 15 Characters')
+                .required('WhatsApp Number is Required!')
+        }),
+        onSubmit: (values, { setSubmitting , resetForm }) => {
+
+            getInTouch(values);
+            resetForm();
+            setSubmitting(false);
+
+        }
+    });
+
+
     useEffect(() => {
         dispatch(listReviews())
     },[dispatch])
 
 
+    useEffect(() => {
+        window.scrollTo(0,0)
+        document.querySelector('title').text = 'AcademiaSteph21 | Home - We are inclined to optimum dedication in providing top-quality services braced with inimitable creativity and perfectionism.The services we offer stand out for themselves in uniqueness.'
 
-
-            useEffect(() => {
-                window.scrollTo(0,0)
-                document.querySelector('title').text = 'AcademiaSteph21 | Home - We are inclined to optimum dedication in providing top-quality services braced with inimitable creativity and perfectionism.The services we offer stand out for themselves in uniqueness.'
-
-            }, []);
+    }, []);
 
 
 
@@ -405,17 +455,74 @@ const Home = () => {
 
                 <h1 className="mt-14 lg:mt-28 header-text">GET IN TOUCH WITH US</h1>
 
-                <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2" onSubmit={getInTouch}>
-                    <InputField name="name" labelText='Name' type='text' placeholder="Type Your Name Here" onChange={(e) => setNewMsg({...newMsg, name : e.target.value}) } />
-                    <InputField name="email" labelText='Email' type='text' placeholder="Type Your Email Here" onChange={(e) => setNewMsg({...newMsg, email : e.target.value})}/>
-                    <InputField name="whatsappnumber" labelText='WhatsApp Number' type='number' placeholder="Type Your WhatsApp Number Here" onChange={(e) => setNewMsg({...newMsg, whatsappnumber : e.target.value})}/>
-                    <TextAreaInputField labelText='Message' textareaName='message' id='message' placeholder='Type Message Here' onChange={(e) => setNewMsg({...newMsg, message : e.target.value})}/>
-                    <RadioInputField labelText='Email Me Back' inputName='mailback' onChange={(e) => setNewMsg({...newMsg, mailback : e.target.cheked})}/>
-                    <RadioInputField labelText='Add Me On WhatsApp' inputName='addonwhatsapp' onChange={(e) => setNewMsg({...newMsg, addonwhatsapp : e.target.value})}/>
+                <form action="" className="w-5/6 sm:w-3/4 lg:w-3/5 mt-7 mb-14 lg:mb-28 2xl:w-1/2" onSubmit={Formik.handleSubmit}>
 
-                    <button type="submit"  className="btn-pri">SUBMIT</button>
+                    <InputField
+                        name="name"
+                        labelText='Name'
+                        type='text'
+                        placeholder="Type Your Name Here"
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.name}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.name && Formik.touched.name) && Formik.errors.name}
+                    />
+
+                    <InputField
+                        name="email"
+                        labelText='Email'
+                        type='text'
+                        placeholder="Type Your Email Here"
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.email}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.email && Formik.touched.email) && Formik.errors.email}
+                    />
+
+                    <InputField
+                        name="whatsappnumber"
+                        labelText='WhatsApp Number'
+                        type='number'
+                        placeholder="Type Your WhatsApp Number Here"
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.whatsappnumber}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.whatsappnumber && Formik.touched.whatsappnumber) && Formik.errors.whatsappnumber}
+                    />
+
+                    <TextAreaInputField
+                        labelText='Message'
+                        textareaName='message'
+                        id='message'
+                        placeholder='Type Message Here'
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.message}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.message && Formik.touched.message) && Formik.errors.message}
+                    />
+
+                    <RadioInputField
+                        labelText='Email Me Back'
+                        inputName='mailback'
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.mailback}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.mailback && Formik.touched.mailback) && Formik.errors.mailback}
+                    />
+
+                    <RadioInputField
+                        labelText='Add Me On WhatsApp'
+                        inputName='addonwhatsapp'
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values.addonwhatsapp}
+                        onChange={Formik.handleChange}
+                        errors={(Formik.errors.addonwhatsapp && Formik.touched.addonwhatsapp) && Formik.errors.addonwhatsapp}
+                    />
+
+                    <button type="submit"  className="btn-pri">{ Formik.isSubmitting ? "SENDING" : "SUBMIT"}</button>
 
                 </form>
+
             </div>
 
 

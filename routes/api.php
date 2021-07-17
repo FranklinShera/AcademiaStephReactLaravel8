@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicLevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
@@ -28,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/reviews', [CustomerReviewController::class , 'index']);
+
+Route::post('/create-contact', [ContactController::class , 'store']);
+
 
 Route::get('/academic-levels', [AcademicLevelController::class , 'index']);
 Route::get('/paper-types' , [PaperTypeController::class , 'index']);
@@ -105,6 +109,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/analytics' , [AuthController::class , 'analytics']);
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
+
+
+            //CONTACTS
+            Route::get('/direct-contacts', [ContactController::class , 'adminIndex']);
 
 
             //PAYMENTS

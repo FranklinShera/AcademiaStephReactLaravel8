@@ -51,6 +51,10 @@ const AdminLayout = (props) => {
                 {
                     name:"Conversations",
                     url: `/in/dashboard/conversations`
+                },
+                {
+                    name:"Direct Contacts",
+                    url: `/in/dashboard/direct-contacts`
                 }
             ]
         },
@@ -78,10 +82,6 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Personal Information",
-                    url: `/in/dashboard/profile`
-                },
-                {
-                    name:"Account Information",
                     url: `/in/dashboard/profile`
                 }
             ]

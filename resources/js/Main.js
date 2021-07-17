@@ -19,6 +19,7 @@ import Orders from './pages/auth/Orders';
 import OrderView from './pages/auth/OrderView';
 import OrderControl from './pages/auth/OrderControl';
 import Conversations from './pages/auth/Conversations';
+import DirectContacts from './pages/auth/DirectContacts';
 import Profile from './pages/auth/Profile';
 import ClientPayment from './pages/client/Payment';
 import ClientPaymentSuccess from './pages/client/PaymentSuccess';
@@ -135,9 +136,11 @@ const BlankPage = () =>{
             <ProtectedRoute path={ `/in/dashboard/conversation/:id/:clientName` } exact component={Messages}/>
             <ProtectedRoute path={ `/in/dashboard/control/order-input` } exact component={OrderControl}/>
             <ProtectedRoute path={ `/in/dashboard/conversations`} exact  component={Conversations}/>
+            <ProtectedRoute path={ `/in/dashboard/direct-contacts`} exact  component={DirectContacts}/>
             <ProtectedRoute path={`/in/dashboard/payments`}  exact component={Payment}/>
             <ProtectedRoute path={`/in/dashboard/profile`}  exact component={Profile}/>
             <ProtectedRoute path="/in/dashboard" exact  component={Dashboard}/>
+
             <ClientProtectedRoute path="/client/dashboard" exact  component={ClientDashboard}/>
             <ClientProtectedRoute path={ `/client/dashboard/place-order` } exact component={PlaceNewOrder}/>
             <ClientProtectedRoute path={ `/paypal/:payment/:orderid` } exact component={BlankPage}/>

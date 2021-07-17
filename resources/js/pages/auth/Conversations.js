@@ -38,6 +38,8 @@ const Conversations = () => {
             .then(res =>{
                 if(res.status == 200){
 
+                    console.log(res)
+
                     setConversations(res.data.data)
 
                 }else{
@@ -90,7 +92,31 @@ const Conversations = () => {
             <AdminLayout>
              <div className="dash_overview">
                  <div className="messages">
-                     <h1 className="lead-title inline">CONVERSATIONS</h1>
+
+
+                     <div className="second-nav">
+                         <h1 className="lead-title inline">CONVERSATIONS</h1>
+
+
+                         <div className="second-nav-controls">
+                             CONTROLS
+                            {/*<span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}*/}
+                            {/*      onClick={e => {*/}
+                            {/*          e.preventDefault()*/}
+                            {/*          getOrders(links.prev)*/}
+                            {/*      }}>*/}
+                            {/*    <i className="ti-angle-left"></i>PREV*/}
+                            {/*</span>*/}
+                            {/* <span className={ (links.next) ? "p-2 cursor-pointer ml-4" : "p-2 text-gray-400 ml-4"}*/}
+                            {/*       onClick={e => {*/}
+                            {/*           e.preventDefault()*/}
+                            {/*           getOrders(links.next)*/}
+                            {/*       }}>NEXT*/}
+                            {/*    <i className="ti-angle-right"></i>*/}
+                            {/*</span>*/}
+                         </div>
+                     </div>
+
                      <div className="messages-list">
 
 
