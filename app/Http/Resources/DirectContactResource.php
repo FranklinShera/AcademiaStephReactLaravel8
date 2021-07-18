@@ -14,6 +14,14 @@ class DirectContactResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'message'  => $this->message,
+            'email' => $this->email,
+            'whatsappnumber' => $this->whatsappnumber,
+            'mailback' => $this->mailback,
+            'addonwhatsapp' => $this->addonwhatsapp,
+            'created_at' => date('H:i   -  j M Y', strtotime($this->created_at))
+        ];
     }
 }

@@ -18699,6 +18699,10 @@ var Conversations = function Conversations() {
     hist.push("/in/dashboard/conversation/".concat(conversation.id, "/").concat(clientName));
   };
 
+  var textWatch = function textWatch(text, limit) {
+    return text.length > limit ? text.slice(0, limit) + "..." : text;
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!auth) {
       hist.push("/in");
@@ -18714,33 +18718,50 @@ var Conversations = function Conversations() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "dash_overview",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "messages",
+          className: "conversations",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "second-nav",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
               className: "lead-title inline",
               children: "CONVERSATIONS"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "second-nav-controls",
-              children: "CONTROLS"
+              className: "second-nav-controls"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-            className: "messages-list",
+            className: "conversations-label",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "conversation-client-name",
+              children: "Client Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "conversation-client-message",
+              children: "Last Message"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "conversation-count",
+              children: "Chats Count"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "conversation-date",
+              children: "Date"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "conversations-list",
             children: [conversations.length != 0 && !loading && conversations.map(function (conv, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "single-msg",
+                className: "conversation",
                 onClick: function onClick(e) {
                   e.preventDefault();
                   openConversation(conv);
                 },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "msg-client",
+                  className: "conversation-client-name",
                   children: [index + 1 + ". ", " ", conv.client.name]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "message-content",
-                  children: conv.messages.reverse()[0].content
+                  className: "conversation-client-message",
+                  children: textWatch(conv.messages.reverse()[0].content, 70)
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "msg-time",
+                  className: "conversation-count",
+                  children: conv.messages.length
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "conversation-date",
                   children: conv.messages.reverse()[0].created_at
                 })]
               });
@@ -19017,11 +19038,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.esm.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/dialog/dialog.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/AdminLayout */ "./resources/js/components/auth/AdminLayout.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var _components_Message__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Message */ "./resources/js/components/Message.js");
+/* harmony import */ var _images_whatsapp_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/whatsapp.svg */ "./resources/images/whatsapp.svg");
+/* harmony import */ var _images_reply_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../images/reply.svg */ "./resources/images/reply.svg");
 /* harmony import */ var _components_DotLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/DotLoader */ "./resources/js/components/DotLoader.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -19040,7 +19063,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //actions
+
 
 
 
@@ -19075,6 +19098,33 @@ var DirectContacts = function DirectContacts() {
       _useState6 = _slicedToArray(_useState5, 2),
       contacts = _useState6[0],
       setContacts = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    id: 1,
+    name: "Franklin Shera",
+    number: "254700080373",
+    email: "fshera96@gmail.com",
+    message: "Your payment has been successfully submitted. We\u2019ve sent your an email with all of the details of your order.",
+    mailback: 1,
+    addonwhatsapp: 1,
+    created_at: "11:49 - 12 May 2022"
+  }),
+      _useState8 = _slicedToArray(_useState7, 2),
+      directMessage = _useState8[0],
+      setDM = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isOpen = _useState10[0],
+      setIsOpen = _useState10[1];
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   var fetchContacts = function fetchContacts() {
     var contactsUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/direct-contacts';
@@ -19111,7 +19161,7 @@ var DirectContacts = function DirectContacts() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "dash_overview",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "messages",
+          className: "direct-contacts",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "second-nav",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
@@ -19140,22 +19190,156 @@ var DirectContacts = function DirectContacts() {
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-            className: "messages-list",
-            children: [contacts.length != 0 && !loading && contacts.data.map(function (contact, index) {
+            className: "direct-contact-label",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-name",
+              children: "Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-number",
+              children: "Number"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-email",
+              children: "Email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-message",
+              children: "Message"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-add-on"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "contact-date",
+              children: "Date"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "contacts-list",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_9__.Transition, {
+              show: isOpen,
+              as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Dialog, {
+                as: "div",
+                className: "fixed inset-0 z-10 overflow-y-auto",
+                onClose: closeModal,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  className: "min-h-screen px-4 text-center",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_9__.Transition.Child, {
+                    as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                    enter: "ease-out duration-300",
+                    enterFrom: "opacity-0",
+                    enterTo: "opacity-100",
+                    leave: "ease-in duration-200",
+                    leaveFrom: "opacity-100",
+                    leaveTo: "opacity-0",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Dialog.Overlay, {
+                      className: "fixed inset-0"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                    className: "inline-block h-screen align-middle",
+                    "aria-hidden": "true",
+                    children: "\u200B"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_9__.Transition.Child, {
+                    as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                    enter: "ease-out duration-300",
+                    enterFrom: "opacity-0 scale-95",
+                    enterTo: "opacity-100 scale-100",
+                    leave: "ease-in duration-200",
+                    leaveFrom: "opacity-100 scale-100",
+                    leaveTo: "opacity-0 scale-95",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                      className: "inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Dialog.Title, {
+                        as: "h3",
+                        className: "text-xl font-medium leading-6 text-gray-900",
+                        children: "Direct Message"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                        className: "mt-2",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                          className: "mb-2 text-gray-800",
+                          children: ["From", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                            className: "font-semibold ml-2",
+                            children: directMessage.name
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                            className: "py-1 px-2 text-sm  rounded bg-gray-50 text-gray-600",
+                            children: directMessage.email
+                          })]
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+                          className: "text-sm text-gray-700",
+                          children: directMessage.message
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                          className: "flex justify-between items-center mt-5",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                            className: "w-3/5 flex justify-between",
+                            children: [directMessage.mailback == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                              className: "flex  items-center w-1/2 ",
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                                src: _images_reply_svg__WEBPACK_IMPORTED_MODULE_5__.default,
+                                className: " h-5 text-gray-800",
+                                alt: "Mail back"
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                                className: "text-xs text-gray-600",
+                                children: "Mail Me Back"
+                              })]
+                            }), directMessage.addonwhatsapp == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                              className: "flex  items-center w-1/2",
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                                src: _images_whatsapp_svg__WEBPACK_IMPORTED_MODULE_4__.default,
+                                className: "  h-5",
+                                alt: "Add on whatsapp"
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                                className: "text-xs text-gray-600",
+                                children: "Add On WhatsApp"
+                              })]
+                            })]
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                            className: "text-xs text-gray-600 italic",
+                            children: directMessage.created_at
+                          })]
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                        className: "mt-4",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                          type: "button",
+                          className: "inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
+                          onClick: closeModal,
+                          children: "Got it!"
+                        })
+                      })]
+                    })
+                  })]
+                })
+              })
+            }), contacts.length != 0 && !loading && contacts.data.map(function (contact, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "single-msg",
+                className: "direct-contact",
                 onClick: function onClick(e) {
                   e.preventDefault();
+                  setDM(contact);
+                  openModal();
                 },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "msg-client",
-                  children: [index + 1 + ". ", " ", contact.name]
+                  className: "contact-name",
+                  children: [index + 1 + ".", " ", contact.name]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "message-content",
+                  className: "contact-number",
                   children: contact.whatsappnumber
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "msg-time",
+                  className: "contact-email",
                   children: contact.email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "contact-message",
+                  children: contact.message.length > 52 ? contact.message.slice(0, 52) + "..." : contact.message
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  className: "contact-add-on",
+                  children: [contact.mailback == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                    src: _images_reply_svg__WEBPACK_IMPORTED_MODULE_5__.default,
+                    className: "h-6 text-gray-800",
+                    alt: "Mail back"
+                  }), contact.addonwhatsapp == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                    src: _images_whatsapp_svg__WEBPACK_IMPORTED_MODULE_4__.default,
+                    className: "h-6",
+                    alt: "Add on whatsapp"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "contact-date ml-1",
+                  children: contact.created_at
                 })]
               });
             }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), contacts.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
@@ -23502,6 +23686,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/images/reply.svg":
+/*!************************************!*\
+  !*** ./resources/images/reply.svg ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/reply.svg?893a15416a8d6d177ac3f03a053035aa");
+
+/***/ }),
+
 /***/ "./resources/images/sent.svg":
 /*!***********************************!*\
   !*** ./resources/images/sent.svg ***!
@@ -23514,6 +23713,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sent.svg?c162f8a2d0ec7a3ecaac3da44ddfe84f");
+
+/***/ }),
+
+/***/ "./resources/images/whatsapp.svg":
+/*!***************************************!*\
+  !*** ./resources/images/whatsapp.svg ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/whatsapp.svg?0050a6d76aa363356bd350eb9f2644df");
 
 /***/ }),
 

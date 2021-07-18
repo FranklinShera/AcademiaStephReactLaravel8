@@ -1636,6 +1636,101 @@ footer{
 /*ORDER PREVIEW END*/
 
 
+/*CONVERSATIONS*/
+
+
+
+.conversations{
+    @apply p-6;
+}
+
+
+.conversations-label{
+    @apply flex p-2 mt-8 font-bold border-b border-dark-5 pb-2;
+}
+
+.conversations-list{
+    @apply w-full flex flex-col;
+}
+
+.conversation{
+    @apply flex w-full p-2 bg-blue-50 my-1 hover:bg-blue-100 hover:shadow cursor-pointer;
+}
+
+
+.conversation-client-name{
+    @apply w-1/5;
+}
+.conversation-client-message{
+    @apply w-1/2;
+}
+.conversation-count{
+    @apply w-15/100 text-center;
+}
+.conversation-date{
+    @apply w-15/100;
+}
+
+
+
+
+
+/*CONVERSATIONS END*/
+
+
+/*DIRECT CONTACT*/
+
+.direct-contacts{
+    @apply p-6;
+}
+
+
+.direct-contact{
+    @apply flex w-full p-2 bg-blue-50 my-1 hover:bg-blue-100 hover:shadow cursor-pointer;
+}
+
+
+
+.direct-contact-label{
+    @apply flex p-2 mt-8 font-bold border-b border-dark-5 pb-2;
+}
+
+.contact-name{
+    @apply w-15/100;
+}
+.contact-number {
+    @apply w-15/100;
+}
+
+.contact-email {
+    @apply w-15/100;
+}
+
+.contact-message {
+    @apply w-35/100;
+}
+
+.contact-add-on{
+    @apply w-5/100 flex justify-around items-center;
+}
+
+
+.contact-date {
+    @apply w-15/100;
+}
+
+
+.contacts-list{
+    @apply flex flex-col;
+}
+/*DIRECT CONTACT END*/
+
+
+
+
+
+
+
 /*MESSAGES*/
 
 .messages{

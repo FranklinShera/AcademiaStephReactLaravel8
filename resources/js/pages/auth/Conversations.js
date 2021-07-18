@@ -65,7 +65,9 @@ const Conversations = () => {
     }
 
 
-
+    const textWatch = (text,limit) =>{
+            return (text.length > limit) ? text.slice(0,limit)+"..." : text;
+    }
 
     useEffect(() => {
 
@@ -91,7 +93,7 @@ const Conversations = () => {
         <div className="dashboard">
             <AdminLayout>
              <div className="dash_overview">
-                 <div className="messages">
+                 <div className="conversations">
 
 
                      <div className="second-nav">
@@ -99,7 +101,6 @@ const Conversations = () => {
 
 
                          <div className="second-nav-controls">
-                             CONTROLS
                             {/*<span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}*/}
                             {/*      onClick={e => {*/}
                             {/*          e.preventDefault()*/}
@@ -117,23 +118,52 @@ const Conversations = () => {
                          </div>
                      </div>
 
-                     <div className="messages-list">
+                     <div className="conversations-label">
+
+                         <div className="conversation-client-name">
+                             Client Name
+                         </div>
+
+                         <div className="conversation-client-message">
+                            Last Message
+                         </div>
+
+                         <div className="conversation-count">
+                             Chats Count
+                         </div>
+
+                         <div className="conversation-date">
+                             Date
+                         </div>
+
+                     </div>
+
+                     <div className="conversations-list">
 
 
                          {(conversations.length != 0 && !loading ) && conversations.map((conv , index) => (
-                             <div className="single-msg" onClick={e => {
+                             <div className="conversation" onClick={e => {
                                  e.preventDefault();
                                  openConversation(conv);
                              }}>
-                                 <div className="msg-client">
+                                 <div className="conversation-client-name">
                                      { index+1+". "} {conv.client.name}
                                  </div>
-                                 <div className="message-content">
-                                     {conv.messages.reverse()[0].content}
+
+                                 <div className="conversation-client-message">
+
+                                     { textWatch(conv.messages.reverse()[0].content , 70)}
+
                                  </div>
-                                 <div className="msg-time">
+
+                                 <div className="conversation-count">
+                                     {conv.messages.length}
+                                 </div>
+
+                                 <div className="conversation-date">
                                      {conv.messages.reverse()[0].created_at}
                                  </div>
+
                              </div>
                          ) )}
 
