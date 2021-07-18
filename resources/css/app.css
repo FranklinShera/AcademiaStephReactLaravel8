@@ -1636,6 +1636,61 @@ footer{
 /*ORDER PREVIEW END*/
 
 
+
+
+
+/*WRITERS*/
+.writers{
+    @apply p-6;
+}
+
+
+.writers-label{
+    @apply flex p-2 mt-8 font-bold border-b border-dark-5 pb-2;
+}
+
+.writers-list{
+    @apply w-full flex flex-col;
+}
+
+.writer{
+    @apply flex w-full p-2 bg-blue-50 my-1 hover:bg-blue-100 hover:shadow cursor-pointer;
+}
+
+.writers-name{
+    @apply w-1/5;
+}
+
+.writers-email{
+    @apply w-1/5;
+}
+
+
+.writers-phone{
+    @apply w-1/5;
+}
+
+.writers-speciality{
+    @apply w-1/5;
+}
+
+.writers-date{
+    @apply w-1/5;
+}
+
+
+
+
+/*WRITERS END*/
+
+
+
+
+
+
+
+
+
 /*CONVERSATIONS*/
 
 

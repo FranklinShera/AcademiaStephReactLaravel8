@@ -46,6 +46,15 @@ const AdminLayout = (props) => {
             ]
         },
         {
+            name : "Writers",
+            links: [
+                {
+                    name:"All Writers",
+                    url: `/in/dashboard/writers`
+                }
+            ]
+        },
+        {
             name : "Messages",
             links: [
                 {

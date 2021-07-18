@@ -10775,6 +10775,2050 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/Formik/dist/formik.esm.js":
+/*!************************************************!*\
+  !*** ./node_modules/Formik/dist/formik.esm.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ErrorMessage": () => (/* binding */ ErrorMessage),
+/* harmony export */   "FastField": () => (/* binding */ FastField),
+/* harmony export */   "Field": () => (/* binding */ Field),
+/* harmony export */   "FieldArray": () => (/* binding */ FieldArray),
+/* harmony export */   "Form": () => (/* binding */ Form),
+/* harmony export */   "Formik": () => (/* binding */ Formik),
+/* harmony export */   "FormikConsumer": () => (/* binding */ FormikConsumer),
+/* harmony export */   "FormikContext": () => (/* binding */ FormikContext),
+/* harmony export */   "FormikProvider": () => (/* binding */ FormikProvider),
+/* harmony export */   "connect": () => (/* binding */ connect),
+/* harmony export */   "getActiveElement": () => (/* binding */ getActiveElement),
+/* harmony export */   "getIn": () => (/* binding */ getIn),
+/* harmony export */   "insert": () => (/* binding */ insert),
+/* harmony export */   "isEmptyArray": () => (/* binding */ isEmptyArray),
+/* harmony export */   "isEmptyChildren": () => (/* binding */ isEmptyChildren),
+/* harmony export */   "isFunction": () => (/* binding */ isFunction),
+/* harmony export */   "isInputEvent": () => (/* binding */ isInputEvent),
+/* harmony export */   "isInteger": () => (/* binding */ isInteger),
+/* harmony export */   "isNaN": () => (/* binding */ isNaN$1),
+/* harmony export */   "isObject": () => (/* binding */ isObject),
+/* harmony export */   "isPromise": () => (/* binding */ isPromise),
+/* harmony export */   "isString": () => (/* binding */ isString),
+/* harmony export */   "move": () => (/* binding */ move),
+/* harmony export */   "prepareDataForValidation": () => (/* binding */ prepareDataForValidation),
+/* harmony export */   "replace": () => (/* binding */ replace),
+/* harmony export */   "setIn": () => (/* binding */ setIn),
+/* harmony export */   "setNestedObjectValues": () => (/* binding */ setNestedObjectValues),
+/* harmony export */   "swap": () => (/* binding */ swap),
+/* harmony export */   "useField": () => (/* binding */ useField),
+/* harmony export */   "useFormik": () => (/* binding */ useFormik),
+/* harmony export */   "useFormikContext": () => (/* binding */ useFormikContext),
+/* harmony export */   "validateYupSchema": () => (/* binding */ validateYupSchema),
+/* harmony export */   "withFormik": () => (/* binding */ withFormik),
+/* harmony export */   "yupToFormErrors": () => (/* binding */ yupToFormErrors)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_fast_compare__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-fast-compare */ "./node_modules/react-fast-compare/index.js");
+/* harmony import */ var react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_fast_compare__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var deepmerge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! deepmerge */ "./node_modules/deepmerge/dist/es.js");
+/* harmony import */ var lodash_es_isPlainObject__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash-es/isPlainObject */ "./node_modules/lodash-es/isPlainObject.js");
+/* harmony import */ var lodash_es_clone__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash-es/clone */ "./node_modules/lodash-es/clone.js");
+/* harmony import */ var lodash_es_toPath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/toPath */ "./node_modules/lodash-es/toPath.js");
+/* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js");
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_es_cloneDeep__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash-es/cloneDeep */ "./node_modules/lodash-es/cloneDeep.js");
+
+
+
+
+
+
+
+
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/** @private is the value an empty array? */
+
+var isEmptyArray = function isEmptyArray(value) {
+  return Array.isArray(value) && value.length === 0;
+};
+/** @private is the given object a Function? */
+
+var isFunction = function isFunction(obj) {
+  return typeof obj === 'function';
+};
+/** @private is the given object an Object? */
+
+var isObject = function isObject(obj) {
+  return obj !== null && typeof obj === 'object';
+};
+/** @private is the given object an integer? */
+
+var isInteger = function isInteger(obj) {
+  return String(Math.floor(Number(obj))) === obj;
+};
+/** @private is the given object a string? */
+
+var isString = function isString(obj) {
+  return Object.prototype.toString.call(obj) === '[object String]';
+};
+/** @private is the given object a NaN? */
+// eslint-disable-next-line no-self-compare
+
+var isNaN$1 = function isNaN(obj) {
+  return obj !== obj;
+};
+/** @private Does a React component have exactly 0 children? */
+
+var isEmptyChildren = function isEmptyChildren(children) {
+  return react__WEBPACK_IMPORTED_MODULE_0__.Children.count(children) === 0;
+};
+/** @private is the given object/value a promise? */
+
+var isPromise = function isPromise(value) {
+  return isObject(value) && isFunction(value.then);
+};
+/** @private is the given object/value a type of synthetic event? */
+
+var isInputEvent = function isInputEvent(value) {
+  return value && isObject(value) && isObject(value.target);
+};
+/**
+ * Same as document.activeElement but wraps in a try-catch block. In IE it is
+ * not safe to call document.activeElement if there is nothing focused.
+ *
+ * The activeElement will be null only if the document or document body is not
+ * yet defined.
+ *
+ * @param {?Document} doc Defaults to current document.
+ * @return {Element | null}
+ * @see https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/core/dom/getActiveElement.js
+ */
+
+function getActiveElement(doc) {
+  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+
+  if (typeof doc === 'undefined') {
+    return null;
+  }
+
+  try {
+    return doc.activeElement || doc.body;
+  } catch (e) {
+    return doc.body;
+  }
+}
+/**
+ * Deeply get a value from an object via its path.
+ */
+
+function getIn(obj, key, def, p) {
+  if (p === void 0) {
+    p = 0;
+  }
+
+  var path = (0,lodash_es_toPath__WEBPACK_IMPORTED_MODULE_4__.default)(key);
+
+  while (obj && p < path.length) {
+    obj = obj[path[p++]];
+  }
+
+  return obj === undefined ? def : obj;
+}
+/**
+ * Deeply set a value from in object via it's path. If the value at `path`
+ * has changed, return a shallow copy of obj with `value` set at `path`.
+ * If `value` has not changed, return the original `obj`.
+ *
+ * Existing objects / arrays along `path` are also shallow copied. Sibling
+ * objects along path retain the same internal js reference. Since new
+ * objects / arrays are only created along `path`, we can test if anything
+ * changed in a nested structure by comparing the object's reference in
+ * the old and new object, similar to how russian doll cache invalidation
+ * works.
+ *
+ * In earlier versions of this function, which used cloneDeep, there were
+ * issues whereby settings a nested value would mutate the parent
+ * instead of creating a new object. `clone` avoids that bug making a
+ * shallow copy of the objects along the update path
+ * so no object is mutated in place.
+ *
+ * Before changing this function, please read through the following
+ * discussions.
+ *
+ * @see https://github.com/developit/linkstate
+ * @see https://github.com/jaredpalmer/formik/pull/123
+ */
+
+function setIn(obj, path, value) {
+  var res = (0,lodash_es_clone__WEBPACK_IMPORTED_MODULE_5__.default)(obj); // this keeps inheritance when obj is a class
+
+  var resVal = res;
+  var i = 0;
+  var pathArray = (0,lodash_es_toPath__WEBPACK_IMPORTED_MODULE_4__.default)(path);
+
+  for (; i < pathArray.length - 1; i++) {
+    var currentPath = pathArray[i];
+    var currentObj = getIn(obj, pathArray.slice(0, i + 1));
+
+    if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
+      resVal = resVal[currentPath] = (0,lodash_es_clone__WEBPACK_IMPORTED_MODULE_5__.default)(currentObj);
+    } else {
+      var nextPath = pathArray[i + 1];
+      resVal = resVal[currentPath] = isInteger(nextPath) && Number(nextPath) >= 0 ? [] : {};
+    }
+  } // Return original object if new value is the same as current
+
+
+  if ((i === 0 ? obj : resVal)[pathArray[i]] === value) {
+    return obj;
+  }
+
+  if (value === undefined) {
+    delete resVal[pathArray[i]];
+  } else {
+    resVal[pathArray[i]] = value;
+  } // If the path array has a single element, the loop did not run.
+  // Deleting on `resVal` had no effect in this scenario, so we delete on the result instead.
+
+
+  if (i === 0 && value === undefined) {
+    delete res[pathArray[i]];
+  }
+
+  return res;
+}
+/**
+ * Recursively a set the same value for all keys and arrays nested object, cloning
+ * @param object
+ * @param value
+ * @param visited
+ * @param response
+ */
+
+function setNestedObjectValues(object, value, visited, response) {
+  if (visited === void 0) {
+    visited = new WeakMap();
+  }
+
+  if (response === void 0) {
+    response = {};
+  }
+
+  for (var _i = 0, _Object$keys = Object.keys(object); _i < _Object$keys.length; _i++) {
+    var k = _Object$keys[_i];
+    var val = object[k];
+
+    if (isObject(val)) {
+      if (!visited.get(val)) {
+        visited.set(val, true); // In order to keep array values consistent for both dot path  and
+        // bracket syntax, we need to check if this is an array so that
+        // this will output  { friends: [true] } and not { friends: { "0": true } }
+
+        response[k] = Array.isArray(val) ? [] : {};
+        setNestedObjectValues(val, value, visited, response[k]);
+      }
+    } else {
+      response[k] = value;
+    }
+  }
+
+  return response;
+}
+
+var FormikContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(undefined);
+var FormikProvider = FormikContext.Provider;
+var FormikConsumer = FormikContext.Consumer;
+function useFormikContext() {
+  var formik = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(FormikContext);
+  !!!formik ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, "Formik context is undefined, please verify you are calling useFormikContext() as child of a <Formik> component.") : 0 : void 0;
+  return formik;
+}
+
+function formikReducer(state, msg) {
+  switch (msg.type) {
+    case 'SET_VALUES':
+      return _extends({}, state, {
+        values: msg.payload
+      });
+
+    case 'SET_TOUCHED':
+      return _extends({}, state, {
+        touched: msg.payload
+      });
+
+    case 'SET_ERRORS':
+      if (react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(state.errors, msg.payload)) {
+        return state;
+      }
+
+      return _extends({}, state, {
+        errors: msg.payload
+      });
+
+    case 'SET_STATUS':
+      return _extends({}, state, {
+        status: msg.payload
+      });
+
+    case 'SET_ISSUBMITTING':
+      return _extends({}, state, {
+        isSubmitting: msg.payload
+      });
+
+    case 'SET_ISVALIDATING':
+      return _extends({}, state, {
+        isValidating: msg.payload
+      });
+
+    case 'SET_FIELD_VALUE':
+      return _extends({}, state, {
+        values: setIn(state.values, msg.payload.field, msg.payload.value)
+      });
+
+    case 'SET_FIELD_TOUCHED':
+      return _extends({}, state, {
+        touched: setIn(state.touched, msg.payload.field, msg.payload.value)
+      });
+
+    case 'SET_FIELD_ERROR':
+      return _extends({}, state, {
+        errors: setIn(state.errors, msg.payload.field, msg.payload.value)
+      });
+
+    case 'RESET_FORM':
+      return _extends({}, state, msg.payload);
+
+    case 'SET_FORMIK_STATE':
+      return msg.payload(state);
+
+    case 'SUBMIT_ATTEMPT':
+      return _extends({}, state, {
+        touched: setNestedObjectValues(state.values, true),
+        isSubmitting: true,
+        submitCount: state.submitCount + 1
+      });
+
+    case 'SUBMIT_FAILURE':
+      return _extends({}, state, {
+        isSubmitting: false
+      });
+
+    case 'SUBMIT_SUCCESS':
+      return _extends({}, state, {
+        isSubmitting: false
+      });
+
+    default:
+      return state;
+  }
+} // Initial empty states // objects
+
+
+var emptyErrors = {};
+var emptyTouched = {};
+function useFormik(_ref) {
+  var _ref$validateOnChange = _ref.validateOnChange,
+      validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange,
+      _ref$validateOnBlur = _ref.validateOnBlur,
+      validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur,
+      _ref$validateOnMount = _ref.validateOnMount,
+      validateOnMount = _ref$validateOnMount === void 0 ? false : _ref$validateOnMount,
+      isInitialValid = _ref.isInitialValid,
+      _ref$enableReinitiali = _ref.enableReinitialize,
+      enableReinitialize = _ref$enableReinitiali === void 0 ? false : _ref$enableReinitiali,
+      onSubmit = _ref.onSubmit,
+      rest = _objectWithoutPropertiesLoose(_ref, ["validateOnChange", "validateOnBlur", "validateOnMount", "isInitialValid", "enableReinitialize", "onSubmit"]);
+
+  var props = _extends({
+    validateOnChange: validateOnChange,
+    validateOnBlur: validateOnBlur,
+    validateOnMount: validateOnMount,
+    onSubmit: onSubmit
+  }, rest);
+
+  var initialValues = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(props.initialValues);
+  var initialErrors = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(props.initialErrors || emptyErrors);
+  var initialTouched = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(props.initialTouched || emptyTouched);
+  var initialStatus = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(props.initialStatus);
+  var isMounted = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
+  var fieldRegistry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({});
+
+  if (true) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      !(typeof isInitialValid === 'undefined') ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'isInitialValid has been deprecated and will be removed in future versions of Formik. Please use initialErrors or validateOnMount instead.') : 0 : void 0; // eslint-disable-next-line
+    }, []);
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    isMounted.current = true;
+    return function () {
+      isMounted.current = false;
+    };
+  }, []);
+
+  var _React$useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(formikReducer, {
+    values: props.initialValues,
+    errors: props.initialErrors || emptyErrors,
+    touched: props.initialTouched || emptyTouched,
+    status: props.initialStatus,
+    isSubmitting: false,
+    isValidating: false,
+    submitCount: 0
+  }),
+      state = _React$useReducer[0],
+      dispatch = _React$useReducer[1];
+
+  var runValidateHandler = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (values, field) {
+    return new Promise(function (resolve, reject) {
+      var maybePromisedErrors = props.validate(values, field);
+
+      if (maybePromisedErrors == null) {
+        // use loose null check here on purpose
+        resolve(emptyErrors);
+      } else if (isPromise(maybePromisedErrors)) {
+        maybePromisedErrors.then(function (errors) {
+          resolve(errors || emptyErrors);
+        }, function (actualException) {
+          if (true) {
+            console.warn("Warning: An unhandled error was caught during validation in <Formik validate />", actualException);
+          }
+
+          reject(actualException);
+        });
+      } else {
+        resolve(maybePromisedErrors);
+      }
+    });
+  }, [props.validate]);
+  /**
+   * Run validation against a Yup schema and optionally run a function if successful
+   */
+
+  var runValidationSchema = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (values, field) {
+    var validationSchema = props.validationSchema;
+    var schema = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
+    var promise = field && schema.validateAt ? schema.validateAt(field, values) : validateYupSchema(values, schema);
+    return new Promise(function (resolve, reject) {
+      promise.then(function () {
+        resolve(emptyErrors);
+      }, function (err) {
+        // Yup will throw a validation error if validation fails. We catch those and
+        // resolve them into Formik errors. We can sniff if something is a Yup error
+        // by checking error.name.
+        // @see https://github.com/jquense/yup#validationerrorerrors-string--arraystring-value-any-path-string
+        if (err.name === 'ValidationError') {
+          resolve(yupToFormErrors(err));
+        } else {
+          // We throw any other errors
+          if (true) {
+            console.warn("Warning: An unhandled error was caught during validation in <Formik validationSchema />", err);
+          }
+
+          reject(err);
+        }
+      });
+    });
+  }, [props.validationSchema]);
+  var runSingleFieldLevelValidation = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (field, value) {
+    return new Promise(function (resolve) {
+      return resolve(fieldRegistry.current[field].validate(value));
+    });
+  }, []);
+  var runFieldLevelValidations = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (values) {
+    var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function (f) {
+      return isFunction(fieldRegistry.current[f].validate);
+    }); // Construct an array with all of the field validation functions
+
+    var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function (f) {
+      return runSingleFieldLevelValidation(f, getIn(values, f));
+    }) : [Promise.resolve('DO_NOT_DELETE_YOU_WILL_BE_FIRED')]; // use special case ;)
+
+    return Promise.all(fieldValidations).then(function (fieldErrorsList) {
+      return fieldErrorsList.reduce(function (prev, curr, index) {
+        if (curr === 'DO_NOT_DELETE_YOU_WILL_BE_FIRED') {
+          return prev;
+        }
+
+        if (curr) {
+          prev = setIn(prev, fieldKeysWithValidation[index], curr);
+        }
+
+        return prev;
+      }, {});
+    });
+  }, [runSingleFieldLevelValidation]); // Run all validations and return the result
+
+  var runAllValidations = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (values) {
+    return Promise.all([runFieldLevelValidations(values), props.validationSchema ? runValidationSchema(values) : {}, props.validate ? runValidateHandler(values) : {}]).then(function (_ref2) {
+      var fieldErrors = _ref2[0],
+          schemaErrors = _ref2[1],
+          validateErrors = _ref2[2];
+      var combinedErrors = deepmerge__WEBPACK_IMPORTED_MODULE_2__.default.all([fieldErrors, schemaErrors, validateErrors], {
+        arrayMerge: arrayMerge
+      });
+      return combinedErrors;
+    });
+  }, [props.validate, props.validationSchema, runFieldLevelValidations, runValidateHandler, runValidationSchema]); // Run all validations methods and update state accordingly
+
+  var validateFormWithHighPriority = useEventCallback(function (values) {
+    if (values === void 0) {
+      values = state.values;
+    }
+
+    dispatch({
+      type: 'SET_ISVALIDATING',
+      payload: true
+    });
+    return runAllValidations(values).then(function (combinedErrors) {
+      if (!!isMounted.current) {
+        dispatch({
+          type: 'SET_ISVALIDATING',
+          payload: false
+        });
+
+        if (!react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(state.errors, combinedErrors)) {
+          dispatch({
+            type: 'SET_ERRORS',
+            payload: combinedErrors
+          });
+        }
+      }
+
+      return combinedErrors;
+    });
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (validateOnMount && isMounted.current === true && react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialValues.current, props.initialValues)) {
+      validateFormWithHighPriority(initialValues.current);
+    }
+  }, [validateOnMount, validateFormWithHighPriority]);
+  var resetForm = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (nextState) {
+    var values = nextState && nextState.values ? nextState.values : initialValues.current;
+    var errors = nextState && nextState.errors ? nextState.errors : initialErrors.current ? initialErrors.current : props.initialErrors || {};
+    var touched = nextState && nextState.touched ? nextState.touched : initialTouched.current ? initialTouched.current : props.initialTouched || {};
+    var status = nextState && nextState.status ? nextState.status : initialStatus.current ? initialStatus.current : props.initialStatus;
+    initialValues.current = values;
+    initialErrors.current = errors;
+    initialTouched.current = touched;
+    initialStatus.current = status;
+
+    var dispatchFn = function dispatchFn() {
+      dispatch({
+        type: 'RESET_FORM',
+        payload: {
+          isSubmitting: !!nextState && !!nextState.isSubmitting,
+          errors: errors,
+          touched: touched,
+          status: status,
+          values: values,
+          isValidating: !!nextState && !!nextState.isValidating,
+          submitCount: !!nextState && !!nextState.submitCount && typeof nextState.submitCount === 'number' ? nextState.submitCount : 0
+        }
+      });
+    };
+
+    if (props.onReset) {
+      var maybePromisedOnReset = props.onReset(state.values, imperativeMethods);
+
+      if (isPromise(maybePromisedOnReset)) {
+        maybePromisedOnReset.then(dispatchFn);
+      } else {
+        dispatchFn();
+      }
+    } else {
+      dispatchFn();
+    }
+  }, [props.initialErrors, props.initialStatus, props.initialTouched]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isMounted.current === true && !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialValues.current, props.initialValues)) {
+      if (enableReinitialize) {
+        initialValues.current = props.initialValues;
+        resetForm();
+      }
+
+      if (validateOnMount) {
+        validateFormWithHighPriority(initialValues.current);
+      }
+    }
+  }, [enableReinitialize, props.initialValues, resetForm, validateOnMount, validateFormWithHighPriority]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (enableReinitialize && isMounted.current === true && !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialErrors.current, props.initialErrors)) {
+      initialErrors.current = props.initialErrors || emptyErrors;
+      dispatch({
+        type: 'SET_ERRORS',
+        payload: props.initialErrors || emptyErrors
+      });
+    }
+  }, [enableReinitialize, props.initialErrors]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (enableReinitialize && isMounted.current === true && !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialTouched.current, props.initialTouched)) {
+      initialTouched.current = props.initialTouched || emptyTouched;
+      dispatch({
+        type: 'SET_TOUCHED',
+        payload: props.initialTouched || emptyTouched
+      });
+    }
+  }, [enableReinitialize, props.initialTouched]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (enableReinitialize && isMounted.current === true && !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialStatus.current, props.initialStatus)) {
+      initialStatus.current = props.initialStatus;
+      dispatch({
+        type: 'SET_STATUS',
+        payload: props.initialStatus
+      });
+    }
+  }, [enableReinitialize, props.initialStatus, props.initialTouched]);
+  var validateField = useEventCallback(function (name) {
+    // This will efficiently validate a single field by avoiding state
+    // changes if the validation function is synchronous. It's different from
+    // what is called when using validateForm.
+    if (fieldRegistry.current[name] && isFunction(fieldRegistry.current[name].validate)) {
+      var value = getIn(state.values, name);
+      var maybePromise = fieldRegistry.current[name].validate(value);
+
+      if (isPromise(maybePromise)) {
+        // Only flip isValidating if the function is async.
+        dispatch({
+          type: 'SET_ISVALIDATING',
+          payload: true
+        });
+        return maybePromise.then(function (x) {
+          return x;
+        }).then(function (error) {
+          dispatch({
+            type: 'SET_FIELD_ERROR',
+            payload: {
+              field: name,
+              value: error
+            }
+          });
+          dispatch({
+            type: 'SET_ISVALIDATING',
+            payload: false
+          });
+        });
+      } else {
+        dispatch({
+          type: 'SET_FIELD_ERROR',
+          payload: {
+            field: name,
+            value: maybePromise
+          }
+        });
+        return Promise.resolve(maybePromise);
+      }
+    } else if (props.validationSchema) {
+      dispatch({
+        type: 'SET_ISVALIDATING',
+        payload: true
+      });
+      return runValidationSchema(state.values, name).then(function (x) {
+        return x;
+      }).then(function (error) {
+        dispatch({
+          type: 'SET_FIELD_ERROR',
+          payload: {
+            field: name,
+            value: error[name]
+          }
+        });
+        dispatch({
+          type: 'SET_ISVALIDATING',
+          payload: false
+        });
+      });
+    }
+
+    return Promise.resolve();
+  });
+  var registerField = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (name, _ref3) {
+    var validate = _ref3.validate;
+    fieldRegistry.current[name] = {
+      validate: validate
+    };
+  }, []);
+  var unregisterField = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (name) {
+    delete fieldRegistry.current[name];
+  }, []);
+  var setTouched = useEventCallback(function (touched, shouldValidate) {
+    dispatch({
+      type: 'SET_TOUCHED',
+      payload: touched
+    });
+    var willValidate = shouldValidate === undefined ? validateOnBlur : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
+  });
+  var setErrors = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (errors) {
+    dispatch({
+      type: 'SET_ERRORS',
+      payload: errors
+    });
+  }, []);
+  var setValues = useEventCallback(function (values, shouldValidate) {
+    var resolvedValues = isFunction(values) ? values(state.values) : values;
+    dispatch({
+      type: 'SET_VALUES',
+      payload: resolvedValues
+    });
+    var willValidate = shouldValidate === undefined ? validateOnChange : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(resolvedValues) : Promise.resolve();
+  });
+  var setFieldError = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (field, value) {
+    dispatch({
+      type: 'SET_FIELD_ERROR',
+      payload: {
+        field: field,
+        value: value
+      }
+    });
+  }, []);
+  var setFieldValue = useEventCallback(function (field, value, shouldValidate) {
+    dispatch({
+      type: 'SET_FIELD_VALUE',
+      payload: {
+        field: field,
+        value: value
+      }
+    });
+    var willValidate = shouldValidate === undefined ? validateOnChange : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(setIn(state.values, field, value)) : Promise.resolve();
+  });
+  var executeChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (eventOrTextValue, maybePath) {
+    // By default, assume that the first argument is a string. This allows us to use
+    // handleChange with React Native and React Native Web's onChangeText prop which
+    // provides just the value of the input.
+    var field = maybePath;
+    var val = eventOrTextValue;
+    var parsed; // If the first argument is not a string though, it has to be a synthetic React Event (or a fake one),
+    // so we handle like we would a normal HTML change event.
+
+    if (!isString(eventOrTextValue)) {
+      // If we can, persist the event
+      // @see https://reactjs.org/docs/events.html#event-pooling
+      if (eventOrTextValue.persist) {
+        eventOrTextValue.persist();
+      }
+
+      var target = eventOrTextValue.target ? eventOrTextValue.target : eventOrTextValue.currentTarget;
+      var type = target.type,
+          name = target.name,
+          id = target.id,
+          value = target.value,
+          checked = target.checked,
+          outerHTML = target.outerHTML,
+          options = target.options,
+          multiple = target.multiple;
+      field = maybePath ? maybePath : name ? name : id;
+
+      if (!field && "development" !== "production") {
+        warnAboutMissingIdentifier({
+          htmlContent: outerHTML,
+          documentationAnchorLink: 'handlechange-e-reactchangeeventany--void',
+          handlerName: 'handleChange'
+        });
+      }
+
+      val = /number|range/.test(type) ? (parsed = parseFloat(value), isNaN(parsed) ? '' : parsed) : /checkbox/.test(type) // checkboxes
+      ? getValueForCheckbox(getIn(state.values, field), checked, value) : !!multiple // <select multiple>
+      ? getSelectedValues(options) : value;
+    }
+
+    if (field) {
+      // Set form fields by name
+      setFieldValue(field, val);
+    }
+  }, [setFieldValue, state.values]);
+  var handleChange = useEventCallback(function (eventOrPath) {
+    if (isString(eventOrPath)) {
+      return function (event) {
+        return executeChange(event, eventOrPath);
+      };
+    } else {
+      executeChange(eventOrPath);
+    }
+  });
+  var setFieldTouched = useEventCallback(function (field, touched, shouldValidate) {
+    if (touched === void 0) {
+      touched = true;
+    }
+
+    dispatch({
+      type: 'SET_FIELD_TOUCHED',
+      payload: {
+        field: field,
+        value: touched
+      }
+    });
+    var willValidate = shouldValidate === undefined ? validateOnBlur : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
+  });
+  var executeBlur = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e, path) {
+    if (e.persist) {
+      e.persist();
+    }
+
+    var _e$target = e.target,
+        name = _e$target.name,
+        id = _e$target.id,
+        outerHTML = _e$target.outerHTML;
+    var field = path ? path : name ? name : id;
+
+    if (!field && "development" !== "production") {
+      warnAboutMissingIdentifier({
+        htmlContent: outerHTML,
+        documentationAnchorLink: 'handleblur-e-any--void',
+        handlerName: 'handleBlur'
+      });
+    }
+
+    setFieldTouched(field, true);
+  }, [setFieldTouched]);
+  var handleBlur = useEventCallback(function (eventOrString) {
+    if (isString(eventOrString)) {
+      return function (event) {
+        return executeBlur(event, eventOrString);
+      };
+    } else {
+      executeBlur(eventOrString);
+    }
+  });
+  var setFormikState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (stateOrCb) {
+    if (isFunction(stateOrCb)) {
+      dispatch({
+        type: 'SET_FORMIK_STATE',
+        payload: stateOrCb
+      });
+    } else {
+      dispatch({
+        type: 'SET_FORMIK_STATE',
+        payload: function payload() {
+          return stateOrCb;
+        }
+      });
+    }
+  }, []);
+  var setStatus = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (status) {
+    dispatch({
+      type: 'SET_STATUS',
+      payload: status
+    });
+  }, []);
+  var setSubmitting = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (isSubmitting) {
+    dispatch({
+      type: 'SET_ISSUBMITTING',
+      payload: isSubmitting
+    });
+  }, []);
+  var submitForm = useEventCallback(function () {
+    dispatch({
+      type: 'SUBMIT_ATTEMPT'
+    });
+    return validateFormWithHighPriority().then(function (combinedErrors) {
+      // In case an error was thrown and passed to the resolved Promise,
+      // `combinedErrors` can be an instance of an Error. We need to check
+      // that and abort the submit.
+      // If we don't do that, calling `Object.keys(new Error())` yields an
+      // empty array, which causes the validation to pass and the form
+      // to be submitted.
+      var isInstanceOfError = combinedErrors instanceof Error;
+      var isActuallyValid = !isInstanceOfError && Object.keys(combinedErrors).length === 0;
+
+      if (isActuallyValid) {
+        // Proceed with submit...
+        //
+        // To respect sync submit fns, we can't simply wrap executeSubmit in a promise and
+        // _always_ dispatch SUBMIT_SUCCESS because isSubmitting would then always be false.
+        // This would be fine in simple cases, but make it impossible to disable submit
+        // buttons where people use callbacks or promises as side effects (which is basically
+        // all of v1 Formik code). Instead, recall that we are inside of a promise chain already,
+        //  so we can try/catch executeSubmit(), if it returns undefined, then just bail.
+        // If there are errors, throw em. Otherwise, wrap executeSubmit in a promise and handle
+        // cleanup of isSubmitting on behalf of the consumer.
+        var promiseOrUndefined;
+
+        try {
+          promiseOrUndefined = executeSubmit(); // Bail if it's sync, consumer is responsible for cleaning up
+          // via setSubmitting(false)
+
+          if (promiseOrUndefined === undefined) {
+            return;
+          }
+        } catch (error) {
+          throw error;
+        }
+
+        return Promise.resolve(promiseOrUndefined).then(function (result) {
+          if (!!isMounted.current) {
+            dispatch({
+              type: 'SUBMIT_SUCCESS'
+            });
+          }
+
+          return result;
+        })["catch"](function (_errors) {
+          if (!!isMounted.current) {
+            dispatch({
+              type: 'SUBMIT_FAILURE'
+            }); // This is a legit error rejected by the onSubmit fn
+            // so we don't want to break the promise chain
+
+            throw _errors;
+          }
+        });
+      } else if (!!isMounted.current) {
+        // ^^^ Make sure Formik is still mounted before updating state
+        dispatch({
+          type: 'SUBMIT_FAILURE'
+        }); // throw combinedErrors;
+
+        if (isInstanceOfError) {
+          throw combinedErrors;
+        }
+      }
+
+      return;
+    });
+  });
+  var handleSubmit = useEventCallback(function (e) {
+    if (e && e.preventDefault && isFunction(e.preventDefault)) {
+      e.preventDefault();
+    }
+
+    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
+      e.stopPropagation();
+    } // Warn if form submission is triggered by a <button> without a
+    // specified `type` attribute during development. This mitigates
+    // a common gotcha in forms with both reset and submit buttons,
+    // where the dev forgets to add type="button" to the reset button.
+
+
+    if ( true && typeof document !== 'undefined') {
+      // Safely get the active element (works with IE)
+      var activeElement = getActiveElement();
+
+      if (activeElement !== null && activeElement instanceof HTMLButtonElement) {
+        !(activeElement.attributes && activeElement.attributes.getNamedItem('type')) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You submitted a Formik form using a button with an unspecified `type` attribute.  Most browsers default button elements to `type="submit"`. If this is not a submit button, please add `type="button"`.') : 0 : void 0;
+      }
+    }
+
+    submitForm()["catch"](function (reason) {
+      console.warn("Warning: An unhandled error was caught from submitForm()", reason);
+    });
+  });
+  var imperativeMethods = {
+    resetForm: resetForm,
+    validateForm: validateFormWithHighPriority,
+    validateField: validateField,
+    setErrors: setErrors,
+    setFieldError: setFieldError,
+    setFieldTouched: setFieldTouched,
+    setFieldValue: setFieldValue,
+    setStatus: setStatus,
+    setSubmitting: setSubmitting,
+    setTouched: setTouched,
+    setValues: setValues,
+    setFormikState: setFormikState,
+    submitForm: submitForm
+  };
+  var executeSubmit = useEventCallback(function () {
+    return onSubmit(state.values, imperativeMethods);
+  });
+  var handleReset = useEventCallback(function (e) {
+    if (e && e.preventDefault && isFunction(e.preventDefault)) {
+      e.preventDefault();
+    }
+
+    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
+      e.stopPropagation();
+    }
+
+    resetForm();
+  });
+  var getFieldMeta = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (name) {
+    return {
+      value: getIn(state.values, name),
+      error: getIn(state.errors, name),
+      touched: !!getIn(state.touched, name),
+      initialValue: getIn(initialValues.current, name),
+      initialTouched: !!getIn(initialTouched.current, name),
+      initialError: getIn(initialErrors.current, name)
+    };
+  }, [state.errors, state.touched, state.values]);
+  var getFieldHelpers = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (name) {
+    return {
+      setValue: function setValue(value, shouldValidate) {
+        return setFieldValue(name, value, shouldValidate);
+      },
+      setTouched: function setTouched(value, shouldValidate) {
+        return setFieldTouched(name, value, shouldValidate);
+      },
+      setError: function setError(value) {
+        return setFieldError(name, value);
+      }
+    };
+  }, [setFieldValue, setFieldTouched, setFieldError]);
+  var getFieldProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (nameOrOptions) {
+    var isAnObject = isObject(nameOrOptions);
+    var name = isAnObject ? nameOrOptions.name : nameOrOptions;
+    var valueState = getIn(state.values, name);
+    var field = {
+      name: name,
+      value: valueState,
+      onChange: handleChange,
+      onBlur: handleBlur
+    };
+
+    if (isAnObject) {
+      var type = nameOrOptions.type,
+          valueProp = nameOrOptions.value,
+          is = nameOrOptions.as,
+          multiple = nameOrOptions.multiple;
+
+      if (type === 'checkbox') {
+        if (valueProp === undefined) {
+          field.checked = !!valueState;
+        } else {
+          field.checked = !!(Array.isArray(valueState) && ~valueState.indexOf(valueProp));
+          field.value = valueProp;
+        }
+      } else if (type === 'radio') {
+        field.checked = valueState === valueProp;
+        field.value = valueProp;
+      } else if (is === 'select' && multiple) {
+        field.value = field.value || [];
+        field.multiple = true;
+      }
+    }
+
+    return field;
+  }, [handleBlur, handleChange, state.values]);
+  var dirty = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initialValues.current, state.values);
+  }, [initialValues.current, state.values]);
+  var isValid = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
+  }, [isInitialValid, dirty, state.errors, props]);
+
+  var ctx = _extends({}, state, {
+    initialValues: initialValues.current,
+    initialErrors: initialErrors.current,
+    initialTouched: initialTouched.current,
+    initialStatus: initialStatus.current,
+    handleBlur: handleBlur,
+    handleChange: handleChange,
+    handleReset: handleReset,
+    handleSubmit: handleSubmit,
+    resetForm: resetForm,
+    setErrors: setErrors,
+    setFormikState: setFormikState,
+    setFieldTouched: setFieldTouched,
+    setFieldValue: setFieldValue,
+    setFieldError: setFieldError,
+    setStatus: setStatus,
+    setSubmitting: setSubmitting,
+    setTouched: setTouched,
+    setValues: setValues,
+    submitForm: submitForm,
+    validateForm: validateFormWithHighPriority,
+    validateField: validateField,
+    isValid: isValid,
+    dirty: dirty,
+    unregisterField: unregisterField,
+    registerField: registerField,
+    getFieldProps: getFieldProps,
+    getFieldMeta: getFieldMeta,
+    getFieldHelpers: getFieldHelpers,
+    validateOnBlur: validateOnBlur,
+    validateOnChange: validateOnChange,
+    validateOnMount: validateOnMount
+  });
+
+  return ctx;
+}
+function Formik(props) {
+  var formikbag = useFormik(props);
+  var component = props.component,
+      children = props.children,
+      render = props.render,
+      innerRef = props.innerRef; // This allows folks to pass a ref to <Formik />
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useImperativeHandle)(innerRef, function () {
+    return formikbag;
+  });
+
+  if (true) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      !!props.render ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, "<Formik render> has been deprecated and will be removed in future versions of Formik. Please use a child callback function instead. To get rid of this warning, replace <Formik render={(props) => ...} /> with <Formik>{(props) => ...}</Formik>") : 0 : void 0; // eslint-disable-next-line
+    }, []);
+  }
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FormikProvider, {
+    value: formikbag
+  }, component ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, formikbag) : render ? render(formikbag) : children // children come last, always called
+  ? isFunction(children) ? children(formikbag) : !isEmptyChildren(children) ? react__WEBPACK_IMPORTED_MODULE_0__.Children.only(children) : null : null);
+}
+
+function warnAboutMissingIdentifier(_ref4) {
+  var htmlContent = _ref4.htmlContent,
+      documentationAnchorLink = _ref4.documentationAnchorLink,
+      handlerName = _ref4.handlerName;
+  console.warn("Warning: Formik called `" + handlerName + "`, but you forgot to pass an `id` or `name` attribute to your input:\n    " + htmlContent + "\n    Formik cannot determine which value to update. For more info see https://formik.org/docs/api/formik#" + documentationAnchorLink + "\n  ");
+}
+/**
+ * Transform Yup ValidationError to a more usable object
+ */
+
+
+function yupToFormErrors(yupError) {
+  var errors = {};
+
+  if (yupError.inner) {
+    if (yupError.inner.length === 0) {
+      return setIn(errors, yupError.path, yupError.message);
+    }
+
+    for (var _iterator = yupError.inner, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var _ref5;
+
+      if (_isArray) {
+        if (_i >= _iterator.length) break;
+        _ref5 = _iterator[_i++];
+      } else {
+        _i = _iterator.next();
+        if (_i.done) break;
+        _ref5 = _i.value;
+      }
+
+      var err = _ref5;
+
+      if (!getIn(errors, err.path)) {
+        errors = setIn(errors, err.path, err.message);
+      }
+    }
+  }
+
+  return errors;
+}
+/**
+ * Validate a yup schema.
+ */
+
+function validateYupSchema(values, schema, sync, context) {
+  if (sync === void 0) {
+    sync = false;
+  }
+
+  if (context === void 0) {
+    context = {};
+  }
+
+  var validateData = prepareDataForValidation(values);
+  return schema[sync ? 'validateSync' : 'validate'](validateData, {
+    abortEarly: false,
+    context: context
+  });
+}
+/**
+ * Recursively prepare values.
+ */
+
+function prepareDataForValidation(values) {
+  var data = Array.isArray(values) ? [] : {};
+
+  for (var k in values) {
+    if (Object.prototype.hasOwnProperty.call(values, k)) {
+      var key = String(k);
+
+      if (Array.isArray(values[key]) === true) {
+        data[key] = values[key].map(function (value) {
+          if (Array.isArray(value) === true || (0,lodash_es_isPlainObject__WEBPACK_IMPORTED_MODULE_7__.default)(value)) {
+            return prepareDataForValidation(value);
+          } else {
+            return value !== '' ? value : undefined;
+          }
+        });
+      } else if ((0,lodash_es_isPlainObject__WEBPACK_IMPORTED_MODULE_7__.default)(values[key])) {
+        data[key] = prepareDataForValidation(values[key]);
+      } else {
+        data[key] = values[key] !== '' ? values[key] : undefined;
+      }
+    }
+  }
+
+  return data;
+}
+/**
+ * deepmerge array merging algorithm
+ * https://github.com/KyleAMathews/deepmerge#combine-array
+ */
+
+function arrayMerge(target, source, options) {
+  var destination = target.slice();
+  source.forEach(function merge(e, i) {
+    if (typeof destination[i] === 'undefined') {
+      var cloneRequested = options.clone !== false;
+      var shouldClone = cloneRequested && options.isMergeableObject(e);
+      destination[i] = shouldClone ? (0,deepmerge__WEBPACK_IMPORTED_MODULE_2__.default)(Array.isArray(e) ? [] : {}, e, options) : e;
+    } else if (options.isMergeableObject(e)) {
+      destination[i] = (0,deepmerge__WEBPACK_IMPORTED_MODULE_2__.default)(target[i], e, options);
+    } else if (target.indexOf(e) === -1) {
+      destination.push(e);
+    }
+  });
+  return destination;
+}
+/** Return multi select values based on an array of options */
+
+
+function getSelectedValues(options) {
+  return Array.from(options).filter(function (el) {
+    return el.selected;
+  }).map(function (el) {
+    return el.value;
+  });
+}
+/** Return the next value for a checkbox */
+
+
+function getValueForCheckbox(currentValue, checked, valueProp) {
+  // If the current value was a boolean, return a boolean
+  if (typeof currentValue === 'boolean') {
+    return Boolean(checked);
+  } // If the currentValue was not a boolean we want to return an array
+
+
+  var currentArrayOfValues = [];
+  var isValueInArray = false;
+  var index = -1;
+
+  if (!Array.isArray(currentValue)) {
+    // eslint-disable-next-line eqeqeq
+    if (!valueProp || valueProp == 'true' || valueProp == 'false') {
+      return Boolean(checked);
+    }
+  } else {
+    // If the current value is already an array, use it
+    currentArrayOfValues = currentValue;
+    index = currentValue.indexOf(valueProp);
+    isValueInArray = index >= 0;
+  } // If the checkbox was checked and the value is not already present in the aray we want to add the new value to the array of values
+
+
+  if (checked && valueProp && !isValueInArray) {
+    return currentArrayOfValues.concat(valueProp);
+  } // If the checkbox was unchecked and the value is not in the array, simply return the already existing array of values
+
+
+  if (!isValueInArray) {
+    return currentArrayOfValues;
+  } // If the checkbox was unchecked and the value is in the array, remove the value and return the array
+
+
+  return currentArrayOfValues.slice(0, index).concat(currentArrayOfValues.slice(index + 1));
+} // React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser.
+// @see https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+
+
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_0__.useEffect;
+
+function useEventCallback(fn) {
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(fn); // we copy a ref to the callback scoped to the current state/props on each render
+
+  useIsomorphicLayoutEffect(function () {
+    ref.current = fn;
+  });
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return ref.current.apply(void 0, args);
+  }, []);
+}
+
+function useField(propsOrFieldName) {
+  var formik = useFormikContext();
+  var getFieldProps = formik.getFieldProps,
+      getFieldMeta = formik.getFieldMeta,
+      getFieldHelpers = formik.getFieldHelpers,
+      registerField = formik.registerField,
+      unregisterField = formik.unregisterField;
+  var isAnObject = isObject(propsOrFieldName); // Normalize propsOrFieldName to FieldHookConfig<Val>
+
+  var props = isAnObject ? propsOrFieldName : {
+    name: propsOrFieldName
+  };
+  var fieldName = props.name,
+      validateFn = props.validate;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (fieldName) {
+      registerField(fieldName, {
+        validate: validateFn
+      });
+    }
+
+    return function () {
+      if (fieldName) {
+        unregisterField(fieldName);
+      }
+    };
+  }, [registerField, unregisterField, fieldName, validateFn]);
+
+  if (true) {
+    !formik ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'useField() / <Field /> must be used underneath a <Formik> component or withFormik() higher order component') : 0 : void 0;
+  }
+
+  !fieldName ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'Invalid field name. Either pass `useField` a string or an object containing a `name` key.') : 0 : void 0;
+  return [getFieldProps(props), getFieldMeta(fieldName), getFieldHelpers(fieldName)];
+}
+function Field(_ref) {
+  var validate = _ref.validate,
+      name = _ref.name,
+      render = _ref.render,
+      children = _ref.children,
+      is = _ref.as,
+      component = _ref.component,
+      props = _objectWithoutPropertiesLoose(_ref, ["validate", "name", "render", "children", "as", "component"]);
+
+  var _useFormikContext = useFormikContext(),
+      formik = _objectWithoutPropertiesLoose(_useFormikContext, ["validate", "validationSchema"]);
+
+  if (true) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      !!render ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, "<Field render> has been deprecated and will be removed in future versions of Formik. Please use a child callback function instead. To get rid of this warning, replace <Field name=\"" + name + "\" render={({field, form}) => ...} /> with <Field name=\"" + name + "\">{({field, form, meta}) => ...}</Field>") : 0 : void 0;
+      !!(is && children && isFunction(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <Field as> and <Field children> as a function in the same <Field> component; <Field as> will be ignored.') : 0 : void 0;
+      !!(component && children && isFunction(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <Field component> and <Field children> as a function in the same <Field> component; <Field component> will be ignored.') : 0 : void 0;
+      !!(render && children && !isEmptyChildren(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <Field render> and <Field children> in the same <Field> component; <Field children> will be ignored') : 0 : void 0; // eslint-disable-next-line
+    }, []);
+  } // Register field and field-level validation with parent <Formik>
+
+
+  var registerField = formik.registerField,
+      unregisterField = formik.unregisterField;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    registerField(name, {
+      validate: validate
+    });
+    return function () {
+      unregisterField(name);
+    };
+  }, [registerField, unregisterField, name, validate]);
+  var field = formik.getFieldProps(_extends({
+    name: name
+  }, props));
+  var meta = formik.getFieldMeta(name);
+  var legacyBag = {
+    field: field,
+    form: formik
+  };
+
+  if (render) {
+    return render(_extends({}, legacyBag, {
+      meta: meta
+    }));
+  }
+
+  if (isFunction(children)) {
+    return children(_extends({}, legacyBag, {
+      meta: meta
+    }));
+  }
+
+  if (component) {
+    // This behavior is backwards compat with earlier Formik 0.9 to 1.x
+    if (typeof component === 'string') {
+      var innerRef = props.innerRef,
+          rest = _objectWithoutPropertiesLoose(props, ["innerRef"]);
+
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, _extends({
+        ref: innerRef
+      }, field, rest), children);
+    } // We don't pass `meta` for backwards compat
+
+
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, _extends({
+      field: field,
+      form: formik
+    }, props), children);
+  } // default to input here so we can check for both `as` and `children` above
+
+
+  var asElement = is || 'input';
+
+  if (typeof asElement === 'string') {
+    var _innerRef = props.innerRef,
+        _rest = _objectWithoutPropertiesLoose(props, ["innerRef"]);
+
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(asElement, _extends({
+      ref: _innerRef
+    }, field, _rest), children);
+  }
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(asElement, _extends({}, field, props), children);
+}
+
+var Form = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (props, ref) {
+  // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
+  // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
+  var action = props.action,
+      rest = _objectWithoutPropertiesLoose(props, ["action"]);
+
+  var _action = action || '#';
+
+  var _useFormikContext = useFormikContext(),
+      handleReset = _useFormikContext.handleReset,
+      handleSubmit = _useFormikContext.handleSubmit;
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", Object.assign({
+    onSubmit: handleSubmit,
+    ref: ref,
+    onReset: handleReset,
+    action: _action
+  }, rest));
+});
+Form.displayName = 'Form';
+
+/**
+ * A public higher-order component to access the imperative API
+ */
+
+function withFormik(_ref) {
+  var _ref$mapPropsToValues = _ref.mapPropsToValues,
+      mapPropsToValues = _ref$mapPropsToValues === void 0 ? function (vanillaProps) {
+    var val = {};
+
+    for (var k in vanillaProps) {
+      if (vanillaProps.hasOwnProperty(k) && typeof vanillaProps[k] !== 'function') {
+        // @todo TypeScript fix
+        val[k] = vanillaProps[k];
+      }
+    }
+
+    return val;
+  } : _ref$mapPropsToValues,
+      config = _objectWithoutPropertiesLoose(_ref, ["mapPropsToValues"]);
+
+  return function createFormik(Component$1) {
+    var componentDisplayName = Component$1.displayName || Component$1.name || Component$1.constructor && Component$1.constructor.name || 'Component';
+    /**
+     * We need to use closures here for to provide the wrapped component's props to
+     * the respective withFormik config methods.
+     */
+
+    var C = /*#__PURE__*/function (_React$Component) {
+      _inheritsLoose(C, _React$Component);
+
+      function C() {
+        var _this;
+
+        _this = _React$Component.apply(this, arguments) || this;
+
+        _this.validate = function (values) {
+          return config.validate(values, _this.props);
+        };
+
+        _this.validationSchema = function () {
+          return isFunction(config.validationSchema) ? config.validationSchema(_this.props) : config.validationSchema;
+        };
+
+        _this.handleSubmit = function (values, actions) {
+          return config.handleSubmit(values, _extends({}, actions, {
+            props: _this.props
+          }));
+        };
+        /**
+         * Just avoiding a render callback for perf here
+         */
+
+
+        _this.renderFormComponent = function (formikProps) {
+          return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Component$1, Object.assign({}, _this.props, formikProps));
+        };
+
+        return _this;
+      }
+
+      var _proto = C.prototype;
+
+      _proto.render = function render() {
+        var _this$props = this.props,
+            props = _objectWithoutPropertiesLoose(_this$props, ["children"]);
+
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Formik, Object.assign({}, props, config, {
+          validate: config.validate && this.validate,
+          validationSchema: config.validationSchema && this.validationSchema,
+          initialValues: mapPropsToValues(this.props),
+          initialStatus: config.mapPropsToStatus && config.mapPropsToStatus(this.props),
+          initialErrors: config.mapPropsToErrors && config.mapPropsToErrors(this.props),
+          initialTouched: config.mapPropsToTouched && config.mapPropsToTouched(this.props),
+          onSubmit: this.handleSubmit,
+          children: this.renderFormComponent
+        }));
+      };
+
+      return C;
+    }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+    C.displayName = "WithFormik(" + componentDisplayName + ")";
+    return hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default()(C, Component$1 // cast type to ComponentClass (even if SFC)
+    );
+  };
+}
+
+/**
+ * Connect any component to Formik context, and inject as a prop called `formik`;
+ * @param Comp React Component
+ */
+
+function connect(Comp) {
+  var C = function C(props) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FormikConsumer, null, function (formik) {
+      !!!formik ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, "Formik context is undefined, please verify you are rendering <Form>, <Field>, <FastField>, <FieldArray>, or your custom context-using component as a child of a <Formik> component. Component name: " + Comp.name) : 0 : void 0;
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Comp, Object.assign({}, props, {
+        formik: formik
+      }));
+    });
+  };
+
+  var componentDisplayName = Comp.displayName || Comp.name || Comp.constructor && Comp.constructor.name || 'Component'; // Assign Comp to C.WrappedComponent so we can access the inner component in tests
+  // For example, <Field.WrappedComponent /> gets us <FieldInner/>
+
+  C.WrappedComponent = Comp;
+  C.displayName = "FormikConnect(" + componentDisplayName + ")";
+  return hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default()(C, Comp // cast type to ComponentClass (even if SFC)
+  );
+}
+
+/**
+ * Some array helpers!
+ */
+
+var move = function move(array, from, to) {
+  var copy = copyArrayLike(array);
+  var value = copy[from];
+  copy.splice(from, 1);
+  copy.splice(to, 0, value);
+  return copy;
+};
+var swap = function swap(arrayLike, indexA, indexB) {
+  var copy = copyArrayLike(arrayLike);
+  var a = copy[indexA];
+  copy[indexA] = copy[indexB];
+  copy[indexB] = a;
+  return copy;
+};
+var insert = function insert(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy.splice(index, 0, value);
+  return copy;
+};
+var replace = function replace(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy[index] = value;
+  return copy;
+};
+
+var copyArrayLike = function copyArrayLike(arrayLike) {
+  if (!arrayLike) {
+    return [];
+  } else if (Array.isArray(arrayLike)) {
+    return [].concat(arrayLike);
+  } else {
+    var maxIndex = Object.keys(arrayLike).map(function (key) {
+      return parseInt(key);
+    }).reduce(function (max, el) {
+      return el > max ? el : max;
+    }, 0);
+    return Array.from(_extends({}, arrayLike, {
+      length: maxIndex + 1
+    }));
+  }
+};
+
+var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(FieldArrayInner, _React$Component);
+
+  function FieldArrayInner(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+
+    _this.updateArrayField = function (fn, alterTouched, alterErrors) {
+      var _this$props = _this.props,
+          name = _this$props.name,
+          setFormikState = _this$props.formik.setFormikState;
+      setFormikState(function (prevState) {
+        var updateErrors = typeof alterErrors === 'function' ? alterErrors : fn;
+        var updateTouched = typeof alterTouched === 'function' ? alterTouched : fn; // values fn should be executed before updateErrors and updateTouched,
+        // otherwise it causes an error with unshift.
+
+        var values = setIn(prevState.values, name, fn(getIn(prevState.values, name)));
+        var fieldError = alterErrors ? updateErrors(getIn(prevState.errors, name)) : undefined;
+        var fieldTouched = alterTouched ? updateTouched(getIn(prevState.touched, name)) : undefined;
+
+        if (isEmptyArray(fieldError)) {
+          fieldError = undefined;
+        }
+
+        if (isEmptyArray(fieldTouched)) {
+          fieldTouched = undefined;
+        }
+
+        return _extends({}, prevState, {
+          values: values,
+          errors: alterErrors ? setIn(prevState.errors, name, fieldError) : prevState.errors,
+          touched: alterTouched ? setIn(prevState.touched, name, fieldTouched) : prevState.touched
+        });
+      });
+    };
+
+    _this.push = function (value) {
+      return _this.updateArrayField(function (arrayLike) {
+        return [].concat(copyArrayLike(arrayLike), [(0,lodash_es_cloneDeep__WEBPACK_IMPORTED_MODULE_8__.default)(value)]);
+      }, false, false);
+    };
+
+    _this.handlePush = function (value) {
+      return function () {
+        return _this.push(value);
+      };
+    };
+
+    _this.swap = function (indexA, indexB) {
+      return _this.updateArrayField(function (array) {
+        return swap(array, indexA, indexB);
+      }, true, true);
+    };
+
+    _this.handleSwap = function (indexA, indexB) {
+      return function () {
+        return _this.swap(indexA, indexB);
+      };
+    };
+
+    _this.move = function (from, to) {
+      return _this.updateArrayField(function (array) {
+        return move(array, from, to);
+      }, true, true);
+    };
+
+    _this.handleMove = function (from, to) {
+      return function () {
+        return _this.move(from, to);
+      };
+    };
+
+    _this.insert = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return insert(array, index, value);
+      }, function (array) {
+        return insert(array, index, null);
+      }, function (array) {
+        return insert(array, index, null);
+      });
+    };
+
+    _this.handleInsert = function (index, value) {
+      return function () {
+        return _this.insert(index, value);
+      };
+    };
+
+    _this.replace = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return replace(array, index, value);
+      }, false, false);
+    };
+
+    _this.handleReplace = function (index, value) {
+      return function () {
+        return _this.replace(index, value);
+      };
+    };
+
+    _this.unshift = function (value) {
+      var length = -1;
+
+      _this.updateArrayField(function (array) {
+        var arr = array ? [value].concat(array) : [value];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      });
+
+      return length;
+    };
+
+    _this.handleUnshift = function (value) {
+      return function () {
+        return _this.unshift(value);
+      };
+    };
+
+    _this.handleRemove = function (index) {
+      return function () {
+        return _this.remove(index);
+      };
+    };
+
+    _this.handlePop = function () {
+      return function () {
+        return _this.pop();
+      };
+    }; // We need TypeScript generics on these, so we'll bind them in the constructor
+    // @todo Fix TS 3.2.1
+
+
+    _this.remove = _this.remove.bind(_assertThisInitialized(_this));
+    _this.pop = _this.pop.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  var _proto = FieldArrayInner.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.validateOnChange && this.props.formik.validateOnChange && !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(getIn(prevProps.formik.values, prevProps.name), getIn(this.props.formik.values, this.props.name))) {
+      this.props.formik.validateForm(this.props.formik.values);
+    }
+  };
+
+  _proto.remove = function remove(index) {
+    // We need to make sure we also remove relevant pieces of `touched` and `errors`
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var copy = array ? copyArrayLike(array) : [];
+
+      if (!result) {
+        result = copy[index];
+      }
+
+      if (isFunction(copy.splice)) {
+        copy.splice(index, 1);
+      }
+
+      return copy;
+    }, true, true);
+    return result;
+  };
+
+  _proto.pop = function pop() {
+    // Remove relevant pieces of `touched` and `errors` too!
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var tmp = array;
+
+      if (!result) {
+        result = tmp && tmp.pop && tmp.pop();
+      }
+
+      return tmp;
+    }, true, true);
+    return result;
+  };
+
+  _proto.render = function render() {
+    var arrayHelpers = {
+      push: this.push,
+      pop: this.pop,
+      swap: this.swap,
+      move: this.move,
+      insert: this.insert,
+      replace: this.replace,
+      unshift: this.unshift,
+      remove: this.remove,
+      handlePush: this.handlePush,
+      handlePop: this.handlePop,
+      handleSwap: this.handleSwap,
+      handleMove: this.handleMove,
+      handleInsert: this.handleInsert,
+      handleReplace: this.handleReplace,
+      handleUnshift: this.handleUnshift,
+      handleRemove: this.handleRemove
+    };
+
+    var _this$props2 = this.props,
+        component = _this$props2.component,
+        render = _this$props2.render,
+        children = _this$props2.children,
+        name = _this$props2.name,
+        _this$props2$formik = _this$props2.formik,
+        restOfFormik = _objectWithoutPropertiesLoose(_this$props2$formik, ["validate", "validationSchema"]);
+
+    var props = _extends({}, arrayHelpers, {
+      form: restOfFormik,
+      name: name
+    });
+
+    return component ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, props) : render ? render(props) : children // children come last, always called
+    ? typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? react__WEBPACK_IMPORTED_MODULE_0__.Children.only(children) : null : null;
+  };
+
+  return FieldArrayInner;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+FieldArrayInner.defaultProps = {
+  validateOnChange: true
+};
+var FieldArray = /*#__PURE__*/connect(FieldArrayInner);
+
+var ErrorMessageImpl = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(ErrorMessageImpl, _React$Component);
+
+  function ErrorMessageImpl() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = ErrorMessageImpl.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(props) {
+    if (getIn(this.props.formik.errors, this.props.name) !== getIn(props.formik.errors, this.props.name) || getIn(this.props.formik.touched, this.props.name) !== getIn(props.formik.touched, this.props.name) || Object.keys(this.props).length !== Object.keys(props).length) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        component = _this$props.component,
+        formik = _this$props.formik,
+        render = _this$props.render,
+        children = _this$props.children,
+        name = _this$props.name,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["component", "formik", "render", "children", "name"]);
+
+    var touch = getIn(formik.touched, name);
+    var error = getIn(formik.errors, name);
+    return !!touch && !!error ? render ? isFunction(render) ? render(error) : null : children ? isFunction(children) ? children(error) : null : component ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, rest, error) : error : null;
+  };
+
+  return ErrorMessageImpl;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var ErrorMessage = /*#__PURE__*/connect(ErrorMessageImpl);
+
+/**
+ * Custom Field component for quickly hooking into Formik
+ * context and wiring up forms.
+ */
+
+var FastFieldInner = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(FastFieldInner, _React$Component);
+
+  function FastFieldInner(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+    var render = props.render,
+        children = props.children,
+        component = props.component,
+        is = props.as,
+        name = props.name;
+    !!render ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, "<FastField render> has been deprecated. Please use a child callback function instead: <FastField name={" + name + "}>{props => ...}</FastField> instead.") : 0 : void 0;
+    !!(component && render) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <FastField component> and <FastField render> in the same <FastField> component; <FastField component> will be ignored') : 0 : void 0;
+    !!(is && children && isFunction(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <FastField as> and <FastField children> as a function in the same <FastField> component; <FastField as> will be ignored.') : 0 : void 0;
+    !!(component && children && isFunction(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <FastField component> and <FastField children> as a function in the same <FastField> component; <FastField component> will be ignored.') : 0 : void 0;
+    !!(render && children && !isEmptyChildren(children)) ?  true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_6__.default)(false, 'You should not use <FastField render> and <FastField children> in the same <FastField> component; <FastField children> will be ignored') : 0 : void 0;
+    return _this;
+  }
+
+  var _proto = FastFieldInner.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(props) {
+    if (this.props.shouldUpdate) {
+      return this.props.shouldUpdate(props, this.props);
+    } else if (props.name !== this.props.name || getIn(props.formik.values, this.props.name) !== getIn(this.props.formik.values, this.props.name) || getIn(props.formik.errors, this.props.name) !== getIn(this.props.formik.errors, this.props.name) || getIn(props.formik.touched, this.props.name) !== getIn(this.props.formik.touched, this.props.name) || Object.keys(this.props).length !== Object.keys(props).length || props.formik.isSubmitting !== this.props.formik.isSubmitting) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    // Register the Field with the parent Formik. Parent will cycle through
+    // registered Field's validate fns right prior to submit
+    this.props.formik.registerField(this.props.name, {
+      validate: this.props.validate
+    });
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.name !== prevProps.name) {
+      this.props.formik.unregisterField(prevProps.name);
+      this.props.formik.registerField(this.props.name, {
+        validate: this.props.validate
+      });
+    }
+
+    if (this.props.validate !== prevProps.validate) {
+      this.props.formik.registerField(this.props.name, {
+        validate: this.props.validate
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.props.formik.unregisterField(this.props.name);
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        name = _this$props.name,
+        render = _this$props.render,
+        is = _this$props.as,
+        children = _this$props.children,
+        component = _this$props.component,
+        formik = _this$props.formik,
+        props = _objectWithoutPropertiesLoose(_this$props, ["validate", "name", "render", "as", "children", "component", "shouldUpdate", "formik"]);
+
+    var restOfFormik = _objectWithoutPropertiesLoose(formik, ["validate", "validationSchema"]);
+
+    var field = formik.getFieldProps(_extends({
+      name: name
+    }, props));
+    var meta = {
+      value: getIn(formik.values, name),
+      error: getIn(formik.errors, name),
+      touched: !!getIn(formik.touched, name),
+      initialValue: getIn(formik.initialValues, name),
+      initialTouched: !!getIn(formik.initialTouched, name),
+      initialError: getIn(formik.initialErrors, name)
+    };
+    var bag = {
+      field: field,
+      meta: meta,
+      form: restOfFormik
+    };
+
+    if (render) {
+      return render(bag);
+    }
+
+    if (isFunction(children)) {
+      return children(bag);
+    }
+
+    if (component) {
+      // This behavior is backwards compat with earlier Formik 0.9 to 1.x
+      if (typeof component === 'string') {
+        var innerRef = props.innerRef,
+            rest = _objectWithoutPropertiesLoose(props, ["innerRef"]);
+
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, _extends({
+          ref: innerRef
+        }, field, rest), children);
+      } // We don't pass `meta` for backwards compat
+
+
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(component, _extends({
+        field: field,
+        form: formik
+      }, props), children);
+    } // default to input here so we can check for both `as` and `children` above
+
+
+    var asElement = is || 'input';
+
+    if (typeof asElement === 'string') {
+      var _innerRef = props.innerRef,
+          _rest = _objectWithoutPropertiesLoose(props, ["innerRef"]);
+
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(asElement, _extends({
+        ref: _innerRef
+      }, field, _rest), children);
+    }
+
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(asElement, _extends({}, field, props), children);
+  };
+
+  return FastFieldInner;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var FastField = /*#__PURE__*/connect(FastFieldInner);
+
+
+//# sourceMappingURL=formik.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -12620,8 +14664,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth/ProtectedRoute */ "./resources/js/components/auth/ProtectedRoute.js");
 /* harmony import */ var _components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/client/ClientProtectedRoute */ "./resources/js/components/client/ClientProtectedRoute.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer.js");
@@ -12637,28 +14681,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/auth/OrderView */ "./resources/js/pages/auth/OrderView.js");
 /* harmony import */ var _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/auth/OrderControl */ "./resources/js/pages/auth/OrderControl.js");
 /* harmony import */ var _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/auth/Conversations */ "./resources/js/pages/auth/Conversations.js");
-/* harmony import */ var _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/auth/DirectContacts */ "./resources/js/pages/auth/DirectContacts.js");
-/* harmony import */ var _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/auth/Profile */ "./resources/js/pages/auth/Profile.js");
-/* harmony import */ var _pages_client_Payment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/client/Payment */ "./resources/js/pages/client/Payment.js");
-/* harmony import */ var _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/client/PaymentSuccess */ "./resources/js/pages/client/PaymentSuccess.js");
-/* harmony import */ var _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/client/PaymentFailed */ "./resources/js/pages/client/PaymentFailed.js");
-/* harmony import */ var _pages_client_Orders__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/client/Orders */ "./resources/js/pages/client/Orders.js");
-/* harmony import */ var _pages_client_Messages__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/client/Messages */ "./resources/js/pages/client/Messages.js");
-/* harmony import */ var _pages_client_Profile__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/client/Profile */ "./resources/js/pages/client/Profile.js");
-/* harmony import */ var _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/client/PlaceNewOrder */ "./resources/js/pages/client/PlaceNewOrder.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
-/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
-/* harmony import */ var _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/client/OrderShow */ "./resources/js/pages/client/OrderShow.js");
-/* harmony import */ var _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/auth/Messages */ "./resources/js/pages/auth/Messages.js");
-/* harmony import */ var _components_Overlay__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/Overlay */ "./resources/js/components/Overlay.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/auth/Writers */ "./resources/js/pages/auth/Writers.js");
+/* harmony import */ var _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/auth/DirectContacts */ "./resources/js/pages/auth/DirectContacts.js");
+/* harmony import */ var _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/auth/Profile */ "./resources/js/pages/auth/Profile.js");
+/* harmony import */ var _pages_client_Payment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/client/Payment */ "./resources/js/pages/client/Payment.js");
+/* harmony import */ var _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/client/PaymentSuccess */ "./resources/js/pages/client/PaymentSuccess.js");
+/* harmony import */ var _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/client/PaymentFailed */ "./resources/js/pages/client/PaymentFailed.js");
+/* harmony import */ var _pages_client_Orders__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/client/Orders */ "./resources/js/pages/client/Orders.js");
+/* harmony import */ var _pages_client_Messages__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/client/Messages */ "./resources/js/pages/client/Messages.js");
+/* harmony import */ var _pages_client_Profile__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/client/Profile */ "./resources/js/pages/client/Profile.js");
+/* harmony import */ var _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/client/PlaceNewOrder */ "./resources/js/pages/client/PlaceNewOrder.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_29__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
+/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
+/* harmony import */ var _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/client/OrderShow */ "./resources/js/pages/client/OrderShow.js");
+/* harmony import */ var _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/auth/Messages */ "./resources/js/pages/auth/Messages.js");
+/* harmony import */ var _components_Overlay__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/Overlay */ "./resources/js/components/Overlay.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -12699,7 +14745,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_29___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_28___default()));
+var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_29___default()));
 var Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -12715,14 +14761,14 @@ window.Toast = Toast;
 window.Swal = Swal;
 
 function App() {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_25__.useDispatch)();
-  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_25__.useSelector)(function (state) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useDispatch)();
+  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
     return state.authUser;
   });
-  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_25__.useSelector)(function (state) {
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
     return state.authClient;
   });
-  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_25__.useSelector)(function (state) {
+  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
     return state.adminPanel;
   });
   var inAdminPanel = userInAdmin.inAdminPanel;
@@ -12731,132 +14777,136 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // check if location is not /client
     if (!auth && location.pathname === "/in") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_26__.refreshUser)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshUser)());
     } // check if location is /client
 
 
     if (!clientAuth && location.pathname === "/client") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_26__.refreshClient)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshClient)());
     }
 
     setInterval(function () {
-      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_26__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_26__.refreshClient)(1));
+      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshClient)(1));
     }, 840000);
   }, [location.pathname]);
 
   var BlankPage = function BlankPage() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)("div", {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)("div", {});
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_34__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_30__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_36__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_35__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_31__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
         inAdminPanel: inAdminPanel
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/in/register",
           exact: true,
-          component: _pages_auth_Register__WEBPACK_IMPORTED_MODULE_27__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Register__WEBPACK_IMPORTED_MODULE_28__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/orders/:category",
           exact: true,
           component: _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_12__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/order-view/:id/:topicSlug",
           exact: true,
           component: _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_13__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/conversation/:id/:clientName",
           exact: true,
-          component: _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_33__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_34__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/control/order-input",
           exact: true,
           component: _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_14__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/conversations",
           exact: true,
           component: _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_15__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          path: "/in/dashboard/writers",
+          exact: true,
+          component: _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_16__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/direct-contacts",
           exact: true,
-          component: _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_16__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_17__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/payments",
           exact: true,
           component: _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_11__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard/profile",
           exact: true,
-          component: _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_17__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_18__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
           path: "/in/dashboard",
           exact: true,
           component: _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_9__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard",
           exact: true,
           component: _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_10__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/place-order",
           exact: true,
-          component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_24__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_25__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/paypal/:payment/:orderid",
           exact: true,
           component: BlankPage
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/paypal/:paymentredirect",
           exact: true,
           component: BlankPage
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/orders/:category",
           exact: true,
-          component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_21__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_22__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/order-view/:id/:topicSlug",
           exact: true,
-          component: _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_32__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_33__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/messages",
           exact: true,
-          component: _pages_client_Messages__WEBPACK_IMPORTED_MODULE_22__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Messages__WEBPACK_IMPORTED_MODULE_23__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/payments",
           exact: true,
-          component: _pages_client_Payment__WEBPACK_IMPORTED_MODULE_18__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Payment__WEBPACK_IMPORTED_MODULE_19__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/payment-successful",
           exact: true,
-          component: _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_19__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_20__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/payment-failed",
           exact: true,
-          component: _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_20__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_21__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
           path: "/client/dashboard/profile",
           exact: true,
-          component: _pages_client_Profile__WEBPACK_IMPORTED_MODULE_23__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+          component: _pages_client_Profile__WEBPACK_IMPORTED_MODULE_24__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/in",
           exact: true,
           component: _pages_auth_Login__WEBPACK_IMPORTED_MODULE_7__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/client",
           exact: true,
           component: _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_8__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/social/authorize/:provider",
           exact: true,
-          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_31__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_32__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/",
           exact: true,
           component: _pages_Home__WEBPACK_IMPORTED_MODULE_5__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           component: _pages_NotFound__WEBPACK_IMPORTED_MODULE_6__.default
         })]
-      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -15598,45 +17648,55 @@ var SideBarLink = function SideBarLink(_ref) {
           d: "M2.09375 4.09375C1.839844 4.09375 1.566406 4.179688 1.375 4.375C0.988281 4.761719 0.988281 5.394531 1.375 5.78125L8.21875 12.625C8.414063 12.820313 8.652344 12.90625 8.90625 12.90625C9.160156 12.90625 9.433594 12.816406 9.625 12.625C10.011719 12.238281 10.011719 11.605469 9.625 11.21875L2.78125 4.375C2.585938 4.179688 2.347656 4.09375 2.09375 4.09375 Z M 23.90625 4.09375C23.652344 4.09375 23.414063 4.179688 23.21875 4.375L16.375 11.21875C15.988281 11.605469 15.988281 12.238281 16.375 12.625C16.566406 12.816406 16.839844 12.90625 17.09375 12.90625C17.347656 12.90625 17.585938 12.820313 17.78125 12.625L24.625 5.78125C25.011719 5.394531 25.011719 4.761719 24.625 4.375C24.433594 4.179688 24.160156 4.09375 23.90625 4.09375 Z M 1 11C0.449219 11 0 11.449219 0 12L0 15C0 15.550781 0.449219 16 1 16L2 16L2 17C2 17.089844 4 25 4 25C4.296875 25.53125 4.546875 26 5 26L21 26C21.550781 26 21.765625 25.5625 22 25C22 25 24 17.089844 24 17L24 16L25 16C25.550781 16 26 15.550781 26 15L26 12C26 11.449219 25.550781 11 25 11L20.90625 11L18.34375 13.5625C17.953125 13.953125 17.425781 14.1875 16.875 14.1875C16.324219 14.1875 15.828125 13.953125 15.4375 13.5625C14.738281 12.867188 14.636719 11.796875 15.15625 11L10.84375 11C11.363281 11.796875 11.261719 12.867188 10.5625 13.5625C10.171875 13.953125 9.675781 14.1875 9.125 14.1875C8.574219 14.1875 8.046875 13.953125 7.65625 13.5625L5.09375 11 Z M 9 16C9.550781 16 10 16.449219 10 17L10 23C10 23.550781 9.550781 24 9 24C8.449219 24 8 23.550781 8 23L8 17C8 16.449219 8.449219 16 9 16 Z M 13 16C13.550781 16 14 16.449219 14 17L14 23C14 23.550781 13.550781 24 13 24C12.449219 24 12 23.550781 12 23L12 17C12 16.449219 12.449219 16 13 16 Z M 17 16C17.550781 16 18 16.449219 18 17L18 23C18 23.550781 17.550781 24 17 24C16.449219 24 16 23.550781 16 23L16 17C16 16.449219 16.449219 16 17 16Z",
           fill: sidebarPosition == 1 ? linkActiveIconColor : linkIconColor
         })
-      }), sidelink.name == "Messages" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+      }), sidelink.name == "Writers" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
         className: "sidebarlabel-icon",
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
-        viewBox: "0 0 26 26",
+        viewBox: "0 0 50 50",
         fill: sidebarPosition == 2 ? linkActiveIconColor : linkIconColor,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-          d: "M23 4L3 4C1.300781 4 0 5.300781 0 7L0 19C0 20.699219 1.300781 22 3 22L23 22C24.699219 22 26 20.699219 26 19L26 7C26 5.300781 24.699219 4 23 4 Z M 23.800781 19.398438L16 13.800781L13 15.800781L9.898438 13.800781L2.199219 19.398438L8.5 12.898438L0.800781 6.898438L13 13.5L25.101563 7L17.5 13Z",
+          d: "M27.4375 2C23.9375 2 21.183594 3.304688 19.65625 5.65625C18.390625 7.605469 18.132813 10.097656 18.96875 12.4375C18.675781 12.882813 18.5 13.507813 18.59375 14.28125C18.785156 15.894531 19.417969 16.605469 19.96875 16.9375C20.273438 18.191406 21.058594 19.535156 21.78125 20.25C21.777344 21.050781 21.75 21.679688 21.53125 22.53125C21.171875 23.503906 19.636719 24.105469 18.03125 24.75L17.375 25L12 25C11.96875 25 11.9375 25 11.90625 25C11.605469 25.03125 11.332031 25.199219 11.167969 25.453125C11.003906 25.710938 10.964844 26.023438 11.0625 26.3125C11.0625 26.3125 11.792969 28.59375 11.96875 31L8 31C7.449219 31 7 31.445313 7 32L7 34L6 34L6 33C6.007813 32.691406 5.871094 32.398438 5.632813 32.203125C5.398438 32.007813 5.082031 31.933594 4.78125 32C4.316406 32.105469 3.988281 32.523438 4 33L4 34.6875C3.941406 34.882813 3.941406 35.085938 4 35.28125L4 37C3.996094 37.359375 4.183594 37.695313 4.496094 37.878906C4.808594 38.058594 5.191406 38.058594 5.503906 37.878906C5.816406 37.695313 6.003906 37.359375 6 37L6 36L7 36L7 38C7 38.554688 7.449219 39 8 39L44 39C44.554688 39 45 38.554688 45 38L45 32C45 31.445313 44.554688 31 44 31L40.03125 31C40.207031 28.5625 40.9375 26.3125 40.9375 26.3125C41.035156 26.011719 40.988281 25.679688 40.800781 25.417969C40.617188 25.160156 40.320313 25.003906 40 25L34.625 25L34 24.75C32.398438 24.105469 30.875 23.496094 30.53125 22.5625C30.25 21.6875 30.21875 21.046875 30.21875 20.25C30.941406 19.535156 31.726563 18.191406 32.03125 16.9375C32.582031 16.609375 33.214844 15.894531 33.40625 14.28125C33.488281 13.578125 33.375 12.914063 33.09375 12.4375C33.703125 10.886719 33.691406 8.328125 32.71875 6.34375C31.902344 4.679688 30.539063 3.695313 28.8125 3.5L28.34375 2.5625C28.171875 2.222656 27.816406 2 27.4375 2 Z M 13.28125 27L38.6875 27C38.425781 27.96875 38.125 29.332031 38.03125 31L13.96875 31C13.867188 29.347656 13.539063 27.96875 13.28125 27 Z M 9 41L9 47C9 47.554688 9.449219 48 10 48L42 48C42.554688 48 43 47.554688 43 47L43 41Z",
           fill: sidebarPosition == 2 ? linkActiveIconColor : linkIconColor
         })
-      }), sidelink.name == "Payment" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+      }), sidelink.name == "Messages" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
         className: "sidebarlabel-icon",
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         viewBox: "0 0 26 26",
         fill: sidebarPosition == 3 ? linkActiveIconColor : linkIconColor,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-          d: "M23 6C23 6 5.640625 6 2.648438 6C1.769531 6 0.988281 5.824219 0.988281 5L23 4L23 2C23 0.34375 21.65625 0 20 0L2.019531 3C0.417969 3.355469 0 4.035156 0 5L0 23C0 24.65625 1.34375 26 3 26L23 26C24.65625 26 26 24.65625 26 23L26 9C26 7.34375 24.65625 6 23 6 Z M 22 18C20.894531 18 20 17.105469 20 16C20 14.894531 20.894531 14 22 14C23.105469 14 24 14.894531 24 16C24 17.105469 23.105469 18 22 18Z",
+          d: "M23 4L3 4C1.300781 4 0 5.300781 0 7L0 19C0 20.699219 1.300781 22 3 22L23 22C24.699219 22 26 20.699219 26 19L26 7C26 5.300781 24.699219 4 23 4 Z M 23.800781 19.398438L16 13.800781L13 15.800781L9.898438 13.800781L2.199219 19.398438L8.5 12.898438L0.800781 6.898438L13 13.5L25.101563 7L17.5 13Z",
           fill: sidebarPosition == 3 ? linkActiveIconColor : linkIconColor
         })
-      }), sidelink.name == "My Profile" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+      }), sidelink.name == "Payment" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
         className: "sidebarlabel-icon",
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         viewBox: "0 0 26 26",
         fill: sidebarPosition == 4 ? linkActiveIconColor : linkIconColor,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-          d: "M16.5625 15.898438C16.402344 15.847656 15.398438 15.394531 16.027344 13.484375L16.019531 13.484375C17.65625 11.800781 18.90625 9.085938 18.90625 6.414063C18.90625 2.308594 16.175781 0.15625 13 0.15625C9.824219 0.15625 7.109375 2.308594 7.109375 6.414063C7.109375 9.097656 8.351563 11.820313 10 13.503906C10.640625 15.1875 9.492188 15.8125 9.253906 15.898438C5.929688 17.101563 2.03125 19.292969 2.03125 21.457031C2.03125 22.039063 2.03125 21.6875 2.03125 22.269531C2.03125 25.214844 7.742188 25.886719 13.03125 25.886719C18.328125 25.886719 23.96875 25.214844 23.96875 22.269531C23.96875 21.6875 23.96875 22.039063 23.96875 21.457031C23.96875 19.230469 20.050781 17.054688 16.5625 15.898438Z",
+          d: "M23 6C23 6 5.640625 6 2.648438 6C1.769531 6 0.988281 5.824219 0.988281 5L23 4L23 2C23 0.34375 21.65625 0 20 0L2.019531 3C0.417969 3.355469 0 4.035156 0 5L0 23C0 24.65625 1.34375 26 3 26L23 26C24.65625 26 26 24.65625 26 23L26 9C26 7.34375 24.65625 6 23 6 Z M 22 18C20.894531 18 20 17.105469 20 16C20 14.894531 20.894531 14 22 14C23.105469 14 24 14.894531 24 16C24 17.105469 23.105469 18 22 18Z",
           fill: sidebarPosition == 4 ? linkActiveIconColor : linkIconColor
+        })
+      }), sidelink.name == "My Profile" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+        className: "sidebarlabel-icon",
+        xmlns: "http://www.w3.org/2000/svg",
+        xmlnsXlink: "http://www.w3.org/1999/xlink",
+        viewBox: "0 0 26 26",
+        fill: sidebarPosition == 5 ? linkActiveIconColor : linkIconColor,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+          d: "M16.5625 15.898438C16.402344 15.847656 15.398438 15.394531 16.027344 13.484375L16.019531 13.484375C17.65625 11.800781 18.90625 9.085938 18.90625 6.414063C18.90625 2.308594 16.175781 0.15625 13 0.15625C9.824219 0.15625 7.109375 2.308594 7.109375 6.414063C7.109375 9.097656 8.351563 11.820313 10 13.503906C10.640625 15.1875 9.492188 15.8125 9.253906 15.898438C5.929688 17.101563 2.03125 19.292969 2.03125 21.457031C2.03125 22.039063 2.03125 21.6875 2.03125 22.269531C2.03125 25.214844 7.742188 25.886719 13.03125 25.886719C18.328125 25.886719 23.96875 25.214844 23.96875 22.269531C23.96875 21.6875 23.96875 22.039063 23.96875 21.457031C23.96875 19.230469 20.050781 17.054688 16.5625 15.898438Z",
+          fill: sidebarPosition == 5 ? linkActiveIconColor : linkIconColor
         })
       }), sidelink.name == "Control" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
         className: "sidebarlabel-icon",
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         viewBox: "0 0 32 32",
-        fill: sidebarPosition == 5 ? linkActiveIconColor : linkIconColor,
+        fill: sidebarPosition == 6 ? linkActiveIconColor : linkIconColor,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
           d: "M11 4C9.332031 4 8 5.332031 8 7C8 8.492188 9.082031 9.695313 10.5 9.9375C11.238281 10.144531 12.558594 10.585938 12.84375 11.15625C13.308594 11.992188 13.050781 12.957031 12.6875 13.8125C12.265625 14.445313 12 15.183594 12 16C12 18.199219 13.800781 20 16 20C18.199219 20 20 18.199219 20 16C20 13.949219 18.433594 12.183594 16.4375 12.03125C16.417969 12.023438 16.402344 12.003906 16.375 12C14.476563 11.800781 14.125 11.550781 13.625 10.75C13.292969 10.222656 13.566406 8.988281 13.78125 8.1875C13.824219 8.082031 13.84375 7.953125 13.875 7.84375C13.949219 7.597656 14 7.46875 14 7.46875L13.9375 7.5C13.964844 7.332031 14 7.175781 14 7C14 5.445313 12.667969 4.109375 11 4 Z M 21 4C19.332031 4 18 5.332031 18 7C18 8.667969 19.332031 10 21 10C22.667969 10 24 8.667969 24 7C24 5.445313 22.667969 4.109375 21 4 Z M 6 13C4.332031 13 3 14.332031 3 16C3 17.667969 4.332031 19 6 19C7.667969 19 9 17.667969 9 16C9 14.445313 7.667969 13.109375 6 13 Z M 26 13C24.332031 13 23 14.332031 23 16C23 17.667969 24.332031 19 26 19C27.667969 19 29 17.667969 29 16C29 14.445313 27.667969 13.109375 26 13 Z M 11 22C9.332031 22 8 23.332031 8 25C8 26.667969 9.332031 28 11 28C12.667969 28 14 26.667969 14 25C14 23.445313 12.667969 22.109375 11 22 Z M 21 22C19.332031 22 18 23.332031 18 25C18 26.667969 19.332031 28 21 28C22.667969 28 24 26.667969 24 25C24 23.445313 22.667969 22.109375 21 22Z",
-          fill: sidebarPosition == 5 ? linkActiveIconColor : linkIconColor
+          fill: sidebarPosition == 6 ? linkActiveIconColor : linkIconColor
         })
       }), sidelink.name]
     }), showLinks && linkPos == sidebarPosition && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -16129,6 +18189,12 @@ var AdminLayout = function AdminLayout(props) {
     }, {
       name: "Completed Orders",
       url: "/in/dashboard/orders/completed"
+    }]
+  }, {
+    name: "Writers",
+    links: [{
+      name: "All Writers",
+      url: "/in/dashboard/writers"
     }]
   }, {
     name: "Messages",
@@ -20697,6 +22763,368 @@ var Register = function Register() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Register);
+
+/***/ }),
+
+/***/ "./resources/js/pages/auth/Writers.js":
+/*!********************************************!*\
+  !*** ./resources/js/pages/auth/Writers.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.esm.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/dialog/dialog.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/auth/AdminLayout */ "./resources/js/components/auth/AdminLayout.js");
+/* harmony import */ var Formik__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Formik */ "./node_modules/Formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _components_DotLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/DotLoader */ "./resources/js/components/DotLoader.js");
+/* harmony import */ var _config_FormElements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../config/FormElements */ "./resources/js/config/FormElements.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Writers = function Writers() {
+  var _writers$links, _writers$links3;
+
+  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.authUser;
+  });
+  var loggedInUser = authUser.loggedInUser,
+      auth = authUser.auth;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      writers = _useState4[0],
+      setWriters = _useState4[1];
+
+  var Formik = (0,Formik__WEBPACK_IMPORTED_MODULE_4__.useFormik)({
+    initialValues: {
+      name: '',
+      email: '',
+      phone: '',
+      speciality: ''
+    },
+    validationSchema: yup__WEBPACK_IMPORTED_MODULE_5__.object({
+      name: yup__WEBPACK_IMPORTED_MODULE_5__.string().min(3, 'Writer Name Cannot Be Less Than 3 Characters').max(32, 'Writer Name Cannot be More than 32 Characters').required('Writer Name is Required!'),
+      email: yup__WEBPACK_IMPORTED_MODULE_5__.string().email("Enter A Valid Email!").required('Email is Required!'),
+      phone: yup__WEBPACK_IMPORTED_MODULE_5__.string().min(10, 'Phone Number Cannot Be Less Than 10 Characters').max(12, 'Phone Number Cannot be More than 12 Characters').required('Phone Number is Required!'),
+      speciality: yup__WEBPACK_IMPORTED_MODULE_5__.string().min(3, 'Speciality Cannot Be Less Than 3 Characters').max(32, 'Speciality Cannot be More than 32 Characters').required('Speciality is Required!')
+    }),
+    onSubmit: function onSubmit(values, _ref) {
+      var setSubmitting = _ref.setSubmitting,
+          resetForm = _ref.resetForm;
+      addWriter(values);
+      resetForm();
+      setSubmitting(false);
+    }
+  });
+
+  var addWriter = function addWriter(formValues) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/add-writer', formValues).then(function (res) {
+      if (res.status == 201) {
+        window.Toast.fire({
+          icon: "success",
+          title: res.data.message
+        });
+        fetchWriters();
+      } else {
+        window.Toast.fire({
+          icon: "error",
+          title: res.data.message
+        });
+      }
+    })["catch"](function (err) {
+      console.log(err);
+    });
+    closeModal();
+  };
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isOpen = _useState6[0],
+      setIsOpen = _useState6[1];
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  var fetchWriters = function fetchWriters() {
+    var writersUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/writers';
+    setLoading(true);
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(writersUrl).then(function (res) {
+      if (res.status == 200) {
+        setWriters(res.data);
+      } else {
+        console.log(res);
+      }
+    })["catch"](function (err) {
+      console.log(err);
+    });
+    setLoading(false);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!auth) {
+      hist.push("/in");
+    }
+
+    window.scrollTo(0, 0);
+    document.querySelector('title').text = 'AcademiaSteph21 | Writers';
+    fetchWriters();
+  }, [auth]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    className: "dashboard",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_auth_AdminLayout__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        className: "dash_overview",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          className: "writers",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "second-nav",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
+              className: "lead-title inline",
+              children: "WRITERS"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+              className: "px-6 py-2 bg-blue-600 rounded-full text-white",
+              onClick: function onClick(e) {
+                e.preventDefault();
+                openModal();
+              },
+              children: "Add Writer"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "second-nav-controls",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                className: (_writers$links = writers.links) !== null && _writers$links !== void 0 && _writers$links.prev ? "p-2 cursor-pointer" : "p-2 text-gray-400",
+                onClick: function onClick(e) {
+                  var _writers$links2;
+
+                  e.preventDefault();
+                  fetchWriters((_writers$links2 = writers.links) === null || _writers$links2 === void 0 ? void 0 : _writers$links2.prev);
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+                  className: "ti-angle-left"
+                }), "PREV"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                className: (_writers$links3 = writers.links) !== null && _writers$links3 !== void 0 && _writers$links3.next ? "p-2 cursor-pointer ml-4" : "p-2 text-gray-400 ml-4",
+                onClick: function onClick(e) {
+                  var _writers$links4;
+
+                  e.preventDefault();
+                  fetchWriters((_writers$links4 = writers.links) === null || _writers$links4 === void 0 ? void 0 : _writers$links4.next);
+                },
+                children: ["NEXT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+                  className: "ti-angle-right"
+                })]
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "writers-label",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-name",
+              children: "Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-email",
+              children: "Email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-phone",
+              children: "Phone"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-speciality",
+              children: "Speciality"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-date",
+              children: "Date"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "writers-list",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Transition, {
+              show: isOpen,
+              as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Dialog, {
+                as: "div",
+                className: "fixed inset-0 z-10 overflow-y-auto",
+                onClose: closeModal,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "min-h-screen px-4 text-center",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Transition.Child, {
+                    as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                    enter: "ease-out duration-300",
+                    enterFrom: "opacity-0",
+                    enterTo: "opacity-100",
+                    leave: "ease-in duration-200",
+                    leaveFrom: "opacity-100",
+                    leaveTo: "opacity-0",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Dialog.Overlay, {
+                      className: "fixed inset-0 bg-black opacity-30"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                    className: "inline-block h-screen align-middle",
+                    "aria-hidden": "true",
+                    children: "\u200B"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Transition.Child, {
+                    as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                    enter: "ease-out duration-300",
+                    enterFrom: "opacity-0 scale-95",
+                    enterTo: "opacity-100 scale-100",
+                    leave: "ease-in duration-200",
+                    leaveFrom: "opacity-100 scale-100",
+                    leaveTo: "opacity-0 scale-95",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      className: "inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Dialog.Title, {
+                        as: "h3",
+                        className: "text-2xl font-bold leading-6 text-blue-500",
+                        children: "Add New Writer"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                        className: "mt-2",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
+                          action: "",
+                          onClick: Formik.handleSubmit,
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                            className: "flex justify-between",
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
+                              labelText: "Writer Name",
+                              id: "writer-name",
+                              name: "name",
+                              type: "text",
+                              parentClasses: "w-45/100",
+                              classes: "",
+                              placeholder: "Type Writer Name...",
+                              onBlur: Formik.handleBlur,
+                              onChange: Formik.handleChange,
+                              errors: Formik.errors.name && Formik.touched.name && Formik.errors.name
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
+                              labelText: "Email",
+                              id: "writer-email",
+                              name: "email",
+                              type: "text",
+                              parentClasses: "w-45/100",
+                              classes: "",
+                              placeholder: "Type Writer Email...",
+                              onBlur: Formik.handleBlur,
+                              onChange: Formik.handleChange,
+                              errors: Formik.errors.email && Formik.touched.email && Formik.errors.email
+                            })]
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                            className: "flex  justify-between",
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
+                              labelText: "Phone Number",
+                              id: "writer-phone",
+                              name: "phone",
+                              type: "number",
+                              parentClasses: "w-45/100",
+                              classes: "",
+                              placeholder: "e.g 254701234567",
+                              onBlur: Formik.handleBlur,
+                              onChange: Formik.handleChange,
+                              errors: Formik.errors.phone && Formik.touched.phone && Formik.errors.phone
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_config_FormElements__WEBPACK_IMPORTED_MODULE_7__.InputField, {
+                              labelText: "Speciality",
+                              id: "writer-speciality",
+                              name: "speciality",
+                              type: "text",
+                              parentClasses: "w-45/100",
+                              classes: "",
+                              placeholder: "Type Writer Speciality...",
+                              onBlur: Formik.handleBlur,
+                              onChange: Formik.handleChange,
+                              errors: Formik.errors.speciality && Formik.touched.speciality && Formik.errors.speciality
+                            })]
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                            type: "button",
+                            className: "inline-flex justify-center px-6 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
+                            children: "SAVE"
+                          })]
+                        })
+                      })]
+                    })
+                  })]
+                })
+              })
+            }), writers.length != 0 && !loading && writers.data.map(function (writer, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "writer",
+                onClick: function onClick(e) {
+                  e.preventDefault();
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "writers-name",
+                  children: [index + 1 + ".", " ", writer.name]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "writers-email",
+                  children: writer.email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "writers-phone",
+                  children: writer.phone
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "writers-speciality",
+                  children: writer.speciality
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "writers-date",
+                  children: writer.created_at
+                })]
+              });
+            }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), writers.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                className: "no-messages",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
+                  children: "You Don't Have Writers!"
+                })
+              })
+            })]
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Writers);
 
 /***/ }),
 

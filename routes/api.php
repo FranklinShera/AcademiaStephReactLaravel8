@@ -12,6 +12,7 @@ use App\Http\Controllers\PaperTypeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrefferedEnglishController;
 use App\Http\Controllers\SubjectAreaController;
+use App\Http\Controllers\WriterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -109,6 +110,11 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/analytics' , [AuthController::class , 'analytics']);
             Route::post('/refresh-token' , [AuthController::class , 'refresh']);
             Route::post('/logout' , [AuthController::class , 'logout']);
+
+
+            //WRITER
+            Route::post('/add-writer', [WriterController::class , 'create']);
+            Route::get('/writers', [WriterController::class , 'adminIndex']);
 
 
             //CONTACTS
