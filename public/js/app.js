@@ -21953,6 +21953,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var OrderView = function OrderView() {
+  var _order$assigned_to;
+
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   var routeParams = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useParams)();
@@ -21969,8 +21971,18 @@ var OrderView = function OrderView() {
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      orderMaterials = _useState4[0],
-      setOrderMaterials = _useState4[1];
+      writers = _useState4[0],
+      setWriters = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState6 = _slicedToArray(_useState5, 2),
+      assignedWriter = _useState6[0],
+      setAssignedWriter = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      orderMaterials = _useState8[0],
+      setOrderMaterials = _useState8[1];
 
   var getOrder = function getOrder(orderID) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/auth/admin/order/".concat(orderID)).then(function (res) {
@@ -21978,6 +21990,45 @@ var OrderView = function OrderView() {
       setOrderMaterials(res.data.data.additional_materials);
     })["catch"](function (err) {
       return console.log(err);
+    });
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/auth/admin/writers").then(function (res) {
+      setWriters(res.data.data);
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  };
+
+  var assignOrder = function assignOrder(e) {
+    e.preventDefault();
+
+    if (assignedWriter == null || assignedWriter == 0) {
+      Swal.fire({
+        icon: 'error',
+        title: "You Have Not selected Any Writer!"
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: 'Assign This Order?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Assign it!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/assign-order/".concat(order.id, "/").concat(assignedWriter)).then(function (res) {
+          if (res.status == 200) {
+            Swal.fire('Assigned!', res.data.message, 'success');
+          } else {
+            Swal.fire('Failed To Assign!', res.data.message, 'error');
+          }
+
+          getOrder(order.id);
+        });
+      }
     });
   };
 
@@ -22005,7 +22056,40 @@ var OrderView = function OrderView() {
             children: ["Posted On ", order && order.created_at_date, " at ", order && order.created_at_time]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "order-preview",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [order && order.stage == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "unassigned-order-actions py-4 w-ful flex justify-center mb-3 hover:bg-green-200 rounded-md items-center bg-green-700 text-white",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+                children: [" ORDER IS ASSIGNED TO ", order && ((_order$assigned_to = order.assigned_to) === null || _order$assigned_to === void 0 ? void 0 : _order$assigned_to.name.toUpperCase())]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "bg-white text-green-700  hover:bg-green-700 hover:text-white px-4 py-2 rounded ml-2",
+                children: " MARK COMPLETE"
+              })]
+            }), order && order.stage == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "unassigned-order-actions py-4 mb-3 hover:bg-indigo-200 bg-indigo-500 rounded-md w-full transition-all delay-75 flex  justify-center items-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                name: "writer",
+                id: "",
+                className: "mr-5 rounded p-2 text-center",
+                onChange: function onChange(e) {
+                  setAssignedWriter(e.target.value);
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "",
+                  disabled: true,
+                  selected: true,
+                  children: "Choose Writer"
+                }), writers.map(function (writer, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: writer.id,
+                    children: writer.name
+                  }, index);
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "text-indigo-600 bg-white px-4 py-2 rounded hover:bg-indigo-600 hover:text-white",
+                onClick: assignOrder,
+                children: "Assign This Order"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-preview-item",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
                 children: "Cost"

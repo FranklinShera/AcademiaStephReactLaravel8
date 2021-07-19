@@ -37,6 +37,10 @@ class Order extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function orderAssign(){
+        return $this->hasOne(OrderAssign::class);
+    }
+
     public function orderMaterials(){
         return $this->hasMany(OrderMaterial::class);
     }

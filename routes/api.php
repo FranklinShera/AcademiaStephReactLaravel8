@@ -89,7 +89,6 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             //ORDER MATERIAL
 
             Route::post('/add-material/{order}' , [OrderController::class , 'clientOrderAddMaterial']);
-            Route::post('/cancel-order/{order}' , [OrderController::class , 'clientOrderCancel']);
             Route::delete('/material/{orderMaterial}' , [OrderController::class , 'destroyMaterial']);
 
             //   ORDERS
@@ -97,6 +96,9 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/orders' , [OrderController::class , 'clientOrders']);
             Route::get('/order/{order}' , [OrderController::class , 'clientOrder']);
             Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
+
+            Route::post('/cancel-order/{order}' , [OrderController::class , 'clientOrderCancel']);
+
             Route::get('/orders-cancelled' , [OrderController::class , 'clientCancelledOrders']);
             Route::get('/orders-active' , [OrderController::class , 'clientActiveOrders']);
             Route::get('/orders-completed' , [OrderController::class , 'clientCompletedOrders']);
@@ -135,6 +137,9 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/order/{order}' , [OrderController::class , 'adminOrder']);
             Route::get('/orders-pending' , [OrderController::class , 'adminPendingOrders']);
             Route::get('/orders-unassigned' , [OrderController::class , 'adminUnassignedOrders']);
+
+            Route::post('/assign-order/{order}/{writer}' , [OrderController::class , 'adminAssignOrder']);
+
             Route::get('/orders-cancelled' , [OrderController::class , 'adminCancelledOrders']);
             Route::get('/orders-active' , [OrderController::class , 'adminActiveOrders']);
             Route::get('/orders-completed' , [OrderController::class , 'adminCompletedOrders']);

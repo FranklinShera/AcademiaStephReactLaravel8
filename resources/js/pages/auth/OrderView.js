@@ -22,18 +22,86 @@ const OrderView = () => {
     const { loggedInUser, auth } = authUser;
 
     const[order,setOrder] = useState({});
+    const[writers,setWriters] = useState([]);
+    const[assignedWriter,setAssignedWriter] = useState();
+
     const[orderMaterials,setOrderMaterials] = useState([]);
 
 
 
     const getOrder = (orderID) =>{
+
         axios.get(`/api/auth/admin/order/${orderID}`)
             .then(res => {
                 setOrder(res.data.data)
                 setOrderMaterials(res.data.data.additional_materials)
             })
             .catch(err => console.log(err))
+
+        axios.get(`/api/auth/admin/writers`)
+            .then(res => {
+                setWriters(res.data.data)
+            })
+            .catch(err => console.log(err))
+
+
+
     }
+
+
+    const assignOrder = (e) =>{
+        e.preventDefault();
+
+        if(assignedWriter == null || assignedWriter == 0){
+
+            Swal.fire({
+                icon:'error',
+                title:"You Have Not selected Any Writer!"
+            })
+
+            return;
+        }
+
+        Swal.fire({
+            title: 'Assign This Order?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Assign it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.post(`/api/auth/admin/assign-order/${order.id}/${assignedWriter}`)
+                    .then(res =>{
+
+                        if(res.status == 200){
+
+                            Swal.fire(
+                                'Assigned!',
+                                res.data.message,
+                                'success'
+                            )
+
+                        }else{
+
+                            Swal.fire(
+                                'Failed To Assign!',
+                                res.data.message,
+                                'error'
+                            )
+
+                        }
+
+                        getOrder(order.id);
+
+                    })
+
+            }
+        })
+    }
+
 
     useEffect(() => {
 
@@ -65,6 +133,31 @@ const OrderView = () => {
 
                      <div className="order-preview">
 
+
+
+                         {(order && (order.stage == 2)) && (
+                             <div className="unassigned-order-actions py-4 w-ful flex justify-center mb-3 hover:bg-green-200 rounded-md items-center bg-green-700 text-white">
+                                <span> ORDER IS ASSIGNED TO {order && order.assigned_to?.name.toUpperCase()}</span>
+                                 <button className="bg-white text-green-700  hover:bg-green-700 hover:text-white px-4 py-2 rounded ml-2"> MARK COMPLETE</button>
+                             </div>
+                         ) }
+
+
+                         {(order && (order.stage == 4)) && (
+                             <div className="unassigned-order-actions py-4 mb-3 hover:bg-indigo-200 bg-indigo-500 rounded-md w-full transition-all delay-75 flex  justify-center items-center">
+
+                                 <select name="writer" id="" className="mr-5 rounded p-2 text-center" onChange={e =>{
+                                     setAssignedWriter(e.target.value);
+                                 }}>
+                                     <option value=""  disabled selected >Choose Writer</option>
+                                     {writers.map((writer , index) => (
+                                         <option value={writer.id} key={index}  >{writer.name}</option>
+                                     ))}
+                                 </select>
+
+                                 <button className="text-indigo-600 bg-white px-4 py-2 rounded hover:bg-indigo-600 hover:text-white" onClick={assignOrder}>Assign This Order</button>
+                             </div>
+                         ) }
 
                             <div className="order-preview-item">
                                 <label>Cost</label>

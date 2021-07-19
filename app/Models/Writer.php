@@ -12,5 +12,8 @@ class Writer extends Model
     protected $fillable = ['name','email' ,'phone','speciality'];
 
 
+    public function orderAssign(){
+        return $this->hasMany(OrderAssign::class);
+    }
 
 }

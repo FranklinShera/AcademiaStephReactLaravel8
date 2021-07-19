@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\OrderResource;
 use App\Models\AcademicLevel;
 use App\Models\Order;
+use App\Models\OrderAssign;
 use App\Models\OrderMaterial;
 use App\Models\PaperType;
 use App\Models\SubjectArea;
+use App\Models\Writer;
 use App\Rules\AdditionMaterialTypeValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -106,6 +108,35 @@ class OrderController extends Controller
     }
 
 
+
+
+    public function adminAssignOrder(Order $order, Writer $writer)
+    {
+
+        if($order->stage == 4){
+
+                 if( OrderAssign::create([
+                     'order_id' => $order->id,
+                     'writer_id' => $writer->id
+                 ])){
+                     $order->stage = 2;
+                     $order->save();
+                 }
+
+
+
+            return response()->json(['message' =>"Order Has Been Assigned To .$writer->name !"] , Response::HTTP_OK);
+
+        }
+
+
+        return response()->json(['message' =>"Failed To Assign Order!"] , Response::HTTP_FORBIDDEN);
+
+    }
+
+
+
+
     public function adminOrder(Request $request, Order $order)
     {
         if(!$order){
@@ -117,6 +148,8 @@ class OrderController extends Controller
         return new OrderResource($order);
 
     }
+
+
 
 
 
