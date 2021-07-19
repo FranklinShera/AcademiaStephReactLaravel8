@@ -20892,7 +20892,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Dashboard = function Dashboard() {
-  var _analytics$order, _analytics$order2, _analytics$order3, _analytics$order4, _analytics$order5, _analytics$control, _analytics$control2, _analytics$control3, _analytics$control4, _analytics$misc, _analytics$misc2, _analytics$misc3, _analytics$misc4;
+  var _analytics$order, _analytics$order2, _analytics$order3, _analytics$order4, _analytics$order5, _analytics$order6, _analytics$control, _analytics$control2, _analytics$control3, _analytics$control4, _analytics$misc, _analytics$misc2, _analytics$misc3, _analytics$misc4, _analytics$misc5, _analytics$misc6;
 
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
@@ -20941,7 +20941,7 @@ var Dashboard = function Dashboard() {
               className: "dash-analytics-area",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
                 className: "analytics-area-title",
-                children: " ORDERS"
+                children: " Orders"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "analytics-area-groups",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -20981,13 +20981,22 @@ var Dashboard = function Dashboard() {
                     children: ((_analytics$order4 = analytics.order) === null || _analytics$order4 === void 0 ? void 0 : _analytics$order4.pending) || "N/A"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "analytics-area-group group-unassigned ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Unassigned"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$order5 = analytics.order) === null || _analytics$order5 === void 0 ? void 0 : _analytics$order5.unassigned) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group group-cancelled ml-7",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
                     children: "Cancelled"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: ((_analytics$order5 = analytics.order) === null || _analytics$order5 === void 0 ? void 0 : _analytics$order5.cancelled) || "N/A"
+                    children: ((_analytics$order6 = analytics.order) === null || _analytics$order6 === void 0 ? void 0 : _analytics$order6.cancelled) || "N/A"
                   })]
                 })]
               })]
@@ -21056,10 +21065,28 @@ var Dashboard = function Dashboard() {
                   className: "analytics-area-group  ml-7",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-name",
-                    children: "Payments"
+                    children: "Transactions"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.payments) || "N/A"
+                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.transactions) || "N/A"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "analytics-area-group  ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Payments"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "area-group-value",
+                    children: ["$", ((_analytics$misc3 = analytics.misc) === null || _analytics$misc3 === void 0 ? void 0 : _analytics$misc3.payments) || "N/A"]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "analytics-area-group  ml-7",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "area-group-name",
+                    children: "Writers"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "area-group-value",
+                    children: ((_analytics$misc4 = analytics.misc) === null || _analytics$misc4 === void 0 ? void 0 : _analytics$misc4.writers) || "N/A"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
@@ -21068,7 +21095,7 @@ var Dashboard = function Dashboard() {
                     children: "Clients"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: ((_analytics$misc3 = analytics.misc) === null || _analytics$misc3 === void 0 ? void 0 : _analytics$misc3.clients) || "N/A"
+                    children: ((_analytics$misc5 = analytics.misc) === null || _analytics$misc5 === void 0 ? void 0 : _analytics$misc5.clients) || "N/A"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
@@ -21077,7 +21104,7 @@ var Dashboard = function Dashboard() {
                     children: "Admins"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "area-group-value",
-                    children: ((_analytics$misc4 = analytics.misc) === null || _analytics$misc4 === void 0 ? void 0 : _analytics$misc4.admins) || "N/A"
+                    children: ((_analytics$misc6 = analytics.misc) === null || _analytics$misc6 === void 0 ? void 0 : _analytics$misc6.admins) || "N/A"
                   })]
                 })]
               })]
@@ -21298,7 +21325,7 @@ var DirectContacts = function DirectContacts() {
                     leaveFrom: "opacity-100",
                     leaveTo: "opacity-0",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Dialog.Overlay, {
-                      className: "fixed inset-0"
+                      className: "fixed inset-0 bg-black opacity-30"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
                     className: "inline-block h-screen align-middle",
@@ -22689,13 +22716,13 @@ var Profile = function Profile() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "dash_overview",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "profile",
+          className: "profile bg-gray-50 ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
             className: "lead-title",
             children: "Profile Page"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "profile-hub",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "profile-primary-details",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
                 children: "Primary Details"
@@ -22713,21 +22740,8 @@ var Profile = function Profile() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                   children: loggedInUser.email
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                className: "profile-detail",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  children: "Joined"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  children: loggedInUser.created_at
-                })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "profile-sec-details",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-                className: "mb-3",
-                children: "Social Accounts"
-              })
-            })]
+            })
           })]
         })
       })
@@ -24569,7 +24583,7 @@ var Payment = function Payment() {
 
   var getMyPayments = function getMyPayments() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/client/order-payments').then(function (response) {
-      setOrderPayments(response.data);
+      setOrderPayments(response.data.data);
     })["catch"](function (err) {
       console.log(err);
     });

@@ -15,7 +15,7 @@ class PaymentController extends Controller
     {
         $payments = currentClient()->orders()->with('payment')->get();
 
-        return response()->json($payments , 200);
+        return PaymentResource::collection($payments)->response()->setStatusCode(200);
 
     }
 
@@ -29,7 +29,7 @@ class PaymentController extends Controller
             return $query->orderBy('payment.created_at');
         });
 
-        return PaymentResource::collection($adminPayments);
+        return PaymentResource::collection($adminPayments)->response()->setStatusCode(200);
 
     }
 

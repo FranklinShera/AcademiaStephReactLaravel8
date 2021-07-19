@@ -125,7 +125,7 @@ class OrderController extends Controller
 
 
 
-            return response()->json(['message' =>"Order Has Been Assigned To .$writer->name !"] , Response::HTTP_OK);
+            return response()->json(['message' =>"Order Has Been Assigned To $writer->name !"] , Response::HTTP_OK);
 
         }
 

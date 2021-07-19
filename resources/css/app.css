@@ -1065,7 +1065,7 @@ footer{
 
 
 .analytics-area-group{
-    @apply py-4  bg-white shadow-sm hover:shadow cursor-pointer rounded-md flex flex-col justify-center items-center w-44;
+    @apply py-4  bg-white shadow-sm hover:shadow cursor-pointer rounded-md flex flex-col justify-center items-center w-40;
 }
 
 /*CARD COLOR GROUPS*/
@@ -1089,6 +1089,9 @@ footer{
 .group-pending .area-group-name, .group-pending .area-group-value{
     @apply border-l-4 border-yellow-600 ;
 }
+.group-unassigned .area-group-name, .group-unassigned .area-group-value{
+    @apply border-l-4 border-yellow-300 ;
+}
 
 .group-cancelled .area-group-name, .group-cancelled .area-group-value{
     @apply border-l-4 border-red-600 ;
@@ -1102,7 +1105,7 @@ footer{
 
 
 .area-group-name,.area-group-value{
-    @apply font-semibold px-10   w-full text-center;
+    @apply font-semibold px-2   w-full text-center;
 }
 
 

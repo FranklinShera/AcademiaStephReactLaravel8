@@ -65,7 +65,7 @@ const Dashboard = () => {
 
                         <div className="dash-analytics-area">
 
-                            <h2 className="analytics-area-title"> ORDERS</h2>
+                            <h2 className="analytics-area-title"> Orders</h2>
 
                             <div className="analytics-area-groups">
 
@@ -88,6 +88,11 @@ const Dashboard = () => {
                                 <div className="analytics-area-group group-pending ml-7">
                                     <div className="area-group-name">Pending</div>
                                     <div className="area-group-value">{analytics.order?.pending || "N/A"}</div>
+                                </div>
+
+                                <div className="analytics-area-group group-unassigned ml-7">
+                                    <div className="area-group-name">Unassigned</div>
+                                    <div className="area-group-value">{analytics.order?.unassigned || "N/A"}</div>
                                 </div>
 
                                 <div className="analytics-area-group group-cancelled ml-7">
@@ -154,11 +159,19 @@ const Dashboard = () => {
                                     </div>
 
                                     <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Payments</div>
-                                        <div className="area-group-value">{analytics.misc?.payments || "N/A"}</div>
+                                        <div className="area-group-name">Transactions</div>
+                                        <div className="area-group-value">{analytics.misc?.transactions || "N/A"}</div>
                                     </div>
 
+                                    <div className="analytics-area-group  ml-7">
+                                        <div className="area-group-name">Payments</div>
+                                        <div className="area-group-value">${analytics.misc?.payments || "N/A"}</div>
+                                    </div>
 
+                                    <div className="analytics-area-group  ml-7">
+                                        <div className="area-group-name">Writers</div>
+                                        <div className="area-group-value">{analytics.misc?.writers || "N/A"}</div>
+                                    </div>
 
                                     <div className="analytics-area-group  ml-7">
                                         <div className="area-group-name">Clients</div>

@@ -8,8 +8,10 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\PaperFormat;
 use App\Models\PaperType;
+use App\Models\Payment;
 use App\Models\SubjectArea;
 use App\Models\User;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +33,7 @@ class AuthController extends Controller
 
         $receivedOrders = Order::all()->count();
         $pendingOrders = Order::pending()->count();
+        $unassignedOrders = Order::unassigned()->count();
         $activeOrders = Order::active()->count();
         $completedOrders = Order::completed()->count();
         $cancelledOrders = Order::cancelled()->count();
@@ -42,15 +45,18 @@ class AuthController extends Controller
         $formatsCount = PaperFormat::all()->count();
 
         $messagesCount = Message::all()->count();
+        $writersCount = Writer::all()->count();
         $clientsCount = Client::all()->count();
         $adminsCount = User::all()->count();
-        $paymentsCount = "$0";
+        $paymentsCount = Payment::sum('amount');
+        $transactionsCount = Payment::all()->count();
 
 
         $adminAnalytics = [
             'order' => [
                 'received' => $receivedOrders,
                 'pending' => $pendingOrders,
+                'unassigned' => $unassignedOrders,
                 'active' => $activeOrders,
                 'completed' => $completedOrders,
                 'cancelled' => $cancelledOrders
@@ -64,6 +70,8 @@ class AuthController extends Controller
             'misc' => [
                 'messages' => $messagesCount,
                 'payments' => $paymentsCount,
+                'transactions' => $transactionsCount,
+                'writers' => $writersCount,
                 'clients' => $clientsCount,
                 'admins' => $adminsCount,
             ],
