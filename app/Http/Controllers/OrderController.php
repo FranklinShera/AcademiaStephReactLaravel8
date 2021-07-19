@@ -137,6 +137,31 @@ class OrderController extends Controller
 
 
 
+
+
+    public function adminCompleteOrder(Order $order)
+    {
+
+        if($order->stage == 2){
+
+                     $order->stage = 1;
+                     $order->save();
+
+            return response()->json(['message' =>"Order Has Been Marked Complete"] , Response::HTTP_OK);
+
+        }
+
+
+        return response()->json(['message' =>"Failed To Complete Order!"] , Response::HTTP_FORBIDDEN);
+
+    }
+
+
+
+
+
+
+
     public function adminOrder(Request $request, Order $order)
     {
         if(!$order){

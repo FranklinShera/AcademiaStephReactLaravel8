@@ -139,6 +139,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/orders-unassigned' , [OrderController::class , 'adminUnassignedOrders']);
 
             Route::post('/assign-order/{order}/{writer}' , [OrderController::class , 'adminAssignOrder']);
+            Route::post('/complete-order/{order}' , [OrderController::class , 'adminCompleteOrder']);
 
             Route::get('/orders-cancelled' , [OrderController::class , 'adminCancelledOrders']);
             Route::get('/orders-active' , [OrderController::class , 'adminActiveOrders']);

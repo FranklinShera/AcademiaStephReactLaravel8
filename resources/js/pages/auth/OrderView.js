@@ -49,6 +49,49 @@ const OrderView = () => {
     }
 
 
+
+    const markComplete = (e) =>{
+
+        Swal.fire({
+            title: 'Complete This Order?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Complete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.post(`/api/auth/admin/complete-order/${order.id}`)
+                    .then(res =>{
+
+                        if(res.status == 200){
+
+                            Swal.fire(
+                                'Order Completed!',
+                                res.data.message,
+                                'success'
+                            )
+
+                        }else{
+
+                            Swal.fire(
+                                'Failed To Complete!',
+                                res.data.message,
+                                'error'
+                            )
+
+                        }
+
+                        getOrder(order.id);
+
+                    })
+
+            }
+        })
+    }
+
     const assignOrder = (e) =>{
         e.preventDefault();
 
@@ -138,7 +181,9 @@ const OrderView = () => {
                          {(order && (order.stage == 2)) && (
                              <div className="unassigned-order-actions py-4 w-ful flex justify-center mb-3 hover:bg-green-200 rounded-md items-center bg-green-700 text-white">
                                 <span> ORDER IS ASSIGNED TO {order && order.assigned_to?.name.toUpperCase()}</span>
-                                 <button className="bg-white text-green-700  hover:bg-green-700 hover:text-white px-4 py-2 rounded ml-2"> MARK COMPLETE</button>
+                                 <button className="bg-white text-green-700  hover:bg-green-700 hover:text-white px-4 py-2 rounded ml-2"
+                                  onClick={markComplete}
+                                 > MARK COMPLETE</button>
                              </div>
                          ) }
 
@@ -158,6 +203,19 @@ const OrderView = () => {
                                  <button className="text-indigo-600 bg-white px-4 py-2 rounded hover:bg-indigo-600 hover:text-white" onClick={assignOrder}>Assign This Order</button>
                              </div>
                          ) }
+
+
+
+
+                         {(order && (order.stage == 1)) && (
+                             <div className="order-preview-item">
+                                 <label>Writer</label>
+                                 <p>{order && order.assigned_to?.name}</p>
+                             </div>
+                         )}
+
+
+
 
                             <div className="order-preview-item">
                                 <label>Cost</label>

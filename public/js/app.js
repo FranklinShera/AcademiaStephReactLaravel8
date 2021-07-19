@@ -21953,7 +21953,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var OrderView = function OrderView() {
-  var _order$assigned_to;
+  var _order$assigned_to, _order$assigned_to2;
 
   (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -21995,6 +21995,30 @@ var OrderView = function OrderView() {
       setWriters(res.data.data);
     })["catch"](function (err) {
       return console.log(err);
+    });
+  };
+
+  var markComplete = function markComplete(e) {
+    Swal.fire({
+      title: 'Complete This Order?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Complete it!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/complete-order/".concat(order.id)).then(function (res) {
+          if (res.status == 200) {
+            Swal.fire('Order Completed!', res.data.message, 'success');
+          } else {
+            Swal.fire('Failed To Complete!', res.data.message, 'error');
+          }
+
+          getOrder(order.id);
+        });
+      }
     });
   };
 
@@ -22062,6 +22086,7 @@ var OrderView = function OrderView() {
                 children: [" ORDER IS ASSIGNED TO ", order && ((_order$assigned_to = order.assigned_to) === null || _order$assigned_to === void 0 ? void 0 : _order$assigned_to.name.toUpperCase())]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                 className: "bg-white text-green-700  hover:bg-green-700 hover:text-white px-4 py-2 rounded ml-2",
+                onClick: markComplete,
                 children: " MARK COMPLETE"
               })]
             }), order && order.stage == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -22088,6 +22113,13 @@ var OrderView = function OrderView() {
                 className: "text-indigo-600 bg-white px-4 py-2 rounded hover:bg-indigo-600 hover:text-white",
                 onClick: assignOrder,
                 children: "Assign This Order"
+              })]
+            }), order && order.stage == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "order-preview-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                children: "Writer"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                children: order && ((_order$assigned_to2 = order.assigned_to) === null || _order$assigned_to2 === void 0 ? void 0 : _order$assigned_to2.name)
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-preview-item",
