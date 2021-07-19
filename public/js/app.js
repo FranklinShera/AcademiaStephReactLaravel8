@@ -18181,6 +18181,9 @@ var AdminLayout = function AdminLayout(props) {
       name: "Pending Orders",
       url: "/in/dashboard/orders/pending"
     }, {
+      name: "Unassigned Orders",
+      url: "/in/dashboard/orders/unassigned"
+    }, {
       name: "Cancelled Orders",
       url: "/in/dashboard/orders/cancelled"
     }, {
@@ -22190,6 +22193,7 @@ var Orders = function Orders() {
 
   var ALL_ORDERS_URI = '/api/auth/admin/orders';
   var PENDING_ORDER_URI = '/api/auth/admin/orders-pending';
+  var UNASSIGNED_ORDER_URI = '/api/auth/admin/orders-unassigned';
   var CANCELLED_ORDER_URI = '/api/auth/admin/orders-cancelled';
   var ACTIVE_ORDER_URI = '/api/auth/admin/orders-active';
   var COMPLETED_ORDER_URI = '/api/auth/admin/orders-completed';
@@ -22224,6 +22228,7 @@ var Orders = function Orders() {
 
     routeParams.category.toUpperCase() === "RECEIVED" && getOrders(ALL_ORDERS_URI);
     routeParams.category.toUpperCase() === "PENDING" && getOrders(PENDING_ORDER_URI);
+    routeParams.category.toUpperCase() === "UNASSIGNED" && getOrders(UNASSIGNED_ORDER_URI);
     routeParams.category.toUpperCase() === "CANCELLED" && getOrders(CANCELLED_ORDER_URI);
     routeParams.category.toUpperCase() === "ACTIVE" && getOrders(ACTIVE_ORDER_URI);
     routeParams.category.toUpperCase() === "COMPLETED" && getOrders(COMPLETED_ORDER_URI);
@@ -22236,7 +22241,7 @@ var Orders = function Orders() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "dash_overview",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "second-nav",
+          className: "second-nav pl-6 pt-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
             className: " text-2xl font-bold",
             children: [routeParams.category.toUpperCase(), " ORDERS"]
@@ -22330,6 +22335,11 @@ var Orders = function Orders() {
                   children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
                     className: "ti-thumb-down"
                   }), " Cancelled "]
+                }), order.stage == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                  className: "text-red-600",
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+                    className: "ti-info"
+                  }), " Unassigned "]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-urgency",
@@ -23766,16 +23776,33 @@ var OrderShow = function OrderShow() {
     });
   };
 
-  var payForOrder = function payForOrder(e) {
-    e.preventDefault();
-    window.Toast.fire({
-      icon: "success",
-      title: "Paying For Order..."
-    });
-  };
-
   var payNow = function payNow(id) {
     window.location = "/paypal/checkout/".concat(id);
+  };
+
+  var cancelOrder = function cancelOrder(e) {
+    e.preventDefault();
+    Swal.fire({
+      title: 'Cancel This Order?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Cancel it!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client/cancel-order/".concat(order.id)).then(function (res) {
+          if (res.status == 200) {
+            Swal.fire('Cancelled!', res.data.message, 'success');
+          } else {
+            Swal.fire('Cancelled!', res.data.message, 'error');
+          }
+
+          getOrder(order.id);
+        });
+      }
+    });
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -23983,6 +24010,16 @@ var OrderShow = function OrderShow() {
                   })]
                 })
               })
+            }), order && order.stage == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "unassigned-order-actions py-4 mb-3 hover:bg-red-200 bg-red-600 rounded-md w-full transition-all delay-75 flex  justify-center items-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                className: "text-white mr-2",
+                children: "You May Not Be Able To Cancel This Order After It's Assigned!"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                className: "text-red-600 bg-white px-4 py-2 rounded hover:bg-red-600 hover:text-white",
+                onClick: cancelOrder,
+                children: "Cancel Order"
+              })]
             }), order && order.stage == "0" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "order-preview-notification",
@@ -24234,16 +24271,10 @@ var Orders = function Orders(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "dash_overview",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "orderview-header",
+          className: "orderview-header flex justify-between pt-6 px-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
             className: "lead-title",
             children: [routeParams.category.toUpperCase(), " ORDERS"]
-          }), orders.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "orderview-search",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-              type: "text",
-              placeholder: "search orders here..."
-            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "orderview-controls",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
@@ -24327,6 +24358,11 @@ var Orders = function Orders(_ref) {
                   children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
                     className: "ti-thumb-down"
                   }), " Cancelled "]
+                }), order.stage == 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+                  className: "text-purple-600",
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("i", {
+                    className: "ti-reload"
+                  }), " Processing..."]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "order-urgency",

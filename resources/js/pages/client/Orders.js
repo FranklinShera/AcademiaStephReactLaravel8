@@ -98,14 +98,14 @@ const Orders = ({ location }) => {
         <div className="dashboard">
             <ClientLayout>
              <div className="dash_overview">
-                    <div className="orderview-header">
+                    <div className="orderview-header flex justify-between pt-6 px-6">
                         <h1 className="lead-title">{routeParams.category.toUpperCase()} ORDERS</h1>
 
-                        {(orders.length != 0) && (
-                            <div className="orderview-search">
-                                <input type="text" placeholder="search orders here..."  />
-                            </div>
-                        )}
+                        {/*{(orders.length != 0) && (*/}
+                        {/*    <div className="orderview-search">*/}
+                        {/*        <input type="text" placeholder="search orders here..."  />*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
 
                         <div className="orderview-controls">
                             <span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}
@@ -180,6 +180,7 @@ const Orders = ({ location }) => {
                                      { (order.stage == 1) && <span className="text-blue-600"> <i className="ti-thumb-up"></i> Completed </span> }
                                      { (order.stage == 2) && <span className="text-green-600"> <i className="ti-pulse"></i> Active </span> }
                                      { (order.stage == 3) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span> }
+                                     { (order.stage == 4) && <span className="text-purple-600"> <i className="ti-reload"></i> Processing...</span> }
                                  </div>
 
                                  <div className="order-urgency">

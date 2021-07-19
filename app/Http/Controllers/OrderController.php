@@ -48,6 +48,26 @@ class OrderController extends Controller
 
     }
 
+    public function clientOrderCancel(Request $request, Order $order)
+    {
+        if($order->stage == 4){
+            $order->stage = 3;
+
+            $order->save();
+
+            return response()->json(['message' =>"Order Has Been Canceled!"] , Response::HTTP_OK);
+
+        }
+
+
+        return response()->json(['message' =>"Failed To Cancel Order!"] , Response::HTTP_FORBIDDEN);
+
+    }
+
+
+
+
+
     public function clientOrderAddMaterial(Request $request, Order $order)
     {
         if($order->client_id != currentClient()->id){
@@ -145,6 +165,16 @@ class OrderController extends Controller
     {
 
         $orders = Order::pending()->orderBy('created_at' , 'DESC')->paginate(10);
+
+        return OrderResource::collection($orders);
+
+    }
+
+
+    public function adminUnassignedOrders()
+    {
+
+        $orders = Order::unassigned()->orderBy('created_at' , 'DESC')->paginate(10);
 
         return OrderResource::collection($orders);
 

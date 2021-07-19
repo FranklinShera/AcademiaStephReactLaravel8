@@ -31,6 +31,10 @@ const AdminLayout = (props) => {
                     url: `/in/dashboard/orders/pending`
                 },
                 {
+                    name:"Unassigned Orders",
+                    url: `/in/dashboard/orders/unassigned`
+                },
+                {
                     name:"Cancelled Orders",
                     url: `/in/dashboard/orders/cancelled`
                 },

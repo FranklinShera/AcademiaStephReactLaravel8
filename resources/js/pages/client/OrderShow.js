@@ -155,20 +155,54 @@ const OrderShow = () => {
 
 
 
-    const payForOrder = (e) =>{
-        e.preventDefault();
 
-        window.Toast.fire({
-            icon: "success",
-            title: "Paying For Order..."
-        })
-
+    const payNow = (id) =>{
+            window.location = `/paypal/checkout/${id}`
     }
 
 
-const payNow = (id) =>{
-        window.location = `/paypal/checkout/${id}`
-}
+    const cancelOrder = (e) =>{
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Cancel This Order?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Cancel it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.post(`/api/auth/client/cancel-order/${order.id}`)
+                    .then(res =>{
+
+                        if(res.status == 200){
+
+                            Swal.fire(
+                                'Cancelled!',
+                                res.data.message,
+                                'success'
+                            )
+
+                        }else{
+
+                            Swal.fire(
+                                'Cancelled!',
+                                res.data.message,
+                                'error'
+                            )
+
+                        }
+
+                        getOrder(order.id);
+
+                    })
+
+            }
+        })
+    }
 
     useEffect(() => {
 
@@ -382,6 +416,15 @@ const payNow = (id) =>{
                                  </div>
                              </Dialog>
                          </Transition.Root>
+
+
+                         {(order && (order.stage == 4)) && (
+                             <div className="unassigned-order-actions py-4 mb-3 hover:bg-red-200 bg-red-600 rounded-md w-full transition-all delay-75 flex  justify-center items-center">
+                                 <span className="text-white mr-2">You May Not Be Able To Cancel This Order After It's Assigned!</span>
+                                 <button className="text-red-600 bg-white px-4 py-2 rounded hover:bg-red-600 hover:text-white" onClick={cancelOrder}>Cancel Order</button>
+                             </div>
+                         ) }
+
 
 
                          {(order && order.stage == "0") && (

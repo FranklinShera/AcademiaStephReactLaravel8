@@ -89,6 +89,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             //ORDER MATERIAL
 
             Route::post('/add-material/{order}' , [OrderController::class , 'clientOrderAddMaterial']);
+            Route::post('/cancel-order/{order}' , [OrderController::class , 'clientOrderCancel']);
             Route::delete('/material/{orderMaterial}' , [OrderController::class , 'destroyMaterial']);
 
             //   ORDERS
@@ -133,6 +134,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/orders' , [OrderController::class , 'adminOrders']);
             Route::get('/order/{order}' , [OrderController::class , 'adminOrder']);
             Route::get('/orders-pending' , [OrderController::class , 'adminPendingOrders']);
+            Route::get('/orders-unassigned' , [OrderController::class , 'adminUnassignedOrders']);
             Route::get('/orders-cancelled' , [OrderController::class , 'adminCancelledOrders']);
             Route::get('/orders-active' , [OrderController::class , 'adminActiveOrders']);
             Route::get('/orders-completed' , [OrderController::class , 'adminCompletedOrders']);

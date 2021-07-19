@@ -32,6 +32,7 @@ const Orders = () => {
 
     const ALL_ORDERS_URI = '/api/auth/admin/orders';
     const PENDING_ORDER_URI = '/api/auth/admin/orders-pending';
+    const UNASSIGNED_ORDER_URI = '/api/auth/admin/orders-unassigned';
     const CANCELLED_ORDER_URI = '/api/auth/admin/orders-cancelled';
     const ACTIVE_ORDER_URI = '/api/auth/admin/orders-active';
     const COMPLETED_ORDER_URI = '/api/auth/admin/orders-completed';
@@ -85,6 +86,8 @@ const Orders = () => {
 
         (routeParams.category.toUpperCase() === "PENDING") && getOrders(PENDING_ORDER_URI);
 
+        (routeParams.category.toUpperCase() === "UNASSIGNED") && getOrders(UNASSIGNED_ORDER_URI);
+
         (routeParams.category.toUpperCase() === "CANCELLED") && getOrders(CANCELLED_ORDER_URI);
 
         (routeParams.category.toUpperCase() === "ACTIVE") && getOrders(ACTIVE_ORDER_URI);
@@ -104,7 +107,7 @@ const Orders = () => {
         <div className="dashboard">
             <AdminLayout>
                 <div className="dash_overview">
-                    <div className="second-nav">
+                    <div className="second-nav pl-6 pt-6">
                         <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
 
                         {(orders.length != 0) && (
@@ -187,6 +190,7 @@ const Orders = () => {
                                     { (order.stage == 1) && <span className="text-blue-600"> <i className="ti-thumb-up"></i> Completed </span> }
                                     { (order.stage == 2) && <span className="text-green-600"> <i className="ti-pulse"></i> Active </span> }
                                     { (order.stage == 3) && <span className="text-red-600"> <i className="ti-thumb-down"></i> Cancelled </span> }
+                                    { (order.stage == 4) && <span className="text-red-600"> <i className="ti-info"></i> Unassigned </span> }
                                 </div>
 
                                 <div className="order-urgency">

@@ -45,6 +45,10 @@ class Order extends Model
         return $query->where('stage' , 0);
     }
 
+    public function scopeUnassigned($query){
+        return $query->where('stage' , 4);
+    }
+
 
     public function scopeActive($query){
         return $query->where('stage' , 2);

@@ -69,7 +69,7 @@ class PayPalController extends Controller
                 'amount' => $order->cost
             ]);
 
-            $order->stage = 2;
+            $order->stage = 4;
             $order->save();
 
 
