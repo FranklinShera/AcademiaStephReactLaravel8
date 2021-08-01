@@ -18,31 +18,36 @@ import  EmptyStarIcon from '.././images/empty_star.svg';
 
                 <div className=" rate-date">
                     <div className="rate">
+
                        { (cardData.rating == 0) ? (
                                 <img src={EmptyStarIcon} className="inline rating-star" alt="Rating Star"/>
                        ): (cardData.rating == 0.5) ? (
                                 <img src={HalfStarIcon} className="inline rating-star" alt="Rating Star"/>
                        ) : (<img src={StarIcon} className="inline rating-star" alt="Rating Star"/>) }
 
-                        { (cardData.rating > 2) ? (
+
+                        { (cardData.rating > 1.5) ? (
                                     <img src={StarIcon} className="inline rating-star" alt="Rating Star"/>
                         ): (cardData.rating == 1.5) ? (
                                     <img src={HalfStarIcon} className="inline rating-star" alt="Rating Star"/>
                         ) : (<img src={EmptyStarIcon} className="inline rating-star" alt="Rating Star"/>) }
 
-                        { (cardData.rating > 3) ? (
+
+                        { (cardData.rating > 2.5) ? (
                                     <img src={StarIcon} className="inline rating-star" alt="Rating Star"/>
                         ): (cardData.rating == 2.5) ? (
                                     <img src={HalfStarIcon} className="inline rating-star" alt="Rating Star"/>
                         ) : (<img src={EmptyStarIcon} className="inline rating-star" alt="Rating Star"/>) }
 
-                        { (cardData.rating > 4) ? (
+
+                        { (cardData.rating > 3.5) ? (
                                     <img src={StarIcon} className="inline rating-star" alt="Rating Star"/>
                         ): (cardData.rating == 3.5) ? (
                                     <img src={HalfStarIcon} className="inline rating-star" alt="Rating Star"/>
                         ) : (<img src={EmptyStarIcon} className="inline rating-star" alt="Rating Star"/>) }
 
-                        { (cardData.rating == 5) ? (
+
+                        { (cardData.rating > 4.5) ? (
                                     <img src={StarIcon} className="inline rating-star" alt="Rating Star"/>
                         ): (cardData.rating == 4.5) ? (
                                     <img src={HalfStarIcon} className="inline rating-star" alt="Rating Star"/>

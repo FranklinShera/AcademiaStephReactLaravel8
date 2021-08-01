@@ -5,6 +5,7 @@ import {useRouteMatch} from 'react-router-dom'
 
 import SideBar from './SideBar'
 
+import DesktopOnly from '../../images/desk_screen.svg'
 
 
 //actions
@@ -118,12 +119,19 @@ const AdminLayout = (props) => {
 
 
     return (
-        <div className="admin-layout">
-            <SideBar className="sidebar_component" isAdmin={true} links={linkForSidebar}/>
-            <div className="dash_items_component">
-             {props.children}
+        <>
+            <div className="lg:hidden flex flex-col justify-center items-center">
+                <img src={DesktopOnly}  className="mb-1" alt=""/>
+                <span class="text-center text-xl font-bold">Ooops!</span>
+                <span class="text-center text-sm">Dashboard currently supports Desktop Screen Only</span>
             </div>
-        </div>
+            <div className="backend-layout">
+                <SideBar className="sidebar_component" isAdmin={true} links={linkForSidebar}/>
+                <div className="dash_items_component">
+                    {props.children}
+                </div>
+            </div>
+        </>
     )
 }
 

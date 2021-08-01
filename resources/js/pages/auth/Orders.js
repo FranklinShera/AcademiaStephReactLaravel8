@@ -107,14 +107,14 @@ const Orders = () => {
         <div className="dashboard">
             <AdminLayout>
                 <div className="dash_overview">
-                    <div className="second-nav pl-6 pt-6">
+                    <div className="second-nav px-6 pt-6">
                         <h1 className=" text-2xl font-bold">{routeParams.category.toUpperCase()} ORDERS</h1>
 
-                        {(orders.length != 0) && (
-                            <div className="second-nav-search">
-                                <input type="text" placeholder="search orders here..." onChange={searchOrder} />
-                            </div>
-                        )}
+                        {/*{(orders.length != 0) && (*/}
+                        {/*    <div className="second-nav-search">*/}
+                        {/*        <input type="text" placeholder="search orders here..." onChange={searchOrder} />*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
 
                         <div className="orderview-controls">
                             <span className={ (links.prev) ? "p-2 cursor-pointer" : "p-2 text-gray-400"}

@@ -26,6 +26,7 @@ class OrderResource extends JsonResource
             'stage' => $this->stage,
             'cost' => $this->cost,
             'assigned_to' => ( $this->stage == 2 || $this->stage == 1 ) ? $this->orderAssign->writer : [],
+            'feedback' =>  $this->clientFeedback ,
             'serial' => strtoupper(dechex(date('U' ,strtotime($this->created_at)))),
             'created_at_date' => date('j M Y' ,strtotime($this->created_at)),
             'created_at_time' => date('H:i' ,strtotime($this->created_at))

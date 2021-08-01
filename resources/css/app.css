@@ -1136,8 +1136,8 @@ footer{
 /* logout button end */
 
 /* layout */
-.admin-layout{
-    @apply flex  justify-between w-full h-full mt-16;
+.backend-layout{
+    @apply hidden lg:inline lg:flex  lg:justify-between lg:w-full lg:h-full lg:mt-16;
 }
 
 .sidebar_component{

@@ -22,6 +22,12 @@ Route::get('paypal/checkout-cancel', [PayPalController::class ,'cancelPage'])->n
 
 
 
+Route::get('/mailtest', function () {
+    return view('mails.orders.writer_assigned');
+});
+
+
+
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');

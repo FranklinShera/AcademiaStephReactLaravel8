@@ -71,6 +71,13 @@ const Profile = () => {
 
                            <h2 className="mb-3">Social Accounts</h2>
 
+                           {loggedInClient.social_accounts.length == 0 && <>
+                            <div className="no-social-account text-red-500">
+                                No Social Accounts Linked to
+                                <span className="text-sm text-gray-600 px-2 py-1 rounded ml-2 bg-blue-100">{loggedInClient.email}</span>
+                            </div>
+                           </>}
+
                            {loggedInClient.social_accounts.map(socialAccount => (
 
                                <div className={`profile-detail  bg-${socialAccount.provider}-1 p-3`}>

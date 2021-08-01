@@ -6,6 +6,7 @@ import {useRouteMatch} from 'react-router-dom'
 import SideBar from '../auth/SideBar'
 
 
+import DesktopOnly from '../../images/desk_screen.svg'
 
 //actions
 import {  authUserIn, authUserOut } from '../../actions/AuthUserActions'
@@ -95,12 +96,20 @@ const ClientLayout = (props) => {
 
 
     return (
-        <div className="admin-layout">
-            <SideBar className="sidebar_component"  isAdmin={false} links={linkForSidebar}/>
-            <div className="dash_items_component">
-             {props.children}
-            </div>
-        </div>
+       <>
+           <div className="lg:hidden flex flex-col justify-center items-center">
+               <img src={DesktopOnly} className="mb-1" alt=""/>
+               <span className="text-center text-xl font-bold">Ooops!</span>
+               <span className="text-center text-sm">Dashboard currently supports Desktop Screen Only</span>
+           </div>
+
+           <div className="backend-layout">
+               <SideBar className="sidebar_component"  isAdmin={false} links={linkForSidebar}/>
+               <div className="dash_items_component">
+                   {props.children}
+               </div>
+           </div>
+       </>
     )
 }
 

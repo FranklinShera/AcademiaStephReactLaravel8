@@ -38,6 +38,7 @@ class ClientAuthController extends Controller
         $cancelledOrders = Order::cancelled()->where('client_id',currentClient()->id)->count();
 
         $messagesCount = Message::where('conversation_id',currentClient()->conversation->id)->count();
+        $transactionsCount = currentClient()->orders->count();
         $paymentsCount = "$0";
 
         $clientAnalytics = [
@@ -52,6 +53,7 @@ class ClientAuthController extends Controller
             'misc' => [
                 'messages' => $messagesCount,
                 'payments' => $paymentsCount,
+                'transactions' => $transactionsCount,
             ],
         ];
 
@@ -176,7 +178,7 @@ class ClientAuthController extends Controller
 
     public function autoClient(Request $request){
 
-        $client = Client::whereEmail('fshera96@gmail.com')->first();
+        $client = Client::whereEmail('testclient@academiasteph21.com')->first();
 
         if(!$client){
             return  response()->json(['error' => 'DEFAULT CLIENT NOT FOUND!'], Response::HTTP_BAD_REQUEST);

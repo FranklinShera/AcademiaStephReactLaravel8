@@ -131,7 +131,7 @@ const BlankPage = () =>{
          <Header inAdminPanel={inAdminPanel}/>
           <Switch>
             {/*<Route path="/find-writer" exact component={FindWriter}/>*/}
-            <Route path="/in/register" exact component={Register}/>
+            {/*<Route path="/in/register" exact component={Register}/>*/}
             <ProtectedRoute path={ `/in/dashboard/orders/:category` } exact component={Orders}/>
             <ProtectedRoute path={ `/in/dashboard/order-view/:id/:topicSlug` } exact component={OrderView}/>
             <ProtectedRoute path={ `/in/dashboard/conversation/:id/:clientName` } exact component={Messages}/>

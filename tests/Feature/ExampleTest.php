@@ -18,4 +18,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_can_get_levels()
+    {
+        $response = $this->get('/academic-levels');
+
+        $response->assertStatus(200);
+    }
 }

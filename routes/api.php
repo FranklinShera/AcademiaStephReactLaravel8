@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicLevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\ClientFeedbackController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\MessageController;
@@ -29,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/reviews', [CustomerReviewController::class , 'index']);
+Route::get('/reviews', [ClientFeedbackController::class , 'index']);
+
+//Route::get('/creviews', [CustomerReviewController::class , 'index']);
 
 Route::post('/create-contact', [ContactController::class , 'store']);
 
@@ -77,6 +80,11 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::post('/refresh-token' , [ClientAuthController::class , 'refresh']);
             Route::post('/client-logout' , [ClientAuthController::class , 'logout']);
 
+
+            //CLIENT FEEDBACK
+            Route::post('/feedback' , [ClientFeedbackController::class , 'create']);
+
+
             //PAYMENTS
             Route::get('/order-payments' , [PaymentController::class , 'index']);
 
@@ -87,9 +95,10 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
 
 
             //ORDER MATERIAL
-
             Route::post('/add-material/{order}' , [OrderController::class , 'clientOrderAddMaterial']);
             Route::delete('/material/{orderMaterial}' , [OrderController::class , 'destroyMaterial']);
+
+
 
             //   ORDERS
             Route::post('/orders' , [OrderController::class , 'create']);
@@ -98,6 +107,7 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/orders-pending' , [OrderController::class , 'clientPendingOrders']);
 
             Route::post('/cancel-order/{order}' , [OrderController::class , 'clientOrderCancel']);
+
 
             Route::get('/orders-cancelled' , [OrderController::class , 'clientCancelledOrders']);
             Route::get('/orders-active' , [OrderController::class , 'clientActiveOrders']);
@@ -124,13 +134,20 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             Route::get('/direct-contacts', [ContactController::class , 'adminIndex']);
 
 
+
+
             //PAYMENTS
             Route::get('/order-payments' , [PaymentController::class , 'adminIndex']);
+
+
 
             //MESSAGES
             Route::get('/conversations' , [MessageController::class ,'adminIndex']);
             Route::post('/message' , [MessageController::class , 'adminCreate']);
             Route::get('/conversation/{conversation}/messages' , [MessageController::class , 'adminMessages']);
+
+
+
 
             //   ORDERS
             Route::get('/orders' , [OrderController::class , 'adminOrders']);

@@ -119,6 +119,11 @@ const ClientDashboard = () => {
                                      <div className="area-group-value">{analytics.misc?.messages || "N/A"}</div>
                                  </div>
 
+                                 {/*<div className="analytics-area-group  ml-7">*/}
+                                 {/*    <div className="area-group-name">Transactions</div>*/}
+                                 {/*    <div className="area-group-value">{analytics.misc?.transactions || "N/A"}</div>*/}
+                                 {/*</div>*/}
+
                                  <div className="analytics-area-group  ml-7">
                                      <div className="area-group-name">Payments</div>
                                      <div className="area-group-value">{analytics.misc?.payments || "N/A"}</div>

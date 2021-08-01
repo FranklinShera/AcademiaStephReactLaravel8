@@ -41,8 +41,16 @@ class Order extends Model
         return $this->hasOne(OrderAssign::class);
     }
 
+    public function clientFeedback(){
+        return $this->hasOne(ClientFeedback::class);
+    }
+
     public function orderMaterials(){
         return $this->hasMany(OrderMaterial::class);
+    }
+
+    public function scopePaid($query){
+        return $query->where('stage' ,'>', 0);
     }
 
     public function scopePending($query){
