@@ -22,14 +22,14 @@ import {
 
 
 
-export const AuthUserReducer = (state = {loggedInUser: {} , auth: false} , action) => {
+export const AuthUserReducer = (state = {loggedInUser: {} , notifications: [], auth: false} , action) => {
     switch(action.type){
         case USER_LOGIN_REQUEST:
-            return { loading: true , loggedInUser: {} , auth: false }
+            return { loading: true , loggedInUser: {} ,notifications: [], auth: false }
 
         case USER_REFRESH:
 
-            return { loading: false , loggedInUser: action.payload , auth: true }
+            return { loading: false ,  loggedInUser: action.payload.admin , notifications :action.payload.notifications, auth: true }
 
         case USER_LOGOUT:
             localStorage.removeItem("authUser")
@@ -38,7 +38,7 @@ export const AuthUserReducer = (state = {loggedInUser: {} , auth: false} , actio
         case USER_LOGIN_SUCCESS:
             localStorage.setItem("authUser", JSON.stringify(action.payload.user))
 
-            return { loading: false , loggedInUser: action.payload , auth: true }
+            return { loading: false , loggedInUser: action.payload.admin , notifications :action.payload.notifications, auth: true }
 
         case USER_LOGIN_FAIL:
             return { loading: false , error: action.payload }
@@ -50,26 +50,26 @@ export const AuthUserReducer = (state = {loggedInUser: {} , auth: false} , actio
 
 
 
-export const AuthClientReducer = (state = { loggedInClient: {} , clientAuth: false } , action) => {
+export const AuthClientReducer = (state = { loggedInClient: {} ,notifications: [], clientAuth: false } , action) => {
     switch(action.type){
         case CLIENT_LOGIN_REQUEST:
-            return { loading: true , loggedInClient: {} , clientAuth: false }
+            return { loading: true , loggedInClient: {} ,notifications: [], clientAuth: false }
 
         case CLIENT_REFRESH:
 
-            return { loading: false , loggedInClient: action.payload , clientAuth: true }
+            return { loading: false , loggedInClient: action.payload.client , notifications:action.payload.notifications, clientAuth: true }
 
         case CLIENT_LOGOUT:
-            localStorage.removeItem("clientAuth")
+            // localStorage.removeItem("clientAuth")
 
             return { loading: false , loggedInClient: {} , clientAuth: false }
 
 
         case CLIENT_LOGIN_SUCCESS:
 
-            localStorage.setItem("clientAuth", JSON.stringify(action.payload.user))
+            // localStorage.setItem("clientAuth", JSON.stringify(action.payload.user))
 
-            return { loading: false , loggedInClient: action.payload , clientAuth: true }
+            return { loading: false , loggedInClient: action.payload.client , notifications:action.payload.notifications, clientAuth: true }
 
         case CLIENT_LOGIN_FAIL:
             return { loading: false , error: action.payload }
@@ -116,3 +116,7 @@ export const AdminPanelReducer = (state = { inAdminPanel: false , sidebarPositio
             return state
     }
 }
+
+
+
+

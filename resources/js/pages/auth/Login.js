@@ -7,6 +7,7 @@ import { useDispatch , useSelector } from 'react-redux'
 
 //actions
 import { loginUser , refreshUser } from '../../actions/AuthUserActions'
+import ShootingLoader from "../../components/ShootingLoader";
 
 const Login = ({ location }) => {
 
@@ -68,6 +69,9 @@ const Login = ({ location }) => {
     }, [])
     return (
         <div className="login-screen">
+
+            {isLoggin  && (<ShootingLoader loading={isLoggin}/>)}
+
             <form className="w-4/5 md:w-4/5 lg:w-1/2" onSubmit={handleLogin}>
                  <label className="w-full mb-5 text-5xl text-center">Admin Login</label>
                  <InputField labelText='Username' parentClasses="w-full" name="username" id="username" type='text' placeholder="Enter Email" onChange={(e) =>  setUser({...user, email: e.target.value})}/>

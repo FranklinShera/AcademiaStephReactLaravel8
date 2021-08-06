@@ -9,6 +9,7 @@ import  Logo from '.././images/as21logo.png';
 
 //actions
 import {  logoutUser , logoutClient } from '../actions/AuthUserActions'
+import Notification from "./Notification";
 
 const Header = ({ inAdminPanel }) => {
 
@@ -68,6 +69,9 @@ const Header = ({ inAdminPanel }) => {
                        </Link>
                     </div>
                 </div>
+
+
+                {(auth || clientAuth) && <Notification userType={(auth) ? 1: (clientAuth) ? 0 : null}/>}
 
                 <div className={(dropNav) ? 'toggler justify-center' : 'toggler justify-between'} onClick={(e) => setdropNav(!dropNav)}>
 

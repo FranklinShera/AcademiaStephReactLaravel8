@@ -15032,27 +15032,28 @@ var loginClient = function loginClient(code, provider) {
 
             case 7:
               loggedClient = _context2.sent;
+              console.log(loggedClient);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
-                payload: loggedClient.data.data
+                payload: loggedClient.data
               });
-              _context2.next = 14;
+              _context2.next = 15;
               break;
 
-            case 11:
-              _context2.prev = 11;
+            case 12:
+              _context2.prev = 12;
               _context2.t0 = _context2["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
                 error: _context2.t0
               });
 
-            case 14:
+            case 15:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 11]]);
+      }, _callee2, null, [[0, 12]]);
     }));
 
     return function (_x2) {
@@ -15082,27 +15083,28 @@ var autoLoginClient = function autoLoginClient() {
 
             case 7:
               loggedClient = _context3.sent;
+              console.log("Auto Client", loggedClient);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
-                payload: loggedClient.data.data
+                payload: loggedClient.data
               });
-              _context3.next = 14;
+              _context3.next = 15;
               break;
 
-            case 11:
-              _context3.prev = 11;
+            case 12:
+              _context3.prev = 12;
               _context3.t0 = _context3["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
                 error: _context3.t0
               });
 
-            case 14:
+            case 15:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 11]]);
+      }, _callee3, null, [[0, 12]]);
     }));
 
     return function (_x3) {
@@ -15232,7 +15234,7 @@ var refreshClient = function refreshClient() {
                   axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client').then(function (res) {
                     dispatch({
                       type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
-                      payload: res.data.data
+                      payload: res.data
                     });
                   })["catch"](function (err) {
                     dispatch({
@@ -16584,12 +16586,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _images_as21logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/as21logo.png */ "./resources/js/images/as21logo.png");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Notification */ "./resources/js/components/Notification.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -16612,10 +16615,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Header = function Header(_ref) {
   var inAdminPanel = _ref.inAdminPanel;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var hist = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+  var hist = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
   });
@@ -16650,84 +16654,86 @@ var Header = function Header(_ref) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("nav", {
       id: "navigation",
       className: "fixed top-0 left-0 h-16 nav-main ".concat(inAdminPanel ? ' nav-main-ap ' : ' nav-main-dp '),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "nav-left",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "logo",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
             to: "/",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
               src: _images_as21logo_png__WEBPACK_IMPORTED_MODULE_2__.default,
               className: "h-8",
               alt: "academiasteph21 logo"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
               className: "ml-2 text-lg",
               children: "AcademiaSteph21"
             })]
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      }), (auth || clientAuth) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Notification__WEBPACK_IMPORTED_MODULE_4__.default, {
+        userType: auth ? 1 : clientAuth ? 0 : null
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: dropNav ? 'toggler justify-center' : 'toggler justify-between',
         onClick: function onClick(e) {
           return setdropNav(!dropNav);
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: dropNav ? 'menu-line frwdslash' : 'menu-line'
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: dropNav ? 'menu-line backslash' : 'menu-line'
-        }), !dropNav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        }), !dropNav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: "menu-line"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: " nav-right",
-        children: !auth && !clientAuth ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        children: !auth && !clientAuth ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
             className: " navlink hover:border-b-2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "/#hero",
               children: "Home"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
             className: "navlink hover:border-b-2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "/#services",
               children: "Services"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
             className: "navlink hover:border-b-2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "/#contact",
               children: "Contact"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "login-links",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
               to: "/in",
               children: "Admin"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
               to: "/client",
               children: "Client"
             })]
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "flex cursor-pointer",
             onClick: getDashboard,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               children: [auth && loggedInUser.name, clientAuth && loggedInClient.name]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "admin-logout",
               onClick: logout,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
                 className: "w-6 h-6",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
                 xmlns: "http://www.w3.org/2000/svg",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   strokeWidth: "2",
@@ -16738,38 +16744,38 @@ var Header = function Header(_ref) {
           })
         })
       })]
-    }), dropNav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), dropNav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       id: "mobmenu",
       className: "flex items-center justify-center mobile-nav sm:hidden animate__animated animate__slideInDown",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "flex flex-col items-center justify-center mid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           className: "my-8 navlink hover:border-b-2",
           onClick: function onClick(e) {
             e.preventDefault();
             navigateTo('#hero');
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
             href: "/#hero",
             children: "Home"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           className: "my-8 navlink hover:border-b-2",
           onClick: function onClick(e) {
             e.preventDefault();
             navigateTo('#services');
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
             href: "/#services",
             children: "Services"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           className: "my-8 navlink hover:border-b-2",
           onClick: function onClick(e) {
             e.preventDefault();
             navigateTo('#contact');
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
             href: "/#contact",
             children: "Contact"
           })
@@ -16980,6 +16986,60 @@ var Message = function Message(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Message);
+
+/***/ }),
+
+/***/ "./resources/js/components/Notification.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Notification.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var Notification = function Notification(_ref) {
+  var userType = _ref.userType;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setUser(userType == 1 ? "Admin " : userType == 0 ? "Client " : "x");
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "notification flex items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+      className: "ti-comment-alt mr-2 text-primary-1"
+    }), user, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: "You Have New Notifications Now!"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Notification);
 
 /***/ }),
 
@@ -17538,6 +17598,97 @@ var SelectInputField = function SelectInputField(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectInputField);
+
+/***/ }),
+
+/***/ "./resources/js/components/ShootingLoader.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/ShootingLoader.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _images_as21logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././images/as21logo.png */ "./resources/js/images/as21logo.png");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var ShootingLoader = function ShootingLoader(_ref) {
+  var loading = _ref.loading;
+  var AcademicLevels = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
+    return state.academicLevels;
+  });
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
+    return state.authClient;
+  });
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isLoading = _useState2[0],
+      setLoading = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setLoading(loading);
+  }, [loading]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: !isLoading && 'hidden',
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "loader-overlay bg-white vh-100",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "wait-loader",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              src: _images_as21logo_png__WEBPACK_IMPORTED_MODULE_1__.default,
+              alt: "AcademiaSteph21 Loader"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-1"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-4"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-5"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-6"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-7"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item item-8"
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShootingLoader);
 
 /***/ }),
 
@@ -20033,38 +20184,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "USER_LOGIN_FAIL": () => (/* binding */ USER_LOGIN_FAIL),
 /* harmony export */   "USER_REGISTER_REQUEST": () => (/* binding */ USER_REGISTER_REQUEST),
 /* harmony export */   "USER_REGISTER_SUCCESS": () => (/* binding */ USER_REGISTER_SUCCESS),
+/* harmony export */   "USER_REGISTER_FAIL": () => (/* binding */ USER_REGISTER_FAIL),
+/* harmony export */   "USER_REFRESH": () => (/* binding */ USER_REFRESH),
+/* harmony export */   "USER_LOGOUT": () => (/* binding */ USER_LOGOUT),
 /* harmony export */   "CLIENT_LOGIN_REQUEST": () => (/* binding */ CLIENT_LOGIN_REQUEST),
 /* harmony export */   "CLIENT_LOGIN_SUCCESS": () => (/* binding */ CLIENT_LOGIN_SUCCESS),
 /* harmony export */   "CLIENT_LOGIN_FAIL": () => (/* binding */ CLIENT_LOGIN_FAIL),
 /* harmony export */   "CLIENT_REGISTER_REQUEST": () => (/* binding */ CLIENT_REGISTER_REQUEST),
 /* harmony export */   "CLIENT_REGISTER_SUCCESS": () => (/* binding */ CLIENT_REGISTER_SUCCESS),
+/* harmony export */   "CLIENT_REFRESH": () => (/* binding */ CLIENT_REFRESH),
+/* harmony export */   "CLIENT_LOGOUT": () => (/* binding */ CLIENT_LOGOUT),
 /* harmony export */   "USER_IN_ADMIN_PANEL": () => (/* binding */ USER_IN_ADMIN_PANEL),
 /* harmony export */   "USER_OUT_ADMIN_PANEL": () => (/* binding */ USER_OUT_ADMIN_PANEL),
-/* harmony export */   "ADMIN_SIDEBAR_POSITION": () => (/* binding */ ADMIN_SIDEBAR_POSITION),
-/* harmony export */   "USER_REGISTER_FAIL": () => (/* binding */ USER_REGISTER_FAIL),
-/* harmony export */   "USER_REFRESH": () => (/* binding */ USER_REFRESH),
-/* harmony export */   "USER_LOGOUT": () => (/* binding */ USER_LOGOUT),
-/* harmony export */   "CLIENT_REFRESH": () => (/* binding */ CLIENT_REFRESH),
-/* harmony export */   "CLIENT_LOGOUT": () => (/* binding */ CLIENT_LOGOUT)
+/* harmony export */   "ADMIN_SIDEBAR_POSITION": () => (/* binding */ ADMIN_SIDEBAR_POSITION)
 /* harmony export */ });
 var USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 var USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 var USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
 var USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST';
 var USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
+var USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
+var USER_REFRESH = 'USER_REFRESH';
+var USER_LOGOUT = 'USER_LOGOUT';
 var CLIENT_LOGIN_REQUEST = 'CLIENT_LOGIN_REQUEST';
 var CLIENT_LOGIN_SUCCESS = 'CLIENT_LOGIN_SUCCESS';
 var CLIENT_LOGIN_FAIL = 'CLIENT_LOGIN_FAIL';
 var CLIENT_REGISTER_REQUEST = 'CLIENT_REGISTER_REQUEST';
 var CLIENT_REGISTER_SUCCESS = 'CLIENT_REGISTER_SUCCESS';
+var CLIENT_REFRESH = 'CLIENT_REFRESH';
+var CLIENT_LOGOUT = 'CLIENT_LOGOUT';
 var USER_IN_ADMIN_PANEL = 'USER_IN_ADMIN_PANEL';
 var USER_OUT_ADMIN_PANEL = 'USER_OUT_ADMIN_PANEL';
 var ADMIN_SIDEBAR_POSITION = 'ADMIN_SIDEBAR_POSITION';
-var USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
-var USER_REFRESH = 'USER_REFRESH';
-var USER_LOGOUT = 'USER_LOGOUT';
-var CLIENT_REFRESH = 'CLIENT_REFRESH';
-var CLIENT_LOGOUT = 'CLIENT_LOGOUT';
 
 /***/ }),
 
@@ -21551,10 +21702,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _components_InputField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/InputField */ "./resources/js/components/InputField.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_ShootingLoader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/ShootingLoader */ "./resources/js/components/ShootingLoader.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -21583,6 +21735,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Login = function Login(_ref) {
   var location = _ref.location;
 
@@ -21592,7 +21745,7 @@ var Login = function Login(_ref) {
       setIsLogging = _useState2[1];
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.authUser;
   });
@@ -21628,15 +21781,17 @@ var Login = function Login(_ref) {
     window.scrollTo(0, 0);
     document.querySelector('title').text = 'AcademiaSteph21 | Admin Login';
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "login-screen",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+    children: [isLoggin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_ShootingLoader__WEBPACK_IMPORTED_MODULE_5__.default, {
+      loading: isLoggin
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
       className: "w-4/5 md:w-4/5 lg:w-1/2",
       onSubmit: handleLogin,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
         className: "w-full mb-5 text-5xl text-center",
         children: "Admin Login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
         labelText: "Username",
         parentClasses: "w-full",
         name: "username",
@@ -21648,7 +21803,7 @@ var Login = function Login(_ref) {
             email: e.target.value
           }));
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
         labelText: "Password",
         parentClasses: "w-full",
         name: "password",
@@ -21660,12 +21815,12 @@ var Login = function Login(_ref) {
             password: e.target.value
           }));
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         type: "submit",
         className: "w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri",
         children: isLoggin ? "Logging In" : "Login"
       })]
-    })
+    })]
   });
 };
 
@@ -25923,6 +26078,7 @@ __webpack_require__.r(__webpack_exports__);
 var AuthUserReducer = function AuthUserReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     loggedInUser: {},
+    notifications: [],
     auth: false
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -25932,13 +26088,15 @@ var AuthUserReducer = function AuthUserReducer() {
       return {
         loading: true,
         loggedInUser: {},
+        notifications: [],
         auth: false
       };
 
     case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.USER_REFRESH:
       return {
         loading: false,
-        loggedInUser: action.payload,
+        loggedInUser: action.payload.admin,
+        notifications: action.payload.notifications,
         auth: true
       };
 
@@ -25954,7 +26112,8 @@ var AuthUserReducer = function AuthUserReducer() {
       localStorage.setItem("authUser", JSON.stringify(action.payload.user));
       return {
         loading: false,
-        loggedInUser: action.payload,
+        loggedInUser: action.payload.admin,
+        notifications: action.payload.notifications,
         auth: true
       };
 
@@ -25971,6 +26130,7 @@ var AuthUserReducer = function AuthUserReducer() {
 var AuthClientReducer = function AuthClientReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     loggedInClient: {},
+    notifications: [],
     clientAuth: false
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -25980,18 +26140,20 @@ var AuthClientReducer = function AuthClientReducer() {
       return {
         loading: true,
         loggedInClient: {},
+        notifications: [],
         clientAuth: false
       };
 
     case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.CLIENT_REFRESH:
       return {
         loading: false,
-        loggedInClient: action.payload,
+        loggedInClient: action.payload.client,
+        notifications: action.payload.notifications,
         clientAuth: true
       };
 
     case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.CLIENT_LOGOUT:
-      localStorage.removeItem("clientAuth");
+      // localStorage.removeItem("clientAuth")
       return {
         loading: false,
         loggedInClient: {},
@@ -25999,10 +26161,11 @@ var AuthClientReducer = function AuthClientReducer() {
       };
 
     case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.CLIENT_LOGIN_SUCCESS:
-      localStorage.setItem("clientAuth", JSON.stringify(action.payload.user));
+      // localStorage.setItem("clientAuth", JSON.stringify(action.payload.user))
       return {
         loading: false,
-        loggedInClient: action.payload,
+        loggedInClient: action.payload.client,
+        notifications: action.payload.notifications,
         clientAuth: true
       };
 

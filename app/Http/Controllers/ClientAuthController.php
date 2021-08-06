@@ -225,7 +225,9 @@ class ClientAuthController extends Controller
 
     public function profile(){
 
-        return new ClientResource(currentClient());
+        $client = new ClientResource(currentClient());
+
+        return response()->json(['client' => $client , 'notification' => []]);
 
     }
 

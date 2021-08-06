@@ -131,7 +131,7 @@ class AuthController extends Controller
 
     public function profile(){
 
-        return response()->json(Auth::user());
+        return response()->json(['admin' => Auth::user(), 'notifications' => []]);
 
     }
 

@@ -1,21 +1,21 @@
 import {
-    USER_LOGIN_REQUEST ,
-    USER_LOGIN_SUCCESS ,
+    USER_LOGIN_REQUEST,
+    USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
-    USER_REGISTER_REQUEST ,
-    CLIENT_LOGIN_REQUEST ,
-    CLIENT_LOGIN_SUCCESS ,
+    USER_REGISTER_REQUEST,
+    CLIENT_LOGIN_REQUEST,
+    CLIENT_LOGIN_SUCCESS,
     CLIENT_LOGIN_FAIL,
     CLIENT_REGISTER_REQUEST,
     USER_IN_ADMIN_PANEL,
     USER_OUT_ADMIN_PANEL,
     ADMIN_SIDEBAR_POSITION,
-    USER_REGISTER_SUCCESS ,
+    USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
     USER_REFRESH,
     CLIENT_REFRESH,
     USER_LOGOUT,
-    CLIENT_LOGOUT
+    CLIENT_LOGOUT, ANALYTICS_SUCCESS, ANALYTICS_FAIL, ANALYTICS_REQUEST
 } from '../constants/AuthUserConstants'
 
 import axios from 'axios'
@@ -78,10 +78,12 @@ export const loginClient = (code , provider) => async (dispatch) => {
 
         const loggedClient = await axios.post('/api/auth/client')
 
+        console.log(loggedClient)
+
 
         dispatch({
             type: CLIENT_LOGIN_SUCCESS,
-            payload: loggedClient.data.data
+            payload: loggedClient.data
         })
 
 
@@ -110,9 +112,11 @@ export const autoLoginClient = () => async (dispatch) => {
         const loggedClient = await axios.post('/api/auth/client')
 
 
+        console.log("Auto Client" , loggedClient);
+
         dispatch({
             type: CLIENT_LOGIN_SUCCESS,
-            payload: loggedClient.data.data
+            payload: loggedClient.data
         })
 
 
@@ -192,7 +196,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
 
                     axios.post('/api/auth/client')
                         .then(res => {
-                            dispatch({ type: CLIENT_REFRESH , payload : res.data.data})
+                            dispatch({ type: CLIENT_REFRESH , payload : res.data})
                         })
                         .catch(err =>{
                             dispatch({
@@ -211,7 +215,6 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
             })
 
 }
-
 
 
 export const logoutUser = () => async (dispatch) => {

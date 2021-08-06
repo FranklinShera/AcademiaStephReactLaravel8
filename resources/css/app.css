@@ -325,6 +325,7 @@ html::-webkit-scrollbar-thumb {
 .place-order-page,.preview-order-page, .find-writer-page{
     @apply flex flex-col items-center  py-4;
     overflow-y: scroll;
+    scrollbar-color: #71797E #D3D3D3;
     scrollbar-width: thin;
     height: 90vh;
 }
@@ -1810,7 +1811,7 @@ footer{
 }
 
 .messages-group{
-    scrollbar-color: #111111 gray;
+    scrollbar-color: #71797E #D3D3D3;
     scrollbar-width: thin;
 }
 
