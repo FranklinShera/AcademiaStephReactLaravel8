@@ -1146,7 +1146,7 @@ footer{
 
 .dash_items_component{
     @apply w-4/5 ;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -1168,7 +1168,8 @@ footer{
 .admin_sidebar{
     @apply w-1/5 pt-8 pl-10;
     background-color: #a0afa011;
-    min-height: 100vh
+    min-height: 90vh;
+    /*min-height: 100vh;*/
 }
 
 .sidebar_links{

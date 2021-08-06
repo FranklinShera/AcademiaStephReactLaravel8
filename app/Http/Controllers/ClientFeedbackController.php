@@ -31,7 +31,7 @@ class ClientFeedbackController extends Controller
 
         ClientFeedback::create($feedback);
 
-        return response()->json(['message' => 'Feedback Submitted Successfully!'] , Response::HTTP_OK);
+        return response()->json(['message' => 'Feedback Submitted Successfully!'] , Response::HTTP_CREATED);
     }
 
 

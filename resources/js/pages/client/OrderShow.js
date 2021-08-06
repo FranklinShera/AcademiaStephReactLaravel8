@@ -560,7 +560,7 @@ const OrderShow = () => {
                          {(order && (order.stage == 1 && order.feedback)) && (
                              <div className=" py-4 mb-3 bg-gradient-to-r from-green-600 to-green-400  rounded-md w-full transition-all delay-75 flex  justify-center items-center">
                                  <span className="text-white mr-2">You Rated This Service </span>
-                                 <span className='text-2xl font-bold text-white'>{order.feedback.rating}</span>
+                                 <span className='text-xl font-bold text-white p-1 border border-white rounded-lg'>{order.feedback.rating}</span>
                              </div>
                          ) }
 

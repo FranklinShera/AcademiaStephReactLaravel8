@@ -16,8 +16,12 @@ import  TermPaperIcon from '.././images/rules.svg';
 import  ResearchPaperIcon from '.././images/research.svg';
 import  WhitePaperIcon from '.././images/whitepaper.svg';
 import  AssignmentIcon from '.././images/assignment.svg';
-import  CaseStudyIcon from '.././images/casestudy.svg';
+import  CaseStudyIcon from '.././images/book_stack.svg';
+import  ProofreadingIcon from '.././images/proofread.svg';
 import  DissertationIcon from '.././images/dissertations.svg';
+import  TranscriptionIcon from '.././images/transcription.svg';
+import  CaptionIcon from '.././images/captioning.svg';
+import  EditingIcon from '.././images/spellcheck.svg';
 
 
 
@@ -155,7 +159,7 @@ const Home = () => {
                 <div className="serv-group">
                         <h1 className="block w-full my-10 text-center header-text">SERVICES</h1>
 
-                    <div className="service">
+                    <div className="service sm:justify-start xl:justify-center">
                         <img src={TermPaperIcon} className="h-12" alt="Term paper icon"></img>
                         <span>Term Papers</span>
                     </div>
@@ -187,26 +191,25 @@ const Home = () => {
                         <span>Dissertation</span>
                     </div>
 
+                    <div className="service sm:justify-start xl:justify-center">
+                        <img src={ProofreadingIcon} className="h-12" alt="Case Study icon"></img>
+                        <span>Proofreading</span>
+                    </div>
 
-                    {/*<div className="service">*/}
-                    {/*    <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>*/}
-                    {/*    <span>Proofreading</span>*/}
-                    {/*</div>*/}
+                    <div className="service sm:justify-start xl:justify-center">
+                        <img src={TranscriptionIcon} className="h-12" alt="Transcription icon"></img>
+                        <span>Transcription</span>
+                    </div>
 
-                    {/*<div className="service sm:justify-start xl:justify-center">*/}
-                    {/*    <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>*/}
-                    {/*    <span>Transcription</span>*/}
-                    {/*</div>*/}
+                    <div className="service sm:justify-start xl:justify-center">
+                        <img src={EditingIcon} className="h-12" alt="Editing icon"></img>
+                        <span>Editing</span>
+                    </div>
 
-                    {/*<div className="service">*/}
-                    {/*    <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>*/}
-                    {/*    <span>Editing</span>*/}
-                    {/*</div>*/}
-
-                    {/*<div className="service sm:justify-start xl:justify-center">*/}
-                    {/*    <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>*/}
-                    {/*    <span>Captioning</span>*/}
-                    {/*</div>*/}
+                    <div className="service ">
+                        <img src={CaptionIcon} className="h-12" alt="Captioning icon"></img>
+                        <span>Captioning</span>
+                    </div>
 
 
                 </div>

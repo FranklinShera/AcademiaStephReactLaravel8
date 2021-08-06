@@ -14,9 +14,13 @@ class ClientFeedbackResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        $clientName = $this->order->client->name;
+        $clientFirstName = explode(' ' ,$clientName)[0];
+
         return [
-            'id' => $this->id,
-            'customer_name' => $this->order->client->name,
+//            'id' => $this->id,
+            'customer_name' => $clientFirstName,
             'rating' => $this->rating,
             'remarks' => $this->remarks,
             'created_at' => Date('jS M Y', strtotime($this->created_at)),
