@@ -12,20 +12,26 @@ body , html{
     height: 100%;
 }
 
+html {
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    scrollbar-width: thin;
+}
 
-:focus{
+
+
+html:focus{
     outline: none;
 }
 
-::-webkit-scrollbar {
+html::-webkit-scrollbar {
     width: 11px;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
     background: var(--scrollbarBG);
 }
 
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb {
     background-color: var(--thumbBG) ;
     border-radius: 6px;
     border: 3px solid var(--scrollbarBG);
@@ -318,6 +324,8 @@ body , html{
 
 .place-order-page,.preview-order-page, .find-writer-page{
     @apply flex flex-col items-center  py-4;
+    overflow-y: scroll;
+    scrollbar-width: thin;
     height: 90vh;
 }
 
@@ -1789,7 +1797,6 @@ footer{
 
 
 
-
 /*MESSAGES*/
 
 .messages{
@@ -1800,6 +1807,11 @@ footer{
     @apply w-full flex flex-col pt-3 mt-3;
     overflow-y: scroll;
     height: 76vh;
+}
+
+.messages-group{
+    scrollbar-color: #111111 gray;
+    scrollbar-width: thin;
 }
 
 .no-messages{
