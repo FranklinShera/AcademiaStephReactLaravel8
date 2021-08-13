@@ -1,26 +1,17 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-    <!-- NAME: 1 COLUMN -->
-    <!--[if gte mso 15]>
-    <xml>
-        <o:OfficeDocumentSettings>
-            <o:AllowPNG/>
-            <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-    </xml>
-    <![endif]-->
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Order Created</title>
+    <title>Order Paid And Assigned</title>
 
 </head>
 <body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
-<!--*|IF:MC_PREVIEW_TEXT|*-->
-<!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
-<!--*|END:IF|*-->
-<center>
+
+<span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+
     <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
         <tr>
             <td align="center" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;border-top: 0;">
@@ -106,61 +97,21 @@
 
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 
-                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello Frank, Your order has been Created!</h1>
-                                                    Please make payment for the order to be assignable!<br>
+                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello Frank, Your order has been received!</h1>
+                                                    You will receive more updates on the progress till completion!<br>
                                                     <br>
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            </tbody></table>
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-
-                                        <!--[if mso]>
-                                        </tr>
-                                        </table>
-                                        <![endif]-->
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table><table class="mcnButtonBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-                                <tbody class="mcnButtonBlockOuter">
-                                <tr>
-                                    <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnButtonBlockInner" valign="top" align="center">
-                                        <table class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 7px;background-color: #2BAADF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" cellspacing="0" cellpadding="0" border="0">
-                                            <tbody>
-                                            <tr>
-                                                <td class="mcnButtonContent" style="font-family: Arial;font-size: 16px;padding: 24px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="middle" align="center">
-                                                    <a class="mcnButton " title="Go to Payment Page" href="http://127.0.0.1:8000/mailtest" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Go to Payment Page</a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table><table class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-                                <tbody class="mcnTextBlockOuter">
-                                <tr>
-                                    <td class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
-                                        <!--[if mso]>
-                                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                                            <tr>
-                                        <![endif]-->
-
-                                        <!--[if mso]>
-                                        <td valign="top" width="600" style="width:600px;">
-                                        <![endif]-->
-                                        <table style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
-                                            <tbody><tr>
-
-                                                <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
-
                                                     Order Topic : Effects of Technology<br>
                                                     Order ID : AD4KH87KSH2<br>
                                                     Cost :&nbsp; $213<br>
-                                                    <br>
+                                                    Subject : Engineering<br>
+                                                    Type Of Paper : Research Paper<br>
+                                                    Paper Format : MLA<br>
+                                                    Preffered English : UK<br>
+                                                    Number Of Sources : 3<br>
+                                                    Spacing : Double<br>
+                                                    Number Of Pages : 3<br>
+                                                    Academic Level : Masters<br>
+                                                    Urgency : 5 Days<br>
                                                     <br>
                                                     Regards,<br>
                                                     AcademiaSteph21 HelpDesk
@@ -192,7 +143,10 @@
                                                 </td>
                                             </tr>
                                             </tbody></table>
-
+                                        <!--
+                                                        <td class="mcnDividerBlockInner" style="padding: 18px;">
+                                                        <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+                                        -->
                                     </td>
                                 </tr>
                                 </tbody>
@@ -248,3 +202,4 @@
 </center>
 </body>
 </html>
+

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PayPalController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::get('paypal/checkout-cancel', [PayPalController::class ,'cancelPage'])->n
 
 
 Route::get('/mailtest', function () {
+    $order = Order::latest()->first();
+
+    dd($order);
     return view('mails.orders.writer_assigned');
 });
 
