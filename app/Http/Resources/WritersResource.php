@@ -20,6 +20,7 @@ class WritersResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'speciality' => $this->speciality,
+            'active' => ($this->active == 1) ? true : false,
             'created_at' => date('H:i   -  j M Y', strtotime($this->created_at))
         ];
     }

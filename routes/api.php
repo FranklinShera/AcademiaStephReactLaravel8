@@ -128,6 +128,8 @@ Route::middleware(['tokencookie'])->prefix('/auth')->group(function (){
             //WRITER
             Route::post('/add-writer', [WriterController::class , 'create']);
             Route::get('/writers', [WriterController::class , 'adminIndex']);
+            Route::get('/assignable-writers', [WriterController::class , 'adminAssignableIndex']);
+            Route::post('/writer-status-toggle/{writer}', [WriterController::class , 'adminWriterStatusToggle']);
 
 
             //CONTACTS

@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 
 const Notification = ({userType}) => {
+
+    const authUser = useSelector( state => state.authUser)
+    const { notifications } = authUser;
 
     const[user,setUser] = useState("")
 
@@ -11,11 +15,14 @@ const Notification = ({userType}) => {
     },[])
 
     return (
-        <div className="notification flex items-center">
-            <i className="ti-comment-alt mr-2 text-primary-1"></i>
-            {user}
-            <h1>You Have New Notifications Now!</h1>
-        </div>
+       <>
+           {(notifications.length != 0) && (
+               <div className="notification flex items-center">
+                   <i className="ti-comment-alt mr-2 text-primary-1"></i>
+                   <h1>{notifications[0]?.show && notifications[0]?.msg }</h1>
+               </div>
+           )}
+       </>
     )
 
 }

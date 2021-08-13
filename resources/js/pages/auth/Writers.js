@@ -105,6 +105,39 @@ const Writers = () => {
 
 
 
+
+    const toggleStatus = (id) =>{
+
+
+        axios.post('/api/auth/admin/writer-status-toggle/'+id).then(res =>{
+            if(res.status == 200){
+
+                window.Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                })
+
+                fetchWriters();
+
+            } else{
+                window.Swal.fire({
+                    icon: 'error',
+                    title: res.data.message
+                })
+            }
+        }).catch(error => {
+            window.Swal.fire({
+                icon: 'error',
+                title: error
+            })
+        })
+
+
+
+    }
+
+
+
     const fetchWriters = (writersUrl = '/api/auth/admin/writers') =>{
         setLoading(true)
 
@@ -203,6 +236,10 @@ const Writers = () => {
 
                          <div className="writers-date">
                              Date
+                         </div>
+
+                         <div className="writers-action">
+                             <i className="ti-settings h-5 w-5 text-black"></i>
                          </div>
 
                      </div>
@@ -359,6 +396,14 @@ const Writers = () => {
 
                                  <div className="writers-date">
                                      {writer.created_at}
+                                 </div>
+
+                                 <div className="writers-action border-l-2 border-white">
+                                     <i className={`ti-exchange-vertical cursor-pointer ${ writer.active ? 'text-green-600' : 'text-dark-1'}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleStatus(writer.id);
+                                        }}></i>
                                  </div>
 
                              </div>

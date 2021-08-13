@@ -39,6 +39,13 @@ const Payment = () => {
     }
 
 
+    const showOrder = (id , topic) => {
+
+        let topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
+
+        hist.push(`/client/dashboard/order-view/${id}/${topicSlug}`);
+
+    }
 
     useEffect(() => {
 
@@ -106,7 +113,11 @@ const Payment = () => {
                                         { orderPayment.payment.order_id }
                                     </div>
 
-                                    <div className="payment-order-title">
+                                    <div className="payment-order-title"
+                                         onClick={(e) => {
+                                             e.preventDefault();
+                                             showOrder(orderPayment.id , orderPayment.topic);
+                                         }}>
                                         {  (orderPayment.topic.length > 50) ? orderPayment.topic.slice(0,50)+'...' : orderPayment.topic }
                                     </div>
 

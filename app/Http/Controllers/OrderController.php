@@ -165,9 +165,13 @@ class OrderController extends Controller
     public function adminOrder(Request $request, Order $order)
     {
         if(!$order){
-
             return response()->json(['error' => "The Order Requested was Not Found!"] , Response::HTTP_FORBIDDEN);
+        }
 
+        if($order->viewed == 0){
+
+                $order->viewed = 1;
+                $order->save();
         }
 
         return new OrderResource($order);

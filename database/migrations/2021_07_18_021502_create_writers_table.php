@@ -19,6 +19,7 @@ class CreateWritersTable extends Migration
             $table->string('email');
             $table->string('phone')->nullable(true);
             $table->string('speciality');
+            $table->boolean("active")->default(false);
             $table->timestamps();
         });
     }

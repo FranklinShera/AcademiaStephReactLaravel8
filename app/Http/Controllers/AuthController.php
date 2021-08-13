@@ -131,10 +131,27 @@ class AuthController extends Controller
 
     public function profile(){
 
-        return response()->json(['admin' => Auth::user(), 'notifications' => []]);
+
+        return response()->json(['admin' => Auth::user(), 'notifications' => $this->prepNotifications()]);
 
     }
 
+
+    private function prepNotifications(){
+       $unseenCount = Order::where('viewed', 0)->count();
+
+       $unseenOrder =  [
+           'show' => ($unseenCount > 0) ? true : false,
+           'msg' => "Your Have $unseenCount Unseen Orders!"
+       ];
+
+
+
+       return [
+           $unseenOrder
+       ];
+
+    }
 
 
     public function logout(){

@@ -38,7 +38,7 @@ const OrderView = () => {
             })
             .catch(err => console.log(err))
 
-        axios.get(`/api/auth/admin/writers`)
+        axios.get(`/api/auth/admin/assignable-writers`)
             .then(res => {
                 setWriters(res.data.data)
             })

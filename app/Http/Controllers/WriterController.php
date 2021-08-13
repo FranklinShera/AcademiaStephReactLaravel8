@@ -18,6 +18,14 @@ class WriterController extends Controller
     }
 
 
+    public function adminAssignableIndex()
+    {
+        $writers = Writer::where('active', 1)->orderBy('created_at', 'DESC')->paginate(10);
+
+        return WritersResource::collection($writers)->response()->setStatusCode(Response::HTTP_OK);
+    }
+
+
     public function create(Request $request)
     {
         $newWriter =  $request->validate([
@@ -37,6 +45,19 @@ class WriterController extends Controller
 
 
 
+
+
+    public function adminWriterStatusToggle(Writer $writer)
+    {
+
+        if($writer->update([ 'active' => !$writer->active])){
+
+            return response()->json(['message' => $writer->name ."'s Status Updated!"] ,Response::HTTP_OK);
+
+        }
+
+        return response()->json(['message' =>"Unable To Update Status!"] , Response::HTTP_BAD_REQUEST);
+    }
 
 
     public function destroy(Writer $writer)

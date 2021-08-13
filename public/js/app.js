@@ -17001,7 +17001,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -17018,8 +17019,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var Notification = function Notification(_ref) {
+  var _notifications$, _notifications$2;
+
   var userType = _ref.userType;
+  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.authUser;
+  });
+  var notifications = authUser.notifications;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -17029,13 +17038,15 @@ var Notification = function Notification(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setUser(userType == 1 ? "Admin " : userType == 0 ? "Client " : "x");
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "notification flex items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-      className: "ti-comment-alt mr-2 text-primary-1"
-    }), user, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "You Have New Notifications Now!"
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: notifications.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "notification flex items-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "ti-comment-alt mr-2 text-primary-1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+        children: ((_notifications$ = notifications[0]) === null || _notifications$ === void 0 ? void 0 : _notifications$.show) && ((_notifications$2 = notifications[0]) === null || _notifications$2 === void 0 ? void 0 : _notifications$2.msg)
+      })]
+    })
   });
 };
 
@@ -22245,7 +22256,7 @@ var OrderView = function OrderView() {
     })["catch"](function (err) {
       return console.log(err);
     });
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/auth/admin/writers").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/auth/admin/assignable-writers").then(function (res) {
       setWriters(res.data.data);
     })["catch"](function (err) {
       return console.log(err);
@@ -23253,6 +23264,28 @@ var Writers = function Writers() {
     setIsOpen(true);
   }
 
+  var toggleStatus = function toggleStatus(id) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/writer-status-toggle/' + id).then(function (res) {
+      if (res.status == 200) {
+        window.Toast.fire({
+          icon: 'success',
+          title: res.data.message
+        });
+        fetchWriters();
+      } else {
+        window.Swal.fire({
+          icon: 'error',
+          title: res.data.message
+        });
+      }
+    })["catch"](function (error) {
+      window.Swal.fire({
+        icon: 'error',
+        title: error
+      });
+    });
+  };
+
   var fetchWriters = function fetchWriters() {
     var writersUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/auth/admin/writers';
     setLoading(true);
@@ -23339,6 +23372,11 @@ var Writers = function Writers() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "writers-date",
               children: "Date"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "writers-action",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+                className: "ti-settings h-5 w-5 text-black"
+              })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "writers-list",
@@ -23467,6 +23505,15 @@ var Writers = function Writers() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   className: "writers-date",
                   children: writer.created_at
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "writers-action border-l-2 border-white",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+                    className: "ti-exchange-vertical cursor-pointer ".concat(writer.active ? 'text-green-600' : 'text-dark-1'),
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      toggleStatus(writer.id);
+                    }
+                  })
                 })]
               });
             }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_6__.default, {}), writers.length == 0 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -24972,6 +25019,11 @@ var Payment = function Payment() {
     setLoading(false);
   };
 
+  var showOrder = function showOrder(id, topic) {
+    var topicSlug = topic.trim().replace(/[^a-zA-Z ]/g, " ").replace(/\s/g, '-').toLowerCase();
+    hist.push("/client/dashboard/order-view/".concat(id, "/").concat(topicSlug));
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!clientAuth) {
       hist.push("/client");
@@ -25024,6 +25076,10 @@ var Payment = function Payment() {
                     children: orderPayment.payment.order_id
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                     className: "payment-order-title",
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      showOrder(orderPayment.id, orderPayment.topic);
+                    },
                     children: orderPayment.topic.length > 50 ? orderPayment.topic.slice(0, 50) + '...' : orderPayment.topic
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                     className: "payment-date",
