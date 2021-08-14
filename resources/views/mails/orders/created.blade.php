@@ -106,7 +106,7 @@
 
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 
-                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello Frank, Your order has been Created!</h1>
+                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello {{  explode(" ", $client->name)[0] }}, Your order has been Created!</h1>
                                                     Please make payment for the order to be assignable!<br>
                                                     <br>
                                                     &nbsp;
@@ -132,7 +132,7 @@
                                             <tbody>
                                             <tr>
                                                 <td class="mcnButtonContent" style="font-family: Arial;font-size: 16px;padding: 24px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="middle" align="center">
-                                                    <a class="mcnButton " title="Go to Payment Page" href="http://127.0.0.1:8000/mailtest" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Go to Payment Page</a>
+                                                    <a class="mcnButton " title="Go to Payment Page" href="{{ url("/client/dashboard/order-view/$btnPayLink") }}" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Go to Payment Page</a>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -157,9 +157,9 @@
 
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 
-                                                    Order Topic : Effects of Technology<br>
-                                                    Order ID : AD4KH87KSH2<br>
-                                                    Cost :&nbsp; $213<br>
+                                                    <strong>Order Topic</strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ $order->topic }}</span><br>
+                                                    <strong>Order ID </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
+                                                    <strong>Cost </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> ${{ $order->cost }}</span><br>
                                                     <br>
                                                     <br>
                                                     Regards,<br>
@@ -214,7 +214,7 @@
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: center;" valign="top">
 
                                                     <em>Copyright © AcademiaSteph21, All rights reserved.</em><br>
-                                                    2021<br>
+                                                    {{ date("Y") }}<br>
                                                     <br>
                                                     <strong>Our mailing address is:</strong><br>
                                                     info@academiasteph21.com<br>

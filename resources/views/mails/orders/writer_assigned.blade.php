@@ -17,9 +17,8 @@
 
 </head>
 <body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
-<!--*|IF:MC_PREVIEW_TEXT|*-->
-<!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
-<!--*|END:IF|*-->
+<span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"></span>
+
 <center>
     <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
         <tr>
@@ -106,23 +105,24 @@
 
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 
-                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello Writer,</h1>
+                                                    <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello
+                                                        {{  explode(" ", $writer->name)[0] }},</h1>
                                                     Please Work on this order!<br>
                                                     <span style="font-size:12px"><em>(remember to check for attachments)</em></span><br>
                                                     <br>
-                                                    Order Topic : Effects of Technology<br>
-                                                    Order ID : AD4KH87KSH2<br>
-                                                    Cost :&nbsp; $213<br>
-                                                    Subject : Engineering<br>
-                                                    Type Of Paper : Research Paper<br>
-                                                    Paper Format : MLA<br>
-                                                    Preffered English : UK<br>
-                                                    Number Of Sources : 3<br>
-                                                    Spacing : Double<br>
-                                                    Number Of Pages : 3<br>
-                                                    Academic Level : Masters<br>
-                                                    Urgency : 5 Days<br>
-                                                    Paper Details : More explanation here<br>
+                                                    <strong>Order Topic</strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ $order->topic }}</span><br>
+                                                    <strong>Order ID </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
+                                                    <strong>Cost </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> ${{ $order->cost }}</span><br>
+                                                    <strong>Subject  </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->subject_area }}</span><br>
+                                                    <strong>Type Of Paper </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->type_of_paper }}</span><br>
+                                                    <strong>Paper Format </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->paper_format }}</span><br>
+                                                    <strong>Preffered English </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->prefered_english }}</span><br>
+                                                    <strong>Number Of Sources </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->number_of_sources }}</span><br>
+                                                    <strong>Spacing </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->spacing }}</span><br>
+                                                    <strong>Number Of Pages </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->number_of_pages }}</span><br>
+                                                     <strong>Academic Level </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->academic_level }}</span><br>
+                                                    <strong>Urgency </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->urgency }}</span><br>
+                                                    <strong>Paper Details </strong> : <br> <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->paper_details }}</span><br>
                                                     <br>
                                                     Regards,<br>
                                                     AcademiaSteph21 HelpDesk
