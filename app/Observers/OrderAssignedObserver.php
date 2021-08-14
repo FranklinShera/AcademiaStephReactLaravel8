@@ -9,18 +9,21 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderAssignedObserver
 {
+
+    public $afterCommit = true;
     /**
      * Handle the OrderAssign "created" event.
      *
      * @param  \App\Models\OrderAssign  $orderAssign
      * @return void
      */
+
     public function created(OrderAssign $orderAssign)
     {
-            //        SEND EMAIL TO ASSIGNED WRITER
+        //SEND EMAIL TO ASSIGNED WRITER
         Mail::to($orderAssign->writer->email)->send(new WriterAssigned($orderAssign->writer ,$orderAssign->order));
 
-            //      SEND EMAIL TO  NOTIFY CLIENT
+        //SEND EMAIL TO  NOTIFY CLIENT
         Mail::to($orderAssign->order->client->email)->send(new OrderReceived($orderAssign->order->client ,$orderAssign->order));
 
     }

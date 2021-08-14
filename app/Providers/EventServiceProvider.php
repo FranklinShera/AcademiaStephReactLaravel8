@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\OrderHasBeenCreatedEvent;
+use App\Events\OrderHasBeenPaidEvent;
+use App\Listeners\AlertClientToPayOrderListener;
+use App\Listeners\NewUnassignedOrderListener;
 use App\Models\OrderAssign;
 use App\Observers\OrderAssignedObserver;
 use Illuminate\Auth\Events\Registered;
@@ -20,6 +24,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        OrderHasBeenPaidEvent::class =>[
+            NewUnassignedOrderListener::class
+        ],
+        OrderHasBeenCreatedEvent::class => [
+            AlertClientToPayOrderListener::class
+        ]
     ];
 
     /**
