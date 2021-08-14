@@ -29,8 +29,6 @@ Route::get('/mailtest', function () {
     $client = $order->client;
     $writer = $order->orderAssign->writer;
 
-
-
     Mail::to($writer->email)->send(new \App\Mail\WriterAssigned($writer ,$order));
     Mail::to($client->email)->send(new \App\Mail\OrderCreated($client ,$order));
     Mail::to($client->email)->send(new \App\Mail\OrderReceived($client ,$order));

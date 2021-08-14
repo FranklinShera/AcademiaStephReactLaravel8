@@ -100,18 +100,18 @@
                                                     <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello {{  explode(" ", $client->name)[0] }}, Your order has been received!</h1>
                                                     You will receive more updates on the progress till completion!<br>
                                                     <br>
-                                                    <strong>Order Topic</strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ $order->topic }}</span><br>
-                                                    <strong>Order ID </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
-                                                    <strong>Cost </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> ${{ $order->cost }}</span><br>
-                                                    <strong>Subject  </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->subject_area }}</span><br>
-                                                    <strong>Type Of Paper </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->type_of_paper }}</span><br>
-                                                    <strong>Paper Format </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->paper_format }}</span><br>
-                                                    <strong>Preffered English </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->prefered_english }}</span><br>
-                                                    <strong>Number Of Sources </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->number_of_sources }}</span><br>
-                                                    <strong>Spacing </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->spacing }}</span><br>
-                                                    <strong>Number Of Pages </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->number_of_pages }}</span><br>
-                                                    <strong>Academic Level </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->academic_level }}</span><br>
-                                                    <strong>Urgency </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> {{ $order->urgency }}</span><br>
+                                                    <strong>Order Topic</strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ $order->topic }}</span><br>
+                                                    <strong>Order ID </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
+                                                    <strong>Cost </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> ${{ $order->cost }}</span><br>
+                                                    <strong>Subject  </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->subject_area }}</span><br>
+                                                    <strong>Type Of Paper </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->type_of_paper }}</span><br>
+                                                    <strong>Paper Format </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->paper_format }}</span><br>
+                                                    <strong>Preffered English </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->prefered_english }}</span><br>
+                                                    <strong>Number Of Sources </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->number_of_sources }}</span><br>
+                                                    <strong>Spacing </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->spacing }}</span><br>
+                                                    <strong>Number Of Pages </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->number_of_pages }}</span><br>
+                                                    <strong>Academic Level </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->academic_level }}</span><br>
+                                                    <strong>Urgency </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->urgency }}</span><br>
                                                     <br>
                                                     Regards,<br>
                                                     AcademiaSteph21 HelpDesk

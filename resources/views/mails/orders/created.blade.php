@@ -157,9 +157,9 @@
 
                                                 <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 
-                                                    <strong>Order Topic</strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ $order->topic }}</span><br>
-                                                    <strong>Order ID </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
-                                                    <strong>Cost </strong> : <span style="background-color:#f3f3f3; padding:3px 5px;"> ${{ $order->cost }}</span><br>
+                                                    <strong>Order Topic</strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ $order->topic }}</span><br>
+                                                    <strong>Order ID </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
+                                                    <strong>Cost </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> ${{ $order->cost }}</span><br>
                                                     <br>
                                                     <br>
                                                     Regards,<br>
