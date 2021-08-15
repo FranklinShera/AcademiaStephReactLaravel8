@@ -13,7 +13,7 @@ class OrderAssign extends Model
 
 
     public function order(){
-        return $this->hasOne(Order::class);
+        return $this->hasOne(Order::class , 'id' , 'order_id');
     }
 
     public function writer(){

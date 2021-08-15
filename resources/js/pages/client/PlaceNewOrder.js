@@ -281,6 +281,11 @@ const Orders = () => {
                         icon: 'success',
                         title: res.data.message
                     })
+                }else{
+                    window.Toast.fire({
+                        icon: 'error',
+                        title: res.data.message
+                    })
                 }
             })
             .catch(err =>{
@@ -702,7 +707,7 @@ const Orders = () => {
                          {/*    <span className="text-lg font-bold">$28.60</span>*/}
                          {/*</div>*/}
 
-                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" >Create</button>
+                         <button type="submit" className="w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri" >Place Order</button>
 
                      </form>
                  </div>

@@ -25494,6 +25494,11 @@ var Orders = function Orders() {
           icon: 'success',
           title: res.data.message
         });
+      } else {
+        window.Toast.fire({
+          icon: 'error',
+          title: res.data.message
+        });
       }
     })["catch"](function (err) {
       console.log(err);
@@ -25881,7 +25886,7 @@ var Orders = function Orders() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
               type: "submit",
               className: "w-full mt-6 mb-10 sm:w-1/2 lg:w-1/3 btn-pri",
-              children: "Create"
+              children: "Place Order"
             })]
           })]
         })

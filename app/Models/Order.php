@@ -38,7 +38,7 @@ class Order extends Model
     }
 
     public function orderAssign(){
-        return $this->hasOne(OrderAssign::class);
+        return $this->hasOne(OrderAssign::class , 'order_id');
     }
 
     public function clientFeedback(){
