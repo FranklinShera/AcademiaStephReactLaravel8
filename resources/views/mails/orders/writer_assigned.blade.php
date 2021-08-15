@@ -108,8 +108,11 @@
                                                     <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Hello
                                                         {{  explode(" ", $writer->name)[0] }},</h1>
                                                     Please Work on this order!<br>
-                                                    <span style="font-size:12px"><em>(remember to check for attachments)</em></span><br>
-                                                    <br>
+
+                                                    @if(count($order->orderMaterials) > 0)
+                                                        <span style="font-size:12px;color:royalblue"><em>This Order Has <strong>{{ count($order->orderMaterials) }}</strong> Attachment(s).</em></span><br>
+                                                        <br>
+                                                    @endif
                                                     <strong>Order Topic</strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ $order->topic }}</span><br>
                                                     <strong>Order ID </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
                                                     <strong>Cost </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> ${{ $order->cost }}</span><br>

@@ -23,10 +23,9 @@ class AdminToAssignMail extends Mailable
      *
      * @return void
      */
-    public function __construct($adminName, Order $order)
+    public function __construct( Order $order)
     {
         $this->order = $order;
-        $this->adminName = $adminName;
         $this->btnAssignLink = $this->order->id .'/'.str_replace(' ','-', $this->order->topic);
     }
 
@@ -37,6 +36,7 @@ class AdminToAssignMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.orders.admin_to_assign');
+        return $this->view('mails.orders.admin_to_assign')
+            ->subject('Order Assignment Notification - '.env('APP_NAME'));
     }
 }

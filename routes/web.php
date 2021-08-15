@@ -32,6 +32,12 @@ Route::get('/mailtest', function () {
 //    event(new \App\Events\OrderHasBeenPaidEvent($order));
 //    event(new \App\Events\OrderHasBeenCreatedEvent($order));
 
+    //SEND EMAIL TO ASSIGNED WRITER
+    Mail::to($writer->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\WriterAssigned($writer ,$order));
+
+    //SEND EMAIL TO  NOTIFY CLIENT
+//    Mail::to($order->client->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\OrderReceived($order->client ,$order));
+
 //    Mail::to($writer->email)->send(new \App\Mail\WriterAssigned($writer ,$order));
 //    Mail::to($client->email)->send(new \App\Mail\OrderCreated($client ,$order));
 //    Mail::to($client->email)->send(new \App\Mail\OrderReceived($client ,$order));

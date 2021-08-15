@@ -32,7 +32,7 @@ class NewUnassignedOrderListener
         //INFORM ADMIN TO ASSIGN
         $admin = User::where('role',0)->first();
 
-        Mail::to($admin->email)->send(new AdminToAssignMail($admin->name,$event->order));
+        Mail::to($admin->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new AdminToAssignMail($event->order));
 
     }
 }

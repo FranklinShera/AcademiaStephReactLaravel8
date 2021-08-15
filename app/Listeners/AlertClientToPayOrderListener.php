@@ -28,6 +28,6 @@ class AlertClientToPayOrderListener
      */
     public function handle(OrderHasBeenCreatedEvent $event)
     {
-        Mail::to($event->order->client->email)->send(new OrderCreated($event->order->client ,$event->order));
+        Mail::to($event->order->client->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new OrderCreated($event->order->client ,$event->order));
     }
 }

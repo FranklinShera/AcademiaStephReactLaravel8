@@ -39,6 +39,7 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.orders.created');
+        return $this->view('mails.orders.created')
+            ->subject('Order Payment Reminder - '.env('APP_NAME'));
     }
 }

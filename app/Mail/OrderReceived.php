@@ -35,6 +35,7 @@ class OrderReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.orders.received');
+        return $this->view('mails.orders.received')
+            ->subject('Order Received Notification - '.env('APP_NAME'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderHasBeenPaidEvent;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
@@ -72,6 +73,7 @@ class PayPalController extends Controller
             $order->stage = 4;
             $order->save();
 
+            event(new OrderHasBeenPaidEvent($order));
 
             return redirect('/client/dashboard/payment-successful');
 

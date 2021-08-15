@@ -23,9 +23,15 @@ class WriterAssigned extends Mailable
      */
     public function __construct(Writer $writer , Order $order)
     {
+
         $this->order = $order;
         $this->writer = $writer;
+        foreach ($order->orderMaterials as $material) {
+
+            $this->attach(public_path('/storage/order/materials/' . $material->material_name));
+        }
     }
+
 
     /**
      * Build the message.
@@ -34,6 +40,7 @@ class WriterAssigned extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.orders.writer_assigned');
+        return $this->view('mails.orders.writer_assigned')
+            ->subject('Order Assignment Notification - '.env('APP_NAME'));
     }
 }
