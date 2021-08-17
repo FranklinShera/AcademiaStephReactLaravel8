@@ -21797,10 +21797,10 @@ var Login = function Login(_ref) {
     children: [isLoggin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_ShootingLoader__WEBPACK_IMPORTED_MODULE_5__.default, {
       loading: isLoggin
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
-      className: "w-4/5 md:w-4/5 lg:w-1/2",
+      className: "w-11/12 md:w-4/5 lg:w-2/5 bg-white p-10 sm:p-14 shadow-sm rounded-lg",
       onSubmit: handleLogin,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-        className: "w-full mb-5 text-5xl text-center",
+        className: "w-full mb-5 text-3xl font-bold sm:text-4xl text-center",
         children: "Admin Login"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_InputField__WEBPACK_IMPORTED_MODULE_2__.default, {
         labelText: "Username",
@@ -21828,7 +21828,7 @@ var Login = function Login(_ref) {
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         type: "submit",
-        className: "w-full font-bold sm:w-1/2 lg:w-1/3 btn-pri",
+        className: "w-full sm:text-2xl font-bold sm:w-1/2 lg:w-1/3 btn-pri",
         children: isLoggin ? "Logging In" : "Login"
       })]
     })]

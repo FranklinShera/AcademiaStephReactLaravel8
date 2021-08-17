@@ -994,7 +994,7 @@ footer{
 
 
 .btn-pri{
-    @apply py-3 mt-10 text-white rounded-full px-11;
+    @apply py-4 mt-8 text-white rounded-full px-14 md:w-2/5 ;
     /* margin-top: 40px;
     padding: 10px 45px; */
     background: linear-gradient(100deg,#FAA63B, #F27323);
