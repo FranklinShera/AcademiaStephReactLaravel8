@@ -41,6 +41,16 @@ html::-webkit-scrollbar-thumb {
 .lead-title{
     @apply text-2xl font-bold;
 }
+
+
+/*SOCIAL BUTTON IN CLIENT LOGIN*/
+
+.social-btn{
+    @apply px-10 py-4 rounded-full w-full flex justify-center items-center gap-2 font-bold text-lg cursor-pointer m-3 transition-all delay-75;
+}
+
+
+/*SOCIAL BUTTON IN CLIENT LOGIN END*/
 /*GLOBALS END*/
 
 /*LOADER STYLES*/
@@ -1034,7 +1044,7 @@ footer{
 
 
 .login-screen{
-    @apply flex items-center justify-center;
+    @apply flex items-center justify-center bg-gray-200;
     height: 100vh;
 }
 

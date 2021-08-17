@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/reviews', [ClientFeedbackController::class , 'index']);
 
-//Route::get('/creviews', [CustomerReviewController::class , 'index']);
 
 Route::post('/create-contact', [ContactController::class , 'store']);
 

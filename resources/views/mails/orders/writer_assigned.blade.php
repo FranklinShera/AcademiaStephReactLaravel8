@@ -115,7 +115,6 @@
                                                     @endif
                                                     <strong>Order Topic</strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ $order->topic }}</span><br>
                                                     <strong>Order ID </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;">{{ strtoupper(dechex(date('U' ,strtotime($order->created_at))))}}</span><br>
-                                                    <strong>Cost </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> ${{ $order->cost }}</span><br>
                                                     <strong>Subject  </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->subject_area }}</span><br>
                                                     <strong>Type Of Paper </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->type_of_paper }}</span><br>
                                                     <strong>Paper Format </strong> : <span style="background-color:#f5f5f5; padding:3px 5px;"> {{ $order->paper_format }}</span><br>

@@ -23803,17 +23803,22 @@ var ClientLogin = function ClientLogin(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "login-screen",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-      className: "w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center",
+      className: "w-11/12 md:w-3/5 lg:w-3/12 rounded-lg flex flex-col items-center bg-white py-10 sm:py-14 shadow-sm",
       onSubmit: function onSubmit(e) {
         return e.preventDefault();
       },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-        className: "w-full mb-5 text-3xl text-center",
-        children: "Client Login or Register"
+        className: "w-full mb-3 font-bold text-3xl text-center",
+        children: "Client Login"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        className: "text-green-600 font-semibold",
+        children: "Get Started With Only one Click!"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {
+        className: "bg-gray-200 h-px w-full my-5"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "mt-10 flex",
+        className: " flex flex-col items-center justify-center w-4/5",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-          className: "px-8 py-4 rounded bg-github-1 text-github-2 font-bold text-lg cursor-pointer",
+          className: "social-btn bg-github-1 text-github-2 border border-transparent hover:border-github-1 hover:text-github-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(GITHUB_PROVIDER);
           },
@@ -23821,7 +23826,7 @@ var ClientLogin = function ClientLogin(_ref) {
             className: "ti-github"
           }), " Github"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-          className: "px-8 py-4 ml-4 rounded bg-google-1 text-white font-bold text-lg cursor-pointer",
+          className: "social-btn bg-google-1 text-white border border-transparent hover:border-google-1 hover:text-google-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(GOOGLE_PROVIDER);
           },
@@ -23829,18 +23834,23 @@ var ClientLogin = function ClientLogin(_ref) {
             className: "ti-google"
           }), " Google"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-          className: "px-8 py-4 ml-4 rounded bg-facebook-1 text-white font-bold text-lg cursor-pointer",
+          className: "social-btn bg-facebook-1 text-white border border-transparent hover:border-facebook-1 hover:text-facebook-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(FACEBOOK_PROVIDER);
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "ti-facebook"
           }), " Facebook"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          className: "social-btn bg-gray-100 text-dark-5",
+          onClick: autoLogin,
+          children: "Auto Login"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        className: "px-10 py-2 mt-10 rounded-full bg-gray-400 text-dark-5 font-bold text-lg cursor-pointer",
-        onClick: autoLogin,
-        children: "AutoLogin"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        className: "text-black text-sm text-center w-4/5",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+          children: "NB: "
+        }), " Your account will be created automatically!"]
       })]
     })
   });

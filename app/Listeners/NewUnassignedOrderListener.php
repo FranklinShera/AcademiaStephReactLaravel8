@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class NewUnassignedOrderListener
 {
+    public $admins;
     /**
      * Create the event listener.
      *
@@ -18,7 +19,8 @@ class NewUnassignedOrderListener
      */
     public function __construct()
     {
-        //
+        //INFORM ADMIN TO ASSIGN
+        $this->admins = User::where('role',0)->get()->pluck('email');
     }
 
     /**
@@ -29,10 +31,8 @@ class NewUnassignedOrderListener
      */
     public function handle(OrderHasBeenPaidEvent $event)
     {
-        //INFORM ADMIN TO ASSIGN
-        $admin = User::where('role',0)->first();
 
-        Mail::to($admin->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new AdminToAssignMail($event->order));
+        Mail::to($this->admins)->cc(env('MAIL_FROM_ADDRESS'))->send(new AdminToAssignMail($event->order));
 
     }
 }

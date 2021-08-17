@@ -22,29 +22,31 @@ Route::get('paypal/checkout-success/{order}', [PayPalController::class ,'getExpr
 Route::get('paypal/checkout-cancel', [PayPalController::class ,'cancelPage'])->name('paypal.cancel');
 
 
-
-
+//
+//
 //Route::get('/mailtest', function () {
-//    $order = Order::latest()->first();
+//    $order = Order::findOrFail(3);//steph
+////    $order = Order::findOrFail(2);//kanyiva
 //    $client = $order->client;
 //    $writer = $order->orderAssign->writer;
+//
+//    $liveMail = ["academiasteph21@gmail.com","stephenkimani787@gmail.com"];
 //
 ////    event(new \App\Events\OrderHasBeenPaidEvent($order));
 ////    event(new \App\Events\OrderHasBeenCreatedEvent($order));
 //
-//    //SEND EMAIL TO ASSIGNED WRITER
-//    Mail::to($writer->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\WriterAssigned($writer ,$order));
+////    SEND EMAIL TO ASSIGNED WRITER
+//    Mail::to($liveMail)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\WriterAssigned($writer ,$order));
 //
-//    //SEND EMAIL TO  NOTIFY CLIENT
-////    Mail::to($order->client->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\OrderReceived($order->client ,$order));
+////    SEND EMAIL TO  NOTIFY CLIENT
+//    Mail::to($liveMail)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\OrderReceived($client ,$order));
 //
-////    Mail::to($writer->email)->send(new \App\Mail\WriterAssigned($writer ,$order));
-////    Mail::to($client->email)->send(new \App\Mail\OrderCreated($client ,$order));
-////    Mail::to($client->email)->send(new \App\Mail\OrderReceived($client ,$order));
+//    Mail::to($liveMail)->cc(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\OrderCreated($client ,$order));
+//
 //
 //    return 'Mail Sent!';
 //});
-
+//
 
 
 Route::get('/{any}', function () {

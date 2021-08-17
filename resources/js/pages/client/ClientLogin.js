@@ -81,26 +81,34 @@ const ClientLogin = ({ location }) => {
 
     return (
         <div className="login-screen">
-            <form className="w-4/5 md:w-4/5 lg:w-3/4 flex flex-col items-center" onSubmit={(e => e.preventDefault())}>
-                 <label className="w-full mb-5 text-3xl text-center">Client Login or Register</label>
-                <div className="mt-10 flex">
+            <form className="w-11/12 md:w-3/5 lg:w-3/12 rounded-lg flex flex-col items-center bg-white py-10 sm:py-14 shadow-sm" onSubmit={(e => e.preventDefault())}>
+                <label className="w-full mb-3 font-bold text-3xl text-center">Client Login</label>
+                <span className="text-green-600 font-semibold">Get Started With Only one Click!</span>
 
-                      <span className="px-8 py-4 rounded bg-github-1 text-github-2 font-bold text-lg cursor-pointer"
+                <hr className="bg-gray-200 h-px w-full my-5"/>
+
+                <div className=" flex flex-col items-center justify-center w-4/5">
+
+                      <span className="social-btn bg-github-1 text-github-2 border border-transparent hover:border-github-1 hover:text-github-1 hover:bg-github-2"
                             onClick={e => socialLogin(GITHUB_PROVIDER)}><i className="ti-github"></i> Github
                       </span>
 
-                      <span className="px-8 py-4 ml-4 rounded bg-google-1 text-white font-bold text-lg cursor-pointer"
+                      <span className="social-btn bg-google-1 text-white border border-transparent hover:border-google-1 hover:text-google-1 hover:bg-github-2"
                             onClick={e => socialLogin(GOOGLE_PROVIDER)}><i className="ti-google"></i> Google
                       </span>
 
-                      <span className="px-8 py-4 ml-4 rounded bg-facebook-1 text-white font-bold text-lg cursor-pointer"
+                      <span className="social-btn bg-facebook-1 text-white border border-transparent hover:border-facebook-1 hover:text-facebook-1 hover:bg-github-2"
                             onClick={e => socialLogin(FACEBOOK_PROVIDER)}><i className="ti-facebook"></i> Facebook
                       </span>
 
+
+                    <span className="social-btn bg-gray-100 text-dark-5"
+                              onClick={autoLogin}>Auto Login
+                    </span>
+
                 </div>
-                <span className="px-10 py-2 mt-10 rounded-full bg-gray-400 text-dark-5 font-bold text-lg cursor-pointer"
-                      onClick={autoLogin}>AutoLogin
-                </span>
+                <span className="text-black text-sm text-center w-4/5"><strong>NB: </strong> Your account will be created automatically!</span>
+
             </form>
         </div>
     )
