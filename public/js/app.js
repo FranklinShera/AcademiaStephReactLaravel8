@@ -16563,6 +16563,9 @@ var Footer = function Footer() {
           children: "info@academiasteph21.com"
         })]
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "text-white",
+      children: ["\xA9", new Date().getFullYear()]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
       className: "py-6 text-sm cursor-pointer md:text-base text-dark-4 hover:text-gray-500",
       children: "DEVELOPED BY FRANKLIN SHERA"
@@ -17159,6 +17162,7 @@ var PriceCalculator = function PriceCalculator() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
   var essayTypeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var subAreaRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var levelRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var urgencyRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var pagesRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
@@ -17171,6 +17175,10 @@ var PriceCalculator = function PriceCalculator() {
     return state.paperTypes;
   });
   var allPaperTypes = PaperTypes.allPaperTypes;
+  var SubjectAreas = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.subjectAreas;
+  });
+  var allSubjectAreas = SubjectAreas.allSubjectAreas;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -17203,12 +17211,13 @@ var PriceCalculator = function PriceCalculator() {
   var checkCalcFields = function checkCalcFields() {
     if (essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "") {
       var typeRate = parseFloat(essayTypeRef.current.value);
+      var subjectRate = parseFloat(subAreaRef.current.value);
       var levelRate = parseFloat(levelRef.current.value);
       var urgencyVal = parseFloat(urgencyRef.current.value);
       var spacingVal = parseInt(essaySpacingRef.current.value, 10);
       var pagesVal = parseInt(pagesRef.current.value, 10);
       var multi = spacingVal * pagesVal;
-      var rates = typeRate + levelRate;
+      var rates = typeRate + levelRate + subjectRate;
       var orderSubTotal = multi * rates;
       var deduction = urgencyVal * 0.2;
       var serviceDeduction = paperAction == 1 ? 2 : paperAction == 2 ? 4 : 0;
@@ -17223,8 +17232,12 @@ var PriceCalculator = function PriceCalculator() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    checkCalcFields();
+  }, [paperAction]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__.fetchAcademicLevels)());
     dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__.fetchPaperTypes)());
+    dispatch((0,_actions_OrderActions__WEBPACK_IMPORTED_MODULE_2__.fetchSubjectAreas)());
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "hidden price-calculator lg:block",
@@ -17266,6 +17279,28 @@ var PriceCalculator = function PriceCalculator() {
           name: "essay-type",
           id: "essay-type",
           className: "w-full p-1",
+          ref: subAreaRef,
+          onChange: function onChange(e) {
+            e.preventDefault();
+            checkCalcFields();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            value: "",
+            selected: true,
+            children: "Choose Essay Type"
+          }), allPaperTypes.map(function (papertype) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: papertype.rate,
+              children: papertype.type_name
+            });
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "mt-4 subject-area-select",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+          name: "essay-type",
+          id: "essay-type",
+          className: "w-full p-1",
           ref: essayTypeRef,
           onChange: function onChange(e) {
             e.preventDefault();
@@ -17274,11 +17309,11 @@ var PriceCalculator = function PriceCalculator() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
             selected: true,
-            children: "Choose Essay Type)"
-          }), allPaperTypes.map(function (papertype) {
+            children: "Choose  Subject Area"
+          }), allSubjectAreas.map(function (subarea) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: papertype.rate,
-              children: papertype.type_name
+              value: subarea.rate,
+              children: subarea.area_name
             });
           })]
         })

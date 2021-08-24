@@ -18,6 +18,7 @@ class isAdmin
                 'msg' => 'You are not allowed to access this route... '
             ], 403);
 
+
         }
 
         return $next($request);

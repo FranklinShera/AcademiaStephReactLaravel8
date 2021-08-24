@@ -1,7 +1,7 @@
 import React, {useState , useEffect , useRef} from "react";
 
 import {useSelector, useDispatch} from "react-redux";
-import {fetchAcademicLevels, fetchPaperTypes} from "../actions/OrderActions";
+import {fetchAcademicLevels, fetchPaperTypes, fetchSubjectAreas} from "../actions/OrderActions";
 import {useHistory} from "react-router";
 
 const PriceCalculator = () => {
@@ -11,6 +11,7 @@ const PriceCalculator = () => {
     const hist = useHistory();
 
     const essayTypeRef  = useRef();
+    const subAreaRef  = useRef();
     const  levelRef  = useRef();
     const urgencyRef   = useRef();
     const  pagesRef  = useRef();
@@ -24,6 +25,12 @@ const PriceCalculator = () => {
 
     const PaperTypes = useSelector( state => state.paperTypes)
     const { allPaperTypes } = PaperTypes;
+
+
+
+    const SubjectAreas = useSelector( state => state.subjectAreas)
+    const { allSubjectAreas } = SubjectAreas;
+
 
 
 
@@ -50,6 +57,7 @@ const PriceCalculator = () => {
         if( essayTypeRef.current.value !== "" && essaySpacingRef.current.value !== "" && pagesRef.current.value !== "" && levelRef.current.value !== "" && urgencyRef.current.value !== "" ){
 
             let typeRate = parseFloat(essayTypeRef.current.value);
+            let subjectRate = parseFloat(subAreaRef.current.value);
             let levelRate = parseFloat(levelRef.current.value);
             let urgencyVal = parseFloat(urgencyRef.current.value);
             let spacingVal = parseInt(essaySpacingRef.current.value , 10);
@@ -58,7 +66,7 @@ const PriceCalculator = () => {
 
             let multi =  spacingVal * pagesVal;
 
-            let rates = typeRate + levelRate;
+            let rates = typeRate + levelRate+subjectRate;
 
             let orderSubTotal = multi * rates;
 
@@ -83,12 +91,15 @@ const PriceCalculator = () => {
 
     }
 
-
+    useEffect(() => {
+        checkCalcFields()
+    },[paperAction])
 
 
     useEffect( () => {
         dispatch(fetchAcademicLevels())
         dispatch(fetchPaperTypes())
+        dispatch(fetchSubjectAreas())
     },[])
 
     return (
@@ -114,11 +125,11 @@ const PriceCalculator = () => {
                     }}>Editing</span>
                 </div>
                 <div className="mt-4 essay-type">
-                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef} onChange={(e) => {
+                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={subAreaRef} onChange={(e) => {
                         e.preventDefault();
                         checkCalcFields()
                     }}>
-                        <option value="" selected>Choose Essay Type)</option>
+                        <option value="" selected>Choose Essay Type</option>
 
                         {allPaperTypes.map(papertype =>(
                             <option value={papertype.rate}>{papertype.type_name}</option>
@@ -126,6 +137,24 @@ const PriceCalculator = () => {
 
                     </select>
                 </div>
+
+
+                <div className="mt-4 subject-area-select">
+                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef}
+                            onChange={(e) => {
+                                e.preventDefault();
+                                checkCalcFields()
+                            }}>
+                        <option value="" selected>Choose  Subject Area</option>
+
+                        {allSubjectAreas.map(subarea => (
+                            <option value={subarea.rate}>{subarea.area_name}</option>
+                        ))}
+
+                    </select>
+                </div>
+
+
 
                 <div className="flex justify-between mt-4 stage-time">
 

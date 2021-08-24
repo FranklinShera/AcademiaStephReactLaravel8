@@ -30,7 +30,7 @@ const Footer = () => {
                     </div>
 
             </div>
-
+            <div className="text-white">&copy;{ new Date().getFullYear()}</div>
 
 
         <p className="py-6 text-sm cursor-pointer md:text-base text-dark-4 hover:text-gray-500">DEVELOPED BY FRANKLIN SHERA</p>

@@ -579,7 +579,7 @@ html::-webkit-scrollbar-thumb {
 
 
 .details{
-    @apply flex flex-col-reverse items-center justify-between w-5/6 my-20 text-white lg:justify-around lg:flex-row lg:w-4/5 ;
+    @apply flex flex-col-reverse items-center justify-between w-5/6 mt-20 mb-5 text-white lg:justify-around lg:flex-row lg:w-4/5 ;
 }
 
 .details .logo{

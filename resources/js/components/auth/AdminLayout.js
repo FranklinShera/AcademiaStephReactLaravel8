@@ -125,6 +125,7 @@ const AdminLayout = (props) => {
                 <span class="text-center text-xl font-bold">Ooops!</span>
                 <span class="text-center text-sm">Dashboard currently supports Desktop Screen Only</span>
             </div>
+
             <div className="backend-layout">
                 <SideBar className="sidebar_component" isAdmin={true} links={linkForSidebar}/>
                 <div className="dash_items_component">
