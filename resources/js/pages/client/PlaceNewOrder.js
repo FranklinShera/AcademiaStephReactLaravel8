@@ -168,6 +168,7 @@ const Orders = () => {
             prefEnglish: '',
             numOfSources: '',
             spacing: '',
+            serviceType:'',
             academicLevel: '',
             numberOfPages: '',
             urgency: ''
@@ -199,6 +200,7 @@ const Orders = () => {
             prefEnglish: Yup.string().required("Preferred English is a required field"),
             numOfSources: Yup.string().required("Number of Sources is a required field"),
             spacing: Yup.string().required("Spacing is a required field"),
+            serviceType: Yup.string().required("Service Type is a required field"),
             academicLevel: Yup.string().required("Academic Level is a required field"),
             numberOfPages: Yup.string().required("Number of Pages is a required field"),
             urgency: Yup.string().required("Urgency is a required field")
@@ -261,6 +263,7 @@ const Orders = () => {
         orderFormData.append("prefered_english" , formFields.prefEnglish)
         orderFormData.append("number_of_sources" , formFields.numOfSources)
         orderFormData.append("spacing" , formFields.spacing)
+        orderFormData.append("service_type" , formFields.serviceType)
         orderFormData.append("academic_level" , formFields.academicLevel)
         orderFormData.append("number_of_pages" , formFields.numberOfPages)
         orderFormData.append("urgency" , formFields.urgency)
@@ -504,6 +507,26 @@ const Orders = () => {
                                      errors= {(Formik.errors.topic && Formik.touched.topic) && Formik.errors.topic }
                          />
 
+
+
+                         <div className='input-group'>
+                             <label >Service Type</label>
+                             {(Formik.errors.serviceType && Formik.touched.serviceType) && <div className="field-errors">{Formik.errors.serviceType}</div>}
+                             <select name="serviceType"
+                                     id="service-type"
+                                     onBlur={Formik.handleBlur}
+                                     value={Formik.values.serviceType}
+                                     onChange={Formik.handleChange}>
+
+                                 <option value='' selected disabled>Choose Service Type</option>
+
+                                  <option value="0" >Writing</option>
+                                  <option value="1" >Rewriting</option>
+                                  <option value="2" >Editing</option>
+
+
+                             </select>
+                         </div>
 
 
                          <div className='input-group'>

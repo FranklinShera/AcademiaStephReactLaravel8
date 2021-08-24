@@ -25451,6 +25451,7 @@ var Orders = function Orders() {
     prefEnglish: '',
     numOfSources: '',
     spacing: '',
+    serviceType: '',
     academicLevel: '',
     numberOfPages: '',
     urgency: ''
@@ -25477,6 +25478,7 @@ var Orders = function Orders() {
       prefEnglish: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Preferred English is a required field"),
       numOfSources: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Number of Sources is a required field"),
       spacing: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Spacing is a required field"),
+      serviceType: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Service Type is a required field"),
       academicLevel: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Academic Level is a required field"),
       numberOfPages: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Number of Pages is a required field"),
       urgency: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("Urgency is a required field")
@@ -25526,6 +25528,7 @@ var Orders = function Orders() {
     orderFormData.append("prefered_english", formFields.prefEnglish);
     orderFormData.append("number_of_sources", formFields.numOfSources);
     orderFormData.append("spacing", formFields.spacing);
+    orderFormData.append("service_type", formFields.serviceType);
     orderFormData.append("academic_level", formFields.academicLevel);
     orderFormData.append("number_of_pages", formFields.numberOfPages);
     orderFormData.append("urgency", formFields.urgency);
@@ -25739,6 +25742,35 @@ var Orders = function Orders() {
               placeholder: "Paper Topic",
               onChange: Formik.handleChange,
               errors: Formik.errors.topic && Formik.touched.topic && Formik.errors.topic
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: "Service Type"
+              }), Formik.errors.serviceType && Formik.touched.serviceType && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "field-errors",
+                children: Formik.errors.serviceType
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", {
+                name: "serviceType",
+                id: "service-type",
+                onBlur: Formik.handleBlur,
+                value: Formik.values.serviceType,
+                onChange: Formik.handleChange,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Choose Service Type"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                  value: "0",
+                  children: "Writing"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                  value: "1",
+                  children: "Rewriting"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                  value: "2",
+                  children: "Editing"
+                })]
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
               className: "input-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {

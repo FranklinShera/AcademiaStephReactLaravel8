@@ -276,7 +276,7 @@ class OrderController extends Controller
 
     }
 
-    private function orderPrice($paperRate , $subjectRate ,$levelRate , $pages , $spacing , $urgency){
+    private function orderPrice($paperRate , $subjectRate ,$levelRate , $pages , $spacing , $urgency ,$serviceDed){
 
         $multi =  $pages * $spacing;
 
@@ -286,7 +286,6 @@ class OrderController extends Controller
 
             $deduction = $urgency * 0.2;
 
-//            let serviceDeduction = (paperAction == 1) ? 2 : (paperAction == 2) ? 4 : 0;
 
             $totalDeduction =  ($deduction > 0.6) ?  0.6  : $deduction ;
 
@@ -295,7 +294,7 @@ class OrderController extends Controller
 
 
 
-        return $orderTotal;
+        return  ($orderTotal - $serviceDed);
     }
 
 
@@ -331,7 +330,8 @@ class OrderController extends Controller
                        "spacing" => 'required',
                        "academic_level" => 'required',
                        "number_of_pages" => 'required|string',
-                       "urgency" => 'required'
+                       "urgency" => 'required',
+                       "service_type" => 'required'
                     ]);
 
 
@@ -339,14 +339,15 @@ class OrderController extends Controller
             $subjectArea = SubjectArea::findOrfail($newOrder['subject_area']);
             $academicLevel = AcademicLevel::findOrfail($newOrder['academic_level']);
 
+            $serviceDeduction = ($newOrder['service_type'] == 1) ? 2 : ($newOrder['service_type'] == 2) ? 4 : 0;
 
-
-            $orderPrice = $this->orderPrice($paperType->rate ,$subjectArea->rate ,$academicLevel->rate ,$newOrder['number_of_pages'] , $newOrder['spacing'] , $newOrder['urgency']);
+            $orderPrice = $this->orderPrice($paperType->rate ,$subjectArea->rate ,$academicLevel->rate ,$newOrder['number_of_pages'] , $newOrder['spacing'] , $newOrder['urgency'] , $serviceDeduction);
 
             $newOrder['urgency'] = $this->fixUrgency($newOrder['urgency']);
 
 
             $newOrder['spacing'] = ($newOrder['spacing'] == 1) ? "Single Spacing" : "Double Spacing";
+            $newOrder['service_type'] = ($newOrder['service_type'] == 0) ? "Writing" : ($newOrder['service_type'] == 1) ? "Rewriting" : "Editing";
             $newOrder['type_of_paper'] = $paperType->type_name;
             $newOrder['subject_area'] = $subjectArea->area_name;
             $newOrder['academic_level'] = $academicLevel->level_name;
