@@ -20,7 +20,8 @@ class NewUnassignedOrderListener
     public function __construct()
     {
         //INFORM ADMIN TO ASSIGN
-        $this->admins = User::where('role',0)->get()->pluck('email');
+        $this->admins = ['academiasteph21@gmail.com' , 'stephenkimani787@gmail.com'];
+//        $this->admins = User::where('role',0)->get()->pluck('email');
     }
 
     /**

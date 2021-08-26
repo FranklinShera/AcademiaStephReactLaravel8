@@ -435,23 +435,25 @@ const Home = () => {
             </div>
 
 
-            <div className="customer-say">
+                { (reviews.length != 0) &&
+                    <div className="customer-say">
 
-                <h1 className="px-5 mt-14 lg:mt-28 header-text">
-                    WHAT OUR CUSTOMERS SAY
-                </h1>
+                        <h1 className="px-5 mt-14 lg:mt-28 header-text">
+                            WHAT OUR CUSTOMERS SAY
+                        </h1>
 
-                <div className="cards-list">
-
-
-                    { reviews && reviews.map( (rate,index) => (
-                        <RatingCard cardData={rate} key={index} />
-                    ) ) }
+                        <div className="cards-list">
 
 
-                </div>
+                            { reviews && reviews.map( (rate,index) => (
+                                <RatingCard cardData={rate} key={index} />
+                            ) ) }
 
-            </div>
+
+                        </div>
+
+                    </div>
+                }
 
 
             <div id="contact" className="contact" >
