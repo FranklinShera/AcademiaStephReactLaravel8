@@ -339,7 +339,10 @@ class OrderController extends Controller
             $subjectArea = SubjectArea::findOrfail($newOrder['subject_area']);
             $academicLevel = AcademicLevel::findOrfail($newOrder['academic_level']);
 
-            $serviceDeduction = ($newOrder['service_type'] == 1) ? 2 : ($newOrder['service_type'] == 2) ? 4 : 0;
+            $serviceDeduction =  [  1 => 2,  2 => 4 ][$newOrder['service_type']] ?? 0;
+
+
+
 
             $orderPrice = $this->orderPrice($paperType->rate ,$subjectArea->rate ,$academicLevel->rate ,$newOrder['number_of_pages'] , $newOrder['spacing'] , $newOrder['urgency'] , $serviceDeduction);
 
@@ -347,7 +350,10 @@ class OrderController extends Controller
 
 
             $newOrder['spacing'] = ($newOrder['spacing'] == 1) ? "Single Spacing" : "Double Spacing";
-            $newOrder['service_type'] = ($newOrder['service_type'] == 0) ? "Writing" : ($newOrder['service_type'] == 1) ? "Rewriting" : "Editing";
+
+            $newOrder['service_type'] = [0 =>  "Writing" , 1 => "Rewriting" , 2 => "Editing"][$newOrder['service_type']] ?? "";
+
+
             $newOrder['type_of_paper'] = $paperType->type_name;
             $newOrder['subject_area'] = $subjectArea->area_name;
             $newOrder['academic_level'] = $academicLevel->level_name;
