@@ -7,6 +7,7 @@ const Notification = ({userType}) => {
     const { notifications } = authUser;
 
     const[user,setUser] = useState("")
+    const[countDown,setCountDown] = useState()
 
     useEffect(()=>{
 
@@ -16,10 +17,10 @@ const Notification = ({userType}) => {
 
     return (
        <>
-           {(notifications.length != 0) && (
-               <div className="notification flex items-center">
+           {(notifications != "") && (
+               <div className={`notification flex items-center `}>
                    <i className="ti-comment-alt mr-2 text-primary-1"></i>
-                   <h1>{notifications[0]?.show && notifications[0]?.msg }</h1>
+                   <h1>{notifications}</h1>
                </div>
            )}
        </>

@@ -17025,8 +17025,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Notification = function Notification(_ref) {
-  var _notifications$, _notifications$2;
-
   var userType = _ref.userType;
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
@@ -17038,16 +17036,21 @@ var Notification = function Notification(_ref) {
       user = _useState2[0],
       setUser = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState4 = _slicedToArray(_useState3, 2),
+      countDown = _useState4[0],
+      setCountDown = _useState4[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setUser(userType == 1 ? "Admin " : userType == 0 ? "Client " : "x");
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: notifications.length != 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "notification flex items-center",
+    children: notifications != "" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "notification flex items-center ",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
         className: "ti-comment-alt mr-2 text-primary-1"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-        children: ((_notifications$ = notifications[0]) === null || _notifications$ === void 0 ? void 0 : _notifications$.show) && ((_notifications$2 = notifications[0]) === null || _notifications$2 === void 0 ? void 0 : _notifications$2.msg)
+        children: notifications
       })]
     })
   });
@@ -20428,14 +20431,22 @@ var Home = function Home() {
 
   var getInTouch = function getInTouch(formValues) {
     axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/create-contact', formValues).then(function (res) {
-      window.Toast.fire({
-        icon: 'success',
-        title: 'Message Sent!'
-      });
+      if (res.status == 201) {
+        window.Toast.fire({
+          icon: 'success',
+          title: 'Message Sent!'
+        });
+      } else {
+        window.Toast.fire({
+          icon: 'error',
+          title: 'Try Sending Again!'
+        });
+      }
+
       Formik.resetForm();
     })["catch"](function (err) {
       return console.log(err);
-    });
+    }); // formValues.addonwhatsapp && takeMeToWhatsapp(formValues.message);
   };
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
@@ -20466,6 +20477,13 @@ var Home = function Home() {
       setSubmitting(false);
     }
   });
+
+  var takeMeToWhatsapp = function takeMeToWhatsapp(msg) {
+    console.log("takeMeToWhatsapp");
+    var appLink = "https://api.whatsapp.com/send?text=".concat(msg);
+    window.open(appLink, 'whatsappwindow', 'left=70,top=20,width=600,height=700,toolbar=0,resizable=1');
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_actions_reviewActions__WEBPACK_IMPORTED_MODULE_21__.listReviews)());
   }, [dispatch]);

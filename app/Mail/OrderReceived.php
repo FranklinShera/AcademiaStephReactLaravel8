@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderReceived extends Mailable
+class OrderReceived extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $order;

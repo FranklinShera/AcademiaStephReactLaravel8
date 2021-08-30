@@ -36,11 +36,11 @@ class ContactController extends Controller
 
         if(Contact::create($contact)){
 
-            return response()->json(['message' => "Contact Created!"]);
+            return response()->json(['message' => "Contact Created!"], Response::HTTP_CREATED);
 
         }
 
-        return response()->json(['message' => "Unable To Create Contact!"]);
+        return response()->json(['message' => "Unable To Create Contact!"] ,Response::HTTP_BAD_REQUEST);
 
     }
 

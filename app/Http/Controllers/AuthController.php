@@ -138,18 +138,10 @@ class AuthController extends Controller
 
 
     private function prepNotifications(){
+
        $unseenCount = Order::where('viewed', 0)->count();
 
-       $unseenOrder =  [
-           'show' => ($unseenCount > 0) ? true : false,
-           'msg' => "Your Have $unseenCount Unseen Orders!"
-       ];
-
-
-
-       return [
-           $unseenOrder
-       ];
+       return ($unseenCount > 0) ? "Your Have $unseenCount Unseen Orders!" : "";
 
     }
 

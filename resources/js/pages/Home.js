@@ -55,15 +55,24 @@ const Home = () => {
             axios.post('/api/create-contact', formValues)
                 .then(res =>{
 
-                    window.Toast.fire({
-                        icon:'success',
-                        title:'Message Sent!'
-                    })
+                    if(res.status == 201){
+                        window.Toast.fire({
+                            icon:'success',
+                            title:'Message Sent!'
+                        })
+                    }else{
+                        window.Toast.fire({
+                            icon:'error',
+                            title:'Try Sending Again!'
+                        })
+                    }
 
                     Formik.resetForm();
 
                 })
                 .catch(err => console.log(err))
+
+        // formValues.addonwhatsapp && takeMeToWhatsapp(formValues.message);
     }
 
 
@@ -100,11 +109,23 @@ const Home = () => {
         onSubmit: (values, { setSubmitting , resetForm }) => {
 
             getInTouch(values);
+
             resetForm();
             setSubmitting(false);
 
         }
     });
+
+
+    const takeMeToWhatsapp = (msg) =>{
+
+        console.log("takeMeToWhatsapp")
+
+        const appLink = `https://api.whatsapp.com/send?text=${msg}`;
+
+        window.open(appLink, 'whatsappwindow','left=70,top=20,width=600,height=700,toolbar=0,resizable=1');
+
+    }
 
 
     useEffect(() => {
