@@ -278,12 +278,15 @@ const Orders = () => {
                 }
             })
             .then(res => {
-                if(res.status == 201){
 
+                if(res.status == 201){
                     window.Toast.fire({
                         icon: 'success',
                         title: res.data.message
                     })
+
+                    hist.push("/client/dashboard/orders/pending");
+
                 }else{
                     window.Toast.fire({
                         icon: 'error',
@@ -295,6 +298,8 @@ const Orders = () => {
                 console.log(err)
             })
     }
+
+
 
     const loadDraft = (draftOrder) =>{
 
@@ -363,6 +368,7 @@ const Orders = () => {
                  <div className="place-order-page">
                      <h1 className="text-4xl">Order a Paper</h1>
                      <h4 className="mt-6 text-lg text-primary-4">Paper Details</h4>
+
 
                      <Transition.Root show={open} as={Fragment}>
                          <Dialog

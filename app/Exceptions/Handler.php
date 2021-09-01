@@ -40,6 +40,7 @@ class Handler extends ExceptionHandler
                 'file' => $e->getFile(),
                 'line' => $e->getLine(),
                 'status code' => $e->getCode(),
+                'StackTrace' => $e->getTrace()
             ]);
         });
     }

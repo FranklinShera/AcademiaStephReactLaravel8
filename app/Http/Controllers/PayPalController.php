@@ -36,19 +36,24 @@ class PayPalController extends Controller
 
 
         foreach ($response->result->links as $link) {
+
             if($link->rel == 'approve') {
                 return redirect($link->href);
             }
+
         }
 
     }
 
 
     public function cancelPage()
+
     {
         return redirect('/client/dashboard/payment-failed');
-    }
 
+    }
+    
+    
 
     public function getExpressCheckoutSuccess(Request $request, $orderId)
     {

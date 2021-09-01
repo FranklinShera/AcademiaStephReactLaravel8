@@ -20,8 +20,12 @@ class OrderAssignedObserver
 
     public function created(OrderAssign $orderAssign)
     {
+
+
         //SEND EMAIL TO ASSIGNED WRITER
         Mail::to($orderAssign->writer->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new WriterAssigned($orderAssign->writer ,$orderAssign->order));
+
+
 
         //SEND EMAIL TO  NOTIFY CLIENT
         Mail::to($orderAssign->order->client->email)->cc(env('MAIL_FROM_ADDRESS'))->send(new OrderReceived($orderAssign->order->client ,$orderAssign->order));

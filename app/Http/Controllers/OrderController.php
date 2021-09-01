@@ -51,6 +51,8 @@ class OrderController extends Controller
 
     }
 
+    
+
     public function clientOrderCancel(Request $request, Order $order)
     {
         if($order->stage == 4){
@@ -116,11 +118,13 @@ class OrderController extends Controller
 
 
         if($order->stage == 4){
+            //CONSTRAIN TO BE UNIQUE ASSIGN
 
                  if( OrderAssign::create([
                      'order_id' => $order->id,
                      'writer_id' => $writer->id
                  ])){
+
                      $order->stage = 2;
                      $order->save();
                  }
@@ -276,6 +280,8 @@ class OrderController extends Controller
 
     }
 
+
+
     private function orderPrice($paperRate , $subjectRate ,$levelRate , $pages , $spacing , $urgency ,$serviceDed){
 
         $multi =  $pages * $spacing;
@@ -298,6 +304,8 @@ class OrderController extends Controller
     }
 
 
+    
+
     private function fixUrgency($urgency) {
 
         $orderUrgency = "";
@@ -317,8 +325,13 @@ class OrderController extends Controller
 
     }
 
+
+
+
     public function create(Request $request)
     {
+
+
         $newOrder = $request->validate([
                        "topic" => 'required|string|min:8',
                        "type_of_paper" => 'required',

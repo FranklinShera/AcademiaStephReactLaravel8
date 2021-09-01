@@ -12,7 +12,7 @@ class AdminToAssignMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $adminName;
+    
 
     public $order;
 
