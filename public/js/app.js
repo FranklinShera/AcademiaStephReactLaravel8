@@ -15094,7 +15094,7 @@ var autoLoginClient = function autoLoginClient() {
               _context3.t0 = _context3["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
-                error: _context3.t0
+                payload: _context3.t0
               });
 
             case 14:
@@ -15231,18 +15231,14 @@ var refreshClient = function refreshClient() {
                   })["catch"](function (err) {
                     dispatch({
                       type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
-                      error: {
-                        message: "Unauthenticated!"
-                      }
+                      payload: "Unauthenticated!"
                     });
                   });
                 }
               })["catch"](function (error) {
                 dispatch({
                   type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
-                  error: {
-                    message: "Unauthenticated!"
-                  }
+                  payload: "Unauthenticated!"
                 });
               });
 
@@ -23725,10 +23721,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_LogoShooting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LogoShooting */ "./resources/js/components/LogoShooting.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -23749,6 +23746,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ClientLogin = function ClientLogin(_ref) {
   var location = _ref.location;
 
@@ -23758,20 +23756,21 @@ var ClientLogin = function ClientLogin(_ref) {
       setIsLogging = _useState2[1];
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.authClient;
   });
   var loggedInClient = authClient.loggedInClient,
-      clientAuth = authClient.clientAuth;
+      clientAuth = authClient.clientAuth,
+      loading = authClient.loading;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (clientAuth) {
       location.state && location.state.next ? hist.push(location.state.next) : hist.push("/client/dashboard");
     }
   }, [clientAuth]);
-  var GITHUB_PROVIDER = 'github';
-  var GOOGLE_PROVIDER = 'google';
-  var FACEBOOK_PROVIDER = 'facebook';
+  var GITHUB_PROVIDER = "github";
+  var GOOGLE_PROVIDER = "google";
+  var FACEBOOK_PROVIDER = "facebook";
 
   var socialLogin = function socialLogin(provider) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/soc/authorize/".concat(provider, "/redirect")).then(function (res) {
@@ -23785,66 +23784,66 @@ var ClientLogin = function ClientLogin(_ref) {
 
   var autoLogin = function autoLogin(e) {
     e.preventDefault();
-    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.autoLoginClient)());
+    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.autoLoginClient)());
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.refreshClient)());
+    dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshClient)());
     setInterval(function () {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_3__.refreshClient)(1));
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshClient)(1));
     }, 840000);
     window.scrollTo(0, 0);
-    document.querySelector('title').text = 'AcademiaSteph21 | Client Login';
+    document.querySelector("title").text = "AcademiaSteph21 | Client Login";
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "login-screen",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
       className: "w-11/12 md:w-3/5 lg:w-3/12 rounded-lg flex flex-col items-center bg-white py-10 sm:py-14 shadow-sm",
       onSubmit: function onSubmit(e) {
         return e.preventDefault();
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
         className: "w-full mb-3 font-bold text-3xl text-center",
         children: "Client Login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+      }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_LogoShooting__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
         className: "text-green-600 font-semibold",
         children: "Get Started With Only one Click!"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("hr", {
         className: "bg-gray-200 h-px w-full my-5"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: " flex flex-col items-center justify-center w-4/5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
           className: "social-btn bg-github-1 text-github-2 border border-transparent hover:border-github-1 hover:text-github-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(GITHUB_PROVIDER);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
             className: "ti-github"
           }), " Github"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
           className: "social-btn bg-google-1 text-white border border-transparent hover:border-google-1 hover:text-google-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(GOOGLE_PROVIDER);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
             className: "ti-google"
           }), " Google"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
           className: "social-btn bg-facebook-1 text-white border border-transparent hover:border-facebook-1 hover:text-facebook-1 hover:bg-github-2",
           onClick: function onClick(e) {
             return socialLogin(FACEBOOK_PROVIDER);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
             className: "ti-facebook"
           }), " Facebook"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: "social-btn bg-gray-100 text-dark-5",
           onClick: autoLogin,
           children: "Auto Login"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
         className: "text-black text-sm text-center w-4/5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
           children: "NB: "
         }), " Your account will be created automatically!"]
       })]

@@ -121,7 +121,7 @@ export const autoLoginClient = () => async (dispatch) => {
     } catch (error) {
           dispatch({
             type: CLIENT_LOGIN_FAIL,
-            error: error
+            payload: error
         })
 
     }
@@ -219,7 +219,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
                         .catch(err =>{
                             dispatch({
                                 type: CLIENT_LOGIN_FAIL,
-                                error: { message: "Unauthenticated!"}
+                                payload: "Unauthenticated!"
                             })
 
                     })
@@ -228,7 +228,7 @@ export const refreshClient = (refreshType = 0) => async (dispatch) => {
             .catch((error) =>{
                 dispatch({
                     type: CLIENT_LOGIN_FAIL,
-                    error: { message: "Unauthenticated!"}
+                    payload: "Unauthenticated!"
                 })
             })
 
