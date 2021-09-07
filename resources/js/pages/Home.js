@@ -199,15 +199,15 @@ const Home = () => {
                     <div className="service sm:justify-start xl:justify-center">
                         <img src={AssignmentIcon} className="h-12" alt="Class Assignment icon"></img>
                         <span>Class Assignment</span>
-                    </div>
+                    </div>  
 
 
-                    <div className="service">
+                    <div className="service sm:justify-start xl:justify-center">
                         <img src={CaseStudyIcon} className="h-12" alt="Case Study icon"></img>
                         <span>Case Study</span>
                     </div>
 
-                    <div className="service sm:justify-start xl:justify-center">
+                    <div className="service ">
                         <img src={DissertationIcon} className="h-12" alt="Dissertation icon"></img>
                         <span>Dissertation</span>
                     </div>
@@ -217,10 +217,10 @@ const Home = () => {
                         <span>Proofreading</span>
                     </div>
 
-                    <div className="service sm:justify-start xl:justify-center">
+                    {/* <div className="service sm:justify-start xl:justify-center">
                         <img src={TranscriptionIcon} className="h-12" alt="Transcription icon"></img>
                         <span>Transcription</span>
-                    </div>
+                    </div> */}
 
                     <div className="service sm:justify-start xl:justify-center">
                         <img src={EditingIcon} className="h-12" alt="Editing icon"></img>

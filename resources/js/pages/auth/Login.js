@@ -7,7 +7,7 @@ import { useDispatch , useSelector } from 'react-redux'
 
 //actions
 import { loginUser , refreshUser } from '../../actions/AuthUserActions'
-import ShootingLoader from "../../components/ShootingLoader";
+import LogoShooting from "../../components/LogoShooting";
 
 const Login = ({ location }) => {
 
@@ -17,7 +17,7 @@ const Login = ({ location }) => {
     const hist = useHistory();
 
     const authUser = useSelector( state => state.authUser)
-    const { loggedInUser, auth } = authUser;
+    const { loggedInUser, auth , loading } = authUser;
 
     useEffect(() => {
 
@@ -70,10 +70,11 @@ const Login = ({ location }) => {
     return (
         <div className="login-screen">
 
-            {isLoggin  && (<ShootingLoader loading={isLoggin}/>)}
+            
 
             <form className="w-11/12 md:w-4/5 lg:w-2/5 bg-white p-10 sm:p-14 shadow-sm rounded-lg" onSubmit={handleLogin}>
                  <label className="w-full mb-5 text-3xl font-bold sm:text-4xl text-center">Admin Login</label>
+                 {loading  && <LogoShooting></LogoShooting>}
 
                  <InputField
                      labelText='Username'

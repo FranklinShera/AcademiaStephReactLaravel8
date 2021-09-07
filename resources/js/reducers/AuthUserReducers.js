@@ -22,7 +22,7 @@ import {
 
 
 
-export const AuthUserReducer = (state = {loggedInUser: {} , notifications: [], auth: false} , action) => {
+export const AuthUserReducer = (state = {loggedInUser: {} , notifications: [], auth: false , loading: false} , action) => {
     switch(action.type){
         case USER_LOGIN_REQUEST:
             return { loading: true , loggedInUser: {} ,notifications: [], auth: false }
@@ -42,6 +42,7 @@ export const AuthUserReducer = (state = {loggedInUser: {} , notifications: [], a
 
         case USER_LOGIN_FAIL:
             return { loading: false , error: action.payload }
+
         default:
             return state
     }

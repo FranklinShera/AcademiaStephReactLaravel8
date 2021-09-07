@@ -22,6 +22,7 @@ class Order extends Model
         "number_of_pages",
         "urgency",
         "stage",
+        "service_type",
         "client_id",
         "cost"
     ];

@@ -1,4 +1,6 @@
 import React , { useState , useEffect } from 'react'
+import PropTypes from 'prop-types';
+
 
 import  Logo from '.././images/as21logo.png';
 import {useSelector} from "react-redux";
@@ -26,7 +28,7 @@ const ShootingLoader = ({loading}) => {
             { (isLoading) && (
                 <div className={(!isLoading) && 'hidden'}>
 
-                    <div className='loader-overlay bg-white vh-100'>
+                    <div className={`loader-overlay bg-white vh-100'}`}>
 
                         <div className="wait-loader">
                             <div className="center">
@@ -49,5 +51,6 @@ const ShootingLoader = ({loading}) => {
         </>
     )
 }
+
 
 export default ShootingLoader

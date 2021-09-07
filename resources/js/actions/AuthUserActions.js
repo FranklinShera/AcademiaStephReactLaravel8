@@ -78,7 +78,7 @@ export const loginClient = (code , provider) => async (dispatch) => {
 
         const loggedClient = await axios.post('/api/auth/client')
 
-        console.log(loggedClient)
+       
 
 
         dispatch({
@@ -111,8 +111,6 @@ export const autoLoginClient = () => async (dispatch) => {
 
         const loggedClient = await axios.post('/api/auth/client')
 
-
-        console.log("Auto Client" , loggedClient);
 
         dispatch({
             type: CLIENT_LOGIN_SUCCESS,
@@ -161,23 +159,43 @@ export const refreshUser = (refreshType = 0) => async (dispatch) => {
 
         }
 
-        const res = await axios.post('/api/auth/admin/refresh-token')
+       
+        axios.post('/api/auth/admin/refresh-token')
+        .then( res => {          
 
+            axios.post('/api/auth/admin/user').then(response =>{
+                dispatch({ type: USER_REFRESH , payload : response.data})
+            })
 
-         if(res.status == 200) {
-
-            const refUser =  await axios.post('/api/auth/admin/user')
-
-            dispatch({ type: USER_REFRESH , payload : refUser.data})
-
-         }else{
+        }).catch(err => {
 
             dispatch({
                 type: USER_LOGIN_FAIL,
-                error: { message: "Unauthenticated!"}
+                payload:  "Unauthenticated!" 
             })
 
-         }
+        })
+
+         // const res = await axios.post('/api/auth/admin/refresh-token')
+         // const refUser =  await axios.post('/api/auth/admin/user')
+            // dispatch({ type: USER_REFRESH , payload : refUser.data})
+
+
+        //  if(res.status == 200) {
+
+        //     const refUser =  await axios.post('/api/auth/admin/user')
+
+        //     dispatch({ type: USER_REFRESH , payload : refUser.data})
+
+        //  }else{
+
+        //     console.log(res);
+        //     dispatch({
+        //         type: USER_LOGIN_FAIL,
+        //         payload:  "Unauthenticated!" 
+        //     })
+
+        //  }
 
 
 }

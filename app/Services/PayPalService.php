@@ -24,12 +24,13 @@ class PayPalService
     public function createOrder($orderId)
     {
 
-        $createOrderRquest = new OrdersCreateRequest();
-        $createOrderRquest->headers["prefer"] = "return=representation";
+        $createOrderRequest = new OrdersCreateRequest();
+        $createOrderRequest->headers["prefer"] = "return=representation";
 
-        $createOrderRquest->body = $this->simpleCheckoutData($orderId);
+        $createOrderRequest->body = $this->simpleCheckoutData($orderId);
 
-        return $this->client->execute($createOrderRquest);
+        return $this->client->execute($createOrderRequest);
+        
     }
 
 

@@ -152,7 +152,6 @@ const Orders = () => {
         'application/vnd.openxmlformats-officedocument.presentationml.presentation',
         'application/msword',
         'application/pdf',
-        'text/plain',
         'image/jpeg',
         'image/png',
         'application/x-zip-compressed',
