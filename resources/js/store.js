@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { reviewsListReducer } from './reducers/reviewsListReducers'
 
-import { AuthUserReducer,AuthClientReducer,RegisterUserReducer, AdminPanelReducer } from './reducers/AuthUserReducers'
+import { AuthUserReducer,AuthClientReducer,RegisterUserReducer, AdminPanelReducer , AuthTimeReducer} from './reducers/AuthUserReducers'
 
 import {
     ClientOrdersReducer,
@@ -16,6 +16,7 @@ import {
 const reducer =  combineReducers({
     reviewList: reviewsListReducer,
     authUser: AuthUserReducer,
+    appTime: AuthTimeReducer,
     authClient: AuthClientReducer,
     registration: RegisterUserReducer,
     adminPanel: AdminPanelReducer,

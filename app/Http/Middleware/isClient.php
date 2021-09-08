@@ -15,7 +15,7 @@ class isClient
 
             return response()->json([
                 'msg' => 'You are not allowed to access this route... '
-            ], 403);
+            ], 401);
 
         }
 

@@ -11,7 +11,9 @@
         false,
         null);
 
-    return response()->json(['message' => "Success!"])->withCookie($tokenCookie);
+        $issue_time =  time();
+
+    return response()->json(['message' => "Success!" , "tst" => $issue_time , "overtime" =>  env('JWT_TTL') ])->withCookie($tokenCookie);
 
 
 }

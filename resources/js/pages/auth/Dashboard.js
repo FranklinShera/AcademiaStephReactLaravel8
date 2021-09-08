@@ -33,7 +33,7 @@ const Dashboard = () => {
                    setAnalytics(res.data)
                 })
                 .catch(err =>{
-                console.log(err)
+                    
             })
     }
 

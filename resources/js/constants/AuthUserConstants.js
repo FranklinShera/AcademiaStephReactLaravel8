@@ -26,3 +26,11 @@ export const ADMIN_SIDEBAR_POSITION = 'ADMIN_SIDEBAR_POSITION';
 
 
 
+
+
+export const TIME_RESET = 'TIME_RESET';
+export const TIME_SUCCESS = 'TIME_SUCCESS';
+
+
+
+

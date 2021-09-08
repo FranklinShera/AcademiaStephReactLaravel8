@@ -14969,38 +14969,48 @@ var loginUser = function loginUser(user) {
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_REQUEST
               });
-              _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/login', user);
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_RESET
+              });
+              _context.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/login", user);
 
-            case 4:
+            case 5:
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
-              _context.next = 8;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/user');
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_SUCCESS,
+                payload: {
+                  tst: data.tst,
+                  overtime: data.overtime
+                }
+              });
+              _context.next = 10;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/user");
 
-            case 8:
+            case 10:
               loggedUser = _context.sent;
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_SUCCESS,
                 payload: loggedUser.data
               });
-              _context.next = 15;
+              _context.next = 17;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 14:
+              _context.prev = 14;
               _context.t0 = _context["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_LOGIN_FAIL,
                 error: _context.t0
               });
 
-            case 15:
+            case 17:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 12]]);
+      }, _callee, null, [[0, 14]]);
     }));
 
     return function (_x) {
@@ -15020,39 +15030,49 @@ var loginClient = function loginClient(code, provider) {
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_REQUEST
               });
-              _context2.next = 4;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_RESET
+              });
+              _context2.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/soc/authorize/".concat(provider, "/callback"), {
                 params: code
               });
 
-            case 4:
+            case 5:
               res = _context2.sent;
-              _context2.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client');
+              _context2.next = 8;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client");
 
-            case 7:
+            case 8:
               loggedClient = _context2.sent;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_SUCCESS,
+                payload: {
+                  tst: res.data.tst,
+                  overtime: res.data.overtime
+                }
+              });
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
                 payload: loggedClient.data
               });
-              _context2.next = 14;
+              _context2.next = 16;
               break;
 
-            case 11:
-              _context2.prev = 11;
+            case 13:
+              _context2.prev = 13;
               _context2.t0 = _context2["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
                 error: _context2.t0
               });
 
-            case 14:
+            case 16:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 11]]);
+      }, _callee2, null, [[0, 13]]);
     }));
 
     return function (_x2) {
@@ -15072,37 +15092,47 @@ var autoLoginClient = function autoLoginClient() {
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_REQUEST
               });
-              _context3.next = 4;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_RESET
+              });
+              _context3.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/autoclient");
 
-            case 4:
+            case 5:
               res = _context3.sent;
-              _context3.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client');
+              _context3.next = 8;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client");
 
-            case 7:
+            case 8:
               loggedClient = _context3.sent;
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_SUCCESS,
+                payload: {
+                  tst: res.data.tst,
+                  overtime: res.data.overtime
+                }
+              });
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_SUCCESS,
                 payload: loggedClient.data
               });
-              _context3.next = 14;
+              _context3.next = 16;
               break;
 
-            case 11:
-              _context3.prev = 11;
+            case 13:
+              _context3.prev = 13;
               _context3.t0 = _context3["catch"](0);
               dispatch({
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_LOGIN_FAIL,
                 payload: _context3.t0
               });
 
-            case 14:
+            case 16:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 11]]);
+      }, _callee3, null, [[0, 13]]);
     }));
 
     return function (_x3) {
@@ -15123,7 +15153,7 @@ var registerUser = function registerUser(user) {
                 type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REGISTER_REQUEST
               });
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/register', user);
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/register", user);
 
             case 4:
               data = _context4.sent;
@@ -15168,8 +15198,18 @@ var refreshUser = function refreshUser() {
                 });
               }
 
-              axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/refresh-token').then(function (res) {
-                axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/user').then(function (response) {
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_RESET
+              });
+              axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/refresh-token").then(function (res) {
+                dispatch({
+                  type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_SUCCESS,
+                  payload: {
+                    tst: res.data.tst,
+                    overtime: res.data.overtime
+                  }
+                });
+                axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/user").then(function (response) {
                   dispatch({
                     type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.USER_REFRESH,
                     payload: response.data
@@ -15190,11 +15230,11 @@ var refreshUser = function refreshUser() {
               //     console.log(res);
               //     dispatch({
               //         type: USER_LOGIN_FAIL,
-              //         payload:  "Unauthenticated!" 
+              //         payload:  "Unauthenticated!"
               //     })
               //  }
 
-            case 2:
+            case 3:
             case "end":
               return _context5.stop();
           }
@@ -15221,9 +15261,19 @@ var refreshClient = function refreshClient() {
                 });
               }
 
-              axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/refresh-token').then(function (response) {
+              dispatch({
+                type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_RESET
+              });
+              axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client/refresh-token").then(function (response) {
                 if (response.status == 200) {
-                  axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client').then(function (res) {
+                  dispatch({
+                    type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.TIME_SUCCESS,
+                    payload: {
+                      tst: response.data.tst,
+                      overtime: response.data.overtime
+                    }
+                  });
+                  axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client").then(function (res) {
                     dispatch({
                       type: _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_1__.CLIENT_REFRESH,
                       payload: res.data
@@ -15242,7 +15292,7 @@ var refreshClient = function refreshClient() {
                 });
               });
 
-            case 2:
+            case 3:
             case "end":
               return _context6.stop();
           }
@@ -15265,7 +15315,7 @@ var logoutUser = function logoutUser() {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/admin/logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/admin/logout");
 
             case 2:
               _yield$axios$post2 = _context7.sent;
@@ -15300,7 +15350,7 @@ var logoutClient = function logoutClient() {
           switch (_context8.prev = _context8.next) {
             case 0:
               _context8.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/auth/client/client-logout');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/auth/client/client-logout");
 
             case 2:
               _yield$axios$post3 = _context8.sent;
@@ -17045,7 +17095,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.esm.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/dialog/dialog.esm.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -17064,35 +17118,146 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 var Notification = function Notification(_ref) {
   var userType = _ref.userType;
   var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.authUser;
   });
+  var AppTime = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.appTime;
+  });
   var notifications = authUser.notifications;
+  var tst = AppTime.tst,
+      overtime = AppTime.overtime;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var hist = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
       setUser = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
       countDown = _useState4[0],
       setCountDown = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isOpen = _useState6[0],
+      setIsOpen = _useState6[1];
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  var checkAuth = function checkAuth(rem) {
+    if (rem < 0) {
+      setIsOpen(false);
+      location.reload();
+      return 0;
+    }
+
+    if (!(rem <= 20)) {
+      return rem;
+    } else {
+      setIsOpen(true);
+      return rem;
+    }
+  };
+
+  var refreshToken = function refreshToken() {
+    setIsOpen(false);
+    dispatch(userType == 1 ? (0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_2__.refreshUser)() : (0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_2__.refreshClient)());
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setUser(userType == 1 ? "Admin " : userType == 0 ? "Client " : "x");
+    setInterval(function () {
+      var currTime = Math.floor(Date.now() / 1000);
+      var elapsed = currTime - tst;
+      var overTime = overtime * 60;
+      var remaining = overTime - elapsed;
+      setCountDown(checkAuth(remaining));
+    }, 1000);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: notifications != "" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [notifications != "" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "notification flex items-center ",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
         className: "ti-comment-alt mr-2 text-primary-1"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
         children: notifications
       })]
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Transition, {
+      show: isOpen,
+      as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.Dialog, {
+        as: "div",
+        className: "fixed inset-0 z-10 overflow-y-auto",
+        onClose: closeModal,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "min-h-screen px-4 text-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Transition.Child, {
+            as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+            enter: "ease-out duration-300",
+            enterFrom: "opacity-0",
+            enterTo: "opacity-100",
+            leave: "ease-in duration-200",
+            leaveFrom: "opacity-100",
+            leaveTo: "opacity-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.Dialog.Overlay, {
+              className: "fixed inset-0 bg-black opacity-30"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            className: "inline-block h-screen align-middle",
+            "aria-hidden": "true",
+            children: "\u200B"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Transition.Child, {
+            as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+            enter: "ease-out duration-300",
+            enterFrom: "opacity-0 scale-95",
+            enterTo: "opacity-100 scale-100",
+            leave: "ease-in duration-200",
+            leaveFrom: "opacity-100 scale-100",
+            leaveTo: "opacity-0 scale-95",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "inline-block  max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.Dialog.Title, {
+                as: "h3",
+                className: "text-lg font-bold leading-6 text-gray-700",
+                children: "You Are About To Be Logged Out!"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "mt-3",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+                  className: "text-sm",
+                  children: ["You have ", countDown, " seconds to refresh your session!"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "mt-4",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  className: "inline-flex justify-center px-6 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500",
+                  onClick: refreshToken,
+                  children: "Refresh"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  className: "inline-flex justify-center px-6  py-2 ml-5 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500",
+                  onClick: closeModal,
+                  children: "Close"
+                })]
+              })]
+            })
+          })]
+        })
+      })
+    })]
   });
 };
 
@@ -20194,7 +20359,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CLIENT_LOGOUT": () => (/* binding */ CLIENT_LOGOUT),
 /* harmony export */   "USER_IN_ADMIN_PANEL": () => (/* binding */ USER_IN_ADMIN_PANEL),
 /* harmony export */   "USER_OUT_ADMIN_PANEL": () => (/* binding */ USER_OUT_ADMIN_PANEL),
-/* harmony export */   "ADMIN_SIDEBAR_POSITION": () => (/* binding */ ADMIN_SIDEBAR_POSITION)
+/* harmony export */   "ADMIN_SIDEBAR_POSITION": () => (/* binding */ ADMIN_SIDEBAR_POSITION),
+/* harmony export */   "TIME_RESET": () => (/* binding */ TIME_RESET),
+/* harmony export */   "TIME_SUCCESS": () => (/* binding */ TIME_SUCCESS)
 /* harmony export */ });
 var USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 var USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
@@ -20214,6 +20381,8 @@ var CLIENT_LOGOUT = 'CLIENT_LOGOUT';
 var USER_IN_ADMIN_PANEL = 'USER_IN_ADMIN_PANEL';
 var USER_OUT_ADMIN_PANEL = 'USER_OUT_ADMIN_PANEL';
 var ADMIN_SIDEBAR_POSITION = 'ADMIN_SIDEBAR_POSITION';
+var TIME_RESET = 'TIME_RESET';
+var TIME_SUCCESS = 'TIME_SUCCESS';
 
 /***/ }),
 
@@ -21145,9 +21314,7 @@ var Dashboard = function Dashboard() {
   var loadAnalytics = function loadAnalytics() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/auth/admin/analytics').then(function (res) {
       setAnalytics(res.data);
-    })["catch"](function (err) {
-      console.log(err);
-    });
+    })["catch"](function (err) {});
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -26167,6 +26334,7 @@ var ProviderLoginResolve = function ProviderLoginResolve(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthTimeReducer": () => (/* binding */ AuthTimeReducer),
 /* harmony export */   "AuthUserReducer": () => (/* binding */ AuthUserReducer),
 /* harmony export */   "AuthClientReducer": () => (/* binding */ AuthClientReducer),
 /* harmony export */   "RegisterUserReducer": () => (/* binding */ RegisterUserReducer),
@@ -26174,6 +26342,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/AuthUserConstants */ "./resources/js/constants/AuthUserConstants.js");
 
+var AuthTimeReducer = function AuthTimeReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    tst: 0,
+    overtime: 0
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.TIME_RESET:
+      return {
+        tst: 0,
+        overtime: 0
+      };
+
+    case _constants_AuthUserConstants__WEBPACK_IMPORTED_MODULE_0__.TIME_SUCCESS:
+      return {
+        tst: action.payload.tst,
+        overtime: action.payload.overtime
+      };
+
+    default:
+      return state;
+  }
+};
 var AuthUserReducer = function AuthUserReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     loggedInUser: {},
@@ -26231,7 +26423,8 @@ var AuthClientReducer = function AuthClientReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     loggedInClient: {},
     notifications: [],
-    clientAuth: false
+    clientAuth: false,
+    loading: false
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -26643,6 +26836,7 @@ __webpack_require__.r(__webpack_exports__);
 var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   reviewList: _reducers_reviewsListReducers__WEBPACK_IMPORTED_MODULE_2__.reviewsListReducer,
   authUser: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AuthUserReducer,
+  appTime: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AuthTimeReducer,
   authClient: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AuthClientReducer,
   registration: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.RegisterUserReducer,
   adminPanel: _reducers_AuthUserReducers__WEBPACK_IMPORTED_MODULE_3__.AdminPanelReducer,

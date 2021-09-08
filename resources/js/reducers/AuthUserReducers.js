@@ -15,9 +15,29 @@ import {
     USER_REFRESH,
     CLIENT_REFRESH,
     USER_LOGOUT,
-    CLIENT_LOGOUT
+    CLIENT_LOGOUT,
+    TIME_SUCCESS,
+    TIME_RESET,
 } from '../constants/AuthUserConstants'
 
+
+
+
+export const AuthTimeReducer = (state = {tst: 0 , overtime: 0} , action) =>{
+    switch(action.type){
+        case TIME_RESET:
+
+            return { tst: 0 , overtime: 0 }
+
+
+        case TIME_SUCCESS:
+
+            return { tst: action.payload.tst , overtime: action.payload.overtime }      
+
+        default:
+            return state
+    }
+}
 
 
 
@@ -51,7 +71,7 @@ export const AuthUserReducer = (state = {loggedInUser: {} , notifications: [], a
 
 
 
-export const AuthClientReducer = (state = { loggedInClient: {} ,notifications: [], clientAuth: false } , action) => {
+export const AuthClientReducer = (state = { loggedInClient: {} ,notifications: [], clientAuth: false,loading: false } , action) => {
     switch(action.type){
         case CLIENT_LOGIN_REQUEST:
             return { loading: true , loggedInClient: {} ,notifications: [], clientAuth: false }
