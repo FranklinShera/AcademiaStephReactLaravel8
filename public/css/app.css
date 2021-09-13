@@ -687,6 +687,11 @@ video {
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity))
 }
 
+.hover\:bg-red-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(252, 165, 165, var(--tw-bg-opacity))
+}
+
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(220, 38, 38, var(--tw-bg-opacity))
@@ -700,6 +705,11 @@ video {
 .hover\:bg-green-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(167, 243, 208, var(--tw-bg-opacity))
+}
+
+.hover\:bg-green-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(110, 231, 183, var(--tw-bg-opacity))
 }
 
 .hover\:bg-green-700:hover {
@@ -1189,6 +1199,10 @@ video {
 
 .mt-44 {
   margin-top: 11rem
+}
+
+.max-w-md {
+  max-width: 28rem
 }
 
 .max-w-lg {

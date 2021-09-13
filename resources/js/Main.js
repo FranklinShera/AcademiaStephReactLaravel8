@@ -1,11 +1,35 @@
 import React , { useState , useEffect } from 'react'
-
-
 import { BrowserRouter as Router , Route, Switch  } from 'react-router-dom'
+
+
+import Swal2 from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+
+// STATE
+import { useDispatch , useSelector} from 'react-redux'
+
+//ACTIONS
+import {  refreshUser , refreshClient } from './actions/AuthUserActions'
+import Register from './pages/auth/Register';
+
+
+
+// AUTH COMPONENTS
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import ClientProtectedRoute from './components/client/ClientProtectedRoute'
 
 
+// COMPONENTS
+import Loader from "./components/Loader";
+import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
+import OrderShow from "./pages/client/OrderShow";
+import Messages from "./pages/auth/Messages";
+import Overlay from "./components/Overlay";
+
+
+
+// PAGES
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -31,25 +55,8 @@ import ClientProfile from './pages/client/Profile';
 import PlaceNewOrder from './pages/client/PlaceNewOrder';
 
 
-import { useDispatch , useSelector} from 'react-redux'
 
-
-//actions
-import {  refreshUser , refreshClient } from './actions/AuthUserActions'
-import Register from './pages/auth/Register';
-
-
-
-import Swal2 from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import Loader from "./components/Loader";
-import ProviderLoginResolve from "./pages/client/ProviderLoginResolve";
-import OrderShow from "./pages/client/OrderShow";
-import Messages from "./pages/auth/Messages";
-import Overlay from "./components/Overlay";
-
-
-
+// SWEETALERT2 SETUP
 const Swal = withReactContent(Swal2)
 
 const Toast = Swal.mixin({
@@ -64,8 +71,11 @@ const Toast = Swal.mixin({
   }
 })
 
+
+// SWEETALERT2 HOOK
 window.Toast = Toast;
 window.Swal = Swal;
+
 
 
 

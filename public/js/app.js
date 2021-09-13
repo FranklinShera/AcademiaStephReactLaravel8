@@ -14666,47 +14666,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth/ProtectedRoute */ "./resources/js/components/auth/ProtectedRoute.js");
-/* harmony import */ var _components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/client/ClientProtectedRoute */ "./resources/js/components/client/ClientProtectedRoute.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer.js");
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Header */ "./resources/js/components/Header.js");
-/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Home */ "./resources/js/pages/Home.js");
-/* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound */ "./resources/js/pages/NotFound.js");
-/* harmony import */ var _pages_auth_Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/auth/Login */ "./resources/js/pages/auth/Login.js");
-/* harmony import */ var _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/client/ClientLogin */ "./resources/js/pages/client/ClientLogin.js");
-/* harmony import */ var _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/auth/Dashboard */ "./resources/js/pages/auth/Dashboard.js");
-/* harmony import */ var _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/client/ClientDashboard */ "./resources/js/pages/client/ClientDashboard.js");
-/* harmony import */ var _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/auth/Payment */ "./resources/js/pages/auth/Payment.js");
-/* harmony import */ var _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/auth/Orders */ "./resources/js/pages/auth/Orders.js");
-/* harmony import */ var _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/auth/OrderView */ "./resources/js/pages/auth/OrderView.js");
-/* harmony import */ var _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/auth/OrderControl */ "./resources/js/pages/auth/OrderControl.js");
-/* harmony import */ var _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/auth/Conversations */ "./resources/js/pages/auth/Conversations.js");
-/* harmony import */ var _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/auth/Writers */ "./resources/js/pages/auth/Writers.js");
-/* harmony import */ var _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/auth/DirectContacts */ "./resources/js/pages/auth/DirectContacts.js");
-/* harmony import */ var _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/auth/Profile */ "./resources/js/pages/auth/Profile.js");
-/* harmony import */ var _pages_client_Payment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/client/Payment */ "./resources/js/pages/client/Payment.js");
-/* harmony import */ var _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/client/PaymentSuccess */ "./resources/js/pages/client/PaymentSuccess.js");
-/* harmony import */ var _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/client/PaymentFailed */ "./resources/js/pages/client/PaymentFailed.js");
-/* harmony import */ var _pages_client_Orders__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/client/Orders */ "./resources/js/pages/client/Orders.js");
-/* harmony import */ var _pages_client_Messages__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/client/Messages */ "./resources/js/pages/client/Messages.js");
-/* harmony import */ var _pages_client_Profile__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/client/Profile */ "./resources/js/pages/client/Profile.js");
-/* harmony import */ var _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/client/PlaceNewOrder */ "./resources/js/pages/client/PlaceNewOrder.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
-/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
-/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
-/* harmony import */ var _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/client/OrderShow */ "./resources/js/pages/client/OrderShow.js");
-/* harmony import */ var _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/auth/Messages */ "./resources/js/pages/auth/Messages.js");
-/* harmony import */ var _components_Overlay__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/Overlay */ "./resources/js/components/Overlay.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/AuthUserActions */ "./resources/js/actions/AuthUserActions.js");
+/* harmony import */ var _pages_auth_Register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/auth/Register */ "./resources/js/pages/auth/Register.js");
+/* harmony import */ var _components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/auth/ProtectedRoute */ "./resources/js/components/auth/ProtectedRoute.js");
+/* harmony import */ var _components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/client/ClientProtectedRoute */ "./resources/js/components/client/ClientProtectedRoute.js");
+/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.js");
+/* harmony import */ var _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/client/ProviderLoginResolve */ "./resources/js/pages/client/ProviderLoginResolve.js");
+/* harmony import */ var _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/client/OrderShow */ "./resources/js/pages/client/OrderShow.js");
+/* harmony import */ var _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/auth/Messages */ "./resources/js/pages/auth/Messages.js");
+/* harmony import */ var _components_Overlay__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Overlay */ "./resources/js/components/Overlay.js");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Header */ "./resources/js/components/Header.js");
+/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/Home */ "./resources/js/pages/Home.js");
+/* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/NotFound */ "./resources/js/pages/NotFound.js");
+/* harmony import */ var _pages_auth_Login__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/auth/Login */ "./resources/js/pages/auth/Login.js");
+/* harmony import */ var _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/client/ClientLogin */ "./resources/js/pages/client/ClientLogin.js");
+/* harmony import */ var _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/auth/Dashboard */ "./resources/js/pages/auth/Dashboard.js");
+/* harmony import */ var _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/client/ClientDashboard */ "./resources/js/pages/client/ClientDashboard.js");
+/* harmony import */ var _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/auth/Payment */ "./resources/js/pages/auth/Payment.js");
+/* harmony import */ var _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/auth/Orders */ "./resources/js/pages/auth/Orders.js");
+/* harmony import */ var _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/auth/OrderView */ "./resources/js/pages/auth/OrderView.js");
+/* harmony import */ var _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/auth/OrderControl */ "./resources/js/pages/auth/OrderControl.js");
+/* harmony import */ var _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/auth/Conversations */ "./resources/js/pages/auth/Conversations.js");
+/* harmony import */ var _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/auth/Writers */ "./resources/js/pages/auth/Writers.js");
+/* harmony import */ var _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/auth/DirectContacts */ "./resources/js/pages/auth/DirectContacts.js");
+/* harmony import */ var _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/auth/Profile */ "./resources/js/pages/auth/Profile.js");
+/* harmony import */ var _pages_client_Payment__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/client/Payment */ "./resources/js/pages/client/Payment.js");
+/* harmony import */ var _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/client/PaymentSuccess */ "./resources/js/pages/client/PaymentSuccess.js");
+/* harmony import */ var _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/client/PaymentFailed */ "./resources/js/pages/client/PaymentFailed.js");
+/* harmony import */ var _pages_client_Orders__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/client/Orders */ "./resources/js/pages/client/Orders.js");
+/* harmony import */ var _pages_client_Messages__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/client/Messages */ "./resources/js/pages/client/Messages.js");
+/* harmony import */ var _pages_client_Profile__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/client/Profile */ "./resources/js/pages/client/Profile.js");
+/* harmony import */ var _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./pages/client/PlaceNewOrder */ "./resources/js/pages/client/PlaceNewOrder.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
+ // STATE
+
+ //ACTIONS
+
+
+ // AUTH COMPONENTS
+
+
+ // COMPONENTS
+
+
+
+
+
+ // PAGES
 
 
 
@@ -14730,22 +14745,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
- //actions
-
+ // SWEETALERT2 SETUP
 
 
 
 
-
-
-
-
-
-
-
-
-var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_30___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_29___default()));
+var Swal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_2___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()));
 var Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -14756,19 +14761,20 @@ var Toast = Swal.mixin({
     toast.addEventListener('mouseenter', Swal.stopTimer);
     toast.addEventListener('mouseleave', Swal.resumeTimer);
   }
-});
+}); // SWEETALERT2 HOOK
+
 window.Toast = Toast;
 window.Swal = Swal;
 
 function App() {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useDispatch)();
-  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
+  var authUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.authUser;
   });
-  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
+  var authClient = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.authClient;
   });
-  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_26__.useSelector)(function (state) {
+  var userInAdmin = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.adminPanel;
   });
   var inAdminPanel = userInAdmin.inAdminPanel;
@@ -14777,16 +14783,16 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // check if location is not /client
     if (!auth && location.pathname === "/in") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshUser)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshUser)());
     } // check if location is /client
 
 
     if (!clientAuth && location.pathname === "/client") {
-      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshClient)());
+      dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshClient)());
     }
 
     setInterval(function () {
-      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_27__.refreshClient)(1));
+      auth && location.pathname === "/in" ? dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshUser)(1)) : clientAuth && location.pathname === "/client" && dispatch((0,_actions_AuthUserActions__WEBPACK_IMPORTED_MODULE_4__.refreshClient)(1));
     }, 840000);
   }, [location.pathname]);
 
@@ -14795,114 +14801,114 @@ function App() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_35__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_31__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__.default, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Overlay__WEBPACK_IMPORTED_MODULE_12__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Loader__WEBPACK_IMPORTED_MODULE_8__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_14__.default, {
         inAdminPanel: inAdminPanel
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/orders/:category",
           exact: true,
-          component: _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_12__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Orders__WEBPACK_IMPORTED_MODULE_22__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/order-view/:id/:topicSlug",
           exact: true,
-          component: _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_13__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_OrderView__WEBPACK_IMPORTED_MODULE_23__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/conversation/:id/:clientName",
           exact: true,
-          component: _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_34__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Messages__WEBPACK_IMPORTED_MODULE_11__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/control/order-input",
           exact: true,
-          component: _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_14__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_OrderControl__WEBPACK_IMPORTED_MODULE_24__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/conversations",
           exact: true,
-          component: _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_15__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Conversations__WEBPACK_IMPORTED_MODULE_25__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/writers",
           exact: true,
-          component: _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_16__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Writers__WEBPACK_IMPORTED_MODULE_26__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/direct-contacts",
           exact: true,
-          component: _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_17__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_DirectContacts__WEBPACK_IMPORTED_MODULE_27__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/payments",
           exact: true,
-          component: _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_11__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Payment__WEBPACK_IMPORTED_MODULE_21__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard/profile",
           exact: true,
-          component: _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_18__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_1__.default, {
+          component: _pages_auth_Profile__WEBPACK_IMPORTED_MODULE_28__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_auth_ProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
           path: "/in/dashboard",
           exact: true,
-          component: _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_9__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_auth_Dashboard__WEBPACK_IMPORTED_MODULE_19__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard",
           exact: true,
-          component: _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_10__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_ClientDashboard__WEBPACK_IMPORTED_MODULE_20__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/place-order",
           exact: true,
-          component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_25__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PlaceNewOrder__WEBPACK_IMPORTED_MODULE_35__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/paypal/:payment/:orderid",
           exact: true,
           component: BlankPage
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/paypal/:paymentredirect",
           exact: true,
           component: BlankPage
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/orders/:category",
           exact: true,
-          component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_22__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Orders__WEBPACK_IMPORTED_MODULE_32__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/order-view/:id/:topicSlug",
           exact: true,
-          component: _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_33__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_OrderShow__WEBPACK_IMPORTED_MODULE_10__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/messages",
           exact: true,
-          component: _pages_client_Messages__WEBPACK_IMPORTED_MODULE_23__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Messages__WEBPACK_IMPORTED_MODULE_33__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/payments",
           exact: true,
-          component: _pages_client_Payment__WEBPACK_IMPORTED_MODULE_19__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_Payment__WEBPACK_IMPORTED_MODULE_29__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/payment-successful",
           exact: true,
-          component: _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_20__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PaymentSuccess__WEBPACK_IMPORTED_MODULE_30__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/payment-failed",
           exact: true,
-          component: _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_21__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
+          component: _pages_client_PaymentFailed__WEBPACK_IMPORTED_MODULE_31__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_client_ClientProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
           path: "/client/dashboard/profile",
           exact: true,
-          component: _pages_client_Profile__WEBPACK_IMPORTED_MODULE_24__.default
+          component: _pages_client_Profile__WEBPACK_IMPORTED_MODULE_34__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/in",
           exact: true,
-          component: _pages_auth_Login__WEBPACK_IMPORTED_MODULE_7__.default
+          component: _pages_auth_Login__WEBPACK_IMPORTED_MODULE_17__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/client",
           exact: true,
-          component: _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_8__.default
+          component: _pages_client_ClientLogin__WEBPACK_IMPORTED_MODULE_18__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/social/authorize/:provider",
           exact: true,
-          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_32__.default
+          component: _pages_client_ProviderLoginResolve__WEBPACK_IMPORTED_MODULE_9__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
           path: "/",
           exact: true,
-          component: _pages_Home__WEBPACK_IMPORTED_MODULE_5__.default
+          component: _pages_Home__WEBPACK_IMPORTED_MODULE_15__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.Route, {
-          component: _pages_NotFound__WEBPACK_IMPORTED_MODULE_6__.default
+          component: _pages_NotFound__WEBPACK_IMPORTED_MODULE_16__.default
         })]
-      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), !inAdminPanel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_36__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_13__.default, {})]
     })]
   });
 }
@@ -17487,6 +17493,7 @@ var PriceCalculator = function PriceCalculator() {
           name: "essay-type",
           id: "essay-type",
           className: "w-full p-1",
+          defaultValue: "",
           ref: subAreaRef,
           onChange: function onChange(e) {
             e.preventDefault();
@@ -17494,13 +17501,13 @@ var PriceCalculator = function PriceCalculator() {
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
-            selected: true,
+            disabled: true,
             children: "Choose Essay Type"
-          }), allPaperTypes.map(function (papertype) {
+          }), allPaperTypes.map(function (papertype, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: papertype.rate,
               children: papertype.type_name
-            });
+            }, index);
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -17509,6 +17516,7 @@ var PriceCalculator = function PriceCalculator() {
           name: "essay-type",
           id: "essay-type",
           className: "w-full p-1",
+          defaultValue: "",
           ref: essayTypeRef,
           onChange: function onChange(e) {
             e.preventDefault();
@@ -17516,13 +17524,13 @@ var PriceCalculator = function PriceCalculator() {
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
-            selected: true,
+            disabled: true,
             children: "Choose  Subject Area"
-          }), allSubjectAreas.map(function (subarea) {
+          }), allSubjectAreas.map(function (subarea, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: subarea.rate,
               children: subarea.area_name
-            });
+            }, index);
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -17532,19 +17540,20 @@ var PriceCalculator = function PriceCalculator() {
           id: "stage",
           className: "w-45/100 p-1",
           ref: levelRef,
+          defaultValue: "School",
           onChange: function onChange(e) {
             e.preventDefault();
             checkCalcFields();
           },
-          children: allAcademicLevels.map(function (academiclevel) {
+          children: allAcademicLevels.map(function (academiclevel, index) {
             return academiclevel.level_name === "School" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: academiclevel.rate,
               selected: true,
               children: academiclevel.level_name
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            }, index) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: academiclevel.rate,
               children: academiclevel.level_name
-            });
+            }, index);
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
           name: "essay-time",
@@ -17611,6 +17620,7 @@ var PriceCalculator = function PriceCalculator() {
           name: "spacing",
           id: "spacing-input",
           className: "w-full text-center p-1 rounded",
+          defaultValue: "",
           ref: essaySpacingRef,
           onChange: function onChange(e) {
             e.preventDefault();
@@ -17618,7 +17628,7 @@ var PriceCalculator = function PriceCalculator() {
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "",
-            selected: true,
+            disabled: true,
             children: "Choose Spacing"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
             value: "1",

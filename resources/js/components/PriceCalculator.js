@@ -125,14 +125,14 @@ const PriceCalculator = () => {
                     }}>Editing</span>
                 </div>
                 <div className="mt-4 essay-type">
-                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={subAreaRef} onChange={(e) => {
+                    <select name="essay-type" id="essay-type" className="w-full p-1" defaultValue="" ref={subAreaRef} onChange={(e) => {
                         e.preventDefault();
                         checkCalcFields()
                     }}>
-                        <option value="" selected>Choose Essay Type</option>
+                        <option value="" disabled>Choose Essay Type</option>
 
-                        {allPaperTypes.map(papertype =>(
-                            <option value={papertype.rate}>{papertype.type_name}</option>
+                        {allPaperTypes.map((papertype,index) => (
+                            <option value={papertype.rate} key={index}>{papertype.type_name}</option>
                         ))}
 
                     </select>
@@ -140,15 +140,15 @@ const PriceCalculator = () => {
 
 
                 <div className="mt-4 subject-area-select">
-                    <select name="essay-type" id="essay-type" className="w-full p-1" ref={essayTypeRef}
+                    <select name="essay-type" id="essay-type" className="w-full p-1" defaultValue="" ref={essayTypeRef}
                             onChange={(e) => {
                                 e.preventDefault();
                                 checkCalcFields()
                             }}>
-                        <option value="" selected>Choose  Subject Area</option>
+                        <option value="" disabled>Choose  Subject Area</option>
 
-                        {allSubjectAreas.map(subarea => (
-                            <option value={subarea.rate}>{subarea.area_name}</option>
+                        {allSubjectAreas.map((subarea,index) => (
+                            <option value={subarea.rate} key={index}>{subarea.area_name}</option>
                         ))}
 
                     </select>
@@ -158,11 +158,11 @@ const PriceCalculator = () => {
 
                 <div className="flex justify-between mt-4 stage-time">
 
-                    <select name="stage" id="stage" className="w-45/100 p-1" ref={levelRef} onChange={(e) => { e.preventDefault();
+                    <select name="stage" id="stage" className="w-45/100 p-1" ref={levelRef} defaultValue="School" onChange={(e) => { e.preventDefault();
                         checkCalcFields()
                     }}>
-                        {allAcademicLevels.map(academiclevel =>(
-                            (academiclevel.level_name === "School") ? <option value={academiclevel.rate} selected>{academiclevel.level_name}</option> : <option value={academiclevel.rate}>{academiclevel.level_name}</option>
+                        {allAcademicLevels.map((academiclevel , index) =>(
+                             (academiclevel.level_name === "School") ? <option value={academiclevel.rate} selected key={index}>{academiclevel.level_name}</option> : <option value={academiclevel.rate} key={index}>{academiclevel.level_name}</option>
                         ))}
                     </select>
 
@@ -195,11 +195,11 @@ const PriceCalculator = () => {
 
                 <div className="flex justify-center mt-4 essay-spacing">
 
-                    <select name="spacing" id="spacing-input" className="w-full text-center p-1 rounded" ref={essaySpacingRef} onChange={(e) => {
+                    <select name="spacing" id="spacing-input" className="w-full text-center p-1 rounded" defaultValue="" ref={essaySpacingRef} onChange={(e) => {
                         e.preventDefault();
                         checkCalcFields()
                     }}>
-                        <option value="" selected>Choose Spacing</option>
+                        <option value="" disabled>Choose Spacing</option>
                         <option value="1">Single Spacing</option>
                         <option value="2">Double Spacing</option>
                     </select>
