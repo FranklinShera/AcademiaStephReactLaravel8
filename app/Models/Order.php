@@ -51,7 +51,7 @@ class Order extends Model
     }
 
     public function scopePaid($query){
-        return $query->where('stage' ,'>', 0);
+        return $query->whereIn('stage' ,[0,4]);
     }
 
     public function scopePending($query){

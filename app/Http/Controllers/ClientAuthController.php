@@ -9,6 +9,7 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\PaperFormat;
 use App\Models\PaperType;
+use App\Models\Payment;
 use App\Models\SocialAccount;
 use App\Models\SubjectArea;
 use App\Models\User;
@@ -38,8 +39,12 @@ class ClientAuthController extends Controller
         $cancelledOrders = Order::cancelled()->where('client_id',currentClient()->id)->count();
 
         $messagesCount = Message::where('conversation_id',currentClient()->conversation->id)->count();
+        
+        $paymentsCount = currentClient()->orders->whereIn('stage' , [1,4,2])->sum('cost');
+
         $transactionsCount = currentClient()->orders->count();
-        $paymentsCount = "$0";
+       
+        
 
         $clientAnalytics = [
             'order' => [

@@ -23868,7 +23868,7 @@ var ClientDashboard = function ClientDashboard() {
                     children: "Payments"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                     className: "area-group-value",
-                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.payments) || "N/A"
+                    children: "$" + ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.payments) || 0
                   })]
                 })]
               })]
@@ -25247,7 +25247,7 @@ var Payment = function Payment() {
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "payments-list-body",
-              children: [orderPayments.length == 0 && loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}), orderPayments.length != 0 && orderPayments.map(function (orderPayment) {
+              children: [orderPayments.length == 0 && loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_DotLoader__WEBPACK_IMPORTED_MODULE_5__.default, {}), orderPayments.length != 0 && orderPayments.map(function (orderPayment, index) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                   className: "payment-item",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -25270,7 +25270,7 @@ var Payment = function Payment() {
                     className: "payment-amount",
                     children: ["$", orderPayment.payment.amount]
                   })]
-                });
+                }, index);
               })]
             })]
           })]

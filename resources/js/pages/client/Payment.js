@@ -102,8 +102,8 @@ const Payment = () => {
 
                             {(orderPayments.length == 0 && loading) && <DotLoader/>}
 
-                            {orderPayments.length != 0 && orderPayments.map(orderPayment => (
-                                <div className="payment-item">
+                            {orderPayments.length != 0 && orderPayments.map((orderPayment,index) => (
+                                <div className="payment-item" key={index}>
 
                                     <div className="payment-id">
                                         { orderPayment.payment.paypal_order_id}

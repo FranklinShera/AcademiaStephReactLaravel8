@@ -126,7 +126,7 @@ const ClientDashboard = () => {
 
                                  <div className="analytics-area-group  ml-7">
                                      <div className="area-group-name">Payments</div>
-                                     <div className="area-group-value">{analytics.misc?.payments || "N/A"}</div>
+                                     <div className="area-group-value">{"$" + analytics.misc?.payments || "N/A"}</div>
                                  </div>
 
 
