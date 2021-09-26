@@ -18,6 +18,7 @@ class ClientFeedbackController extends Controller
         $reviews = ClientFeedback::where('rating','>=',3)->orderBy('created_at', 'DESC')->get();
 
         return response(ClientFeedbackResource::collection($reviews) , Response::HTTP_OK);
+        
     }
 
 

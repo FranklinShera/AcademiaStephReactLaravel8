@@ -37,12 +37,10 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single','bugsnag'],
+            'channels' => ['single','slack'],
             'ignore_exceptions' => false,
         ],
-        'bugsnag' => [
-            'driver' => 'bugsnag',
-        ],
+        
 
         'single' => [
             'driver' => 'single',

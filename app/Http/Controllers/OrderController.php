@@ -56,6 +56,7 @@ class OrderController extends Controller
     public function clientOrderCancel(Request $request, Order $order)
     {
         if($order->stage == 4){
+            
             $order->stage = 3;
 
             $order->save();

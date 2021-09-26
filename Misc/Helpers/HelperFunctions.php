@@ -1,9 +1,12 @@
 <?php
 
  function respondWithToken($token){
+
+    $tokenLife = env('JWT_TTL') ??  10;
+
     $tokenCookie = cookie('access_token',
         $token ,
-        env('JWT_TTL'),
+        $tokenLife,
         null,
         null,
         true,
@@ -13,7 +16,7 @@
 
         $issue_time =  time();
 
-    return response()->json(['message' => "Success!" , "tst" => $issue_time , "overtime" =>  env('JWT_TTL') ])->withCookie($tokenCookie);
+    return response()->json(['message' => "Success!" , "tst" => $issue_time , "overtime" => $tokenLife])->withCookie($tokenCookie);
 
 
 }

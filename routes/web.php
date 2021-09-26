@@ -11,6 +11,7 @@ Route::get('paypal/checkout-cancel', [PayPalController::class ,'cancelPage'])->n
 
 
 Route::get('/{any}', function () {
+    
 
     return view('welcome');
 

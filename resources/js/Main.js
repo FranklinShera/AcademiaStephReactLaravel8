@@ -145,7 +145,7 @@ const BlankPage = () =>{
             <ProtectedRoute path={ `/in/dashboard/orders/:category` } exact component={Orders}/>
             <ProtectedRoute path={ `/in/dashboard/order-view/:id/:topicSlug` } exact component={OrderView}/>
             <ProtectedRoute path={ `/in/dashboard/conversation/:id/:clientName` } exact component={Messages}/>
-            <ProtectedRoute path={ `/in/dashboard/control/order-input` } exact component={OrderControl}/>
+            <ProtectedRoute path={ `/in/dashboard/control/order-input` } role="0" exact component={OrderControl}/>
             <ProtectedRoute path={ `/in/dashboard/conversations`} exact  component={Conversations}/>
             <ProtectedRoute path={ `/in/dashboard/writers`} exact  component={Writers}/>
             <ProtectedRoute path={ `/in/dashboard/direct-contacts`} exact  component={DirectContacts}/>

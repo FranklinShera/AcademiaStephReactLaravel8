@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import { Link , useRouteMatch} from 'react-router-dom'
 import { useDispatch , useSelector } from 'react-redux'
 
@@ -14,8 +14,11 @@ const SideBarLink = ({ sidelink , linkPos }) => {
     const dispatch = useDispatch()
 
     const AdminPanel = useSelector( state => state.adminPanel)
+    const authUser = useSelector((state) => state.authUser);
+    const { loggedInUser, auth } = authUser;
 
     const [showLinks, toggleLinkGroup] =  useState(false)
+    const [showGroup, setShowGroup] =  useState(false)
 
     const { sidebarPosition } = AdminPanel;
 
@@ -41,8 +44,44 @@ const SideBarLink = ({ sidelink , linkPos }) => {
 
     }
 
-    return (
-        <div className={`link-holder hover:active-link-border ${(linkPos == sidebarPosition) && ' active-link-border ' }`}>
+
+    const checkLinks = () => {
+
+        
+
+        sidelink.links.forEach(link =>{
+
+            if(link.access != "*" && link.access != loggedInUser.role && !showGroup){
+                
+                setShowGroup(false);
+
+            }else{
+
+                setShowGroup(true)
+
+            }
+
+        })
+        
+       
+    }
+
+
+
+
+
+    useEffect(() => {
+
+        checkLinks()
+
+    },[])
+
+
+
+    return  (
+        <>
+        { showGroup && (
+            <div className={`link-holder hover:active-link-border ${(linkPos == sidebarPosition) && ' active-link-border ' }`}>
             <label className={`sidebarlabel hover:text-primary-1 ${(linkPos == sidebarPosition) ? ' text-primary-1 ': ' text-palbrowner ' }`} onClick={linkView}>
 
 
@@ -110,6 +149,8 @@ const SideBarLink = ({ sidelink , linkPos }) => {
             )}
 
         </div>
+        )}
+        </>
     )
 }
 

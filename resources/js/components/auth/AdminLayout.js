@@ -25,28 +25,34 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Received Orders",
-                    url: `/in/dashboard/orders/received`
+                    url: `/in/dashboard/orders/received`,
+                    access: "*"
                 },
                 {
                     name:"Pending Orders",
-                    url: `/in/dashboard/orders/pending`
+                    url: `/in/dashboard/orders/pending`,
+                    access: "*"
                 },
                 {
                     name:"Unassigned Orders",
-                    url: `/in/dashboard/orders/unassigned`
+                    url: `/in/dashboard/orders/unassigned`,
+                    access: "1"
                 },
                 {
                     name:"Cancelled Orders",
-                    url: `/in/dashboard/orders/cancelled`
+                    url: `/in/dashboard/orders/cancelled`,
+                    access: "*"
                 },
                 {
                     name:"Active Orders",
-                    url: `/in/dashboard/orders/active`
+                    url: `/in/dashboard/orders/active`,
+                    access: "*"
                 },
 
                 {
                     name:"Completed Orders",
-                    url: `/in/dashboard/orders/completed`
+                    url: `/in/dashboard/orders/completed`,
+                    access: "*"
                 },
             ]
         },
@@ -55,7 +61,8 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"All Writers",
-                    url: `/in/dashboard/writers`
+                    url: `/in/dashboard/writers`,
+                    access: "*"
                 }
             ]
         },
@@ -64,11 +71,13 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Conversations",
-                    url: `/in/dashboard/conversations`
+                    url: `/in/dashboard/conversations`,
+                    access: "1"
                 },
                 {
                     name:"Direct Contacts",
-                    url: `/in/dashboard/direct-contacts`
+                    url: `/in/dashboard/direct-contacts`,
+                    access: "1"
                 }
             ]
         },
@@ -77,7 +86,8 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Received",
-                    url: `/in/dashboard/payments`
+                    url: `/in/dashboard/payments`,
+                    access: "*"
                 }
             ]
         },
@@ -86,7 +96,8 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name: "Order Input",
-                    url: "/in/dashboard/control/order-input"
+                    url: "/in/dashboard/control/order-input",
+                    access: "0"
                 }
             ],
 
@@ -96,7 +107,8 @@ const AdminLayout = (props) => {
             links: [
                 {
                     name:"Personal Information",
-                    url: `/in/dashboard/profile`
+                    url: `/in/dashboard/profile`,
+                    access: "*"
                 }
             ]
         }
