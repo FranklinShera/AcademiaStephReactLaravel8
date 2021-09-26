@@ -51,7 +51,7 @@ const SideBarLink = ({ sidelink , linkPos }) => {
 
         sidelink.links.forEach(link =>{
 
-            if(link.access != "*" && link.access != loggedInUser.role && !showGroup){
+            if(link.access != "*" && link.access != loggedInUser.role && !showGroup && loggedInUser.role != 0){
                 
                 setShowGroup(false);
 

@@ -109,39 +109,41 @@ const Dashboard = () => {
 
 
 
-                         <div className="dash-analytics-area">
+                        {(loggedInUser.role == 0) && (
+                             <div className="dash-analytics-area">
 
-                            <h2 className="analytics-area-title">Control Items</h2>
-
-                                <div className="analytics-area-groups group-norm">
-
-                                    <div className="analytics-area-group  ">
-                                        <div className="area-group-name">Levels</div>
-                                        <div className="area-group-value">{analytics.control?.academic_levels || "N/A"}</div>
-                                    </div>
-
-                                    <div className="analytics-area-group ml-7">
-                                        <div className="area-group-name">Subjects</div>
-                                        <div className="area-group-value">{analytics.control?.subject_areas || "N/A"}</div>
-                                    </div>
-
-
-
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Types</div>
-                                        <div className="area-group-value">{analytics.control?.paper_types || "N/A"}</div>
-                                    </div>
-
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Formats</div>
-                                        <div className="area-group-value">{analytics.control?.paper_formats || "N/A"}</div>
-                                    </div>
-
-
-
-                                </div>
-
-                        </div>
+                             <h2 className="analytics-area-title">Control Items</h2>
+ 
+                                 <div className="analytics-area-groups group-norm">
+ 
+                                     <div className="analytics-area-group  ">
+                                         <div className="area-group-name">Levels</div>
+                                         <div className="area-group-value">{analytics.control?.academic_levels || "N/A"}</div>
+                                     </div>
+ 
+                                     <div className="analytics-area-group ml-7">
+                                         <div className="area-group-name">Subjects</div>
+                                         <div className="area-group-value">{analytics.control?.subject_areas || "N/A"}</div>
+                                     </div>
+ 
+ 
+ 
+                                     <div className="analytics-area-group  ml-7">
+                                         <div className="area-group-name">Types</div>
+                                         <div className="area-group-value">{analytics.control?.paper_types || "N/A"}</div>
+                                     </div>
+ 
+                                     <div className="analytics-area-group  ml-7">
+                                         <div className="area-group-name">Formats</div>
+                                         <div className="area-group-value">{analytics.control?.paper_formats || "N/A"}</div>
+                                     </div>
+ 
+ 
+ 
+                                 </div>
+ 
+                         </div>
+                        )}
 
 
 
@@ -157,33 +159,43 @@ const Dashboard = () => {
                                         <div className="area-group-name">Messages</div>
                                         <div className="area-group-value">{analytics.misc?.messages || "N/A"}</div>
                                     </div>
+                                    
+                                    {(loggedInUser.role == 0) && (
+                                    <>
+                                    
+                                        <div className="analytics-area-group  ml-7">
+                                            <div className="area-group-name">Transactions</div>
+                                            <div className="area-group-value">{analytics.misc?.transactions || "N/A"}</div>
+                                        </div>
 
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Transactions</div>
-                                        <div className="area-group-value">{analytics.misc?.transactions || "N/A"}</div>
-                                    </div>
-
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Payments</div>
-                                        <div className="area-group-value">${analytics.misc?.payments || "N/A"}</div>
-                                    </div>
+                                        <div className="analytics-area-group  ml-7">
+                                            <div className="area-group-name">Payments</div>
+                                            <div className="area-group-value">${analytics.misc?.payments || "N/A"}</div>
+                                        </div>
+                                    
+                                    </>)}
 
                                     <div className="analytics-area-group  ml-7">
                                         <div className="area-group-name">Writers</div>
                                         <div className="area-group-value">{analytics.misc?.writers || "N/A"}</div>
                                     </div>
 
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Clients</div>
-                                        <div className="area-group-value">{analytics.misc?.clients || "N/A"}</div>
-                                    </div>
 
-                                    <div className="analytics-area-group  ml-7">
-                                        <div className="area-group-name">Admins</div>
-                                        <div className="area-group-value">{analytics.misc?.admins || "N/A"}</div>
-                                    </div>
+                                    {(loggedInUser.role == 0) && (
+                                        <>
+                                        
+                                        <div className="analytics-area-group  ml-7">
+                                            <div className="area-group-name">Clients</div>
+                                            <div className="area-group-value">{analytics.misc?.clients || "N/A"}</div>
+                                        </div>
 
+                                        <div className="analytics-area-group  ml-7">
+                                            <div className="area-group-name">Admins</div>
+                                            <div className="area-group-value">{analytics.misc?.admins || "N/A"}</div>
+                                        </div>
 
+                                        </>
+                                    )}
 
                                 </div>
 

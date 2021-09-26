@@ -62,7 +62,7 @@ const AdminLayout = (props) => {
                 {
                     name:"All Writers",
                     url: `/in/dashboard/writers`,
-                    access: "*"
+                    access: "0"
                 }
             ]
         },
@@ -87,7 +87,7 @@ const AdminLayout = (props) => {
                 {
                     name:"Received",
                     url: `/in/dashboard/payments`,
-                    access: "*"
+                    access: "0"
                 }
             ]
         },

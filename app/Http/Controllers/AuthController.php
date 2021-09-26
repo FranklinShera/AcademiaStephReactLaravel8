@@ -61,21 +61,36 @@ class AuthController extends Controller
                 'completed' => $completedOrders,
                 'cancelled' => $cancelledOrders
             ],
-            'control' => [
+            'control' => [],
+            'misc' => [
+                'messages' => $messagesCount,
+                'writers' => $writersCount,
+            ],
+        ];
+
+
+        
+        if(auth()->user()->role == 0){
+
+            $adminAnalytics['control'] = [
                 'academic_levels' => $levelsCount,
                 'subject_areas' => $subjectsCount,
                 'paper_types' => $typesCount,
                 'paper_formats' => $formatsCount
-            ],
-            'misc' => [
+            ];
+
+            $adminAnalytics['misc'] = [
                 'messages' => $messagesCount,
                 'payments' => $paymentsCount,
                 'transactions' => $transactionsCount,
                 'writers' => $writersCount,
                 'clients' => $clientsCount,
                 'admins' => $adminsCount,
-            ],
-        ];
+            ];
+
+        }
+
+
 
         return response()->json($adminAnalytics , 200);
     }

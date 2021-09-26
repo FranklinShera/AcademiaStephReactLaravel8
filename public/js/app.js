@@ -17970,7 +17970,7 @@ var SideBarLink = function SideBarLink(_ref) {
 
   var checkLinks = function checkLinks() {
     sidelink.links.forEach(function (link) {
-      if (link.access != "*" && link.access != loggedInUser.role && !showGroup) {
+      if (link.access != "*" && link.access != loggedInUser.role && !showGroup && loggedInUser.role != 0) {
         setShowGroup(false);
       } else {
         setShowGroup(true);
@@ -18557,7 +18557,7 @@ var AdminLayout = function AdminLayout(props) {
     links: [{
       name: "All Writers",
       url: "/in/dashboard/writers",
-      access: "*"
+      access: "0"
     }]
   }, {
     name: "Messages",
@@ -18575,7 +18575,7 @@ var AdminLayout = function AdminLayout(props) {
     links: [{
       name: "Received",
       url: "/in/dashboard/payments",
-      access: "*"
+      access: "0"
     }]
   }, {
     name: "Control",
@@ -21356,6 +21356,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Dashboard = function Dashboard() {
   var _analytics$order, _analytics$order2, _analytics$order3, _analytics$order4, _analytics$order5, _analytics$order6, _analytics$control, _analytics$control2, _analytics$control3, _analytics$control4, _analytics$misc, _analytics$misc2, _analytics$misc3, _analytics$misc4, _analytics$misc5, _analytics$misc6;
 
@@ -21463,7 +21464,7 @@ var Dashboard = function Dashboard() {
                   })]
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            }), loggedInUser.role == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "dash-analytics-area",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
                 className: "analytics-area-title",
@@ -21524,23 +21525,25 @@ var Dashboard = function Dashboard() {
                     className: "area-group-value",
                     children: ((_analytics$misc = analytics.misc) === null || _analytics$misc === void 0 ? void 0 : _analytics$misc.messages) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-name",
-                    children: "Transactions"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-value",
-                    children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.transactions) || "N/A"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-name",
-                    children: "Payments"
+                }), loggedInUser.role == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "analytics-area-group  ml-7",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-name",
+                      children: "Transactions"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-value",
+                      children: ((_analytics$misc2 = analytics.misc) === null || _analytics$misc2 === void 0 ? void 0 : _analytics$misc2.transactions) || "N/A"
+                    })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "area-group-value",
-                    children: ["$", ((_analytics$misc3 = analytics.misc) === null || _analytics$misc3 === void 0 ? void 0 : _analytics$misc3.payments) || "N/A"]
+                    className: "analytics-area-group  ml-7",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-name",
+                      children: "Payments"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "area-group-value",
+                      children: ["$", ((_analytics$misc3 = analytics.misc) === null || _analytics$misc3 === void 0 ? void 0 : _analytics$misc3.payments) || "N/A"]
+                    })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                   className: "analytics-area-group  ml-7",
@@ -21551,23 +21554,25 @@ var Dashboard = function Dashboard() {
                     className: "area-group-value",
                     children: ((_analytics$misc4 = analytics.misc) === null || _analytics$misc4 === void 0 ? void 0 : _analytics$misc4.writers) || "N/A"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-name",
-                    children: "Clients"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-value",
-                    children: ((_analytics$misc5 = analytics.misc) === null || _analytics$misc5 === void 0 ? void 0 : _analytics$misc5.clients) || "N/A"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "analytics-area-group  ml-7",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-name",
-                    children: "Admins"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "area-group-value",
-                    children: ((_analytics$misc6 = analytics.misc) === null || _analytics$misc6 === void 0 ? void 0 : _analytics$misc6.admins) || "N/A"
+                }), loggedInUser.role == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "analytics-area-group  ml-7",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-name",
+                      children: "Clients"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-value",
+                      children: ((_analytics$misc5 = analytics.misc) === null || _analytics$misc5 === void 0 ? void 0 : _analytics$misc5.clients) || "N/A"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "analytics-area-group  ml-7",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-name",
+                      children: "Admins"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      className: "area-group-value",
+                      children: ((_analytics$misc6 = analytics.misc) === null || _analytics$misc6 === void 0 ? void 0 : _analytics$misc6.admins) || "N/A"
+                    })]
                   })]
                 })]
               })]
