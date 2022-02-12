@@ -36,6 +36,7 @@ class OrderFactory extends Factory
             "academic_level" => $this->faker->jobTitle,
             "urgency" => "2 Weeks",
             "stage" => 0,
+            "service_type" => 1,
             "client_id" => 1,
         ];
     }

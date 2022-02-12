@@ -27,11 +27,12 @@ class CreateOrdersTable extends Migration
             $table->string("spacing");
             $table->string("academic_level");
             $table->string("urgency");
+            $table->string("additional_materials");
             $table->string("stage")->default("0");
             $table->string("client_id");
             $table->string("service_type");
             $table->string("paypal_order_id")->nullable(true);
-            $table->decimal("cost",5,2);
+            $table->decimal("cost",5,2)->default(0.00);
             $table->boolean("viewed")->nullable(true)->default(false);
 
             $table->timestamps();
