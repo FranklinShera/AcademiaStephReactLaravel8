@@ -18989,7 +18989,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/reply.svg?893a15416a8d6d177ac3f03a053035aa");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/reply.svg?9100eb87283dfd99d6a20c1aaca28290");
 
 /***/ }),
 
@@ -19004,7 +19004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sent.svg?196aec31cd3f38796f4ff0b7a23ea4b0");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sent.svg?c162f8a2d0ec7a3ecaac3da44ddfe84f");
 
 /***/ }),
 
@@ -19034,7 +19034,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/approval.svg?711831920a51d8ca3b28b0c0dd43cc41");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/approval.svg?414df3ae8eaffc179aa969a4910e1706");
 
 /***/ }),
 
@@ -19094,7 +19094,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/assignment.svg?67e9ef584952f6184bfddd98ea3fcc88");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/assignment.svg?bd8b10ee54b14141af05b239f9efc0f9");
 
 /***/ }),
 
@@ -19109,7 +19109,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/book_stack.svg?f34bb6bf234b6f8a723e1554d519b149");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/book_stack.svg?7dc316c0c414d63e0bec58290b14f080");
 
 /***/ }),
 
@@ -19124,7 +19124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/captioning.svg?68760fd4e16c6945ffb2f665df77161b");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/captioning.svg?c97ed2a91ba9f6a318c25d9c898014dd");
 
 /***/ }),
 
@@ -19139,7 +19139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/desk_screen.svg?6bbdab900fcbfbe7f91456cc396e2f57");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/desk_screen.svg?f4110a856f8f503a9307337c3e68959a");
 
 /***/ }),
 
@@ -19154,7 +19154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/dissertations.svg?86116b4adad3630af4cd60d7d73554ce");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/dissertations.svg?cb91938460de5bd294e9862846302707");
 
 /***/ }),
 
@@ -19169,7 +19169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/empty_star.svg?46d24e7d96c58fccd0e3c2aea04c551a");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/empty_star.svg?1ab33c4523f4ec99fdabe5659ca717f0");
 
 /***/ }),
 
@@ -19184,7 +19184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/forward.svg?e6720125133603542cecfc4fee264cc7");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/forward.svg?9a9f8b826e89d770f53e0044913ca906");
 
 /***/ }),
 
@@ -19199,7 +19199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/proofread.svg?1de85e1c181b373b315f5dc47c13ed72");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/proofread.svg?204bbbf51e9f15b052d4f2f9d88d8175");
 
 /***/ }),
 
@@ -19214,7 +19214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/research.svg?0f7a8d9c407f48ccdfe249f9d448639d");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/research.svg?65ab926d63c99a64f002a78a8ec3661f");
 
 /***/ }),
 
@@ -19229,7 +19229,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/rules.svg?ad28fe2e0afd737d0cbd1623f009938f");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/rules.svg?e2c786be89030f25ea138d71334cee7c");
 
 /***/ }),
 
@@ -19244,7 +19244,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/spellcheck.svg?46305c0b3f434c5b9d482e11ed22f077");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/spellcheck.svg?8120b2c055700b345656bbf0887cd0e5");
 
 /***/ }),
 
@@ -19259,7 +19259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/star.svg?559f9a61fd92127439d941b93c084e9a");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/star.svg?7c8c694aed10ac124ed93757a56fad4b");
 
 /***/ }),
 
@@ -19274,7 +19274,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/star_half_empty.svg?f9feb75b694543ed5331573f5887071a");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/star_half_empty.svg?2fe24a78c393866da222274e947851d0");
 
 /***/ }),
 
@@ -19289,7 +19289,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/transcription.svg?690eda85cda58eaf6a8d52f58b802c67");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/transcription.svg?aca0a95bf426471ebe086b36bd50705d");
 
 /***/ }),
 
@@ -19304,7 +19304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/whitepaper.svg?a68cc3e07fc9fee0cc76971660e3105b");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/whitepaper.svg?084c00ba0928552588255487b45e3a8b");
 
 /***/ }),
 

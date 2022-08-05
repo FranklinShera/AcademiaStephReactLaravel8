@@ -2103,7 +2103,7 @@ video {
   src:url(/fonts/themify.eot?9bad94440d49256265a5b2305ec42d63?#iefix-fvbane) format('embedded-opentype'),
 		url(/fonts/themify.woff?29b39089170885ae29671a8c66d85a9f) format('woff'),
 		url(/fonts/themify.ttf?eda8b94308c6f538f04a8056ed761a57) format('truetype'),
-		url(/fonts/themify.svg?f0fc8c798eac5636249c4ea287832422#themify) format('svg');
+		url(/fonts/themify.svg?c4292f34297f1004471aa089024b1ccc#themify) format('svg');
 
   font-weight: normal;
 
@@ -4383,7 +4383,7 @@ html::-webkit-scrollbar-thumb {
   border: 2px #f27323 solid;
   display: inline-block;
   border-radius: 5px;
-  background: #f27323 url(/images/checkmark.svg?f358b853a75d5bd91fc7115dba315736) center/5000% no-repeat;
+  background: #f27323 url(/images/checkmark.svg?ff0c96934dea49454911dffa5bfd78e2) center/5000% no-repeat;
   transition: background-size 0.1s ease;
 }
 
