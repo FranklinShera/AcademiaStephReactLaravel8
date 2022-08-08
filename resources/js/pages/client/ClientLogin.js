@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
-import LogoShooting from '../../components/LogoShooting';
+import LogoShooting from "../../components/LogoShooting";
 
 import {
     autoLoginClient,
@@ -12,32 +12,25 @@ import {
 } from "../../actions/AuthUserActions";
 
 const ClientLogin = ({ location }) => {
-
     const [isLoggin, setIsLogging] = useState(false);
 
     const dispatch = useDispatch();
-    const hist = useHistory();
+    const navigate = useNavigate();
 
     const authClient = useSelector((state) => state.authClient);
     const { loggedInClient, clientAuth, loading } = authClient;
 
-
-
     useEffect(() => {
         if (clientAuth) {
             location.state && location.state.next
-                ? hist.push(location.state.next)
-                : hist.push("/client/dashboard");
+                ? navigate(location.state.next)
+                : navigate("/client/dashboard");
         }
     }, [clientAuth]);
-
-
 
     const GITHUB_PROVIDER = "github";
     const GOOGLE_PROVIDER = "google";
     const FACEBOOK_PROVIDER = "facebook";
-
-
 
     const socialLogin = (provider) => {
         axios
@@ -77,7 +70,7 @@ const ClientLogin = ({ location }) => {
                 <label className="w-full mb-3 font-bold text-3xl text-center">
                     Client Login
                 </label>
-                {loading && <LogoShooting/>}
+                {loading && <LogoShooting />}
                 <span className="text-green-600 font-semibold">
                     Get Started With Only one Click!
                 </span>

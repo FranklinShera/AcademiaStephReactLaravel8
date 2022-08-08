@@ -1,64 +1,48 @@
-import axios from 'axios'
-import React, {useEffect,useState} from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Logo from "../../images/as21logo.png";
 
+import { loginClient } from "../../actions/AuthUserActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
 
-import {loginClient} from "../../actions/AuthUserActions";
-import {useDispatch, useSelector} from "react-redux";
-import {useHistory, useParams} from "react-router";
+const ProviderLoginResolve = ({ location }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const { provider } = useParams();
 
-const ProviderLoginResolve = ({location}) => {
+    const authClient = useSelector((state) => state.authClient);
+    const { clientAuth } = authClient;
 
+    const loginCallback = () => {
+        const searchParams = new URLSearchParams(location.search);
 
-    const dispatch =  useDispatch();
-    const hist = useHistory();
-
-    const { provider } = useParams()
-
-
-    const authClient = useSelector( state => state.authClient)
-    const {  clientAuth } = authClient;
-
-
-     const loginCallback = () =>{
-
-         const searchParams =  new URLSearchParams(location.search);
-
-         dispatch(loginClient({ code : searchParams.get('code') } , provider))
-
-
-     }
-
-
-
-     useEffect(() =>{
-
-         if(clientAuth){
-
-             (location.state && location.state.next) ?   hist.push(location.state.next) : hist.push("/client/dashboard")
-         }
-
-     },[clientAuth])
-
-
+        dispatch(loginClient({ code: searchParams.get("code") }, provider));
+    };
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        if (clientAuth) {
+            location.state && location.state.next
+                ? navigate(location.state.next)
+                : navigate("/client/dashboard");
+        }
+    }, [clientAuth]);
 
-        document.querySelector('title').text = 'AcademiaSteph21 | Login Redirect...'
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        document.querySelector("title").text =
+            "AcademiaSteph21 | Login Redirect...";
 
         loginCallback();
-
-    }, [])
-
+    }, []);
 
     return (
-        <div className='loader-overlay bg-white vh-100'>
-
+        <div className="loader-overlay bg-white vh-100">
             <div className="wait-loader">
                 <div className="center">
-                    <img src={Logo} alt="AcademiaSteph21 Loader"/>
+                    <img src={Logo} alt="AcademiaSteph21 Loader" />
                 </div>
                 <div className="item item-1"></div>
                 <div className="item item-2"></div>
@@ -69,9 +53,8 @@ const ProviderLoginResolve = ({location}) => {
                 <div className="item item-7"></div>
                 <div className="item item-8"></div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default ProviderLoginResolve
+export default ProviderLoginResolve;

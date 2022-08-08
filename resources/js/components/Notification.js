@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef, Fragment } from "react";
-import { useSelector , useDispatch } from "react-redux";
-import {useHistory} from 'react-router'
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { Dialog, Transition } from "@headlessui/react";
-
-
 
 import { refreshClient, refreshUser } from "../actions/AuthUserActions";
 
@@ -15,8 +13,7 @@ const Notification = ({ userType }) => {
     const { tst, overtime } = AppTime;
 
     const dispatch = useDispatch();
-    const hist = useHistory()
-    
+    const navigate = useNavigate();
 
     const [user, setUser] = useState("");
     const [countDown, setCountDown] = useState(0);
@@ -32,34 +29,29 @@ const Notification = ({ userType }) => {
 
     const checkAuth = (rem) => {
         if (rem < 0) {
-
             setIsOpen(false);
 
             location.reload();
 
             return 0;
-
         }
 
         if (!(rem <= 20)) {
-
             return rem;
-
-        } else {            
+        } else {
             setIsOpen(true);
 
             return rem;
         }
     };
 
-    const refreshToken = () =>{
+    const refreshToken = () => {
         setIsOpen(false);
 
-        dispatch((userType == 1) ? refreshUser() : refreshClient())
-    }
+        dispatch(userType == 1 ? refreshUser() : refreshClient());
+    };
 
     useEffect(() => {
-
         setInterval(() => {
             let currTime = Math.floor(Date.now() / 1000);
 
@@ -70,7 +62,6 @@ const Notification = ({ userType }) => {
 
             setCountDown(checkAuth(remaining));
         }, 1000);
-
     }, []);
 
     return (
@@ -78,7 +69,7 @@ const Notification = ({ userType }) => {
             {notifications != "" && (
                 <div className={`notification flex items-center `}>
                     <i className="ti-comment-alt mr-2 text-primary-1"></i>
-                    
+
                     <h1>{notifications}</h1>
                 </div>
             )}
