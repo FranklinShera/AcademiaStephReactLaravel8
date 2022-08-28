@@ -15,8 +15,7 @@ const RadioInputField = ({ labelText, inputName, id, onChange }) => {
                 <span
                     className="checkmark"
                     style={{
-                        background:
-                            "#f27323 url('/storage/images/checkmark.svg') center/5000% no-repeat;",
+                        backgroundImage: "url('/storage/images/checkmark.svg')",
                     }}
                 ></span>
             </label>

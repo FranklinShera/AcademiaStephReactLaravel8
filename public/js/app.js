@@ -5110,7 +5110,7 @@ var RadioInputField = function RadioInputField(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
         className: "checkmark",
         style: {
-          background: "#f27323 url('/storage/images/checkmark.svg') center/5000% no-repeat;"
+          backgroundImage: "url('/storage/images/checkmark.svg')"
         }
       })]
     })]

@@ -416,7 +416,7 @@ html::-webkit-scrollbar-thumb {
     border: 2px #f27323 solid;
     display: inline-block;
     border-radius: 5px;
-    /* background: #f27323 url(".././images/checkmark.svg") center/5000% no-repeat; */
+    background: #f27323 center/5000% no-repeat;
 
     transition: background-size 0.1s ease;
 }
