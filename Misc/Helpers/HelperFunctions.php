@@ -1,22 +1,22 @@
 <?php
 
- function respondWithToken($token){
+function respondWithToken($token)
+{
 
-    $tokenLife = env('JWT_TTL') ??  10;
+    $tokenLife = env('JWT_TTL') ?? 10;
 
     $tokenCookie = cookie('access_token',
-        $token ,
+        $token,
         $tokenLife,
         null,
         null,
-        true,
-        true,
+        false,
+        false,
         false,
         null);
 
-        $issue_time =  time();
+    $issue_time = time();
 
-    return response()->json(['message' => "Success!" , "tst" => $issue_time , "overtime" => $tokenLife])->withCookie($tokenCookie);
-
+    return response()->json(['message' => "Success!", "tst" => $issue_time, "overtime" => (int) $tokenLife])->withCookie($tokenCookie);
 
 }

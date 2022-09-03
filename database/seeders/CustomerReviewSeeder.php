@@ -14,6 +14,6 @@ class CustomerReviewSeeder extends Seeder
      */
     public function run()
     {
-        CustomerReview::factory(10)->create();
+        CustomerReview::factory(20)->create();
     }
 }

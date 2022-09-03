@@ -4383,7 +4383,7 @@ html::-webkit-scrollbar-thumb {
   border: 2px #f27323 solid;
   display: inline-block;
   border-radius: 5px;
-  background: #f27323 url(/images/checkmark.svg?ff0c96934dea49454911dffa5bfd78e2) center/5000% no-repeat;
+  background: #f27323 center/5000% no-repeat;
   transition: background-size 0.1s ease;
 }
 
@@ -5149,7 +5149,7 @@ footer {
   width: 100%;
   height: 100vh;
   /* height: calc(100vh - 64px); */
-  background-image: url(/images/home.webp?4ce496cab40e9f090ab9be2572b6ba7c);
+  /* background-image: url(".././images/home.webp"); */
   background-size: cover;
   background-position: center center;
 }

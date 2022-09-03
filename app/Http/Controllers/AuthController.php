@@ -16,17 +16,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-use Tymon\JWTAuth\Claims\Subject;
-
 
 class AuthController extends Controller
 {
-   public function __construct(){
+    public function __construct()
+    {
 
-       $this->middleware('tokencookie' , ['except' => ['login','register'] ]);
+        $this->middleware('tokencookie', ['except' => ['login', 'register']]);
 
-   }
-
+    }
 
     public function analytics()
     {
@@ -37,7 +35,6 @@ class AuthController extends Controller
         $activeOrders = Order::active()->count();
         $completedOrders = Order::completed()->count();
         $cancelledOrders = Order::cancelled()->count();
-
 
         $levelsCount = AcademicLevel::all()->count();
         $subjectsCount = SubjectArea::all()->count();
@@ -51,7 +48,6 @@ class AuthController extends Controller
         $paymentsCount = Payment::sum('amount');
         $transactionsCount = Payment::all()->count();
 
-
         $adminAnalytics = [
             'order' => [
                 'received' => $receivedOrders,
@@ -59,7 +55,7 @@ class AuthController extends Controller
                 'unassigned' => $unassignedOrders,
                 'active' => $activeOrders,
                 'completed' => $completedOrders,
-                'cancelled' => $cancelledOrders
+                'cancelled' => $cancelledOrders,
             ],
             'control' => [],
             'misc' => [
@@ -68,15 +64,13 @@ class AuthController extends Controller
             ],
         ];
 
-
-        
-        if(auth()->user()->role == 0){
+        if (auth()->user()->role == 0) {
 
             $adminAnalytics['control'] = [
                 'academic_levels' => $levelsCount,
                 'subject_areas' => $subjectsCount,
                 'paper_types' => $typesCount,
-                'paper_formats' => $formatsCount
+                'paper_formats' => $formatsCount,
             ];
 
             $adminAnalytics['misc'] = [
@@ -90,44 +84,40 @@ class AuthController extends Controller
 
         }
 
-
-
-        return response()->json($adminAnalytics , 200);
+        return response()->json($adminAnalytics, 200);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-       $userValidation = Validator::make($request->all(),[
-           'email' => 'required|email',
-           'password' => 'required|string|min:6'
-       ]);
+        $userValidation = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
 
-       if($userValidation->fails()){
-           return response()->json($userValidation->errors() , Response::HTTP_BAD_REQUEST);
-       }
+        if ($userValidation->fails()) {
+            return response()->json($userValidation->errors(), Response::HTTP_BAD_REQUEST);
+        }
 
-
-        if(!$token = Auth::attempt($userValidation->validated())){
-            return  response()->json(['error' => 'Unauthorised!'], Response::HTTP_BAD_REQUEST);
+        if (!$token = Auth::attempt($userValidation->validated())) {
+            return response()->json(['error' => 'Unauthorised!'], Response::HTTP_BAD_REQUEST);
         }
 
         return respondWithToken($token);
 
     }
 
+    public function register(Request $request)
+    {
 
-
-    public function register(Request $request){
-
-        $userValidation = Validator::make($request->all(),[
+        $userValidation = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
         ]);
 
-
-        if($userValidation->fails()){
-            return response()->json($userValidation->errors() , Response::HTTP_UNPROCESSABLE_ENTITY);
+        if ($userValidation->fails()) {
+            return response()->json($userValidation->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         User::create(
@@ -137,57 +127,52 @@ class AuthController extends Controller
             )
         );
 
-        return response()->json(['message' => "User Created!"] , Response::HTTP_CREATED);
-
+        return response()->json(['message' => "User Created!"], Response::HTTP_CREATED);
 
     }
 
-
-
-    public function profile(){
-
+    public function profile()
+    {
 
         return response()->json(['admin' => Auth::user(), 'notifications' => $this->prepNotifications()]);
 
     }
 
+    private function prepNotifications()
+    {
 
-    private function prepNotifications(){
+        $unseenCount = Order::where('viewed', 0)->count();
 
-       $unseenCount = Order::where('viewed', 0)->count();
-
-       return ($unseenCount > 0) ? "Your Have $unseenCount Unseen Orders!" : "";
+        return ($unseenCount > 0) ? "Your Have $unseenCount Unseen Orders!" : "";
 
     }
 
-
-    public function logout(){
+    public function logout()
+    {
 
         Auth::logout();
 
-       return response()->json(['message' => "Logged Out!"] , Response::HTTP_OK);
+        return response()->json(['message' => "Logged Out!"], Response::HTTP_OK);
 
     }
 
+    public function refresh(Request $request)
+    {
 
-    public function refresh(Request $request){
+        return response()->json(['ni' => "nini?"]);
 
-       try{
+        try {
 
-           $newToken = Auth::refresh();
+            $newToken = Auth::refresh();
 
-           return respondWithToken($newToken);
+            return respondWithToken($newToken);
 
+        } catch (\Exception$e) {
 
-       }catch(\Exception $e){
+            return response()->json(['error' => $e->getMessage()], Response::HTTP_UNAUTHORIZED);
 
-          return  response()->json(['error' => $e->getMessage()] , Response::HTTP_UNAUTHORIZED);
-
-       }
+        }
 
     }
-
-
-
 
 }

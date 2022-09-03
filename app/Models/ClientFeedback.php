@@ -9,10 +9,10 @@ class ClientFeedback extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['rating','remarks','order_id'];
+    protected $fillable = ['rating', 'remarks', 'order_id'];
 
-
-    public function order(){
+    public function order()
+    {
         return $this->belongsTo(Order::class);
     }
 
