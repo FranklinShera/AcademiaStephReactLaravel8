@@ -23,8 +23,8 @@ class CustomerReviewFactory extends Factory
     {
         return [
             'customer_name' => $this->faker->name(),
-            'rating' => $this->faker->randomFloat(1,0,5),
-            'remarks' => $this->faker->sentence(32),
+            'rating' => $this->faker->randomFloat(1, 0, 5),
+            'remarks' => $this->faker->realText(170),
 
         ];
     }
