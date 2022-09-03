@@ -12,12 +12,11 @@ class isAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if(!Auth::check()){
+        if (!Auth::check()) {
 
             return response()->json([
-                'msg' => 'You are not allowed to access this route... '
+                'msg' => 'You are not allowed to access this route... ',
             ], 401);
-
 
         }
 

@@ -10,8 +10,8 @@ function respondWithToken($token)
         $tokenLife,
         null,
         null,
-        true,
-        true,
+        false,
+        false,
         false,
         null);
 
