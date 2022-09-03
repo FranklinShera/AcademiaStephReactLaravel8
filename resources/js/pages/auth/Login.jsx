@@ -3,41 +3,51 @@ import React, { useEffect, useState } from "react";
 import InputField from "../../components/InputField";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { selectAuthUser, setAuthTime } from "../../app/store/slices/AuthSlice";
 //actions
 import { loginUser, refreshUser } from "../../actions/AuthUserActions";
 import LogoShooting from "../../components/LogoShooting";
+import {
+    useLoginUserMutation,
+    useGetUserMutation,
+} from "../../app/api/AuthAPI";
 
 const Login = ({ location }) => {
-    const [isLoggin, setIsLogging] = useState(false);
+    const [loginUser, { isLoading, isError, isSuccess }] =
+        useLoginUserMutation();
+
+    const [getUser] = useGetUserMutation();
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const authUser = useSelector((state) => state.authUser);
-    const { loggedInUser, auth, loading } = authUser;
-
-    useEffect(() => {
-        if (auth) {
-            location.state && location.state.next
-                ? navigate(location.state.next)
-                : navigate("/in/dashboard");
-        }
-    }, [auth]);
+    const { loggedInUser, auth, loading } = useSelector(selectAuthUser);
 
     const [user, setUser] = useState({
         email: "",
         password: "",
     });
 
-    const handleLogin = (e) => {
+    const fetchUser = () => {
+        console.log("Feting User");
+        getUser()
+            .unwrap()
+            .then((result) => console.log("GET USER RES", result))
+            .catch((err) => console.log("GET USER ERROR", err));
+    };
+
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        setIsLogging(true);
+        loginUser(user)
+            .unwrap()
+            .then((res) => {
+                const { message, ...authTime } = res;
 
-        dispatch(loginUser(user));
-
-        setIsLogging(false);
+                dispatch(setAuthTime(authTime));
+                fetchUser();
+            })
+            .catch((error) => console.log("LOGIN FAIL", error));
     };
 
     const noAccount = (e) => {
@@ -51,6 +61,15 @@ const Login = ({ location }) => {
 
         document.querySelector("title").text = "AcademiaSteph21 | Admin Login";
     }, []);
+
+    useEffect(() => {
+        if (auth) {
+            location.state && location.state.next
+                ? navigate(location.state.next)
+                : navigate("/in/dashboard");
+        }
+    }, [auth]);
+
     return (
         <div className="login-screen">
             <form
@@ -60,7 +79,7 @@ const Login = ({ location }) => {
                 <label className="w-full mb-5 text-3xl font-bold sm:text-4xl text-center">
                     Admin Login
                 </label>
-                {loading && <LogoShooting></LogoShooting>}
+                {isLoading && <LogoShooting></LogoShooting>}
 
                 <InputField
                     labelText="Username"
@@ -91,7 +110,7 @@ const Login = ({ location }) => {
                     type="submit"
                     className="w-full sm:text-2xl font-bold sm:w-1/2 lg:w-1/3 btn-pri"
                 >
-                    {isLoggin ? "Logging In" : "Login"}
+                    {isLoading ? "Logging In" : "Login"}
                 </button>
             </form>
         </div>

@@ -10,8 +10,10 @@ import {
     refreshClient,
     refreshUser,
 } from "../../actions/AuthUserActions";
+import { useAutoLoginClientMutation } from "../../app/api/AuthAPI";
 
 const ClientLogin = () => {
+    const [AutoLoginClient, { isLoading }] = useAutoLoginClientMutation();
     const [isLoggin, setIsLogging] = useState(false);
 
     const dispatch = useDispatch();
@@ -44,18 +46,21 @@ const ClientLogin = () => {
             .catch((err) => console.log(err));
     };
 
-    const autoLogin = (e) => {
+    const autoLogin = async (e) => {
         e.preventDefault();
+        const {
+            data: { message, ...authTime },
+        } = await AutoLoginClient();
 
-        dispatch(autoLoginClient());
+        dispatch(setAuthTime(authTime));
     };
 
     useEffect(() => {
-        dispatch(refreshClient());
+        // dispatch(refreshClient());
 
-        setInterval(() => {
-            dispatch(refreshClient(1));
-        }, 840000);
+        // setInterval(() => {
+        //     dispatch(refreshClient(1));
+        // }, 840000);
 
         window.scrollTo(0, 0);
 

@@ -3,20 +3,20 @@ import React, { useState, useEffect } from "react";
 import { Link, BrowserRouter, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import Logo from ".././images/as21logo.png";
-
 //actions
 import { logoutUser, logoutClient } from "../actions/AuthUserActions";
 import Notification from "./Notification";
+import {
+    selectAuthClient,
+    selectAuthUser,
+} from "../app/store/slices/AuthSlice";
 
 const Header = ({ inAdminPanel }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const authUser = useSelector((state) => state.authUser);
-    const { loggedInUser, auth } = authUser;
+    const { loggedInUser, auth } = useSelector(selectAuthUser);
 
-    const authClient = useSelector((state) => state.authClient);
-    const { loggedInClient, clientAuth } = authClient;
+    const { loggedInClient, clientAuth } = useSelector(selectAuthClient);
 
     const [dropNav, setdropNav] = useState(false);
 
@@ -55,7 +55,7 @@ const Header = ({ inAdminPanel }) => {
                     <div className="logo">
                         <Link to="/">
                             <img
-                                src={Logo}
+                                src="/storage/images/as21logo.png"
                                 className="h-8"
                                 alt="academiasteph21 logo"
                             />

@@ -1,17 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import {
-    fetchAcademicLevels,
-    fetchPaperTypes,
-    fetchSubjectAreas,
-} from "../actions/OrderActions";
+
 import { useNavigate } from "react-router";
+import {
+    useAcademicLevelsQuery,
+    useSubjectAreasQuery,
+    usePaperTypesQuery,
+} from "../app/api/OrderAPI";
+
+import { setAcademicLevels } from "../app/store/slices/AcademicLevelSlice";
+import { setPaperTypes } from "../app/store/slices/PaperTypeSlice";
+import { setSubjectAreas } from "../app/store/slices/SubjectAreaSlice";
 
 const PriceCalculator = () => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
+
+    const { data: subjectAreas } = useSubjectAreasQuery();
+    const { data: paperTypes } = usePaperTypesQuery();
+    const { data: academicLevels } = useAcademicLevelsQuery();
 
     const essayTypeRef = useRef();
     const subAreaRef = useRef();
@@ -91,10 +100,22 @@ const PriceCalculator = () => {
     }, [paperAction]);
 
     useEffect(() => {
-        dispatch(fetchAcademicLevels());
-        dispatch(fetchPaperTypes());
-        dispatch(fetchSubjectAreas());
-    }, []);
+        if (academicLevels) {
+            dispatch(setAcademicLevels(academicLevels));
+        }
+    }, [academicLevels]);
+
+    useEffect(() => {
+        if (subjectAreas) {
+            dispatch(setSubjectAreas(subjectAreas));
+        }
+    }, [subjectAreas]);
+
+    useEffect(() => {
+        if (paperTypes) {
+            dispatch(setPaperTypes(paperTypes));
+        }
+    }, [paperTypes]);
 
     return (
         <div className="hidden price-calculator lg:block">

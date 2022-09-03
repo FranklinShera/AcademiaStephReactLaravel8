@@ -17,8 +17,13 @@ import TextAreaInputField from "../components/TextAreaInputField";
 //actions
 import { listReviews } from "../actions/reviewActions";
 import PriceCalculator from "../components/PriceCalculator";
+import { selectReviews, setReviews } from "../app/store/slices/ReviewSlice";
+
+import { useReviewsQuery } from "../app/api/OrderAPI";
 
 const Home = () => {
+    const { data: rev = [] } = useReviewsQuery();
+
     const [newMsg, setNewMsg] = useState({
         name: "",
         message: "",
@@ -53,8 +58,7 @@ const Home = () => {
 
     const dispatch = useDispatch();
 
-    const reviewList = useSelector((state) => state.reviewList);
-    const { reviews } = reviewList;
+    const { reviews } = useSelector(selectReviews);
 
     const Formik = useFormik({
         initialValues: {
@@ -100,8 +104,10 @@ const Home = () => {
     };
 
     useEffect(() => {
-        dispatch(listReviews());
-    }, [dispatch]);
+        if (rev.length > 0) {
+            dispatch(setReviews(rev));
+        }
+    }, [rev]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
