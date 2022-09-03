@@ -1,12 +1,13 @@
-import React from 'react'
-import  Logo from '.././images/as21logo.png';
-
+import React from "react";
 
 const LogoShooting = () => {
     return (
         <div className="wait-loader">
             <div className="center">
-                <img src={Logo} alt="AcademiaSteph21 Loader"/>
+                <img
+                    src="/storage/images/as21logo.png"
+                    alt="AcademiaSteph21 Loader"
+                />
             </div>
             <div className="item item-1"></div>
             <div className="item item-2"></div>
@@ -17,7 +18,7 @@ const LogoShooting = () => {
             <div className="item item-7"></div>
             <div className="item item-8"></div>
         </div>
-    )
-}
+    );
+};
 
 export default LogoShooting;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import Logo from ".././images/as21logo.png";
 import { useSelector, RootStateOrAny } from "react-redux";
 
 const Loader = () => {
@@ -25,7 +24,10 @@ const Loader = () => {
                 <div className={isLoading ? "loader-overlay" : "hidden"}>
                     <div className="wait-loader">
                         <div className="center">
-                            <img src={Logo} alt="AcademiaSteph21 Loader" />
+                            <img
+                                src="/storage/images/as21logo.png"
+                                alt="AcademiaSteph21 Loader"
+                            />
                         </div>
                         <div className="item item-1"></div>
                         <div className="item item-2"></div>

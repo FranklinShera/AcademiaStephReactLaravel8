@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import Logo from ".././images/as21logo.png";
-import { useSelector, RootStateOrAny } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ShootingLoader = ({ loading }) => {
     const AcademicLevels = useSelector((state) => state.academicLevels);
@@ -21,7 +20,10 @@ const ShootingLoader = ({ loading }) => {
                     <div className={`loader-overlay bg-white vh-100'}`}>
                         <div className="wait-loader">
                             <div className="center">
-                                <img src={Logo} alt="AcademiaSteph21 Loader" />
+                                <img
+                                    src="/storage/images/as21logo.png"
+                                    alt="AcademiaSteph21 Loader"
+                                />
                             </div>
                             <div className="item item-1"></div>
                             <div className="item item-2"></div>
