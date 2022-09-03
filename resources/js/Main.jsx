@@ -5,7 +5,7 @@ import Swal2 from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 // STATE
-import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //ACTIONS
 import { refreshUser, refreshClient } from "./actions/AuthUserActions";
@@ -46,7 +46,8 @@ import ClientOrders from "./pages/client/Orders";
 import ClientMessages from "./pages/client/Messages";
 import ClientProfile from "./pages/client/Profile";
 import PlaceNewOrder from "./pages/client/PlaceNewOrder";
-
+import { selectAuthUser, selectAuthClient } from "./app/store/slices/AuthSlice";
+import { selectAdminPanel } from "./app/store/slices/AppSlice";
 // SWEETALERT2 SETUP
 const Swal = withReactContent(Swal2);
 
@@ -69,36 +70,28 @@ window.Swal = Swal;
 function App() {
     const dispatch = useDispatch();
 
-    const authUser = useSelector((state) => state.authUser);
+    const { inAdminPanel } = useSelector(selectAdminPanel);
 
-    const authClient = useSelector((state) => state.authClient);
+    const { auth } = useSelector(selectAuthUser);
 
-    const userInAdmin = useSelector((state) => state.adminPanel);
-
-    const { inAdminPanel } = userInAdmin;
-
-    const { auth } = authUser;
-
-    const { clientAuth } = authClient;
+    const { clientAuth } = useSelector(selectAuthClient);
 
     useEffect(() => {
-        // check if location is not /client
-        if (!auth && location.pathname === "/in") {
-            dispatch(refreshUser());
-        }
-
-        // check if location is /client
-        if (!clientAuth && location.pathname === "/client") {
-            dispatch(refreshClient());
-        }
-
-        setInterval(() => {
-            auth && location.pathname === "/in"
-                ? dispatch(refreshUser(1))
-                : clientAuth &&
-                  location.pathname === "/client" &&
-                  dispatch(refreshClient(1));
-        }, 840000);
+        // // check if location is not /client
+        // if (!auth && location.pathname === "/in") {
+        //     dispatch(refreshUser());
+        // }
+        // // check if location is /client
+        // if (!clientAuth && location.pathname === "/client") {
+        //     dispatch(refreshClient());
+        // }
+        // setInterval(() => {
+        //     auth && location.pathname === "/in"
+        //         ? dispatch(refreshUser(1))
+        //         : clientAuth &&
+        //           location.pathname === "/client" &&
+        //           dispatch(refreshClient(1));
+        // }, 840000);
     }, [location.pathname]);
 
     const BlankPage = () => {
